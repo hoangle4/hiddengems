@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 // Connect to the Mongo DB
-const MONGODB_URI = require('./config/mongoDB');
+const MONGODB_URI = require('./configs/mongoDB');
 mongoose.connect(MONGODB_URI, {
 	useNewUrlParser: true
 });
