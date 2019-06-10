@@ -1,2 +1,2 @@
-# hiddengerms
-hiddengerms final project bootcampspot
+# hiddengems
+hiddengems final project bootcampspot
