@@ -35,8 +35,13 @@ class Map extends Component {
       container: this.mapContainer,
       zoom: 10,
       style: "mapbox://styles/mapbox/streets-v11"
+    }).on("click", e => {
+      // e.preventDefault();
+      console.log(e);
     });
   };
+
+  handleClick = e => {};
   render() {
     const style = {
       position: "absolute",
@@ -48,7 +53,11 @@ class Map extends Component {
 
     return (
       <Fragment>
-        <div style={style} ref={el => (this.mapContainer = el)} />
+        <div
+          style={style}
+          ref={el => (this.mapContainer = el)}
+          onClick={this.handleClick}
+        />
       </Fragment>
     );
   }
