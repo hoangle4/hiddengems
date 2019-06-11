@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import MapBox from "mapbox-gl/dist/mapbox-gl.js";
+import MapBox, { NavigationControl, GeolocateControl } from "mapbox-gl";
 class Map extends Component {
   state = {
     geolocation: {
@@ -35,10 +35,26 @@ class Map extends Component {
       container: this.mapContainer,
       zoom: 10,
       style: "mapbox://styles/mapbox/streets-v11"
-    }).on("click", e => {
-      // e.preventDefault();
-      console.log(e);
-    });
+    })
+      .addControl(
+        new NavigationControl({ showCompass: true, showZoom: true }),
+        "top-left"
+      )
+      .addControl(
+        new GeolocateControl({
+          positionOptions: {
+            enableHighAccuracy: true,
+            timeout: 6000
+          },
+          fitBoundsOptions: { maxZoom: 10 },
+          trackUserLocation: true,
+          showUserLocation: true
+        })
+      )
+      .on("mouseup", e => {
+        // e.preventDefault();
+        console.log(e);
+      });
   };
 
   handleClick = e => {};
