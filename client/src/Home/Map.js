@@ -78,10 +78,12 @@ class Map extends Component {
 	render() {
 		const mapStyle = {
 			position: 'absolute',
-			top: 0,
-			width: '60%',
-			height: '60%',
-			margin: '20%'
+			top: '10%',
+			width: '100%',
+			height: '90%',
+			margin: '0',
+			zIndex: '0',
+
 		};
 
 		const marker = {

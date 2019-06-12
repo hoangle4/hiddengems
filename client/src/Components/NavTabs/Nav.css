@@ -1,0 +1,11 @@
+.Nav {
+  background: rgba(0,0,0,0);
+  z-index: 3;
+  display: flex;
+  justify-content: flex-start;
+  height: 10%;
+  flex-wrap: nowrap;
+}
+ .nav-item {
+  font-size: 1.2rem;
+}

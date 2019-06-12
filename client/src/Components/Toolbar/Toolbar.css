@@ -1,0 +1,23 @@
+.Toolbar {
+  font-family: 'Poiret One', cursive;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+}
+.Toolbar-navigation {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1rem;
+  align-items: center;
+}
+.Toolbar-hamburger {
+  font-size: 2rem;
+}
+.Toolbar-logo {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+}

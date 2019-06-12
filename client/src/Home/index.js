@@ -3,8 +3,7 @@ import Map from "./Map";
 class index extends Component {
   render() {
     return (
-      <div>
-        <h1>Hidden gems</h1>
+      <div className="Map-container">
         <Map />
       </div>
     );
