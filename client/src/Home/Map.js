@@ -50,17 +50,23 @@ class Map extends Component {
 			)
 			.on('click', (e) => {
 				// e.preventDefault();
-				console.log(e);
+				// console.log(e);
 			});
 	};
 
 	handleClick = (e) => {
-		this.marker = new Marker({
-			draggable: true
-		})
-			.setLngLat([ this.state.currentLongitude, this.state.currentLatitude ])
-			.addTo(this.map);
-
+		console.log(this.marker);
+		if (this.marker) {
+			this.marker.remove();
+			this.marker = undefined;
+			return;
+		} else {
+			this.marker = new Marker({
+				draggable: true
+			})
+				.setLngLat([ this.state.currentLongitude, this.state.currentLatitude ])
+				.addTo(this.map);
+		}
 		const onDragEnd = () => {
 			this.lngLat = this.marker.getLngLat();
 			this.coordinates.style.display = 'block';
@@ -68,7 +74,6 @@ class Map extends Component {
 		};
 
 		this.marker.on('dragend', onDragEnd);
-		console.log(e);
 	};
 	render() {
 		const mapStyle = {
