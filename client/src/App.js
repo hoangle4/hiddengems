@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavTabs from "./components/NavTabs";
+import NavTabs from "./Components/NavTabs";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
 import SignUp from "./Signup";
