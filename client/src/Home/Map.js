@@ -2,12 +2,11 @@ import React, { Component, Fragment } from 'react';
 import MapBox, { NavigationControl, GeolocateControl, Marker } from 'mapbox-gl';
 class Map extends Component {
 	state = {
-		geolocation: {
-			currentLongitude: '',
-			currentLatitude: ''
-		}
+		currentLongitude: '',
+		currentLatitude: ''
 	};
 	componentDidMount = async () => {
+		this.isMarker = false;
 		navigator.geolocation.getCurrentPosition(
 			async (position) => {
 				this.setState({
@@ -55,26 +54,26 @@ class Map extends Component {
 	};
 
 	handleClick = (e) => {
-		console.log(this.marker);
-		if (this.marker) {
+		if (this.isMarker) {
 			this.marker.remove();
-			this.marker = undefined;
+			this.isMarker = !this.isMarker;
 			return;
 		} else {
 			this.marker = new Marker({
 				draggable: true
 			})
-				.setLngLat([ this.state.currentLongitude, this.state.currentLatitude ])
+				.on('dragend', this.onDragEnd)
 				.addTo(this.map);
+			this.isMarker = !this.isMarker;
+			console.log(this.marker.getLngLat());
+			return;
 		}
-		const onDragEnd = () => {
-			this.lngLat = this.marker.getLngLat();
-			this.coordinates.style.display = 'block';
-			this.coordinates.innerHTML = 'Longitude: ' + this.lngLat.lng + '<br />Latitude: ' + this.lngLat.lat;
-		};
-
-		this.marker.on('dragend', onDragEnd);
 	};
+
+	// onDragEnd = () => {
+	// 	this.coordinates.style.display = 'block';
+	// 	this.coordinates.innerHTML = 'Longitude: ' + this.lngLat.lng + '<br />Latitude: ' + this.lngLat.lat;
+	// };
 	render() {
 		const mapStyle = {
 			position: 'absolute',
