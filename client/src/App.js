@@ -6,7 +6,7 @@ import NavTabs from "./Components/NavTabs";
 import Dashboard from "./Dashboard";
 import SignUp from "./Signup";
 import Profile from "./Profile";
-import SingleResult from "./Gem";
+import Gem from "./Gem";
 
 
 
