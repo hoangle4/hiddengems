@@ -6,7 +6,7 @@ import NavTabs from "./Components/NavTabs";
 import Dashboard from "./Dashboard";
 import SignUp from "./Signup";
 import Profile from "./Profile";
-import SingleResult from "./singleResult";
+import SingleResult from "./Gem";
 
 
 
@@ -19,7 +19,7 @@ class App extends Component {
           <NavTabs />
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/singleResult" component={SingleResult} />
+          <Route exact path="/gem" component={Gem} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/userprofile" component={Profile} />
         </div>
