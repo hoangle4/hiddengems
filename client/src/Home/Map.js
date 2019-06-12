@@ -48,12 +48,12 @@ class Map extends Component {
 				})
 			)
 			.on('click', (e) => {
-				// e.preventDefault();
-				// console.log(e);
+				this.handleClick(e);
 			});
 	};
 
 	handleClick = (e) => {
+		console.log(e);
 		if (this.isMarker) {
 			this.marker.remove();
 			this.isMarker = !this.isMarker;
@@ -62,18 +62,19 @@ class Map extends Component {
 			this.marker = new Marker({
 				draggable: true
 			})
-				.on('dragend', this.onDragEnd)
+				.on('drag', this.onDrag)
+				.setLngLat(e.lngLat)
 				.addTo(this.map);
 			this.isMarker = !this.isMarker;
-			console.log(this.marker.getLngLat());
 			return;
 		}
 	};
 
-	// onDragEnd = () => {
-	// 	this.coordinates.style.display = 'block';
-	// 	this.coordinates.innerHTML = 'Longitude: ' + this.lngLat.lng + '<br />Latitude: ' + this.lngLat.lat;
-	// };
+	onDrag = () => {
+		this.lngLat = this.marker.getLngLat();
+		this.coordinates.style.display = 'block';
+		this.coordinates.innerHTML = 'Longitude: ' + this.lngLat.lng + '<br />Latitude: ' + this.lngLat.lat;
+	};
 	render() {
 		const mapStyle = {
 			position: 'absolute',
@@ -99,7 +100,7 @@ class Map extends Component {
 
 		return (
 			<Fragment>
-				<div style={mapStyle} ref={(el) => (this.mapContainer = el)} onClick={this.handleClick} />
+				<div style={mapStyle} ref={(el) => (this.mapContainer = el)} />
 				<pre style={marker} ref={(el) => (this.coordinates = el)} />
 			</Fragment>
 		);
