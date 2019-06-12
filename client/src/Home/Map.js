@@ -63,6 +63,7 @@ class Map extends Component {
 				draggable: true
 			})
 				.on('drag', this.onDrag)
+				.on('dragend', this.onDragend)
 				.setLngLat(e.lngLat)
 				.addTo(this.map);
 			this.isMarker = !this.isMarker;
@@ -70,7 +71,11 @@ class Map extends Component {
 		}
 	};
 
-	onDrag = () => {
+	onDragend = (dragendEvents) => {
+		console.log('drag ended');
+	};
+
+	onDrag = (dragEvents) => {
 		this.lngLat = this.marker.getLngLat();
 		this.coordinates.style.display = 'block';
 		this.coordinates.innerHTML = 'Longitude: ' + this.lngLat.lng + '<br />Latitude: ' + this.lngLat.lat;
