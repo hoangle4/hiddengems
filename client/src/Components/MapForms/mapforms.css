@@ -1,4 +1,41 @@
 .form-group {
-	position: absolute;
-	z-index: 4;
+  position: absolute;
+  z-index: 4;
+  width: 60%;
+  bottom: 0;
+  left: 20%;
+  border: 0.5px solid #999;
+  padding: 1rem;
+  background: rgba(240, 243, 243, 0.5);
+  transition: height 1000ms ease-in;
+}
+
+.input-container {
+  display: grid;
+}
+
+.label {
+  padding-left: 5rem;
+  padding-top: 1rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: rgb(49, 51, 51);
+}
+.input {
+  width: 80%;
+  margin: auto;
+  background: rgba(240, 243, 243, 0.5);
+  border: none;
+  border-bottom: 0.5px solid rgb(49, 51, 51);
+}
+
+.input:hover {
+  transition: 1s;
+  background: rgba(129, 129, 129, 0.7);
+}
+
+h5 {
+  text-align: center;
+  color: rgb(49, 51, 51);
+  font-weight: bold;
 }
