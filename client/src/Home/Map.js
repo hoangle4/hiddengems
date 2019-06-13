@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import MapBox, { NavigationControl, GeolocateControl, Marker } from 'mapbox-gl';
+import MapForms from '../Components/MapForms';
 class Map extends Component {
 	state = {
 		currentLongitude: '',
@@ -84,9 +85,9 @@ class Map extends Component {
 		const mapStyle = {
 			position: 'absolute',
 			top: 0,
-			width: '60%',
-			height: '60%',
-			margin: '20%'
+			width: '100%',
+			height: '100%',
+			margin: '0%'
 		};
 
 		const marker = {
@@ -105,7 +106,9 @@ class Map extends Component {
 
 		return (
 			<Fragment>
-				<div style={mapStyle} ref={(el) => (this.mapContainer = el)} />
+				<div style={mapStyle} ref={(el) => (this.mapContainer = el)}>
+					<MapForms />
+				</div>
 				<pre style={marker} ref={(el) => (this.coordinates = el)} />
 			</Fragment>
 		);
