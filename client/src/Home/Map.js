@@ -34,7 +34,8 @@ class Map extends Component {
 			center: [ this.state.currentLongitude, this.state.currentLatitude ],
 			container: this.mapContainer,
 			zoom: 10,
-			style: 'mapbox://styles/mapbox/streets-v11'
+			style: 'mapbox://styles/mapbox/streets-v11?optimize=true',
+			logoPosition: 'bottom-right'
 		})
 			.addControl(new NavigationControl({ showCompass: true, showZoom: true }), 'top-left')
 			.addControl(

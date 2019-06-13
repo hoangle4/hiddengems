@@ -7,6 +7,7 @@ import Home from './Home';
 import NavTabs from './Components/NavTabs';
 import Dashboard from './Dashboard';
 import SignUp from './Signup';
+import Login from './Login';
 import Profile from './Profile';
 import Gem from './Gem';
 import Toolbar from './Components/Toolbar';
@@ -39,6 +40,7 @@ class App extends Component {
 					<Route exact path="/gem" component={Gem} />
 					<Route exact path="/dashboard" component={Dashboard} />
 					<Route exact path="/userprofile" component={Profile} />
+					<Route exact path="/login" component={Login} />
 				</div>
 			</Router>
 		);

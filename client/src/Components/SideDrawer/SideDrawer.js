@@ -6,7 +6,7 @@ class SideDrawer extends Component {
     return(
       <nav className="SideDrawer">
         <ul>
-          <li><a href="#">Login</a></li>
+          <li><a href="/login">Login</a></li>
           <li><a href="/signup">Sign Up</a></li>
           <li><a href="/userprofile">My Profile</a></li>
         </ul>
