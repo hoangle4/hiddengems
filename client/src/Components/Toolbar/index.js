@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavTab from '../NavTabs';
+import DrawerToggleButton from '../SideDrawer/DrawerToggleButton.js';
 import './Toolbar.css';
 
 class Toolbar extends Component {
@@ -12,7 +13,9 @@ class Toolbar extends Component {
 			isNav: !this.state.isNav
 		});
 	};
-	render() {
+
+	render(props) {
+		console.log(props)
 		return (
 			<header className="Toolbar">
 				<nav className="Toolbar-navigation">
@@ -22,9 +25,7 @@ class Toolbar extends Component {
 						</a>
 					</h1>
 					{this.state.isNav ? <NavTab /> : null}
-					<div className="Toolbar-hamburger">
-						<a href="#" className="fas fa-bars" onClick={this.handleClick} />
-					</div>
+					<DrawerToggleButton  click={this.props.drawerClick}/>
 				</nav>
 			</header>
 		);

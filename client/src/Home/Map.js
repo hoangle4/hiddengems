@@ -78,9 +78,9 @@ class Map extends Component {
 	render() {
 		const mapStyle = {
 			position: 'absolute',
-			top: '10%',
+			top: '0',
 			width: '100%',
-			height: '90%',
+			height: '100%',
 			margin: '0',
 			zIndex: '0',
 
