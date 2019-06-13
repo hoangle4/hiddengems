@@ -20,10 +20,14 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )(props => (
-  <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={{ lat: props.currentLatitude, lng: props.currentLongitude }}
+    onClick={props.onMapClick}
+  >
     {props.isMarkerShown && (
       <Marker
-        position={{ lat: -34.397, lng: 150.644 }}
+        position={{ lat: props.currentLatitude, lng: props.currentLongitude }}
         onClick={props.onMarkerClick}
       />
     )}
@@ -59,6 +63,12 @@ class RenderMap extends Component {
     this.setState({ isPinDropped: !this.state.isPinDropped });
     console.log("click");
   };
+
+  handleMapClick = e => {
+    this.setState({ isPinDropped: !this.state.isPinDropped });
+    console.log("click");
+  };
+
   doAnAction = () => {
     console.log("Im doing something");
     this.setState(state => ({
@@ -86,8 +96,11 @@ class RenderMap extends Component {
         <h3>{this.state.title}</h3>
         <button onClick={this.doAnAction}>Click Me to raise an event</button>
         <MyMapComponent
+          currentLongitude={currentLongitude}
+          currentLatitude={currentLatitude}
           isMarkerShown={true}
           onMarkerClick={this.handleMarkerClick}
+          onMapClick={this.handleMapClick}
         />
         <MapForms isPinDropped={isPinDropped} />
         <pre style={marker} ref={el => (this.coordinates = el)} />
