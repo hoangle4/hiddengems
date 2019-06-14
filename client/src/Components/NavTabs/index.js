@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-/* import "./style.css"; */
+import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Nav() {
   return (
-    <nav className = "collapse.navbar-collapse">
+    <nav>
     
     <ul className="nav flex-column ">
         <li className="nav-item">
@@ -19,7 +19,7 @@ function Nav() {
             </Link>
         </li>
         <li className="nav-item">
-            <Link to="/single_result" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            <Link to="/gem" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
             View Gem
             </Link>
         </li>
@@ -29,7 +29,7 @@ function Nav() {
             </Link>
         </li>
         <li className="nav-item">
-            <Link to="/dashboard" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            <Link to="/profile" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
             User Profile
             </Link>
         </li>

@@ -1,0 +1,28 @@
+.gemBanner{
+    display: flex;
+    justify-content: center;
+    padding: 2%;    
+}
+
+/* probably delete this later: */
+.gemBanner img {
+    position: relative;
+    width: 98%;
+    height: 200px;
+    background-color: blue;
+    align-content: center;
+}
+
+.storyBox {
+    display: flex;
+    background-color: lightgrey;
+    border: 1px solid #000000;
+    word-wrap: break-word;    
+}
+
+.gemStory{
+    justify-content: center;
+    width: 75%;
+    
+
+}
