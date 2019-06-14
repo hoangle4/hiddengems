@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import './Signup.css';
+import saveUser from '../API/user.js';
 
 class Signup extends Component {
+
+  saveUser = event => {
+    event.preventDefault();
+  }
 
   render() {
     return (

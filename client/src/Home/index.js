@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Map from './Map';
-import Toolbar from '../components/Toolbar';
-import SideDrawer from '../components/SideDrawer/SideDrawer';
+import Toolbar from '../Components/Toolbar';
+import SideDrawer from '../Components/SideDrawer/SideDrawer';
 class index extends Component {
 	state = {
 		sideDrawerOpen: false
