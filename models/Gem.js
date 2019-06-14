@@ -19,6 +19,10 @@ const newGem = new Schema({
 		type: String,
 		required: true
 	},
+	category: {
+		type: String,
+		required: true
+	},
 	createdBy: {
 		type: Schema.Types.ObjectId,
 		ref: 'users'
@@ -47,12 +51,8 @@ const newGem = new Schema({
 			}
 		}
 	],
-	images: [
-		{
-			img: {
-				type: String
-			}
-		}
-	]
+	photos: {
+		type: String
+	}
 });
-module.exports = Gem = moongose.model('gems', newGem);
+module.exports = Gem = mongoose.model('gems', newGem);
