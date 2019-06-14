@@ -33,6 +33,9 @@ function index({ isPinDropped }) {
 				</label>
 				<textarea className="input" name="placeName" placeholder=" Story, Description ..." />
 			</div>
+			<div className="input-container">
+				<a className="create-btn"> Create Place</a>
+			</div>
 		</div>
 	);
 }
