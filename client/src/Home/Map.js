@@ -34,7 +34,8 @@ class Map extends Component {
 			center: [ this.state.currentLongitude, this.state.currentLatitude ],
 			container: this.mapContainer,
 			zoom: 10,
-			style: 'mapbox://styles/mapbox/streets-v11'
+			style: 'mapbox://styles/mapbox/streets-v11?optimize=true',
+			logoPosition: 'bottom-right'
 		})
 			.addControl(new NavigationControl({ showCompass: true, showZoom: true }), 'top-left')
 			.addControl(
@@ -78,10 +79,12 @@ class Map extends Component {
 	render() {
 		const mapStyle = {
 			position: 'absolute',
-			top: 0,
-			width: '60%',
-			height: '60%',
-			margin: '20%'
+			top: '0',
+			width: '100%',
+			height: '100%',
+			margin: '0',
+			zIndex: '0',
+
 		};
 
 		const marker = {
