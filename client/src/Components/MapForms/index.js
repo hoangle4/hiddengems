@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FromGroup from './FormGroup';
+import db from '../../API/db';
 import './mapforms.css';
 class index extends Component {
 	state = {
@@ -16,6 +17,11 @@ class index extends Component {
 		});
 	};
 
+	handleOnClick = async (e) => {
+		const results = await db.createPlace(this.state);
+		console.log(results);
+	};
+
 	render() {
 		const { isPinDropped } = this.props;
 		return (
@@ -23,7 +29,7 @@ class index extends Component {
 				className="form-group"
 				style={isPinDropped ? { height: '80vh', display: 'block' } : { display: 'none' }}
 			>
-				<FromGroup value={this.state} handleOnChange={this.handleOnChange} />
+				<FromGroup value={this.state} handleOnChange={this.handleOnChange} handleOnClick={this.handleOnClick} />
 			</div>
 		);
 	}

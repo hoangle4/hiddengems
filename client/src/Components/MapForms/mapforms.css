@@ -47,4 +47,5 @@ h5 {
 	background: rgba(131, 241, 208, 0.9);
 	cursor: pointer;
 	border-radius: 0.5rem;
+	border: 1px solid #999999;
 }
