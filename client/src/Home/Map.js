@@ -1,13 +1,40 @@
 import React, { Component, Fragment } from 'react';
-import MapBox, { NavigationControl, GeolocateControl, Marker } from 'mapbox-gl';
-class Map extends Component {
+import MapForms from '../components/MapForms';
+
+import { compose, withProps, withStateHandlers } from 'recompose';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+
+const MyMapComponent = compose(
+	withProps({
+		googleMapURL: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
+		loadingElement: <div style={{ height: '100%' }} />,
+		containerElement: <div style={{ height: '100vh' }} />,
+		mapElement: <div style={{ height: '100%', zIndex: 1 }} />
+	}),
+	withScriptjs,
+	withGoogleMap
+)((props) => (
+	<GoogleMap
+		defaultZoom={8}
+		defaultCenter={{ lat: props.currentLatitude, lng: props.currentLongitude }}
+		onClick={props.onMapClick}
+	>
+		{props.isMarkerShown &&
+			props.marker.map((position) => <Marker position={position} onClick={props.onMarkerClick} />)}
+	</GoogleMap>
+));
+
+class RenderMap extends Component {
 	state = {
-		geolocation: {
-			currentLongitude: '',
-			currentLatitude: ''
-		}
+		currentLongitude: '',
+		currentLatitude: '',
+		isPinDropped: false,
+		title: 'Reacj & GoogleMap Test',
+		marker: [],
+		isMarkerShown: false
 	};
-	componentDidMount = async () => {
+
+	componentDidMount = () => {
 		navigator.geolocation.getCurrentPosition(
 			async (position) => {
 				this.setState({
@@ -24,90 +51,46 @@ class Map extends Component {
 		);
 	};
 
-	componentWillUnmount = () => {
-		this.map.remove();
+	handleMarkerClick = (e) => {
+		// this.setState({ isPinDropped: !this.state.isPinDropped });
+		// console.log('click');
 	};
 
-	componentDidUpdate = () => {
-		MapBox.accessToken = process.env.REACT_APP_MAP_BOX_KEY;
-		this.map = new MapBox.Map({
-			center: [ this.state.currentLongitude, this.state.currentLatitude ],
-			container: this.mapContainer,
-			zoom: 10,
-			style: 'mapbox://styles/mapbox/streets-v11?optimize=true',
-			logoPosition: 'bottom-right'
-		})
-			.addControl(new NavigationControl({ showCompass: true, showZoom: true }), 'top-left')
-			.addControl(
-				new GeolocateControl({
-					positionOptions: {
-						enableHighAccuracy: true,
-						timeout: 6000
-					},
-					fitBoundsOptions: { maxZoom: 10 },
-					trackUserLocation: true,
-					showUserLocation: true
-				})
-			)
-			.on('click', (e) => {
-				// e.preventDefault();
-				// console.log(e);
-			});
+	handleMapClick = (event) => {
+		const lat = event.latLng.lat();
+		const lng = event.latLng.lng();
+		this.setState({
+			marker: [ { lat, lng } ],
+			isMarkerShown: !this.state.isMarkerShown
+		});
+
+		this.setState({ isPinDropped: !this.state.isPinDropped });
 	};
 
-	handleClick = (e) => {
-		console.log(this.marker);
-		if (this.marker) {
-			this.marker.remove();
-			this.marker = undefined;
-			return;
-		} else {
-			this.marker = new Marker({
-				draggable: true
-			})
-				.setLngLat([ this.state.currentLongitude, this.state.currentLatitude ])
-				.addTo(this.map);
-		}
-		const onDragEnd = () => {
-			this.lngLat = this.marker.getLngLat();
-			this.coordinates.style.display = 'block';
-			this.coordinates.innerHTML = 'Longitude: ' + this.lngLat.lng + '<br />Latitude: ' + this.lngLat.lat;
-		};
-
-		this.marker.on('dragend', onDragEnd);
+	doAnAction = () => {
+		console.log('Im doing something');
+		this.setState((state) => ({
+			title: 'Changed!'
+		}));
 	};
 	render() {
-		const mapStyle = {
-			position: 'absolute',
-			top: '0',
-			width: '100%',
-			height: '100%',
-			margin: '0',
-			zIndex: '0',
-
-		};
-
-		const marker = {
-			background: 'rgba(0,0,0,0.5)',
-			color: ' #fff',
-			position: 'absolute',
-			bottom: '40px',
-			left: '10px',
-			padding: '5px 10px',
-			margin: '0',
-			fontSize: '11px',
-			lineHeight: '18px',
-			borderRadius: ' 3px',
-			display: 'none'
-		};
-
+		const { currentLongitude, currentLatitude, isPinDropped, marker, isMarkerShown } = this.state;
 		return (
 			<Fragment>
-				<div style={mapStyle} ref={(el) => (this.mapContainer = el)} onClick={this.handleClick} />
-				<pre style={marker} ref={(el) => (this.coordinates = el)} />
+				<h3>{this.state.title}</h3>
+				<button onClick={this.doAnAction}>Click Me to raise an event</button>
+				<MyMapComponent
+					currentLongitude={currentLongitude}
+					currentLatitude={currentLatitude}
+					isMarkerShown={isMarkerShown}
+					onMarkerClick={this.handleMarkerClick}
+					onMapClick={this.handleMapClick}
+					marker={marker}
+				/>
+				<MapForms isPinDropped={isPinDropped} />
 			</Fragment>
 		);
 	}
 }
 
-export default Map;
+export default RenderMap;
