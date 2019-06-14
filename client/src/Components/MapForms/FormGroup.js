@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-function FormGroup({ placeName, photos, category, description, handleOnChange }) {
+function FormGroup({ placeName, photos, category, description, handleOnChange, handleOnClick }) {
 	return (
 		<Fragment>
 			<h5>Place Details</h5>
@@ -53,7 +53,7 @@ function FormGroup({ placeName, photos, category, description, handleOnChange })
 				/>
 			</div>
 			<div className="input-container">
-				<a className="create-btn"> Create Place</a>
+				<input type="submit" className="create-btn" value="Create Place" onClick={handleOnClick} />
 			</div>
 		</Fragment>
 	);

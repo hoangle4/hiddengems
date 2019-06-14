@@ -32,4 +32,4 @@ const newUser = new Schema({
 		type: String
 	}
 });
-module.exports = User = moongose.model('users', newUser);
+module.exports = User = mongoose.model('users', newUser);
