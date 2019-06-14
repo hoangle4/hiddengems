@@ -3,14 +3,13 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"mapbox-gl": "^1.0.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"react-google-maps": "^9.4.5",
-		"react-mapbox-gl": "^4.4.0",
 		"react-router-dom": "^5.0.1",
 		"react-scripts": "3.0.1",
-		"recompose": "^0.30.0"
+		"recompose": "^0.30.0",
+		"axios": "^0.18.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -22,15 +21,7 @@
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
 	}
 }
