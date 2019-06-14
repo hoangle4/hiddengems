@@ -1,43 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
+import FromGroup from './FormGroup';
 import './mapforms.css';
-function index({ isPinDropped }) {
-	return (
-		<div className="form-group" style={isPinDropped ? { height: '80vh', display: 'block' } : { display: 'none' }}>
-			<h5>Place Details</h5>
-			<div className="input-container">
-				<label className="label" htmlFor="placeName">
-					Place Name
-				</label>
-				<input className="input" name="placeName" placeholder="" />
+class index extends Component {
+	state = {
+		placeName: '',
+		photos: '',
+		category: '',
+		description: ''
+	};
+
+	handleOnChange = (e) => {
+		const { name, value } = e.target;
+		this.setState({
+			[name]: value
+		});
+	};
+
+	render() {
+		const { isPinDropped } = this.props;
+		return (
+			<div
+				className="form-group"
+				style={isPinDropped ? { height: '80vh', display: 'block' } : { display: 'none' }}
+			>
+				<FromGroup value={this.state} handleOnChange={this.handleOnChange} />
 			</div>
-			<div className="input-container">
-				<label className="label" htmlFor="placeName">
-					Photos
-				</label>
-				<input type="file" className="input" name="photos" accept="image/*" />
-			</div>
-			<div className="input-container">
-				<label className="label" htmlFor="category">
-					Category
-				</label>
-				<select className="input" name="category">
-					<option value="restaurants">Restaurants</option>
-					<option value="auto">Auto</option>
-					<option value="bars">Bars</option>
-					<option value="reacreationalarea">Recreational Area</option>
-				</select>
-			</div>
-			<div className="input-container">
-				<label className="label" htmlFor="placeName">
-					Description
-				</label>
-				<textarea className="input" name="placeName" placeholder=" Story, Description ..." />
-			</div>
-			<div className="input-container">
-				<a className="create-btn"> Create Place</a>
-			</div>
-		</div>
-	);
+		);
+	}
 }
 
 export default index;

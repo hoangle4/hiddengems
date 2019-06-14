@@ -15,7 +15,7 @@ const MyMapComponent = compose(
 	withGoogleMap
 )((props) => (
 	<GoogleMap
-		defaultZoom={8}
+		defaultZoom={16}
 		defaultCenter={{ lat: props.currentLatitude, lng: props.currentLongitude }}
 		onClick={props.onMapClick}
 	>
@@ -77,8 +77,8 @@ class RenderMap extends Component {
 		const { currentLongitude, currentLatitude, isPinDropped, marker, isMarkerShown } = this.state;
 		return (
 			<Fragment>
-				<h3>{this.state.title}</h3>
-				<button onClick={this.doAnAction}>Click Me to raise an event</button>
+				{/* <h3>{this.state.title}</h3>
+				<button onClick={this.doAnAction}>Click Me to raise an event</button> */}
 				<MyMapComponent
 					currentLongitude={currentLongitude}
 					currentLatitude={currentLatitude}
