@@ -1,20 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
+import './Nav.css';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Nav() {
   return (
-    <nav>
-    
-    <ul className="nav flex-column ">
-        <li className="nav-item">
-            <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+    <nav className = "Nav">
+        <div className="nav-item">
+            <Link to="/" className={window.location.pathname === "/" ? "nav-Link active" : "nav-Link"}>
             Home
             </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/signup" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+        </div>
+        <div className="nav-item">
+            <Link to="/signup" className={window.location.pathname === "/" ? "nav-Link active" : "nav-Link"}>
             Sign Up!
             </Link>
         </li>
@@ -22,9 +20,9 @@ function Nav() {
             <Link to="/gem" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
             View Gem
             </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/dashboard" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+        </div>
+        <div className="nav-item">
+            <Link to="/dashboard" className={window.location.pathname === "/" ? "nav-Link active" : "nav-Link"}>
             Your Gems, Your Stories
             </Link>
         </li>
@@ -32,9 +30,7 @@ function Nav() {
             <Link to="/profile" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
             User Profile
             </Link>
-        </li>
-    </ul>
-
+        </div>
     </nav>
   );
 }
