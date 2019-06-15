@@ -1,5 +1,7 @@
 import React from "react";
 
+/* import { PromiseProvider } from "mongoose"; */
+
 //might want to use the String.raw line to keep formatting of text
 let thisStory = String.raw`    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
   blandit at quam at ultrices. Ut sagittis porta accumsan. Praesent
@@ -31,11 +33,12 @@ let thisStory = String.raw`    Lorem ipsum dolor sit amet, consectetur adipiscin
   est pharetra ullamcorper eu in nisi. Proin fringilla ac tellus eget
   auctor. Pellentesque dignissim at erat ac ultrices.`
 
-function Story() {
+function Story(props) {
   
   return (
     <div className="storyBox">
       <card className="gemStory">
+        <h1>{props.title}</h1>     
         <pre>{thisStory}</pre>
       </card>
     </div>

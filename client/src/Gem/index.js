@@ -1,50 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 /* import API from "../..; */
 import Banner from "./parts/Banner";
 import Story from "./parts/Story";
-import Title from "./parts/Title"
-import SideDrawer from "../Components/SideDrawer/SideDrawer"
-import Toolbar from "../Components/Toolbar"
+import SideDrawer from "../Components/SideDrawer/SideDrawer";
 
-import gemPic from "../Gem/images/westmorelandpark.jpg"
+import Toolbar from "../Components/Toolbar";
+
+import gemPic from "../Gem/images/westmorelandpark.jpg";
 import "./style.css";
-
-const thisGemTitle = "Westmoreland Park"
 
 class Gem extends Component {
   state = {
     sideDrawerOpen: false,
-    image: gemPic,
-    title: thisGemTitle
-	};
+    isLoggedIn: true,
 
-	drawerToggleClickHandler = () => {
-		this.setState((prevState) => {
-			return { sideDrawerOpen: !prevState.sideDrawerOpen };
-		});
-	};
+    //probably need to adjust these when we have data:
+    image: gemPic,
+    title: "Westmoreland Park",
+  };
+  
+  drawerToggleClickHandler = () => {
+    this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
+  };
 
   render() {
-    let sideDrawer;
-		if (this.state.sideDrawerOpen) {
-			sideDrawer = <SideDrawer />;
-		}
+    console.log(this.state)
     return (
-
       <div>
         <Toolbar drawerClick={this.drawerToggleClickHandler} />
-        {sideDrawer}
-        <Title 
-          title = {this.state.title}/>
-        <Banner
-          image = {this.state.image}/>
-        <br/>
-        <Story/>
+        {
+          this.state.sideDrawerOpen ? <SideDrawer isLoggedIn={this.state.isLoggedIn}/> : null
+        }
+        <Banner image={this.state.image} />
+        <div className = "container">
+          <Story title={this.state.title}/>
+        </div>
       </div>
     );
-  }  
   }
-
+}
 
 export default Gem;

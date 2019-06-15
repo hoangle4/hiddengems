@@ -9,22 +9,28 @@
     align-content: center;    
 }
 
-.storyBox {
-    display: flex;
-    height: auto;
-    justify-content: center;  
-    background-color: lightgrey;
-    border: 1px solid #000000;
-    margin-left: 12em;
-    margin-right: 12em;
-      
+.container {
+display: flex;
+justify-content: center;  
+margin: 2%;
 
 }
 
-.gemStory{
-    
-    display: flex;
-    word-wrap: break-word;  
+.storyBox {
+    /* display: flex; */
+    /* height: auto; */
+    width: auto;
+    padding: 2%;
+    justify-content: center;  
+    background-color: rgb(189, 215, 255);
+    border: 1px solid #000000;
+    margin-left: 12em;
+    margin-right: 12em;     
 
+}
+
+.gemStory{ 
+    font-size: 1.5em;
+    align-content: center;  
 
 }
