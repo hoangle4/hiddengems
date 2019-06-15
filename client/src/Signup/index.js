@@ -13,57 +13,40 @@ class Signup extends Component {
       verify: ''
     }
   };
-  updateFirstName(e) {
+  handleOnChange = (e)  => {
+    const {name, value} = e.target;
     this.setState({
-      firstName: e.target.value
+      [name]: value
     });
   };
-  updateLastName(e) {
-    this.setState({
-      lastName: e.target.value
-    });
-  };
-  updateEmail(e) {
-    this.setState({
-      email: e.target.value
-    });
-  };
-  updatePassword(e) {
-    this.setState({
-      password: e.target.value
-    });
-  };
-  updateVerify(e) {
-    this.setState({
-      verify: e.target.value
-    });
-  };
-  saveUser = event => {
+  saveUser = async event => {
     event.preventDefault();
-    let newuser = {
+    const newuser = {
       email: this.state.email,
       password: this.state.password,
       firstName: this.state.firstName,
       lastName: this.state.lastName
     }
-    API.saveUser(newuser);
+    const results = await API.saveUser(newuser);
+    return results;
   }
 
   render() {
+    const { firstName, lastName, email, password, verify } = this.state;
     return (
       <div className="Signup">
         <div className="Signup-container">
           <form className="Signup-form" onSubmit={this.saveUser}>
             <p className="Signup-input-label">First Name</p>
-            <input value={this.state.firstName} onChange={e => this.updateFirstName(e)} className="Signup-form-field" type="text" name="first-name"></input>
+            <input value={firstName} onChange={this.handleOnChange} className="Signup-form-field" type="text" name="firstName"/>
             <p className="Signup-input-label">Last Name</p>
-            <input value={this.state.lastName} onChange={e => this.updateLastName(e)} className="Signup-form-field" type="text" name="last-name"></input>
+            <input value={lastName} onChange={this.handleOnChange} className="Signup-form-field" type="text" name="lastName"/>
             <p className="Signup-input-label">Email</p>
-            <input value={this.state.email} onChange={e => this.updateEmail(e)} className="Signup-form-field" type="text" name="email"></input>
+            <input value={email} onChange={this.handleOnChange} className="Signup-form-field" type="email" name="email"/>
             <p className="Signup-input-label">Password</p>
-            <input value={this.state.password} onChange={e => this.updatePassword(e)} className="Signup-form-field" type="text" name="password"></input>
+            <input value={password} onChange={this.handleOnChange} className="Signup-form-field" type="password" name="password"/>
             <p className="Signup-input-label">Verify Password</p>
-            <input value={this.state.verify}onChange={e => this.updateVerify(e)} className="Signup-form-field" type="text" name="verify-password"></input>
+            <input value={verify} onChange={this.handleOnChange} className="Signup-form-field" type="password" name="verify"/>
             <div className="Signup-submit-btn-container">
               <button className="Signup-submit-btn" type='submit'>Submit</button>
             </div>

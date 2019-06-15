@@ -4,22 +4,23 @@ export default {
   // store initial user
   saveUser: user => {
     console.log(user);
-    axios.post('/db/createUser', {
+    return axios.post('/db/createUser', {
       email: user.email,
       password: user.password,
       firstName: user.firstName,
       lastName: user.lastName
-    })
-    .then(response => {
-      console.log(response);
     })
     .catch(err => {
       console.log(err);
     })
   },
   // get user
-  getUser: user => {
-    axios.get(`/user?ID=${user.username}&password=${user.password}`)
+  login: user => {
+    console.log(user);
+    return axios.post('/db/login', {
+      email: user.email,
+      password: user.password
+    })
     .then(response => {
       console.log(response);
     })

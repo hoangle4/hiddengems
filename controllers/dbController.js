@@ -17,7 +17,7 @@ module.exports = {
 			console.log(err);
 		}
 	},
-	createUser: async (req,res) => {
+	createUser: async (req,resp) => {
 		try {
 			const { email, password, firstName, lastName } = req.body;
 			const newUser = {
@@ -27,7 +27,19 @@ module.exports = {
 				lastName: lastName
 			};
 			const results = await new models.User(newUser).save();
-			res.json(results);
+			resp.json(results);
+		} catch (err) {
+			console.log(err);
+		}
+	},
+	checkIfUser: async (req,resp) => {
+		try {
+			const { email, password } = req.body;
+			models.User.find({})
+			.then(user => {
+				console.log(user);
+			})
+			.catch(err => console.log(err));
 		} catch (err) {
 			console.log(err);
 		}
