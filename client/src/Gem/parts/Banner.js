@@ -1,9 +1,12 @@
 import React from "react";
 
-function Banner() {
+function Banner(props) {
   return (
     <div className="gemBanner">
-      <p>Put picture here</p>
+      <img 
+        alt='Gem' 
+        src={props.image} 
+      />
     </div>
   );
 }

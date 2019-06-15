@@ -15,8 +15,8 @@ function Nav() {
             <Link to="/signup" className={window.location.pathname === "/" ? "nav-Link active" : "nav-Link"}>
             Sign Up!
             </Link>
-        </li>
-        <li className="nav-item">
+        </div>
+        <div className="nav-item">
             <Link to="/gem" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
             View Gem
             </Link>
@@ -25,8 +25,8 @@ function Nav() {
             <Link to="/dashboard" className={window.location.pathname === "/" ? "nav-Link active" : "nav-Link"}>
             Your Gems, Your Stories
             </Link>
-        </li>
-        <li className="nav-item">
+        </div>
+        <div className="nav-item">
             <Link to="/profile" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
             User Profile
             </Link>
