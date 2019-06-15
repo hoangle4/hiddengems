@@ -10,7 +10,7 @@ function SideDrawer({isLoggedIn}) {
         {isLoggedIn ? (
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/userprofile">My Profile</a></li>
+            <li><a href="/dashboard">My Dashboard</a></li>
             <li><a href="/logout">Log Out</a></li>
         </ul>
         ) : (
