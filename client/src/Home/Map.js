@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import MapForms from '../Components/MapForms';
 
-import { compose, withProps, withStateHandlers } from 'recompose';
+import { compose, withProps,  } from 'recompose'; // withStateHandlers
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 const MyMapComponent = compose(

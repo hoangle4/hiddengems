@@ -16,5 +16,20 @@ module.exports = {
 		} catch (err) {
 			console.log(err);
 		}
+	},
+	createUser: async (req,res) => {
+		try {
+			const { email, password, firstName, lastName } = req.body;
+			const newUser = {
+				email: email,
+				password: password,
+				firstName: firstName,
+				lastName: lastName
+			};
+			const results = await new models.User(newUser).save();
+			res.json(results);
+		} catch (err) {
+			console.log(err);
+		}
 	}
 };

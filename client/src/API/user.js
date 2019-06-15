@@ -3,7 +3,8 @@ import axios from "axios";
 export default {
   // store initial user
   saveUser: user => {
-    axios.post('/user', {
+    console.log(user);
+    axios.post('/db/createUser', {
       email: user.email,
       password: user.password,
       firstName: user.firstName,
