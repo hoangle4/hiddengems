@@ -2,8 +2,10 @@ import React, { Fragment } from "react";
 
 function FormGroup({
   placeName,
+  isUploaded,
   photos,
   category,
+  progress,
   description,
   handleOnChange,
   handleOnClick,
@@ -37,7 +39,19 @@ function FormGroup({
           name="photos"
           onChange={handleFileChange}
         />
+        <small style={{ color: "green" }}>
+          {progress ? parseInt(progress) + "%" : null}
+        </small>
       </div>
+      {isUploaded ? (
+        <div className="input-container">
+          <img
+            src={photos}
+            alt="..."
+            style={{ height: "300px", width: "300px", margin: "auto" }}
+          />
+        </div>
+      ) : null}
       <div className="input-container">
         <label className="label" htmlFor="category">
           Category
@@ -71,6 +85,7 @@ function FormGroup({
           type="submit"
           className="create-btn"
           value="Create Place"
+          disabled={!isUploaded}
           onClick={handleOnClick}
         />
       </div>

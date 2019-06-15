@@ -8,7 +8,9 @@ class index extends Component {
     placeName: "",
     photos: "",
     category: "",
-    description: ""
+    description: "",
+    progress: "",
+    isUploaded: false
   };
 
   componentDidMount = () => {
@@ -23,12 +25,12 @@ class index extends Component {
   };
 
   handleFileChange = e => {
-    const { files, eName } = e.target;
-    const { fName, type, lastModified, size } = files[0];
+    const { files } = e.target;
+    const { name, type, lastModified, size } = files[0];
     //Boot out if no files or file bigger than 5MB
     if (!files || size > 5000000) return;
 
-    const storageRef = firebaseStorage.ref("placePhotos/" + fName);
+    const storageRef = firebaseStorage.ref("placePhotos/" + name);
     const upLoadFile = storageRef.put(files[0], { type });
 
     upLoadFile.on(
@@ -37,15 +39,16 @@ class index extends Component {
         let progress =
           (await (results.bytesTransferred / results.totalBytes)) * 100;
         console.log("Upload is " + progress + "% done");
+        this.setState({ progress: progress });
       },
       err => console.log(err),
       () => {
         // Upload completed successfully, now we can get the download URL
         upLoadFile.snapshot.ref.getDownloadURL().then(downloadURL => {
           this.setState({
-            [eName]: downloadURL
+            photos: downloadURL,
+            isUploaded: true
           });
-          console.log(downloadURL);
         });
       }
     );
@@ -69,6 +72,9 @@ class index extends Component {
       >
         <FromGroup
           value={this.state}
+          progress={this.state.progress}
+          isUploaded={this.state.isUploaded}
+          photos={this.state.photos}
           handleOnChange={this.handleOnChange}
           handleOnClick={this.handleOnClick}
           handleFileChange={this.handleFileChange}
