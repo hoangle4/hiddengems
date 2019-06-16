@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const newGem = new Schema({
 	coordinates: [
 		{
-			longitude: {
+			lat: {
 				type: Number,
 				required: true
 			},
-			latitude: {
+			lng: {
 				type: Number,
 				required: true
 			}
