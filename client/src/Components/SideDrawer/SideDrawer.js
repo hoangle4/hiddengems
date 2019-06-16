@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SideDrawer.css';
 
-class SideDrawer extends Component {
-  render() {
-    return(
-      <nav className="SideDrawer">
-        <ul>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Sign Up</a></li>
-          <li><a href="/userprofile">My Profile</a></li>
+function SideDrawer({isLoggedIn}) {
+
+  console.log(isLoggedIn);
+  return(
+    <nav className="SideDrawer">
+      <div>
+        {isLoggedIn ? (
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dashboard">My Dashboard</a></li>
+            <li><a href="/logout">Log Out</a></li>
         </ul>
-      </nav>
-    )
-  }
-}
+        ) : (
+          <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+          </ul>          
+        )}
+      </div>
+    </nav>
+  )
+};
 
 export default SideDrawer;
