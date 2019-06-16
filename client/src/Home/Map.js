@@ -28,7 +28,6 @@ class RenderMap extends Component {
 	state = {
 		currentLongitude: '',
 		currentLatitude: '',
-		isPinDropped: false,
 		title: 'Reacj & GoogleMap Test',
 		marker: [],
 		isMarkerShown: false
@@ -63,18 +62,16 @@ class RenderMap extends Component {
 			marker: [ { lat, lng } ],
 			isMarkerShown: !this.state.isMarkerShown
 		});
-
-		this.setState({ isPinDropped: !this.state.isPinDropped });
 	};
 
-	doAnAction = () => {
-		console.log('Im doing something');
-		this.setState((state) => ({
-			title: 'Changed!'
-		}));
-	};
+	// doAnAction = () => {
+	// 	console.log('Im doing something');
+	// 	this.setState((state) => ({
+	// 		title: 'Changed!'
+	// 	}));
+	// };
 	render() {
-		const { currentLongitude, currentLatitude, isPinDropped, marker, isMarkerShown } = this.state;
+		const { currentLongitude, currentLatitude, marker, isMarkerShown } = this.state;
 		return (
 			<Fragment>
 				{/* <h3>{this.state.title}</h3>
@@ -87,7 +84,7 @@ class RenderMap extends Component {
 					onMapClick={this.handleMapClick}
 					marker={marker}
 				/>
-				<MapForms isPinDropped={isPinDropped} />
+				<MapForms isPinDropped={isMarkerShown} coordinates={marker} />
 			</Fragment>
 		);
 	}
