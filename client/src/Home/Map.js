@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import MapForms from "../Components/MapForms";
-
+import db from "../API/placeDB";
 import { compose, withProps } from "recompose"; // withStateHandlers
 import {
   withScriptjs,
@@ -26,9 +26,13 @@ const MyMapComponent = compose(
   >
     {props.isMarkerShown &&
       props.marker.map(position => (
+        <Marker key={position} position={position} />
+      ))}
+    {props.mapMarkers[0] &&
+      props.mapMarkers.map(position => (
         <Marker
-          key={position}
-          position={position}
+          key={position._id}
+          position={position.coordinates[0]}
           onClick={props.onMarkerClick}
         />
       ))}
@@ -41,10 +45,11 @@ class RenderMap extends Component {
     currentLatitude: "",
     title: "Reacj & GoogleMap Test",
     marker: [],
+    mapMarkers: [],
     isMarkerShown: false
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     navigator.geolocation.getCurrentPosition(
       async position => {
         this.setState({
@@ -59,6 +64,12 @@ class RenderMap extends Component {
         maximumAge: 1000
       }
     );
+
+    const results = await db.findAllPlace();
+    console.table(results.data);
+    this.setState({
+      mapMarkers: results.data
+    });
   };
 
   handleMarkerClick = e => {
@@ -86,7 +97,8 @@ class RenderMap extends Component {
       currentLongitude,
       currentLatitude,
       marker,
-      isMarkerShown
+      isMarkerShown,
+      mapMarkers
     } = this.state;
     return (
       <Fragment>
@@ -99,6 +111,7 @@ class RenderMap extends Component {
           onMarkerClick={this.handleMarkerClick}
           onMapClick={this.handleMapClick}
           marker={marker}
+          mapMarkers={mapMarkers}
         />
         <MapForms isPinDropped={isMarkerShown} coordinates={marker} />
       </Fragment>
