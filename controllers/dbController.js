@@ -18,5 +18,32 @@ module.exports = {
 		} catch (err) {
 			console.log(err);
 		}
+	},
+	createUser: async (req,resp) => {
+		try {
+			const { email, password, firstName, lastName } = req.body;
+			const newUser = {
+				email: email,
+				password: password,
+				firstName: firstName,
+				lastName: lastName
+			};
+			const results = await new models.User(newUser).save();
+			resp.json(results);
+		} catch (err) {
+			console.log(err);
+		}
+	},
+	checkIfUser: async (req,resp) => {
+		try {
+			const { email, password } = req.body;
+			models.User.find({})
+			.then(user => {
+				console.log(user);
+			})
+			.catch(err => console.log(err));
+		} catch (err) {
+			console.log(err);
+		}
 	}
 };
