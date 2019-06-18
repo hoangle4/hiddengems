@@ -7,7 +7,7 @@ import db from "../API/placeDB";
 class index extends Component {
   state = {
     sideDrawerOpen: false,
-    isLoggedIn: false,
+    isLoggedIn: true,
     isMarkerClicked: false,
     isMarkerData: false,
     sideStory: {},
@@ -27,7 +27,7 @@ class index extends Component {
 
   handleMarkerClick = async id => {
     this.setState({ isMarkerData: false });
-    const result = await this.state.markerData.filter(data => data._id == id);
+    const result = await this.state.markerData.filter(data => data._id === id);
     this.setState({
       sideStory: result[0],
       isMarkerClicked: true,

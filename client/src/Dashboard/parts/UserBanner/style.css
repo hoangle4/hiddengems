@@ -1,0 +1,9 @@
+userBanner {
+    display: flex;
+}
+
+profileImage{
+    float: right;
+    width: 100px;
+
+}

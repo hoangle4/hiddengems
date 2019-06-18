@@ -2,16 +2,18 @@
     display: flex;
     justify-content: center;  
     margin-top: 5%;
+
 }
 
 .gemBanner img {
     position: relative;
-    align-content: center;    
+    align-content: center;   
+
 }
 
 .container {
 display: flex;
-justify-content: center;  
+align-content: center;  
 margin: 2%;
 
 }
