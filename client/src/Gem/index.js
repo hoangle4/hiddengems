@@ -16,8 +16,11 @@ class Gem extends Component {
     isLoggedIn: true,
 
     //probably need to adjust these when we have data:
-    image: gemPic,
-    title: "Westmoreland Park",
+    photos: gemPic,
+    placeName: "Westmoreland Park",
+    description: "abc",
+    //etc.
+
   };
   
   drawerToggleClickHandler = () => {
@@ -31,9 +34,12 @@ class Gem extends Component {
         {
           this.state.sideDrawerOpen ? <SideDrawer isLoggedIn={this.state.isLoggedIn}/> : null
         }
-        <Banner image={this.state.image} />
+        <Banner photos={this.state.photos} />
         <div className = "container">
-          <Story title={this.state.title}/>
+          <Story 
+            title={this.state.placeName}
+            description={this.state.description}
+          />
         </div>
       </div>
     );

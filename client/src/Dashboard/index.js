@@ -8,6 +8,7 @@ import UserBanner from "./parts/UserBanner"
 
 import exampleProfile from "./images/profileExample.jpg";
 import exampleBackground from "./images/backgroundExample.jpg";
+import exampleGem from "../Gem/images/seesee.jpg"
 
 class Dashboard extends Component {
 	state = {
@@ -18,6 +19,15 @@ class Dashboard extends Component {
 		profile: exampleProfile,
 		background: exampleBackground,
 
+		results: [
+			{
+				id: 1,
+				placeName: "SeeSee Motors",
+				description: "asd;lkfja;lskdjf",
+				photos: exampleGem,
+			},
+		]
+		
 		
 	}
 
@@ -36,7 +46,7 @@ class Dashboard extends Component {
 				profile={this.state.profile}
 				background={this.state.background}
 			/>		
-			<GemCards/>
+			<GemCards results = {this.state.results}/>
 		  </div>
 		);
 	  };
