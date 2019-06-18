@@ -5,7 +5,7 @@ import './Toolbar.css';
 
 class Toolbar extends Component {
 	state = {
-		isNav: false
+		isNav: false,
 	};
 
 	handleClick = () => {

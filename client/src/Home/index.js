@@ -1,30 +1,31 @@
-import React, { Component } from 'react';
-import Map from './Map';
-import Toolbar from '../Components/Toolbar';
-import SideDrawer from '../Components/SideDrawer/SideDrawer';
+import React, { Component } from "react";
+import Map from "./Map";
+import Toolbar from "../Components/Toolbar";
+import SideDrawer from "../Components/SideDrawer/SideDrawer";
 class index extends Component {
-	state = {
-		sideDrawerOpen: false
-	};
+  state = {
+    sideDrawerOpen: false,
+    isLoggedIn: false
+  };
 
-	drawerToggleClickHandler = () => {
-		this.setState((prevState) => {
-			return { sideDrawerOpen: !prevState.sideDrawerOpen };
-		});
-	};
-	render() {
-		let sideDrawer;
-		if (this.state.sideDrawerOpen) {
-			sideDrawer = <SideDrawer />;
-		}
+  drawerToggleClickHandler = () => {
+    this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
+  };
 
-		return (
-			<div className="Map-container">
-				<Toolbar drawerClick={this.drawerToggleClickHandler} />
-				{sideDrawer}
-				<Map />
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <div>
+          <Toolbar drawerClick={this.drawerToggleClickHandler} />
+          {this.state.sideDrawerOpen ? (
+            <SideDrawer isLoggedIn={this.state.isLoggedIn} />
+          ) : null}
+        </div>
+        <div className="Map-container">
+          <Map />
+        </div>
+      </div>
+    );
+  }
 }
 export default index;
