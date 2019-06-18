@@ -68,6 +68,7 @@ class RenderMap extends Component {
       marker: [{ lat, lng }],
       isMarkerShown: !this.state.isMarkerShown
     });
+    this.props.handleMapClick();
   };
   render() {
     const {

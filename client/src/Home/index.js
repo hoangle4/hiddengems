@@ -27,11 +27,14 @@ class index extends Component {
 
   handleMarkerClick = async id => {
     const result = await this.state.markerData.filter(data => data._id == id);
-    this.setState({ sideStory: result[0] });
+    this.setState({ sideStory: result[0], isMarkerClicked: true });
+
     console.log(result);
     console.log(id);
   };
-
+  handleMapClick = () => {
+    this.setState({ isMarkerClicked: false });
+  };
   render() {
     console.log(this.state.sideStory);
     return (
@@ -46,8 +49,12 @@ class index extends Component {
           <Map
             handleMarkerClick={this.handleMarkerClick}
             markerData={this.state.markerData}
+            handleMapClick={this.handleMapClick}
           />
-          <MapGem data={this.state.sideStory} />
+          <MapGem
+            data={this.state.sideStory}
+            isMarkerClicked={this.state.isMarkerClicked}
+          />
         </div>
       </div>
     );
