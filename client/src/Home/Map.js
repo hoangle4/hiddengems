@@ -40,7 +40,6 @@ class RenderMap extends Component {
     currentLatitude: "",
     title: "Reacj & GoogleMap Test",
     marker: [],
-    mapMarkers: [],
     isMarkerShown: false
   };
 
@@ -70,13 +69,19 @@ class RenderMap extends Component {
     });
     this.props.handleMapClick();
   };
+
+  handleFormClick = async e => {
+    this.setState({
+      isMarkerShown: !this.state.isMarkerShown
+    });
+    this.props.handleMapClick(e);
+  };
   render() {
     const {
       currentLongitude,
       currentLatitude,
       marker,
-      isMarkerShown,
-      mapMarkers
+      isMarkerShown
     } = this.state;
     return (
       <Fragment>
@@ -95,7 +100,11 @@ class RenderMap extends Component {
           marker={marker}
           mapMarkers={this.props.markerData}
         />
-        <MapForms isPinDropped={isMarkerShown} coordinates={marker} />
+        <MapForms
+          updateMaker={this.handleFormClick}
+          isPinDropped={isMarkerShown}
+          coordinates={marker}
+        />
       </Fragment>
     );
   }

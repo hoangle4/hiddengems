@@ -14,8 +14,7 @@ class Toolbar extends Component {
     });
   };
 
-  render(props) {
-    console.log(props);
+  render() {
     return (
       <header className="Toolbar">
         <nav className="Toolbar-navigation">

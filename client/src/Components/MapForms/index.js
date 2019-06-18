@@ -51,9 +51,18 @@ class index extends Component {
     );
   };
 
-  handleOnClick = async e => {
+  handleOnClick = async () => {
     await this.setState({ coordinates: this.props.coordinates });
     const results = await db.createPlace(this.state);
+    this.props.updateMaker(results.data);
+    this.setState({
+      placeName: "",
+      photos: "",
+      category: "",
+      description: "",
+      progress: "",
+      coordinates: ""
+    });
   };
 
   render() {

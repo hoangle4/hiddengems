@@ -9,13 +9,13 @@ class index extends Component {
     sideDrawerOpen: false,
     isLoggedIn: false,
     isMarkerClicked: false,
+    isMarkerData: false,
     sideStory: {},
     markerData: []
   };
 
   componentDidMount = async () => {
     const results = await db.findAllPlace();
-    console.table(results.data);
     this.setState({
       markerData: results.data
     });
@@ -26,17 +26,24 @@ class index extends Component {
   };
 
   handleMarkerClick = async id => {
+    this.setState({ isMarkerData: false });
     const result = await this.state.markerData.filter(data => data._id == id);
-    this.setState({ sideStory: result[0], isMarkerClicked: true });
-
-    console.log(result);
-    console.log(id);
+    this.setState({
+      sideStory: result[0],
+      isMarkerClicked: true,
+      isMarkerData: true
+    });
   };
-  handleMapClick = () => {
-    this.setState({ isMarkerClicked: false });
+  handleMapClick = e => {
+    this.setState({
+      isMarkerClicked: false
+    });
+
+    if (e) {
+      this.setState({ markerData: this.state.markerData.concat(e) });
+    }
   };
   render() {
-    console.log(this.state.sideStory);
     return (
       <div>
         <div>
@@ -54,6 +61,7 @@ class index extends Component {
           <MapGem
             data={this.state.sideStory}
             isMarkerClicked={this.state.isMarkerClicked}
+            isMarkerData={this.state.isMarkerData}
           />
         </div>
       </div>
