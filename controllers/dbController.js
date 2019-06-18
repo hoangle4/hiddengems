@@ -22,13 +22,13 @@ module.exports = {
 	createUser: async (req,resp) => {
 		try {
 			const { email, password, firstName, lastName } = req.body;
-			const newUser = {
+			const User = {
 				email: email,
 				password: password,
 				firstName: firstName,
 				lastName: lastName
 			};
-			const results = await new models.User(newUser).save();
+			const results = await new models.User(User).save();
 			resp.json(results);
 		} catch (err) {
 			console.log(err);

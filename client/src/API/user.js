@@ -4,7 +4,8 @@ export default {
   // store initial user
   saveUser: user => {
     console.log(user);
-    return axios.post('/db/createUser', {
+    return axios.post('/db/signup', {
+      username: user.email,
       email: user.email,
       password: user.password,
       firstName: user.firstName,
@@ -12,6 +13,12 @@ export default {
     })
     .catch(err => {
       console.log(err);
+    })
+    .then(resp => {
+      if (resp.status === 200) {
+        console.log('we made it!');
+        sessionStorage.setItem('username', user.email);
+      } else console.log(resp.status);
     })
   },
   // get user
