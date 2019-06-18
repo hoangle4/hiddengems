@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import MapForms from "../Components/MapForms";
-import db from "../API/placeDB";
-import { compose, withProps } from "recompose"; // withStateHandlers
+
+import { compose } from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
@@ -10,12 +10,6 @@ import {
 } from "react-google-maps";
 
 const MyMapComponent = compose(
-  withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`,
-    loadingElement: <div style={{ height: "100%" }} />,
-    containerElement: <div style={{ height: "100vh" }} />,
-    mapElement: <div style={{ height: "100%", zIndex: 1 }} />
-  }),
   withScriptjs,
   withGoogleMap
 )(props => (
@@ -31,9 +25,10 @@ const MyMapComponent = compose(
     {props.mapMarkers[0] &&
       props.mapMarkers.map(position => (
         <Marker
+          id={position._id}
           key={position._id}
           position={position.coordinates[0]}
-          onClick={props.onMarkerClick}
+          onClick={() => props.onMarkerClick(position._id)}
         />
       ))}
   </GoogleMap>
@@ -64,17 +59,6 @@ class RenderMap extends Component {
         maximumAge: 1000
       }
     );
-
-    const results = await db.findAllPlace();
-    console.table(results.data);
-    this.setState({
-      mapMarkers: results.data
-    });
-  };
-
-  handleMarkerClick = e => {
-    // this.setState({ isPinDropped: !this.state.isPinDropped });
-    // console.log('click');
   };
 
   handleMapClick = event => {
@@ -85,13 +69,6 @@ class RenderMap extends Component {
       isMarkerShown: !this.state.isMarkerShown
     });
   };
-
-  // doAnAction = () => {
-  // 	console.log('Im doing something');
-  // 	this.setState((state) => ({
-  // 		title: 'Changed!'
-  // 	}));
-  // };
   render() {
     const {
       currentLongitude,
@@ -102,16 +79,20 @@ class RenderMap extends Component {
     } = this.state;
     return (
       <Fragment>
-        {/* <h3>{this.state.title}</h3>
-				<button onClick={this.doAnAction}>Click Me to raise an event</button> */}
         <MyMapComponent
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
+            process.env.REACT_APP_GOOGLE_MAP_API
+          }`}
+          loadingElement={<div style={{ height: "100%" }} />}
+          containerElement={<div style={{ height: "100vh" }} />}
+          mapElement={<div style={{ height: "100%", zIndex: 1 }} />}
           currentLongitude={currentLongitude}
           currentLatitude={currentLatitude}
           isMarkerShown={isMarkerShown}
-          onMarkerClick={this.handleMarkerClick}
+          onMarkerClick={this.props.handleMarkerClick}
           onMapClick={this.handleMapClick}
           marker={marker}
-          mapMarkers={mapMarkers}
+          mapMarkers={this.props.markerData}
         />
         <MapForms isPinDropped={isMarkerShown} coordinates={marker} />
       </Fragment>
