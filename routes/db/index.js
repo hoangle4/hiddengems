@@ -37,6 +37,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log(req.body);
   User.findOne({
     username: req.body.username
   }, (err, person) => {

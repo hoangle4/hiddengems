@@ -16,8 +16,9 @@ export default {
     })
     .then(resp => {
       if (resp.status === 200) {
-        console.log('we made it!');
+        // console.log('we made it!');
         sessionStorage.setItem('username', user.email);
+        window.location.replace("/");
       } else console.log(resp.status);
     })
   },
@@ -25,11 +26,13 @@ export default {
   login: user => {
     console.log(user);
     return axios.post('/db/login', {
-      email: user.email,
+      username: user.email,
       password: user.password
     })
     .then(response => {
       console.log(response);
+      sessionStorage.setItem('username', user.email);
+      window.location.replace('/');
     })
   },
   // update profile picture
