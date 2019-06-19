@@ -9,7 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const flash = require("connect-flash");
-app.use(flash());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

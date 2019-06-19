@@ -4,24 +4,12 @@ export default {
   // store initial user
   createUser: user => {
     console.log(user);
-    return axios
-      .post("/db/signup", {
-        username: user.email,
-        email: user.email,
-        password: user.password,
-        firstName: user.firstName,
-        lastName: user.lastName
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .then(resp => {
-        if (resp.status === 200) {
-          // console.log('we made it!');
-          sessionStorage.setItem("username", user.email);
-          window.location.replace("/");
-        } else console.log(resp.status);
-      });
+    return axios.post("/db/createUser", {
+      email: user.email,
+      password: user.password,
+      firstName: user.firstName,
+      lastName: user.lastName
+    });
   },
   // get user
   login: user => {

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 const Context = React.createContext();
 
-const reducer = (payload, action, state) => {
+const reducer = (action, state) => {
   switch (action.type) {
     case "REGISTER_SUCCESS":
-      localStorage.setItem("token", payload.token);
+      localStorage.setItem("token", action.payload);
       return {
         ...state,
-        ...payload,
         isAuthenticated: true,
         loading: false
       };
@@ -29,7 +28,8 @@ export class Provider extends Component {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
-    user: null
+    user: null,
+    dispatch: action => this.setState(state => reducer(action, state))
   };
 
   render() {
