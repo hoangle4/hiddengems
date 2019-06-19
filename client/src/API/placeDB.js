@@ -10,7 +10,7 @@ const db = {
 		return axios.get('/db/findAllPlace');
 	},
 	findOnePlace: (id) => {
-		return axios.get('/db/findOnePlace', { id });
+		return axios.get(`/db/findOnePlace?id=${id}`);
 	}
 };
 
