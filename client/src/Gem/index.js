@@ -14,7 +14,7 @@ class Gem extends Component {
 		sideDrawerOpen: false,
 		isLoggedIn: true,
 
-    data: {},
+    	data: {},
 	};
 
 	componentDidMount = async () => {
@@ -27,7 +27,7 @@ class Gem extends Component {
 	};
 
 	render() {
-    console.log(this.state.data)
+    /* console.log(this.state.data) */
 		return (
 			<div>
 				<Toolbar drawerClick={this.drawerToggleClickHandler} />

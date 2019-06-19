@@ -24,11 +24,10 @@ module.exports = {
 		resp.json(results);
 	},
 	findOnePlace: async (req, resp) => {
-		console.log(req.query);
 		const results = await models.Gem.findById({
-			_id: req.query.id
-		});
-		resp.json(results);
+		_id: req.body.id
+		 });
+		 resp.json(results);
 	},
 	createUser: async (req, resp) => {
 		try {

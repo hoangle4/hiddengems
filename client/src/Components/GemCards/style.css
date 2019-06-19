@@ -1,14 +1,20 @@
 .gemContainer{
-    padding: 2%;
-    width: 25%;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
-    
+    justify-content: center;
 }
 
-.collection{
+.gemGroup{
     margin: 2%;
+}
+
+.gemGroup.p{
+    font-size: 2vw;
+}
+
+.gemGroup.h{
+    font-size: 6vw;
 }
 
 button{

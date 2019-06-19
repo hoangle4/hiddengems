@@ -7,7 +7,7 @@ import db from "../API/placeDB";
 class index extends Component {
   state = {
     sideDrawerOpen: false,
-    isLoggedIn: false,
+    isLoggedIn: true,
     isMarkerClicked: false,
     isMarkerData: false,
     sideStory: {},
