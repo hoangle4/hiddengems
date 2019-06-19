@@ -4,7 +4,8 @@ export default {
   // store initial user
   saveUser: user => {
     console.log(user);
-    return axios.post('/db/createUser', {
+    return axios.post('/db/signup', {
+      username: user.email,
       email: user.email,
       password: user.password,
       firstName: user.firstName,
@@ -13,16 +14,25 @@ export default {
     .catch(err => {
       console.log(err);
     })
+    .then(resp => {
+      if (resp.status === 200) {
+        // console.log('we made it!');
+        sessionStorage.setItem('username', user.email);
+        window.location.replace("/");
+      } else console.log(resp.status);
+    })
   },
   // get user
   login: user => {
     console.log(user);
     return axios.post('/db/login', {
-      email: user.email,
+      username: user.email,
       password: user.password
     })
     .then(response => {
       console.log(response);
+      sessionStorage.setItem('username', user.email);
+      window.location.replace('/');
     })
   },
   // update profile picture
