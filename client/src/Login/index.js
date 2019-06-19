@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import './Login.css';
-import API from '../API/user.js'
+import React, { Component } from "react";
+import "./Login.css";
+import API from "../API/userDB";
 
 class Login extends Component {
-  constructor(props)  {
+  constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: ''
-    }
-  };
+      email: "",
+      password: ""
+    };
+  }
 
-  handleOnChange = (e) => {
+  handleOnChange = e => {
     // console.log(e.target);
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     this.setState({
       [name]: value
     });
@@ -24,10 +24,10 @@ class Login extends Component {
     const userInfo = {
       email: this.state.email,
       password: this.state.password
-    }
+    };
     const results = await API.login(userInfo);
     return results;
-  }
+  };
 
   render() {
     return (
@@ -35,10 +35,24 @@ class Login extends Component {
         <div className="Signup-container">
           <form className="Signup-form" onSubmit={this.loginUser}>
             <p className="Signup-input-label">Email</p>
-            <input value={this.state.email} onChange={this.handleOnChange} className="Signup-form-field" type="email" name="email"/>
+            <input
+              value={this.state.email}
+              onChange={this.handleOnChange}
+              className="Signup-form-field"
+              type="email"
+              name="email"
+            />
             <p className="Signup-input-label">Password</p>
-            <input className="Signup-form-field" type="password" name="password" value={this.state.password} onChange={this.handleOnChange}/>
-              <button className="Signup-submit-btn" type='submit'>Login</button>
+            <input
+              className="Signup-form-field"
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleOnChange}
+            />
+            <button className="Signup-submit-btn" type="submit">
+              Login
+            </button>
           </form>
         </div>
       </div>
