@@ -19,6 +19,16 @@ module.exports = {
 			console.log(err);
 		}
 	},
+	findAllPlace: async (req, resp) => {
+		const results = await models.Gem.find();
+		resp.json(results);
+	},
+	findOnePlace: async (req, resp) => {
+		const results = await models.Gem.findById({
+			_id: req.body.id
+		});
+		resp.json(results);
+	},
 	createUser: async (req, resp) => {
 		try {
 			const { email, password, firstName, lastName } = req.body;

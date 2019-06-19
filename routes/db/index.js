@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const dbController = require('../../controllers/dbController');
+const passport = require('passport');
 
 router.post('/createPlace', dbController.createPlace);
 router.get('/findAllPlace', dbController.findAllPlace);
+router.get('/findOnePlace', dbController.findOnePlace);
 
 router.post('/createUser', dbController.createUser);
 router.post('/login', (req, res) => {
@@ -61,24 +63,24 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 	);
 });
 
-router.get('/logout', (req, res, next) => {
-	if (req.session) {
-		req.logout();
-		req.session.destroy((err) => {
-			if (err) {
-				console.log(err);
-			} else {
-				res.clearCookie('session-id');
-				res.json({
-					message: 'You are successfully logged out!'
-				});
-			}
-		});
-	} else {
-		var err = new Error('You are not logged in!');
-		err.status = 403;
-		next(err);
-	}
-});
+// router.get('/logout', (req, res, next) => {
+// 	if (req.session) {
+// 		req.logout();
+// 		req.session.destroy((err) => {
+// 			if (err) {
+// 				console.log(err);
+// 			} else {
+// 				res.clearCookie('session-id');
+// 				res.json({
+// 					message: 'You are successfully logged out!'
+// 				});
+// 			}
+// 		});
+// 	} else {
+// 		var err = new Error('You are not logged in!');
+// 		err.status = 403;
+// 		next(err);
+// 	}
+// });
 
 module.exports = router;
