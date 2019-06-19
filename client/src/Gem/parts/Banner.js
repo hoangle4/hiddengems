@@ -5,7 +5,7 @@ function Banner(props) {
     <div className="gemBanner">
       <img 
         alt='Gem' 
-        src={props.photos} 
+        src={props.image} 
       />
     </div>
   );

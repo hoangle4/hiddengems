@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import GemCards from "../Components/GemCards/";
 import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
-import "./materialize.css"
 import "./style.css";
 import UserBanner from "./parts/UserBanner"
 
