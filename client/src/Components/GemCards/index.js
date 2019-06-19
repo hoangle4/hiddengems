@@ -4,7 +4,7 @@ import "./style.css";
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function GemCards(props) {
   return (
-    <div className="gem container">
+    <div className="gemContainer">
    
     <ul className="list-group gem-results">
       {props.results.map(result => (

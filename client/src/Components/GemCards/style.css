@@ -1,0 +1,17 @@
+.gemContainer{
+    padding: 2%;
+    width: 25%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    
+}
+
+.collection{
+    margin: 2%;
+}
+
+button{
+    padding: 1%;
+    margin: 1%;
+}

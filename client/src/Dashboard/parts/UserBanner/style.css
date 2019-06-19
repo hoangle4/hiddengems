@@ -1,9 +1,10 @@
-userBanner {
+.userBanner {
     display: flex;
+    justify-content: center;
+    
 }
 
-profileImage{
-    float: right;
-    width: 100px;
-
+.profileImage{
+    width: 15%;
+    height: 15%;
 }

@@ -13,7 +13,7 @@ import "./style.css";
 class Gem extends Component {
   state = {
     sideDrawerOpen: false,
-    isLoggedIn: true,
+    isLoggedIn: false,
 
     //probably need to adjust these when we have data:
     photos: gemPic,
@@ -22,6 +22,8 @@ class Gem extends Component {
     //etc.
 
   };
+
+
   
   drawerToggleClickHandler = () => {
     this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
@@ -41,6 +43,7 @@ class Gem extends Component {
             description={this.state.description}
           />
         </div>
+        <p>{this.props.match.params.id}</p>
       </div>
     );
   }

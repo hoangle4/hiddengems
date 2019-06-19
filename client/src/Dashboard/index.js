@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GemCards from "../Components/GemCards/";
 import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
+import "./materialize.css"
 import "./style.css";
 import UserBanner from "./parts/UserBanner"
 
@@ -26,6 +27,36 @@ class Dashboard extends Component {
 				description: "asd;lkfja;lskdjf",
 				photos: exampleGem,
 			},
+			{
+				id: 1,
+				placeName: "SeeSee Motors",
+				description: "asd;lkfja;lskdjf",
+				photos: exampleGem,
+			},
+			{
+				id: 1,
+				placeName: "SeeSee Motors",
+				description: "asd;lkfja;lskdjf",
+				photos: exampleGem,
+			},
+			{
+				id: 1,
+				placeName: "SeeSee Motors",
+				description: "asd;lkfja;lskdjf",
+				photos: exampleGem,
+			},
+			{
+				id: 1,
+				placeName: "SeeSee Motors",
+				description: "asd;lkfja;lskdjf",
+				photos: exampleGem,
+			},
+			{
+				id: 1,
+				placeName: "SeeSee Motors",
+				description: "asd;lkfja;lskdjf",
+				photos: exampleGem,
+			}
 		]
 		
 		
@@ -37,7 +68,7 @@ class Dashboard extends Component {
 	
 	render() {
 		return (
-		  <div>
+		  <div className="dashContainer">
 			<Toolbar drawerClick={this.drawerToggleClickHandler} />
 			{
 			this.state.sideDrawerOpen ? <SideDrawer isLoggedIn={this.state.isLoggedIn}/> : null

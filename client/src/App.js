@@ -17,7 +17,7 @@ class App extends Component {
 				<div className="Nav-container">
 					<Route exact path="/" component={Home} />
 					<Route exact path="/signup" component={SignUp} />
-					<Route exact path="/gem" component={Gem} />
+					<Route exact path="/gem/:id" component={Gem} />
 					<Route exact path="/dashboard" component={Dashboard} />
 					<Route exact path="/userprofile" component={Profile} />
 					<Route exact path="/login" component={Login} />
