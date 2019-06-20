@@ -3,7 +3,6 @@ import axios from "axios";
 export default {
   // store initial user
   createUser: user => {
-    console.log(user);
     return axios.post("/db/createUser", {
       email: user.email,
       password: user.password,
@@ -14,16 +13,10 @@ export default {
   // get user
   login: user => {
     console.log(user);
-    return axios
-      .post("/api/login", {
-        username: user.email,
-        password: user.password
-      })
-      .then(response => {
-        console.log(response);
-        sessionStorage.setItem("username", user.email);
-        window.location.replace("/");
-      });
+    return axios.post("/api/login", {
+      email: user.email,
+      password: user.password
+    });
   },
   // update profile picture
   updateProfilePicture: user => {

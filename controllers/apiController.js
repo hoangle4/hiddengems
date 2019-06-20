@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   loginUser: async (req, resp) => {
     const { email, password } = req.body;
+
     try {
       let user = await models.User.findOne({ email });
 

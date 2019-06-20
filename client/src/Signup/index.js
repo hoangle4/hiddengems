@@ -28,7 +28,7 @@ class Signup extends Component {
     };
 
     const results = await API.createUser(newuser).catch(err => {
-      console.err(err);
+      console.error(err);
     });
 
     if (!results) return dispatch({ type: "REGISTER_FAIL", payload: null });
@@ -37,8 +37,7 @@ class Signup extends Component {
       type: "REGISTER_SUCCESS",
       payload: results.data.token
     });
-
-    console.log(results.data.token);
+    //Redirect page
   };
 
   render() {
