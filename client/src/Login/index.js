@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import "./Login.css";
 import { Consumer } from "../context";
 import API from "../API/userDB";
@@ -24,11 +25,12 @@ class Login extends Component {
     };
     const results = await API.login(userInfo).catch(err => console.error(err));
     if (!results) return dispatch({ type: "LOGIN_FAIL", payload: null });
-    dispatch({
+    await dispatch({
       type: "LOGIN_SUCCESS",
       payload: results.data.token
     });
-    //Redirect page
+
+    return <Redirect to="/dashboard" />;
   };
 
   render() {
