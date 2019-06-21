@@ -79,13 +79,24 @@ module.exports = {
     }
   },
   updateUserCreatedPlace: async (req, resp) => {
-    console.log(req.user.id);
     try {
-      const user = await models.User.findById({ _id: req.user.id });
-      console.log(user);
-      user.createdPlace.push(req.body.id);
-      const results = user.save();
-      resp.json(results);
+      const user = await models.User.findOneAndUpdate(
+        { _id: req.user.id },
+        {
+          $push: {
+            placeCreated: req.body.id
+          }
+        },
+        (err, success) => {
+          if (err) {
+            console.log(error);
+          } else {
+            console.log(success);
+          }
+        }
+      );
+
+      resp.json(user);
     } catch (err) {
       console.error(err);
     }
