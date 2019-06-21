@@ -16,6 +16,7 @@ const reducer = (action, state) => {
     case "REGISTER_FAIL":
     case "LOGIN_FAIL":
     case "AUTH_ERROR":
+    case "LOG_OUT":
       localStorage.removeItem("token");
       return {
         ...state,
@@ -51,7 +52,6 @@ export class Provider extends Component {
 
     try {
       const result = await axios.get("/api/getUser");
-
       this.state.dispatch({
         type: "USER_LOADED",
         payload: result.data

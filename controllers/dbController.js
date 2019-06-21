@@ -19,7 +19,8 @@ module.exports = {
         placeName: placeName,
         photos: photos,
         category: category,
-        description: description
+        description: description,
+        createdBy: req.user.id
       };
 
       const results = await new models.Gem(newPlace).save();
@@ -28,16 +29,7 @@ module.exports = {
       console.log(err);
     }
   },
-  findAllPlace: async (req, resp) => {
-    const results = await models.Gem.find();
-    resp.json(results);
-  },
-  findOnePlace: async (req, resp) => {
-    const results = await models.Gem.findById({
-      _id: req.query.id
-    });
-    resp.json(results);
-  },
+
   createUser: async (req, resp) => {
     try {
       const { email, password, firstName, lastName } = req.body;
@@ -86,16 +78,26 @@ module.exports = {
       resp.status(500).send("Server error");
     }
   },
-  checkIfUser: async (req, resp) => {
+  updateUserCreatedPlace: async (req, resp) => {
     try {
-      const { email, password } = req.body;
-      models.User.find({})
-        .then(user => {
-          console.log(user);
-        })
-        .catch(err => console.log(err));
+      const user = await models.User.findOneAndUpdate(
+        { _id: req.user.id },
+        {
+          $push: {
+            placeCreated: req.body.id
+          }
+        },
+        (err, success) => {
+          if (err) {
+            console.log(error);
+          } else {
+            console.log(success);
+          }
+        }
+      );
+      resp.json(user);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 };

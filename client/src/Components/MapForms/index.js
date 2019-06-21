@@ -1,6 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import FromGroup from "./FormGroup";
-import db from "../../API/placeDB";
+import placeDB from "../../API/placeDB";
+import userDB from "../../API/userDB";
+import { Consumer } from "../../context";
+import Spinner from "../Spinner";
 import firebaseStorage from "../Firebase";
 import "./mapforms.css";
 class index extends Component {
@@ -53,7 +56,17 @@ class index extends Component {
 
   handleOnClick = async () => {
     await this.setState({ coordinates: this.props.coordinates });
-    const results = await db.createPlace(this.state);
+
+    const results = await placeDB
+      .createPlace(this.state)
+      .catch(err => console.error(err.message));
+    if (!results) return;
+
+    const response = await userDB
+      .updateUserCreatedPlace(results.data._id)
+      .catch(err => console.error(err.message));
+    if (!response) return;
+
     this.props.updateMaker(results.data);
     this.setState({
       placeName: "",
@@ -68,24 +81,32 @@ class index extends Component {
   render() {
     const { isPinDropped } = this.props;
     return (
-      <div
-        className="form-group"
-        style={
-          isPinDropped
-            ? { height: "80vh", display: "block" }
-            : { display: "none" }
-        }
-      >
-        <FromGroup
-          value={this.state}
-          progress={this.state.progress}
-          isUploaded={this.state.isUploaded}
-          photos={this.state.photos}
-          handleOnChange={this.handleOnChange}
-          handleOnClick={this.handleOnClick}
-          handleFileChange={this.handleFileChange}
-        />
-      </div>
+      <Consumer>
+        {value => {
+          return (
+            <Fragment>
+              <div
+                className="form-group"
+                style={
+                  isPinDropped
+                    ? { height: "80vh", display: "block" }
+                    : { display: "none" }
+                }
+              >
+                <FromGroup
+                  value={this.state}
+                  progress={this.state.progress}
+                  isUploaded={this.state.isUploaded}
+                  photos={this.state.photos}
+                  handleOnChange={this.handleOnChange}
+                  handleOnClick={this.handleOnClick}
+                  handleFileChange={this.handleFileChange}
+                />
+              </div>
+            </Fragment>
+          );
+        }}
+      </Consumer>
     );
   }
 }

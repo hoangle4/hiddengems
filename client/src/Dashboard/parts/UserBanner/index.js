@@ -1,13 +1,25 @@
 import React from "react";
-import "./style.css"
+import "./style.css";
+import moment from "moment";
 
-function userBanner(props) {
+function userBanner({
+  background,
+  user: { avatar, dateCreated, firstName, lastName }
+}) {
   return (
-    <div 
-    className="userBanner"
-    style = {{backgroundImage: 'URL('+props.background+')'}}
+    <div
+      className="userBanner"
+      style={{ backgroundImage: `URL('${background}')` }}
     >
-      <img src={props.profile} alt='smallProfile' className='profileImage'/>
+      <img src={avatar} alt="smallProfile" className="profileImage" />
+      <div>
+        <p>
+          {firstName} {lastName}
+        </p>
+        <small>
+          Member Since: {moment(new Date(dateCreated)).format("MM/YYYY")}
+        </small>
+      </div>
     </div>
   );
 }
