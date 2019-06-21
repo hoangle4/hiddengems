@@ -7,7 +7,7 @@ function GemCards({ placeCreated }) {
   return (
     <div className="gemContainer">
       {placeCreated.map(place => (
-        <a href={`/gem/${place._id}`} className="gemGroup">
+        <a key={place._id} href={`/gem/${place._id}`} className="gemGroup">
           <div>
             <img
               style={{ width: "200px", height: "200px" }}
