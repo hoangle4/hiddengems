@@ -25,7 +25,7 @@ module.exports = {
 	},
 	findOnePlace: async (req, resp) => {
 		const results = await models.Gem.findById({
-		_id: req.body.id
+		_id: req.query.id
 		 });
 		 resp.json(results);
 	},

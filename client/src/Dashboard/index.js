@@ -4,7 +4,7 @@ import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import "./style.css";
 import UserBanner from "./parts/UserBanner"
-import db from '../API/placeDB';
+/* import db from '../API/placeDB'; */
 
 
 import exampleProfile from "./images/profileExample.jpg";

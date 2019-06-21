@@ -27,7 +27,7 @@ class Gem extends Component {
 	};
 
 	render() {
-    /* console.log(this.state.data) */
+    console.log(this.state.data)
 		return (
 			<div>
 				<Toolbar drawerClick={this.drawerToggleClickHandler} />
