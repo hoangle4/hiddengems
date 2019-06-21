@@ -7,7 +7,6 @@ import db from "../API/placeDB";
 class index extends Component {
   state = {
     sideDrawerOpen: false,
-    isLoggedIn: true,
     isMarkerClicked: false,
     isMarkerData: false,
     sideStory: {},
@@ -48,9 +47,7 @@ class index extends Component {
       <div>
         <div>
           <Toolbar drawerClick={this.drawerToggleClickHandler} />
-          {this.state.sideDrawerOpen ? (
-            <SideDrawer isLoggedIn={this.state.isLoggedIn} />
-          ) : null}
+          {this.state.sideDrawerOpen ? <SideDrawer /> : null}
         </div>
         <div className="Map-container">
           <Map

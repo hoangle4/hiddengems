@@ -18,6 +18,11 @@ export default {
       password: user.password
     });
   },
+  updateUserCreatedPlace: id => {
+    return axios.post("/db/updateUserCreatedPlace", {
+      id
+    });
+  },
   // update profile picture
   updateProfilePicture: user => {
     axios.post("/update/profile-picture", {
