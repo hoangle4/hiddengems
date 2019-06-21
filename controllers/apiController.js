@@ -43,9 +43,9 @@ module.exports = {
   },
   getOneUser: async (req, resp) => {
     try {
-      const user = await models.User.findById({ _id: req.user.id }).select(
-        "-password"
-      );
+      const user = await models.User.findById({ _id: req.user.id })
+        .populate("placeCreated")
+        .select("-password");
       resp.json(user);
     } catch (err) {
       console.error(err.message);

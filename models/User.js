@@ -22,10 +22,12 @@ var UserSchema = new mongoose.Schema({
   lastName: {
     type: String
   },
-  placeCreated: {
-    type: Schema.Types.ObjectId,
-    ref: "gems"
-  },
+  placeCreated: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "gems"
+    }
+  ],
   dateCreated: {
     type: Date,
     default: Date.now

@@ -30,7 +30,6 @@ class Dashboard extends Component {
       <Consumer>
         {value => {
           const { user, isAuthenticated, loading } = value;
-          console.log(user);
           return (
             <div className="dashContainer">
               {loading ? (
@@ -40,7 +39,7 @@ class Dashboard extends Component {
                   <Toolbar drawerClick={this.drawerToggleClickHandler} />
                   {this.state.sideDrawerOpen ? <SideDrawer /> : null}
                   <UserBanner background={this.state.background} user={user} />
-                  {/* <GemCards results={this.state.data} /> */}
+                  <GemCards placeCreated={user.placeCreated} />
                 </Fragment>
               ) : (
                 window.location.reload()

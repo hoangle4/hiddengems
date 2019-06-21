@@ -95,7 +95,6 @@ module.exports = {
           }
         }
       );
-
       resp.json(user);
     } catch (err) {
       console.error(err);
