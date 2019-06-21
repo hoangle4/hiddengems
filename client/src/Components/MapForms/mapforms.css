@@ -1,18 +1,26 @@
 .form-group {
   position: absolute;
-  z-index: 4;
-  width: 60%;
-  bottom: 0;
-  left: 20%;
+  z-index: -1;
+  width: 0%;
+  height: 0%;
+  left: 25%;
+  right: 25%;
+  bottom: 25%;
+  top: 25%;
   border: 0.5px solid #999;
-  padding: 1rem;
-  background: rgba(240, 243, 243, 0.5);
-  height: 150px;
+  background: rgba(167, 170, 170, 0.5);
   transition: all 300ms ease-in;
+  transform: translateX(25%, -25%);
+  transform: translateY(25%, -25%);
+  display: grid;
+  opacity: 0;
 }
 
-.input-container {
-  display: grid;
+.form-active {
+  z-index: 4;
+  opacity: 1;
+  width: 50%;
+  height: 50%;
 }
 
 .label {

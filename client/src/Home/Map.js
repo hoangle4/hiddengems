@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import MapForms from "../Components/MapForms";
+import Spinner from "../Components/Spinner";
 import { Consumer } from "../context";
 import { compose } from "recompose";
 import {
@@ -13,25 +14,35 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )(props => (
-  <GoogleMap
-    defaultZoom={16}
-    defaultCenter={{ lat: props.currentLatitude, lng: props.currentLongitude }}
-    onClick={props.onMapClick}
-  >
-    {props.isMarkerShown &&
-      props.marker.map(position => (
-        <Marker key={position} position={position} />
-      ))}
-    {props.mapMarkers[0] &&
-      props.mapMarkers.map(position => (
-        <Marker
-          id={position._id}
-          key={position._id}
-          position={position.coordinates[0]}
-          onClick={() => props.onMarkerClick(position._id)}
-        />
-      ))}
-  </GoogleMap>
+  <Fragment>
+    {typeof props.currentLatitude !== "number" &&
+    typeof props.currentLongitude !== "number" ? (
+      <Spinner />
+    ) : (
+      <GoogleMap
+        defaultZoom={16}
+        defaultCenter={{
+          lat: props.currentLatitude,
+          lng: props.currentLongitude
+        }}
+        onClick={props.onMapClick}
+      >
+        {props.isMarkerShown &&
+          props.marker.map(position => (
+            <Marker key={position} position={position} />
+          ))}
+        {props.mapMarkers[0] &&
+          props.mapMarkers.map(position => (
+            <Marker
+              id={position._id}
+              key={position._id}
+              position={position.coordinates[0]}
+              onClick={() => props.onMarkerClick(position._id)}
+            />
+          ))}
+      </GoogleMap>
+    )}
+  </Fragment>
 ));
 
 class RenderMap extends Component {
@@ -60,14 +71,17 @@ class RenderMap extends Component {
     );
   };
 
-  handleMapClick = event => {
-    const lat = event.latLng.lat();
-    const lng = event.latLng.lng();
-    this.setState({
-      marker: [{ lat, lng }],
-      isMarkerShown: !this.state.isMarkerShown
-    });
-    this.props.handleMapClick();
+  handleMapClick = async event => {
+    if (this.props.isMarkerClicked) {
+      this.props.handleMapClick();
+    } else {
+      const lat = event.latLng.lat();
+      const lng = event.latLng.lng();
+      this.setState({
+        marker: [{ lat, lng }],
+        isMarkerShown: !this.state.isMarkerShown
+      });
+    }
   };
 
   handleFormClick = async e => {
