@@ -1,94 +1,55 @@
-import React, { Component } from "react";
-import GemCards from "../Components/GemCards/";
-import Toolbar from "../Components/Toolbar";
-import SideDrawer from "../Components/SideDrawer/SideDrawer";
-import "./style.css";
-import UserBanner from "./parts/UserBanner"
+import React, { Component, Fragment } from 'react';
+import GemCards from '../Components/GemCards/';
+import Toolbar from '../Components/Toolbar';
+import SideDrawer from '../Components/SideDrawer/SideDrawer';
+import './style.css';
+import { Consumer } from '../context';
+import UserBanner from './parts/UserBanner';
 /* import db from '../API/placeDB'; */
-
-
-import exampleProfile from "./images/profileExample.jpg";
-import exampleBackground from "./images/backgroundExample.jpg";
-import exampleGem from "../Gem/images/seesee.jpg"
+import Spinner from '../Components/Spinner';
+import exampleProfile from './images/profileExample.jpg';
+import exampleBackground from './images/backgroundExample.jpg';
 
 class Dashboard extends Component {
 	state = {
 		sideDrawerOpen: false,
 		isLoggedIn: true,
-
-/* 		data: {}, */
-
-		//feeding these for the profile images
 		profile: exampleProfile,
 		background: exampleBackground,
-
-		data: [
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			}
-		]
-		
-		
-	}
-
-/* 	componentDidMount = async () => {
-		const result = await db.findAllPlace();
-		this.setState({data: result.data});
-	}; */
+		gems: []
+	};
 
 	drawerToggleClickHandler = () => {
 		this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
-	  };
-	
+	};
+
 	render() {
-/* 		console.log(this.state.data) */
+		/* 		console.log(this.state.data) */
 		return (
-		  <div className="dashContainer">
-			<Toolbar drawerClick={this.drawerToggleClickHandler} />
-			{
-			this.state.sideDrawerOpen ? <SideDrawer isLoggedIn={this.state.isLoggedIn}/> : null
-			}
-			< UserBanner
-				profile={this.state.profile}
-				background={this.state.background}
-			/>		
-			<GemCards results = {this.state.data}/>
-		  </div>
+			<Consumer>
+				{(value) => {
+					const { user, isAuthenticated, loading } = value;
+					console.log(user);
+					return (
+						<div className="dashContainer">
+							{loading ? (
+								<Spinner />
+							) : (
+								<Fragment>
+									<Toolbar drawerClick={this.drawerToggleClickHandler} />
+									{this.state.sideDrawerOpen ? (
+										<SideDrawer isLoggedIn={this.state.isLoggedIn} />
+									) : null}
+									<UserBanner background={this.state.background} user={user} />
+									{/* <GemCards results={this.state.data} /> */}
+								</Fragment>
+							)}
+						</div>
+					);
+				}}
+			</Consumer>
 		);
-	  };
-};
+	}
+}
 
 export default Dashboard;

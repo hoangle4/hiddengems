@@ -1,15 +1,12 @@
-import React from "react";
-import "./style.css"
+import React from 'react';
+import './style.css';
 
-function userBanner(props) {
-  return (
-    <div 
-    className="userBanner"
-    style = {{backgroundImage: 'URL('+props.background+')'}}
-    >
-      <img src={props.profile} alt='smallProfile' className='profileImage'/>
-    </div>
-  );
+function userBanner({ background, user: { avatar } }) {
+	return (
+		<div className="userBanner" style={{ backgroundImage: `URL('${background}')` }}>
+			<img src={avatar} alt="smallProfile" className="profileImage" />
+		</div>
+	);
 }
 
 export default userBanner;
