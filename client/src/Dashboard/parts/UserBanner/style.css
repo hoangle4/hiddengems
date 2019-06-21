@@ -1,0 +1,11 @@
+.userBanner {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    
+}
+
+.profileImage{
+    width: 15%;
+    height: 15%;
+}

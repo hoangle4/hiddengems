@@ -1,0 +1,23 @@
+.gemContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gemGroup{
+    margin: 2%;
+}
+
+.gemGroup.p{
+    font-size: 2vw;
+}
+
+.gemGroup.h{
+    font-size: 6vw;
+}
+
+button{
+    padding: 1%;
+    margin: 1%;
+}

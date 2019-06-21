@@ -7,7 +7,6 @@ import SideDrawer from '../Components/SideDrawer/SideDrawer';
 
 import Toolbar from '../Components/Toolbar';
 import db from '../API/placeDB';
-import gemPic from '../Gem/images/westmorelandpark.jpg';
 import './style.css';
 
 class Gem extends Component {
@@ -15,14 +14,12 @@ class Gem extends Component {
 		sideDrawerOpen: false,
 		isLoggedIn: true,
 
-		//probably need to adjust these when we have data:
-		image: gemPic,
-		title: 'Westmoreland Park'
+    	data: {},
 	};
 
 	componentDidMount = async () => {
 		const result = await db.findOnePlace(this.props.match.params.id);
-		console.log(result);
+		this.setState({data: result.data})
 	};
 
 	drawerToggleClickHandler = () => {
@@ -30,13 +27,17 @@ class Gem extends Component {
 	};
 
 	render() {
+    console.log(this.state.data)
 		return (
 			<div>
 				<Toolbar drawerClick={this.drawerToggleClickHandler} />
 				{this.state.sideDrawerOpen ? <SideDrawer isLoggedIn={this.state.isLoggedIn} /> : null}
-				<Banner image={this.state.image} />
+				<Banner image={this.state.data.photos} />
 				<div className="container">
-					<Story title={this.state.title} />
+          <Story 
+            title={this.state.data.placeName} 
+            story={this.state.data.description}
+            />
 				</div>
 			</div>
 		);
