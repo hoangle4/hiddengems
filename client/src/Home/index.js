@@ -29,18 +29,21 @@ class index extends Component {
     const result = await this.state.markerData.filter(data => data._id === id);
     this.setState({
       sideStory: result[0],
-      isMarkerClicked: true, //!this.state.isMarkerClicked
+      isMarkerClicked: true,
       isMarkerData: true
     });
   };
   handleMapClick = e => {
-    this.setState({
-      isMarkerClicked: false
-    });
+    if (this.state.isMarkerClicked) {
+      this.setState({
+        isMarkerClicked: false
+      });
+    }
 
     if (e) {
       this.setState({ markerData: this.state.markerData.concat(e) });
     }
+    return this.state.isMarkerClicked;
   };
   render() {
     return (
@@ -51,6 +54,7 @@ class index extends Component {
         </div>
         <div className="Map-container">
           <Map
+            isMarkerClicked={this.state.isMarkerClicked}
             handleMarkerClick={this.handleMarkerClick}
             markerData={this.state.markerData}
             handleMapClick={this.handleMapClick}
@@ -58,7 +62,6 @@ class index extends Component {
           <MapGem
             data={this.state.sideStory}
             isMarkerClicked={this.state.isMarkerClicked}
-            isMarkerData={this.state.isMarkerData}
           />
         </div>
       </div>

@@ -7,7 +7,7 @@ function GemCards({ placeCreated }) {
   return (
     <div className="gemContainer">
       {placeCreated.map(place => (
-        <a key={place.id} className="gemGroup">
+        <a key={place._id} href={`/gem/${place._id}`} className="gemGroup">
           <div>
             <img
               style={{ width: "200px", height: "200px" }}
@@ -16,10 +16,10 @@ function GemCards({ placeCreated }) {
             />
             <h3>{place.placeName}</h3>
             <p>{place.description}</p>
-            <button type="submit" className="editBtn" gemID={place.id}>
+            <button type="submit" className="editBtn" id={place._id}>
               Edit
             </button>
-            <button type="submit" className="deleteBtn" gemID={place.id}>
+            <button type="submit" className="deleteBtn" id={place._id}>
               Delete
             </button>
           </div>

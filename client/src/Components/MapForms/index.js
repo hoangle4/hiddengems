@@ -6,7 +6,7 @@ import { Consumer } from "../../context";
 import Spinner from "../Spinner";
 import firebaseStorage from "../Firebase";
 import "./mapforms.css";
-class index extends Component {
+class MapFrom extends Component {
   state = {
     placeName: "",
     photos: "",
@@ -57,14 +57,10 @@ class index extends Component {
   handleOnClick = async () => {
     await this.setState({ coordinates: this.props.coordinates });
 
-    const results = await placeDB
-      .createPlace(this.state)
-      .catch(err => console.error(err.message));
+    const results = await placeDB.createPlace(this.state);
     if (!results) return;
 
-    const response = await userDB
-      .updateUserCreatedPlace(results.data._id)
-      .catch(err => console.error(err.message));
+    const response = await userDB.updateUserCreatedPlace(results.data._id);
     if (!response) return;
 
     this.props.updateMaker(results.data);
@@ -86,12 +82,7 @@ class index extends Component {
           return (
             <Fragment>
               <div
-                className="form-group"
-                style={
-                  isPinDropped
-                    ? { height: "80vh", display: "block" }
-                    : { display: "none" }
-                }
+                className={`form-group ${isPinDropped ? "form-active" : ""}`}
               >
                 <FromGroup
                   value={this.state}
@@ -111,4 +102,4 @@ class index extends Component {
   }
 }
 
-export default index;
+export default MapFrom;
