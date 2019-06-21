@@ -4,77 +4,43 @@ import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import "./style.css";
 import UserBanner from "./parts/UserBanner"
-/* import db from '../API/placeDB'; */
+import db from '../API/placeDB';
 
 
 import exampleProfile from "./images/profileExample.jpg";
 import exampleBackground from "./images/backgroundExample.jpg";
-import exampleGem from "../Gem/images/seesee.jpg"
+/* import exampleGem from "../Gem/images/seesee.jpg" */
 
 class Dashboard extends Component {
 	state = {
 		sideDrawerOpen: false,
 		isLoggedIn: true,
 
-/* 		data: {}, */
+		data: [],
 
 		//feeding these for the profile images
 		profile: exampleProfile,
-		background: exampleBackground,
-
-		data: [
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			},
-			{
-				id: 1,
-				placeName: "SeeSee Motors",
-				description: "asd;lkfja;lskdjf",
-				photos: exampleGem,
-			}
-		]
-		
-		
+		background: exampleBackground,	
 	}
 
-/* 	componentDidMount = async () => {
+	componentDidMount = async () => {
 		const result = await db.findAllPlace();
 		this.setState({data: result.data});
-	}; */
+
+		let userCheck = localStorage.getItem("token");
+		if(userCheck) {
+			this.setState({isLoggedIn: true})
+    	}else{
+			this.setState({isLoggedIn: false})
+    	}
+	};
 
 	drawerToggleClickHandler = () => {
 		this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
 	  };
 	
 	render() {
-/* 		console.log(this.state.data) */
+		console.log(this.state.data)
 		return (
 		  <div className="dashContainer">
 			<Toolbar drawerClick={this.drawerToggleClickHandler} />

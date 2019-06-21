@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import "./mapgem.css";
+
 import Spinner from "../Spinner";
 export default function index({
   isMarkerClicked,

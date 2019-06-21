@@ -7,17 +7,28 @@
 
 .gemGroup{
     margin: 2%;
+    border: 0.5px solid #999;
+    padding: 1rem;
+    
 }
 
 .gemGroup.p{
     font-size: 2vw;
 }
 
-.gemGroup.h{
-    font-size: 6vw;
+.gemName{
+    font-size: 3vw;
 }
 
 button{
     padding: 1%;
     margin: 1%;
+}
+
+.gem{
+    width: 20vw;
+}
+
+.cardImage{
+    max-width: 100%;
 }

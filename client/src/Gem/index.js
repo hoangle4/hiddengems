@@ -12,14 +12,20 @@ import './style.css';
 class Gem extends Component {
 	state = {
 		sideDrawerOpen: false,
-		isLoggedIn: true,
-
+		isLoggedIn: false,
     	data: {},
 	};
 
 	componentDidMount = async () => {
 		const result = await db.findOnePlace(this.props.match.params.id);
-		this.setState({data: result.data})
+		this.setState({data: result.data});
+
+		let userCheck = localStorage.getItem("token");
+		if(userCheck) {
+			this.setState({isLoggedIn: true})
+    	}else{
+			this.setState({isLoggedIn: false})
+    	}
 	};
 
 	drawerToggleClickHandler = () => {

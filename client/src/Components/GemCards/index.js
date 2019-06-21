@@ -10,9 +10,9 @@ function GemCards(props) {
       {props.results.map(result => (
         <a key={result.id} 
         className="gemGroup">
-            <div>
-                <img src = {result.photos} alt = {props.placeName}/>
-                <h3>
+            <div className = "gem">
+                <img className = "cardImage" src = {result.photos} alt = {props.placeName}/>
+                <h3 className = "gemName">
                     {result.placeName}
                 </h3>
                 <p>

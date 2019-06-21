@@ -19,6 +19,14 @@ class index extends Component {
     this.setState({
       markerData: results.data
     });
+
+    let userCheck = localStorage.getItem("token");
+		if(userCheck) {
+			this.setState({isLoggedIn: true})
+    }else{
+			this.setState({isLoggedIn: false})
+
+    }
   };
 
   drawerToggleClickHandler = () => {

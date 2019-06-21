@@ -1,31 +1,32 @@
 .gemBanner{
-    display: flex;
-    justify-content: center;  
-    margin-top: 8%;
+    height: auto;
+
+    margin: 100px 20% 10px 20%;
 }
 
-.gemBanner img {
-    width: 15%;
-    height:15%;
+.gemImage {    
+    max-width: 100%;
+    height: auto;
 }
-
 .container {
     justify-content: center;
-    padding-top: 5%;
-    padding-bottom: 2%;
+    margin: 5px;
 }
 
 .storyBox {
-    display: flex;
-    justify-content: center;   
+    justify-content: center; 
+    width: 80%;
+    margin: 0 10%;  
     background-color: rgb(189, 215, 255);
     border: 1px solid #000000;   
 }
 
 .gemStory{ 
-    font-size: 3vw;
+    margin-left: 3%;
+    font-size: 2vw;
 }
 
 h1 {
-    font-size: 5vw;
+    text-align: center;
+    font-size: 2vw;
 }
