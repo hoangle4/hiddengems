@@ -14,7 +14,6 @@ import exampleBackground from "./images/backgroundExample.jpg";
 class Dashboard extends Component {
   state = {
     sideDrawerOpen: false,
-    isLoggedIn: true,
     profile: exampleProfile,
     background: exampleBackground,
     gems: []
