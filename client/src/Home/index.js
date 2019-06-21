@@ -30,7 +30,7 @@ class index extends Component {
     const result = await this.state.markerData.filter(data => data._id === id);
     this.setState({
       sideStory: result[0],
-      isMarkerClicked: true,
+      isMarkerClicked: true, //!this.state.isMarkerClicked
       isMarkerData: true
     });
   };
