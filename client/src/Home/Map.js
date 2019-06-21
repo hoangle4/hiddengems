@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import MapForms from "../Components/MapForms";
-
+import { Consumer } from "../context";
 import { compose } from "recompose";
 import {
   withScriptjs,
@@ -43,7 +43,7 @@ class RenderMap extends Component {
     isMarkerShown: false
   };
 
-  componentDidMount = async () => {
+  componentWillMount = async () => {
     navigator.geolocation.getCurrentPosition(
       async position => {
         this.setState({
@@ -84,28 +84,34 @@ class RenderMap extends Component {
       isMarkerShown
     } = this.state;
     return (
-      <Fragment>
-        <MyMapComponent
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
-            process.env.REACT_APP_GOOGLE_MAP_API
-          }`}
-          loadingElement={<div style={{ height: "100%" }} />}
-          containerElement={<div style={{ height: "100vh" }} />}
-          mapElement={<div style={{ height: "100%", zIndex: 1 }} />}
-          currentLongitude={currentLongitude}
-          currentLatitude={currentLatitude}
-          isMarkerShown={isMarkerShown}
-          onMarkerClick={this.props.handleMarkerClick}
-          onMapClick={this.handleMapClick}
-          marker={marker}
-          mapMarkers={this.props.markerData}
-        />
-        <MapForms
-          updateMaker={this.handleFormClick}
-          isPinDropped={isMarkerShown}
-          coordinates={marker}
-        />
-      </Fragment>
+      <Consumer>
+        {value => {
+          return (
+            <Fragment>
+              <MyMapComponent
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
+                  process.env.REACT_APP_GOOGLE_MAP_API
+                }`}
+                loadingElement={<div style={{ height: "100%" }} />}
+                containerElement={<div style={{ height: "100vh" }} />}
+                mapElement={<div style={{ height: "100%", zIndex: 1 }} />}
+                currentLongitude={currentLongitude}
+                currentLatitude={currentLatitude}
+                isMarkerShown={isMarkerShown}
+                onMarkerClick={this.props.handleMarkerClick}
+                onMapClick={this.handleMapClick}
+                marker={marker}
+                mapMarkers={this.props.markerData}
+              />
+              <MapForms
+                updateMaker={this.handleFormClick}
+                isPinDropped={isMarkerShown}
+                coordinates={marker}
+              />
+            </Fragment>
+          );
+        }}
+      </Consumer>
     );
   }
 }
