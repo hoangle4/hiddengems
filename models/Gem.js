@@ -25,7 +25,8 @@ const newGem = new Schema({
 	},
 	createdBy: {
 		type: Schema.Types.ObjectId,
-		ref: 'users'
+		ref: 'users',
+		required: true
 	},
 	dateCreated: {
 		type: Date,

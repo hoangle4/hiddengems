@@ -43,11 +43,23 @@ module.exports = {
   },
   getOneUser: async (req, resp) => {
     try {
-      const user = await models.User.findById(req.user.id).select("-password");
+      const user = await models.User.findById({ _id: req.user.id })
+        .populate("placeCreated")
+        .select("-password");
       resp.json(user);
     } catch (err) {
       console.error(err.message);
       resp.status(500).send("Server Error");
     }
+  },
+  findAllPlace: async (req, resp) => {
+    const results = await models.Gem.find();
+    resp.json(results);
+  },
+  findOnePlace: async (req, resp) => {
+    const results = await models.Gem.findById({
+      _id: req.query.id
+    });
+    resp.json(results);
   }
 };
