@@ -5,7 +5,7 @@ function Story(props) {
     <div className="storyBox">
       <div className="gemStory">
         <h1>{props.title}</h1>     
-        <pre>{props.story}</pre>
+        <p>{props.story}</p>
       </div>
     </div>
   );

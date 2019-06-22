@@ -1,0 +1,21 @@
+.Search{
+    margin-top: 100px;
+    display: flex;
+}
+
+.Search-container{
+    justify-content: center;
+    margin: 2%;
+    border: 0.5px solid #999;
+    padding: 1rem;
+    width: 80%;
+}
+
+.Search-form{
+    width: 60%;
+    margin: 0 20%;
+}
+
+.Search-form-field{
+    width: 80%;
+}

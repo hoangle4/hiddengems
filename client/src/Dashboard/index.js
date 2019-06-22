@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import GemCards from "../Components/GemCards/";
 import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
+import UserSearch from "../Components/UserSearch"
 import "./style.css";
 import { Consumer } from "../context";
 import UserBanner from "./parts/UserBanner";
@@ -35,6 +36,7 @@ class Dashboard extends Component {
                 <Spinner />
               ) : isAuthenticated && user !== null ? (
                 <Fragment>
+                  <UserSearch/>
                   <Toolbar drawerClick={this.drawerToggleClickHandler} />
                   {this.state.sideDrawerOpen ? <SideDrawer /> : null}
                   <UserBanner background={this.state.background} user={user} />

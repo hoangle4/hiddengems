@@ -5,7 +5,7 @@
     justify-content: center;
 }
 
-.gemGroup{
+.gemLink{
     margin: 2%;
     border: 0.5px solid #999;
     padding: 1rem;
@@ -14,8 +14,16 @@
 
 .gemGroup.p{
     font-size: 2vw;
+    width: 10%;
 }
 
+.gemBox{
+    width: 250px;
+    height: 350px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
 .gemName{
     font-size: 3vw;
 }

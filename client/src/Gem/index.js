@@ -15,7 +15,6 @@ class Gem extends Component {
   state = {
     sideDrawerOpen: false,
     isLoggedIn: true,
-
     data: {}
   };
 
@@ -29,6 +28,7 @@ class Gem extends Component {
   };
 
   render() {
+    console.log(this.state.data)
     return (
       <Consumer>
         {value => {

@@ -24,6 +24,7 @@
 .gemStory{ 
     margin-left: 3%;
     font-size: 2vw;
+    word-wrap: break-word;    
 }
 
 h1 {
