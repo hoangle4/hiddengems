@@ -1,0 +1,17 @@
+.Navbar-topnav {
+  width: 100%;
+  height: 10vh;
+  background: black;
+}
+.Navbar-header1  {
+  font-size: 3rem;
+  color: white;
+  padding-left: 2vw;
+  font-family: 'Poiret One', cursive;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.Navbar-header1:hover {
+  text-decoration: none;
+  color: #f28aa8;
+}
