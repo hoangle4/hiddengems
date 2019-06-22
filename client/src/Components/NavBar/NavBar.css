@@ -1,0 +1,33 @@
+.Toolbar {
+	position: fixed;
+	background: none;
+	top: 10px;
+	right: 10px;
+	font-family: 'Poiret One', cursive;
+	display: grid;
+	justify-content: end;
+	width: 50px;
+	height: 50px;
+	z-index: 10;
+	background: rgba(247, 247, 247, 0.1);
+}
+.Toolbar-navigation {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0 3rem;
+	align-items: center;
+}
+.Toolbar-hamburger {
+	font-size: 2rem;
+	text-decoration: none;
+}
+.Toolbar-logo {
+	text-decoration: none;
+	color: black;
+	font-size: 3vw;
+}
+.burger-icon {
+	cursor: pointer;
+}

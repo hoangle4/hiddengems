@@ -1,79 +1,70 @@
 /*global google*/
-import React, { Component, Fragment, PureComponent } from "react";
-import MapForms from "../Components/MapForms";
-import Spinner from "../Components/Spinner";
-import { Consumer } from "../context";
-import { compose, lifecycle, withProps } from "recompose";
-import { FaPlus } from "react-icons/fa";
+import React, { Component, Fragment, PureComponent } from 'react';
+import MapForms from '../Components/MapForms';
+import Spinner from '../Components/Spinner';
+import { Consumer } from '../context';
+import { compose, lifecycle, withProps } from 'recompose';
+import { FaPlus } from 'react-icons/fa';
 
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-  StreetViewPanorama,
-  OverlayView
-} from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, StreetViewPanorama, OverlayView } from 'react-google-maps';
 
 const getPixelPositionOffset = (width, height) => ({
-  x: -(width / 2),
-  y: -(height / 2)
+	x: -(width / 2),
+	y: -(height / 2)
 });
 
 const MyMapComponent = compose(
-  withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing&key=${
-      process.env.REACT_APP_GOOGLE_MAP_API
-    }`,
-    loadingElement: <div style={{ height: "100%" }} />,
-    containerElement: <div style={{ height: "100vh" }} />,
-    mapElement: <div style={{ height: "100%" }} />
-  }),
-  lifecycle({
-    componentWillMount() {
-      const refs = {};
+	withProps({
+		googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing&key=${process.env
+			.REACT_APP_GOOGLE_MAP_API}`,
+		loadingElement: <div style={{ height: '100%' }} />,
+		containerElement: <div style={{ height: '100vh' }} />,
+		mapElement: <div style={{ height: '100%' }} />
+	}),
+	lifecycle({
+		componentWillMount() {
+			const refs = {};
 
-      this.setState({
-        position: null,
-        onPanoramaMounted: ref => {
-          refs.map = ref;
-        },
+			this.setState({
+				position: null,
+				onPanoramaMounted: (ref) => {
+					refs.map = ref;
+				},
 
-        onPositionChanged: () => {
-          // const position = refs.map.getPosition();
-          // console.log(position, e);
-          // const position = this.map.getPosition().then(e => console.log(e));
-          // console.log(position.toString());
-        }
-      });
-    }
-  }),
-  withScriptjs,
-  withGoogleMap
-)(props => (
-  <Fragment>
-    {typeof props.currentLatitude !== "number" &&
-    typeof props.currentLongitude !== "number" ? (
-      <Spinner />
-    ) : (
-      <GoogleMap
-        defaultZoom={16}
-        defaultCenter={{
-          lat: props.currentLatitude,
-          lng: props.currentLongitude
-        }}
-        onClick={props.onMapClick}
-      >
-        <StreetViewPanorama
-          defaultPosition={{
-            lat: props.currentLatitude,
-            lng: props.currentLongitude
-          }}
-          visible
-          ref={props.onPanoramaMounted}
-          onPositionChanged={e => props.onPositionChanged(e)}
-        >
-          <button
+				onPositionChanged: () => {
+					// const position = refs.map.getPosition();
+					// console.log(position, e);
+					// const position = this.map.getPosition().then(e => console.log(e));
+					// console.log(position.toString());
+				}
+			});
+		}
+	}),
+	withScriptjs,
+	withGoogleMap
+)((props) => (
+	<Fragment>
+		{typeof props.currentLatitude !== 'number' && typeof props.currentLongitude !== 'number' ? (
+			<Spinner />
+		) : (
+			<GoogleMap
+				defaultZoom={16}
+				defaultCenter={{
+					lat: props.currentLatitude,
+					lng: props.currentLongitude
+				}}
+				onClick={props.onMapClick}
+			>
+				{/* <StreetViewPanorama
+					defaultPosition={{
+						lat: props.currentLatitude,
+						lng: props.currentLongitude
+					}}
+					visible
+					ref={props.onPanoramaMounted}
+					onPositionChanged={(e) => props.onPositionChanged(e)}
+				>
+					<button
             onClick={e => console.log(e)}
             draggable="false"
             title="Toggle fullscreen view"
@@ -101,129 +92,121 @@ const MyMapComponent = compose(
             <FaPlus />
           </button>
 
-          {props.mapMarkers[0] &&
-            props.mapMarkers.map(position => (
-              <OverlayView
-                id={position._id}
-                key={position._id}
-                position={position.coordinates[0]}
-                mapPaneName={OverlayView.OVERLAY_LAYER}
-                getPixelPositionOffset={getPixelPositionOffset}
-              >
-                <a
-                  style={{
-                    background: `red`,
-                    color: `white`,
-                    padding: 5,
-                    borderRadius: `50%`
-                  }}
-                  onClick={() => props.onMarkerClick(position._id)}
-                >
-                  OverlayView
-                </a>
-              </OverlayView>
-            ))}
-        </StreetViewPanorama>
-        {props.isMarkerShown &&
-          props.marker.map(position => (
-            <Marker key={position} position={position} />
-          ))}
-        {props.mapMarkers[0] &&
-          props.mapMarkers.map(position => (
-            <Marker
-              id={position._id}
-              key={position._id}
-              position={position.coordinates[0]}
-              onClick={() => props.onMarkerClick(position._id)}
-            />
-          ))}
-      </GoogleMap>
-    )}
-  </Fragment>
+					{props.mapMarkers[0] &&
+						props.mapMarkers.map((position) => (
+							<OverlayView
+								id={position._id}
+								key={position._id}
+								position={position.coordinates[0]}
+								mapPaneName={OverlayView.OVERLAY_LAYER}
+								getPixelPositionOffset={getPixelPositionOffset}
+							>
+								<a
+									style={{
+										background: `red`,
+										color: `white`,
+										padding: 5,
+										borderRadius: `50%`
+									}}
+									onClick={() => props.onMarkerClick(position._id)}
+								>
+									OverlayView
+								</a>
+							</OverlayView>
+						))}
+				</StreetViewPanorama> */}
+				{props.isMarkerShown && props.marker.map((position) => <Marker key={position} position={position} />)}
+				{props.mapMarkers[0] &&
+					props.mapMarkers.map((position) => (
+						<Marker
+							id={position._id}
+							key={position._id}
+							position={position.coordinates[0]}
+							onClick={() => props.onMarkerClick(position._id)}
+						/>
+					))}
+			</GoogleMap>
+		)}
+	</Fragment>
 ));
 
 class RenderMap extends PureComponent {
-  state = {
-    currentLongitude: "",
-    currentLatitude: "",
-    title: "Reacj & GoogleMap Test",
-    marker: [],
-    isMarkerShown: false
-  };
+	state = {
+		currentLongitude: '',
+		currentLatitude: '',
+		title: 'Reacj & GoogleMap Test',
+		marker: [],
+		isMarkerShown: false
+	};
 
-  componentWillMount = async () => {
-    navigator.geolocation.getCurrentPosition(
-      async position => {
-        this.setState({
-          currentLongitude: position.coords.longitude,
-          currentLatitude: position.coords.latitude
-        });
-      },
-      error => alert(error.message),
-      {
-        enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 1000
-      }
-    );
-  };
-  handleViewPosition = e => {
-    console.log(e);
-  };
+	componentWillMount = async () => {
+		navigator.geolocation.getCurrentPosition(
+			async (position) => {
+				this.setState({
+					currentLongitude: position.coords.longitude,
+					currentLatitude: position.coords.latitude
+				});
+			},
+			(error) => alert(error.message),
+			{
+				enableHighAccuracy: true,
+				timeout: 20000,
+				maximumAge: 1000
+			}
+		);
+	};
+	handleViewPosition = (e) => {
+		console.log(e);
+	};
 
-  handleMapClick = async event => {
-    if (this.props.isMarkerClicked) {
-      this.props.handleMapClick();
-    } else {
-      const lat = event.latLng.lat();
-      const lng = event.latLng.lng();
-      this.setState({
-        marker: [{ lat, lng }],
-        isMarkerShown: !this.state.isMarkerShown
-      });
-    }
-  };
+	handleMapClick = async (event) => {
+		if (this.props.isMarkerClicked) {
+			this.props.handleMapClick();
+		} else {
+			const lat = event.latLng.lat();
+			const lng = event.latLng.lng();
+			this.setState({
+				marker: [ { lat, lng } ],
+				isMarkerShown: !this.state.isMarkerShown
+			});
+		}
+	};
 
-  handleFormClick = async e => {
-    this.setState({
-      isMarkerShown: !this.state.isMarkerShown
-    });
-    this.props.handleMapClick(e);
-  };
-  render() {
-    const {
-      currentLongitude,
-      currentLatitude,
-      marker,
-      isMarkerShown
-    } = this.state;
-    return (
-      <Consumer>
-        {value => {
-          return (
-            <Fragment>
-              <MyMapComponent
-                currentLongitude={currentLongitude}
-                currentLatitude={currentLatitude}
-                isMarkerShown={isMarkerShown}
-                onMarkerClick={this.props.handleMarkerClick}
-                onMapClick={this.handleMapClick}
-                marker={marker}
-                mapMarkers={this.props.markerData}
-                handleViewPosition={this.handleViewPosition}
-              />
+	handleFormClick = async (e) => {
+		this.setState({
+			isMarkerShown: !this.state.isMarkerShown
+		});
+		this.props.handleMapClick(e);
+	};
+	render() {
+		const { currentLongitude, currentLatitude, marker, isMarkerShown } = this.state;
+		return (
+			<Consumer>
+				{(value) => {
+					return (
+						<Fragment>
+							<MyMapComponent
+								currentLongitude={currentLongitude}
+								currentLatitude={currentLatitude}
+								isMarkerShown={isMarkerShown}
+								onMarkerClick={this.props.handleMarkerClick}
+								onMapClick={this.handleMapClick}
+								marker={marker}
+								mapMarkers={this.props.markerData}
+								handleViewPosition={this.handleViewPosition}
+							/>
 
-              <MapForms
-                updateMaker={this.handleFormClick}
-                isPinDropped={isMarkerShown}
-                coordinates={marker}
-              />
-            </Fragment>
-          );
-        }}
-      </Consumer>
-    );
-  }
+							<MapForms
+								updateMaker={this.handleFormClick}
+								isPinDropped={isMarkerShown}
+								coordinates={marker}
+							/>
+						</Fragment>
+					);
+				}}
+			</Consumer>
+		);
+	}
 }
 
 export default RenderMap;

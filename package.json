@@ -30,9 +30,6 @@
 		"gravatar": "^1.8.0",
 		"if-env": "^1.0.4",
 		"jsonwebtoken": "^8.5.1",
-		"mongoose": "^5.3.16",
-		"passport": "^0.4.0",
-		"passport-local": "^1.0.0",
-		"passport-local-mongoose": "^5.0.1"
+		"mongoose": "^5.3.16"
 	}
 }
