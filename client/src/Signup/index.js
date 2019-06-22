@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import './Signup.css';
+import background from './background.jpg';
 import { Consumer } from '../context';
 import API from '../API/userDB';
 import Spinner from '../Components/Spinner';
+import Navbar from '../Components/Navbar';
 
 class Signup extends Component {
 	state = {
@@ -33,7 +35,7 @@ class Signup extends Component {
 	handleOnChange = (e) => {
 		const { name, value } = e.target;
 		this.setState({
-			[name]: { text: value, errMsg: this.state[name].errMsg }
+			[name]: { text: value, errMsg: '' }
 		});
 	};
 
@@ -118,6 +120,8 @@ class Signup extends Component {
 							) : loading ? (
 								<Spinner />
 							) : (
+								<Fragment>
+								<Navbar />
 								<div className="Signup">
 									<div className="Signup-container">
 										<form className="Signup-form" onSubmit={(e) => this.createUser(e, dispatch)} noValidate>
@@ -130,7 +134,7 @@ class Signup extends Component {
 												name="firstName"
 												required
 											/>
-											<p><small>{firstName.errMsg}</small></p>
+											<p className="Signup-err"><small>{firstName.errMsg}</small></p>
 											<p className="Signup-input-label">Last Name</p>
 											<input
 												value={lastName.text}
@@ -140,7 +144,7 @@ class Signup extends Component {
 												name="lastName"
 												required
 											/>
-											<p><small>{lastName.errMsg}</small></p>
+											<p className="Signup-err"><small>{lastName.errMsg}</small></p>
 											<p className="Signup-input-label">Email</p>
 											<input
 												value={email.text}
@@ -150,7 +154,7 @@ class Signup extends Component {
 												name="email"
 												required
 											/>
-											<p><small>{email.errMsg}</small></p>
+											<p className="Signup-err"><small>{email.errMsg}</small></p>
 											<p className="Signup-input-label">Password</p>
 											<input
 												value={password.text}
@@ -160,7 +164,7 @@ class Signup extends Component {
 												name="password"
 												required
 											/>
-											<p><small>{password.errMsg}</small></p>
+											<p className="Signup-err"><small>{password.errMsg}</small></p>
 											<p className="Signup-input-label">Verify Password</p>
 											<input
 												value={verify.text}
@@ -170,15 +174,17 @@ class Signup extends Component {
 												name="verify"
 												required
 											/>
-											<p><small>{verify.errMsg}</small></p>
+											<p className="Signup-err"><small>{verify.errMsg}</small></p>
 											<div className="Signup-submit-btn-container">
 												<button className="Signup-submit-btn" type="submit">
 													Submit
 												</button>
 											</div>
+											<p><small>Already a user? <a href='login'>Login.</a></small></p>
 										</form>
 									</div>
 								</div>
+							</Fragment>
 							)}
 						</Fragment>
 					);
