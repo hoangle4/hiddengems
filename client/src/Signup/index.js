@@ -27,26 +27,7 @@ class Signup extends Component {
 			text: '',
 			errMsg: '',
 		},
-		errCount: 0,
-	};
-
-	checkIfEmpty = (target, name) => {
-		let stringVal = '';
-		if (target.text === "") {
-			stringVal = `${name} must not be empty.`
-		}
-		return stringVal;
-	};
-
-	checkEmail = () => {
-		let stringVal = '';
-		let e = this.state.email.text;
-		if (e.includes('@') === false || (e.includes('.com') === false && e.includes('.net') === false && e.includes('.org') === false)) {
-			stringVal += "Email must contain correct formatting, i.e info@hiddengems.com";
-		} else {
-			// return true;
-		}
-		return stringVal;
+		errCount: 1,
 	};
 
 	handleOnChange = (e) => {
@@ -56,27 +37,44 @@ class Signup extends Component {
 		});
 	};
 
+
+
+	// checkEmail = () => {
+	// 	let stringVal = '';
+	// 	let e = this.state.email.text;
+	// 	if (e.includes('@') === false || (e.includes('.com') === false && e.includes('.net') === false && e.includes('.org') === false)) {
+	// 		stringVal += "Email must contain correct formatting, i.e info@hiddengems.com";
+	// 	} else {
+	// 		// return true;
+	// 	}
+	// 	return stringVal;
+	// };
+
+	checkIfEmpty = (target, name) => {
+		let stringVal = '';
+		if (target.text === "") {
+			stringVal = `Must not be empty.`
+		}
+		return stringVal;
+	};
+	
 	handleErrors = (target, name) => {
 		let errText = '';
 		errText += this.checkIfEmpty(target, name);
 		if (errText !== '') {
 			this.setState({
-				[target.errMsg] : errText,
+				[name] : { text: target.text, errMsg: errText }
 			});
-			this.setState((prevState, props) => ({
-				errCount: prevState.errCount + 1
-			}));
 		}
 	}
 
 	createUser = async (event, dispatch) => {
 		event.preventDefault();
 
-		this.handleErrors(this.state.email, 'Email');
-		this.handleErrors(this.state.password, 'Password');
-		this.handleErrors(this.state.firstName, 'First name');
-		this.handleErrors(this.state.lastName, 'Last name');
-
+		this.handleErrors(this.state.email, 'email');
+		this.handleErrors(this.state.password, 'password');
+		this.handleErrors(this.state.firstName, 'firstName');
+		this.handleErrors(this.state.lastName, 'lastName');
 
 		if (this.state.errCount === 0) {
 			const newuser = {
