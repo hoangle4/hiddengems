@@ -11,7 +11,27 @@ class Signup extends Component {
 		lastName: '',
 		email: '',
 		password: '',
-		verify: ''
+		verify: '',
+		errorMsg: ''
+	};
+
+	checkIfEmpty = (value, name) => {
+		let stringVal = '';
+		if (value === "") {
+			stringVal = `${name} must not be empty.`
+		}
+		return stringVal;
+	};
+
+	checkEmail = () => {
+		let stringVal = '';
+		let e = this.state.email;
+		if (e.includes('@') === false || (e.includes('.com') === false && e.includes('.net') === false && e.includes('.org') === false)) {
+			stringVal += "Email must contain correct formatting, i.e info@hiddengems.com";
+		} else {
+			// return true;
+		}
+		return stringVal;
 	};
 
 	handleOnChange = (e) => {
@@ -20,26 +40,45 @@ class Signup extends Component {
 			[name]: value
 		});
 	};
+
 	createUser = async (event, dispatch) => {
 		event.preventDefault();
-		const newuser = {
-			email: this.state.email,
-			password: this.state.password,
-			firstName: this.state.firstName,
-			lastName: this.state.lastName
-		};
+		let errText = '';
 
-		const results = await API.createUser(newuser).catch((err) => {
-			console.error(err);
-		});
+		errText += ' ' + this.checkIfEmpty(this.state.email, 'Email input');
+		errText += ' ' + this.checkIfEmpty(this.state.password, 'Password input');
+		errText += ' ' + this.checkIfEmpty(this.state.firstName, 'First name input');
+		errText += ' ' + this.checkIfEmpty(this.state.lastName, 'Last name input');
+		
+		errText += ' ' + this.checkEmail();
 
-		if (!results) return dispatch({ type: 'REGISTER_FAIL', payload: null });
+		if (errText === '') {
+			const newuser = {
+				email: this.state.email,
+				password: this.state.password,
+				firstName: this.state.firstName,
+				lastName: this.state.lastName
+			};
 
-		dispatch({
-			type: 'REGISTER_SUCCESS',
-			payload: results.data.token
-		});
-		//Redirect page
+			const results = await API.createUser(newuser).catch((err) => {
+				console.error(err);
+			});
+
+			if (!results) return dispatch({ type: 'REGISTER_FAIL', payload: null });
+
+			dispatch({
+				type: 'REGISTER_SUCCESS',
+				payload: results.data.token
+			});
+
+			//Redirect page
+		} else {
+			this.setState({
+				errorMsg: errText,
+				
+			}, () => {alert(this.state.errorMsg)})
+			// alert(this.state.errorMsg);
+		}
 	};
 
 	render() {
@@ -57,7 +96,7 @@ class Signup extends Component {
 							) : (
 								<div className="Signup">
 									<div className="Signup-container">
-										<form className="Signup-form" onSubmit={(e) => this.createUser(e, dispatch)}>
+										<form className="Signup-form" onSubmit={(e) => this.createUser(e, dispatch)} noValidate>
 											<p className="Signup-input-label">First Name</p>
 											<input
 												value={firstName}
@@ -65,6 +104,7 @@ class Signup extends Component {
 												className="Signup-form-field"
 												type="text"
 												name="firstName"
+												required
 											/>
 											<p className="Signup-input-label">Last Name</p>
 											<input
@@ -73,6 +113,7 @@ class Signup extends Component {
 												className="Signup-form-field"
 												type="text"
 												name="lastName"
+												required
 											/>
 											<p className="Signup-input-label">Email</p>
 											<input
@@ -81,6 +122,7 @@ class Signup extends Component {
 												className="Signup-form-field"
 												type="email"
 												name="email"
+												required
 											/>
 											<p className="Signup-input-label">Password</p>
 											<input
@@ -89,6 +131,7 @@ class Signup extends Component {
 												className="Signup-form-field"
 												type="password"
 												name="password"
+												required
 											/>
 											<p className="Signup-input-label">Verify Password</p>
 											<input
@@ -97,6 +140,7 @@ class Signup extends Component {
 												className="Signup-form-field"
 												type="password"
 												name="verify"
+												required
 											/>
 											<div className="Signup-submit-btn-container">
 												<button className="Signup-submit-btn" type="submit">
