@@ -1,6 +1,7 @@
 .Search{
-    margin-top: 100px;
     display: flex;
+    justify-content: center;
+
 }
 
 .Search-container{
@@ -8,14 +9,22 @@
     margin: 2%;
     border: 0.5px solid #999;
     padding: 1rem;
-    width: 80%;
+    width: 60%;
 }
 
 .Search-form{
+
     width: 60%;
-    margin: 0 20%;
+    padding: 0 10%;
+    margin: 0 10%;
 }
 
 .Search-form-field{
     width: 80%;
+    height: 3em;
+}
+
+.Search-submit-btn{
+    padding:2%;
+    background-color: rgb(95, 176, 252);
 }
