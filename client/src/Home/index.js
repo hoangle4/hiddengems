@@ -4,6 +4,7 @@ import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import MapGem from "../Components/MapGem";
 import db from "../API/placeDB";
+import Marker from "./marker";
 class index extends Component {
   state = {
     sideDrawerOpen: false,
@@ -29,7 +30,7 @@ class index extends Component {
     const result = await this.state.markerData.filter(data => data._id === id);
     this.setState({
       sideStory: result[0],
-      isMarkerClicked: true,
+      isMarkerClicked: !this.state.isMarkerClicked,
       isMarkerData: true
     });
   };
@@ -48,17 +49,18 @@ class index extends Component {
   render() {
     return (
       <div>
-        <div>
+        {/* <div>
           <Toolbar drawerClick={this.drawerToggleClickHandler} />
           {this.state.sideDrawerOpen ? <SideDrawer /> : null}
-        </div>
+        </div> */}
         <div className="Map-container">
-          <Map
+          {/* <Map
             isMarkerClicked={this.state.isMarkerClicked}
             handleMarkerClick={this.handleMarkerClick}
             markerData={this.state.markerData}
             handleMapClick={this.handleMapClick}
-          />
+          /> */}
+
           <MapGem
             data={this.state.sideStory}
             isMarkerClicked={this.state.isMarkerClicked}

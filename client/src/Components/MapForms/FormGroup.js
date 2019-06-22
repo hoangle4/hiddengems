@@ -39,17 +39,20 @@ function FormGroup({
           name="photos"
           onChange={handleFileChange}
         />
-        <small style={{ color: "green" }}>
-          {progress ? parseInt(progress) + "%" : null}
-        </small>
       </div>
-      {isUploaded ? (
-        <div className="input-container">
-          <img
-            src={photos}
-            alt="..."
-            style={{ height: "300px", width: "300px", margin: "auto" }}
+      {progress ? (
+        <div className="progress-bar-container">
+          <p
+            className="progress-bar"
+            style={{ width: `${parseInt(progress)}%` }}
           />
+          <small> {parseInt(progress) + "%"}</small>
+        </div>
+      ) : null}
+
+      {isUploaded ? (
+        <div className="img-input-container">
+          <img src={photos} alt="..." />
         </div>
       ) : null}
       <div className="input-container">
@@ -80,7 +83,7 @@ function FormGroup({
           onChange={handleOnChange}
         />
       </div>
-      <div className="input-container">
+      <div className="submit-container">
         <input
           type="submit"
           className="create-btn"
