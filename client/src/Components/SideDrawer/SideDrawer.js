@@ -23,7 +23,7 @@ function SideDrawer() {
                   </li>
                   <li>
                     <a
-                      href="#!"
+                      href="/"
                       onClick={() =>
                         dispatch({ type: "LOG_OUT", payload: null })
                       }

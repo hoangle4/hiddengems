@@ -15,7 +15,6 @@ class Gem extends Component {
   state = {
     sideDrawerOpen: false,
     isLoggedIn: true,
-
     data: {}
   };
 
@@ -29,6 +28,7 @@ class Gem extends Component {
   };
 
   render() {
+    console.log(this.state.data)
     return (
       <Consumer>
         {value => {
@@ -54,6 +54,8 @@ class Gem extends Component {
                     <Story
                       title={this.state.data.placeName}
                       story={this.state.data.description}
+                      author={this.state.data.createdBy}
+                      gems={this.state.data.placeCreated}
                     />
                   </div>
                 </div>
