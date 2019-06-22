@@ -27,6 +27,12 @@
 	text-decoration: none;
 	color: black;
 	font-size: 3vw;
+	background-color: rgb(95, 176, 252);
+	margin: 1%;
+	margin-top: 8%;
+	width: 15%;
+	padding: 2%;
+	border-radius: 20%;
 }
 .burger-icon {
 	cursor: pointer;

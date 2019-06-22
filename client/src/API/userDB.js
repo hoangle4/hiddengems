@@ -11,11 +11,21 @@ export default {
     });
   },
   // get user
+  userSearch: firstName => {
+    console.log(firstName);
+    return axios.get(`/api/userSearch?firstName=${firstName}`)
+  },
+
   login: user => {
     console.log(user);
     return axios.post("/api/login", {
       email: user.email,
       password: user.password
+    });
+  },
+  updateUserCreatedPlace: id => {
+    return axios.post("/db/updateUserCreatedPlace", {
+      id
     });
   },
   // update profile picture

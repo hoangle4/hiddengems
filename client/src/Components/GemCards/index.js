@@ -2,35 +2,27 @@ import React from "react";
 
 import "./style.css";
 
-
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function GemCards(props) {
+function GemCards({ placeCreated }) {
   return (
     <div className="gemContainer">
-      {props.results.map(result => (
-        <a key={result.id} 
-        className="gemGroup">
-            <div>
-                <img src = {result.photos} alt = {props.placeName}/>
-                <h3>
-                    {result.placeName}
-                </h3>
-                <p>
-                    {result.description}
-                </p>
-                <button type="submit" 
-                    onClick={props.updateGem}
-                    className="editBtn"
-                    gemID={result.id}
-                >Edit
-                </button>
-                <button type="submit" 
-                    onClick={props.deleteGem}
-                    className="deleteBtn"
-                    gemID={result.id}
-                >Delete
-                </button>
-            </div>         
+      {placeCreated.map(place => (
+        <a key={place._id} href={`/gem/${place._id}`} className="gemLink">
+          <div className = "gemBox">
+            <img
+              style={{ width: "200px", height: "200px" }}
+              src={place.photos}
+              alt={place.placeName}
+            />
+            <h3>{place.placeName}</h3>
+            <p classname="truncGem">{place.description}</p>
+            <button type="submit" className="editBtn" id={place._id}>
+              Edit
+            </button>
+            <button type="submit" className="deleteBtn" id={place._id}>
+              Delete
+            </button>
+          </div>
         </a>
       ))}
     </div>

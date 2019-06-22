@@ -24,7 +24,8 @@ app.use(routes);
 const MONGODB_URI = require("./config/mongoDB");
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 app.listen(PORT, function() {

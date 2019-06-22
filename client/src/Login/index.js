@@ -45,26 +45,26 @@ class Login extends Component {
 							) : loading ? (
 								<Spinner />
 							) : (
-								<div className="Signup">
-									<div className="Signup-container">
-										<form className="Signup-form" onSubmit={(e) => this.loginUser(e, dispatch)}>
-											<p className="Signup-input-label">Email</p>
+								<div className="Login">
+									<div className="Login-container">
+										<form className="Login-form" onSubmit={(e) => this.loginUser(e, dispatch)}>
+											<p className="Login-input-label">Email</p>
 											<input
 												value={email}
 												onChange={this.handleOnChange}
-												className="Signup-form-field"
+												className="Login-form-field"
 												type="email"
 												name="email"
 											/>
-											<p className="Signup-input-label">Password</p>
+											<p className="Login-input-label">Password</p>
 											<input
-												className="Signup-form-field"
+												className="Login-form-field"
 												type="password"
 												name="password"
 												value={password}
 												onChange={this.handleOnChange}
 											/>
-											<button className="Signup-submit-btn" type="submit">
+											<button className="Login-submit-btn" type="submit">
 												Login
 											</button>
 										</form>
