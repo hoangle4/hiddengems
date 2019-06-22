@@ -1,5 +1,6 @@
 import React from 'react';
 import './SideDrawer.css';
+import { Link } from 'react-router-dom';
 import { Consumer } from '../../../context';
 import Spinner from '../../Spinner';
 
@@ -19,24 +20,24 @@ function SideDrawer({ click }) {
 							) : isAuthenticated ? (
 								<ul>
 									<li>
-										<a href="/">Home</a>
+										<Link to="/">Home</Link>
 									</li>
 									<li>
-										<a href="/dashboard">My Dashboard</a>
+										<Link to="/dashboard">My Dashboard</Link>
 									</li>
 									<li>
-										<a href="#!" onClick={() => dispatch({ type: 'LOG_OUT', payload: null })}>
+										<Link to="#!" onClick={() => dispatch({ type: 'LOG_OUT', payload: null })}>
 											Log Out
-										</a>
+										</Link>
 									</li>
 								</ul>
 							) : (
 								<ul>
 									<li>
-										<a href="/login">Login</a>
+										<Link to="/login">Login</Link>
 									</li>
 									<li>
-										<a href="/signup">Sign Up</a>
+										<Link to="/signup">Sign Up</Link>
 									</li>
 								</ul>
 							)}

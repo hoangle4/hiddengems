@@ -55,7 +55,7 @@ const MyMapComponent = compose(
 				}}
 				onClick={props.onMapClick}
 			>
-				{/* <StreetViewPanorama
+				<StreetViewPanorama
 					defaultPosition={{
 						lat: props.currentLatitude,
 						lng: props.currentLongitude
@@ -64,7 +64,7 @@ const MyMapComponent = compose(
 					ref={props.onPanoramaMounted}
 					onPositionChanged={(e) => props.onPositionChanged(e)}
 				>
-					<button
+					{/* <button
             onClick={e => console.log(e)}
             draggable="false"
             title="Toggle fullscreen view"
@@ -90,7 +90,7 @@ const MyMapComponent = compose(
             }}
           >
             <FaPlus />
-          </button>
+          </button> */}
 
 					{props.mapMarkers[0] &&
 						props.mapMarkers.map((position) => (
@@ -114,7 +114,7 @@ const MyMapComponent = compose(
 								</a>
 							</OverlayView>
 						))}
-				</StreetViewPanorama> */}
+				</StreetViewPanorama>
 				{props.isMarkerShown && props.marker.map((position) => <Marker key={position} position={position} />)}
 				{props.mapMarkers[0] &&
 					props.mapMarkers.map((position) => (

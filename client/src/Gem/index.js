@@ -16,9 +16,13 @@ class Gem extends Component {
 
 		data: {}
 	};
+	componentDidMount = () => {
+		this.getUser();
+	};
 
-	getGem = async () => {
+	getUser = async () => {
 		const result = await placeDB.findOnePlace(this.props.match.params.id);
+		if (!result) return;
 		this.setState({ data: result.data });
 	};
 
@@ -33,23 +37,24 @@ class Gem extends Component {
 					const { isAuthenticated, loading } = value;
 					return (
 						<Fragment>
-							{loading && this.state.data !== {} ? (
-								<div
-									onLoad={() => {
-										this.getGem();
-									}}
-								>
-									<Spinner />
-								</div>
-							) : isAuthenticated ? (
-								<div>
-									<Banner image={this.state.data.photos} />
-									<div className="container">
-										<Story title={this.state.data.placeName} story={this.state.data.description} />
-									</div>
-								</div>
+							{!loading && isAuthenticated ? (
+								<Fragment>
+									{this.state.data !== {} ? (
+										<Fragment>
+											<Banner image={this.state.data.photos} />
+											<div className="container">
+												<Story
+													title={this.state.data.placeName}
+													story={this.state.data.description}
+												/>
+											</div>
+										</Fragment>
+									) : (
+										<Spinner />
+									)}
+								</Fragment>
 							) : (
-								<Spinner />
+								<Spinner getUser={this.getUser} />
 							)}
 						</Fragment>
 					);
