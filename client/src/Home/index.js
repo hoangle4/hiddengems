@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import Map from "./Map";
+import React, { Component, Fragment } from "react";
+import Map from "../Map";
 import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
+import Spinner from "../Components/Spinner";
 import MapGem from "../Components/MapGem";
 import db from "../API/placeDB";
 class index extends Component {
   state = {
+    dataReady: false,
     sideDrawerOpen: false,
     isMarkerClicked: false,
     isMarkerData: false,
@@ -13,10 +15,15 @@ class index extends Component {
     markerData: []
   };
 
-  componentDidMount = async () => {
+  componentWillMount = () => {
+    this.findAllPlace();
+  };
+
+  findAllPlace = async () => {
     const results = await db.findAllPlace();
     this.setState({
-      markerData: results.data
+      markerData: results.data,
+      dataReady: true
     });
   };
 
@@ -47,25 +54,30 @@ class index extends Component {
   };
   render() {
     return (
-      <div>
+      <Fragment>
         {/* <div>
           <Toolbar drawerClick={this.drawerToggleClickHandler} />
           {this.state.sideDrawerOpen ? <SideDrawer /> : null}
         </div> */}
-        <div className="Map-container">
-          <Map
-            isMarkerClicked={this.state.isMarkerClicked}
-            handleMarkerClick={this.handleMarkerClick}
-            markerData={this.state.markerData}
-            handleMapClick={this.handleMapClick}
-          />
 
-          <MapGem
-            data={this.state.sideStory}
-            isMarkerClicked={this.state.isMarkerClicked}
-          />
-        </div>
-      </div>
+        {!this.state.dataReady ? (
+          <Spinner />
+        ) : (
+          <Fragment>
+            <Map
+              isMarkerClicked={this.state.isMarkerClicked}
+              handleMarkerClick={this.handleMarkerClick}
+              markerData={this.state.markerData}
+              handleMapClick={this.handleMapClick}
+            />
+
+            <MapGem
+              data={this.state.sideStory}
+              isMarkerClicked={this.state.isMarkerClicked}
+            />
+          </Fragment>
+        )}
+      </Fragment>
     );
   }
 }

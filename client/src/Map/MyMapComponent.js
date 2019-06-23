@@ -1,11 +1,7 @@
-/*global google*/
-import React, { Component, Fragment, PureComponent } from "react";
-import MapForms from "../Components/MapForms";
-import Spinner from "../Components/Spinner";
-import { Consumer } from "../context";
+import React, { Fragment } from "react";
 import { compose, lifecycle, withProps } from "recompose";
 import { FaPlus } from "react-icons/fa";
-
+import Spinner from "../Components/Spinner";
 import {
   withScriptjs,
   withGoogleMap,
@@ -14,7 +10,6 @@ import {
   StreetViewPanorama,
   OverlayView
 } from "react-google-maps";
-
 const getPixelPositionOffset = (width, height) => ({
   x: -(width / 2),
   y: -(height / 2)
@@ -40,12 +35,15 @@ const MyMapComponent = compose(
         },
 
         onPositionChanged: () => {
-          // const position = refs.map.getPosition();
-          // console.log(position, e);
-          // const position = this.map.getPosition().then(e => console.log(e));
-          // console.log(position.toString());
+          const position =
+            refs.map.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
+              .streetView.position;
+          console.log(position.lat(), position.lng());
         }
       });
+    },
+    componentDiMount() {
+      this.setState({ comReady: true });
     }
   }),
   withScriptjs,
@@ -53,7 +51,8 @@ const MyMapComponent = compose(
 )(props => (
   <Fragment>
     {typeof props.currentLatitude !== "number" &&
-    typeof props.currentLongitude !== "number" ? (
+    typeof props.currentLongitude !== "number" &&
+    props.comReady ? (
       <Spinner />
     ) : (
       <GoogleMap
@@ -142,87 +141,27 @@ const MyMapComponent = compose(
   </Fragment>
 ));
 
-class RenderMap extends PureComponent {
-  state = {
-    currentLongitude: "",
-    currentLatitude: "",
-    marker: [],
-    isMarkerShown: false
-  };
-
-  componentWillMount = async () => {
-    navigator.geolocation.getCurrentPosition(
-      async position => {
-        this.setState({
-          currentLongitude: position.coords.longitude,
-          currentLatitude: position.coords.latitude
-        });
-      },
-      error => alert(error.message),
-      {
-        enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 1000
-      }
-    );
-  };
-  handleViewPosition = e => {
-    console.log(e);
-  };
-
-  handleMapClick = async event => {
-    if (this.props.isMarkerClicked) {
-      this.props.handleMapClick();
-    } else {
-      const lat = event.latLng.lat();
-      const lng = event.latLng.lng();
-      this.setState({
-        marker: [{ lat, lng }],
-        isMarkerShown: !this.state.isMarkerShown
-      });
-    }
-  };
-
-  handleFormClick = async e => {
-    this.setState({
-      isMarkerShown: !this.state.isMarkerShown
-    });
-    this.props.handleMapClick(e);
-  };
-  render() {
-    const {
-      currentLongitude,
-      currentLatitude,
-      marker,
-      isMarkerShown
-    } = this.state;
-    return (
-      <Consumer>
-        {value => {
-          return (
-            <Fragment>
-              <MyMapComponent
-                currentLongitude={currentLongitude}
-                currentLatitude={currentLatitude}
-                isMarkerShown={isMarkerShown}
-                onMarkerClick={this.props.handleMarkerClick}
-                onMapClick={this.handleMapClick}
-                marker={marker}
-                mapMarkers={this.props.markerData}
-                handleViewPosition={this.handleViewPosition}
-              />
-
-              <MapForms
-                updateMaker={this.handleFormClick}
-                isPinDropped={isMarkerShown}
-                coordinates={marker}
-              />
-            </Fragment>
-          );
-        }}
-      </Consumer>
-    );
-  }
-}
-
-export default RenderMap;
+export const MyMap = ({
+  currentLongitude,
+  currentLatitude,
+  isMarkerShown,
+  onMarkerClick,
+  onMapClick,
+  marker,
+  mapMarkers,
+  handleViewPosition
+}) => {
+  console.log(currentLatitude);
+  return (
+    <MyMapComponent
+      currentLongitude={currentLongitude}
+      currentLatitude={currentLatitude}
+      isMarkerShown={isMarkerShown}
+      onMarkerClick={onMarkerClick}
+      onMapClick={onMapClick}
+      marker={marker}
+      mapMarkers={mapMarkers}
+      handleViewPosition={handleViewPosition}
+    />
+  );
+};

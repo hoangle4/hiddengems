@@ -32,7 +32,6 @@ class Gem extends Component {
   };
 
   render() {
-    console.log(this.state.data);
     return (
       <Consumer>
         {value => {
