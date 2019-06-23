@@ -25,10 +25,17 @@ class MapFrom extends Component {
   };
 
   handleFileChange = e => {
+    if (!e.target.name) {
+      console.error({ uploadErr: " file not found, please upload file again" });
+      return;
+    }
     const { files } = e.target;
     const { name, type, lastModified, size } = files[0];
-    //Boot out if no files or file bigger than 5MB
-    if (!files || size > 5000000) return;
+
+    if (!files || size > 5000000) {
+      console.error({ uploadErr: " file too big, maximum size : 5mb" });
+      return;
+    }
 
     const storageRef = firebaseStorage.ref("placePhotos/" + name);
     const upLoadFile = storageRef.put(files[0], { type });

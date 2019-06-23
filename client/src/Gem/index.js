@@ -17,6 +17,9 @@ class Gem extends Component {
     isLoggedIn: true,
     data: {}
   };
+  componentDidMount = () => {
+    this.getUser();
+  };
 
   getGem = async () => {
     const result = await placeDB.findOnePlace(this.props.match.params.id);
@@ -28,39 +31,37 @@ class Gem extends Component {
   };
 
   render() {
-    console.log(this.state.data)
+    console.log(this.state.data);
     return (
       <Consumer>
         {value => {
           const { isAuthenticated, loading } = value;
           return (
             <Fragment>
-              {loading && this.state.data !== {} ? (
-                <div
-                  onLoad={() => {
-                    this.getGem();
-                  }}
-                >
-                  <Spinner />
-                </div>
-              ) : isAuthenticated ? (
-                <div>
-                  <Toolbar drawerClick={this.drawerToggleClickHandler} />
-                  {this.state.sideDrawerOpen ? (
-                    <SideDrawer isLoggedIn={this.state.isLoggedIn} />
-                  ) : null}
-                  <Banner image={this.state.data.photos} />
-                  <div className="container">
-                    <Story
-                      title={this.state.data.placeName}
-                      story={this.state.data.description}
-                      author={this.state.data.createdBy}
-                      gems={this.state.data.placeCreated}
-                    />
-                  </div>
-                </div>
+              {!loading && isAuthenticated ? (
+                <Fragment>
+                  {this.state.data !== {} ? (
+                    <Fragment>
+                      <Toolbar drawerClick={this.drawerToggleClickHandler} />
+                      {this.state.sideDrawerOpen ? (
+                        <SideDrawer isLoggedIn={this.state.isLoggedIn} />
+                      ) : null}
+                      <Banner image={this.state.data.photos} />
+                      <div className="container">
+                        <Story
+                          title={this.state.data.placeName}
+                          story={this.state.data.description}
+                          author={this.state.data.createdBy}
+                          gems={this.state.data.placeCreated}
+                        />
+                      </div>
+                    </Fragment>
+                  ) : (
+                    <Spinner />
+                  )}
+                </Fragment>
               ) : (
-                <Spinner />
+                <Spinner getUser={this.getUser} />
               )}
             </Fragment>
           );

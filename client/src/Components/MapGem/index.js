@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import "./mapgem.css";
 import Spinner from "../Spinner";
 function SideGem({
@@ -20,9 +21,9 @@ function SideGem({
                 <h5 className="card-title">{placeName}</h5>
                 <p className="card-text">{description}</p>
                 <div className="btn-div" style={{ textAlign: "center" }}>
-                  <a href={`/gem/${_id}`} className="btn-learnmore">
+                  <Link to={`/gem/${_id}`} className="btn-learnmore">
                     Read More
-                  </a>
+                  </Link>
                 </div>
               </div>
             </Fragment>
