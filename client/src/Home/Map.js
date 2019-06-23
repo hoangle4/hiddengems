@@ -22,7 +22,7 @@ const getPixelPositionOffset = (width, height) => ({
 
 const MyMapComponent = compose(
   withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing&key=${
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${
       process.env.REACT_APP_GOOGLE_MAP_API
     }`,
     loadingElement: <div style={{ height: "100%" }} />,
