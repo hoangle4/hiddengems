@@ -15,8 +15,10 @@ class Gem extends Component {
   state = {
     sideDrawerOpen: false,
     isLoggedIn: true,
-
     data: {}
+  };
+  componentDidMount = () => {
+    this.getUser();
   };
 
   getGem = async () => {
@@ -35,30 +37,24 @@ class Gem extends Component {
           const { isAuthenticated, loading } = value;
           return (
             <Fragment>
-              {loading && this.state.data !== {} ? (
-                <div
-                  onLoad={() => {
-                    this.getGem();
-                  }}
-                >
-                  <Spinner />
-                </div>
-              ) : isAuthenticated ? (
-                <div>
-                  <Toolbar drawerClick={this.drawerToggleClickHandler} />
-                  {this.state.sideDrawerOpen ? (
-                    <SideDrawer isLoggedIn={this.state.isLoggedIn} />
-                  ) : null}
-                  <Banner image={this.state.data.photos} />
-                  <div className="container">
-                    <Story
-                      title={this.state.data.placeName}
-                      story={this.state.data.description}
-                    />
-                  </div>
-                </div>
+              {!loading && isAuthenticated ? (
+                <Fragment>
+                  {this.state.data !== {} ? (
+                    <Fragment>
+                      <Banner image={this.state.data.photos} />
+                      <div className="container">
+                        <Story
+                          title={this.state.data.placeName}
+                          story={this.state.data.description}
+                        />
+                      </div>
+                    </Fragment>
+                  ) : (
+                    <Spinner />
+                  )}
+                </Fragment>
               ) : (
-                <Spinner />
+                <Spinner getUser={this.getUser} />
               )}
             </Fragment>
           );

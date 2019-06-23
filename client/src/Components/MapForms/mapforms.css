@@ -8,7 +8,7 @@
   bottom: 25%;
   top: 25%;
   border: 0.5px solid #999;
-  background: rgba(167, 170, 170, 0.5);
+  background: rgba(255, 255, 255, 1);
   transition: all 200ms;
   transition-timing-function: cubic-bezier(0.1, 0.4, 0.8, 1);
   transform: translateX(25%, -25%);
@@ -25,7 +25,7 @@
 }
 
 .label {
-  padding-left: 5rem;
+  padding-left: 13%;
   padding-top: 1rem;
   font-weight: bold;
   font-size: 0.8rem;
@@ -33,10 +33,16 @@
 }
 .input {
   width: 60%;
-  margin: auto;
+  margin: 0 15% 0 0;
   background: rgba(240, 243, 243, 0.5);
   border: none;
   border-bottom: 0.5px solid rgb(49, 51, 51);
+  float: right;
+}
+.file_input {
+  width: 110px;
+  margin-left: 20%;
+  margin-top: 10px;
 }
 
 .input:hover {
@@ -51,7 +57,7 @@
 .img-input-container img {
   background-size: cover;
   width: 150px;
-  padding: 0 0.5rem;
+  padding: 0 10%;
 }
 
 h5 {

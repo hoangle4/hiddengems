@@ -71,9 +71,9 @@ const MyMapComponent = compose(
           }}
           visible
           ref={props.onPanoramaMounted}
-          onPositionChanged={e => props.onPositionChanged(e)}
+          onPositionChanged={props.onPositionChanged}
         >
-          <button
+          {/* <button
             onClick={e => console.log(e)}
             draggable="false"
             title="Toggle fullscreen view"
@@ -99,7 +99,7 @@ const MyMapComponent = compose(
             }}
           >
             <FaPlus />
-          </button>
+          </button> */}
 
           {props.mapMarkers[0] &&
             props.mapMarkers.map(position => (
@@ -146,7 +146,6 @@ class RenderMap extends PureComponent {
   state = {
     currentLongitude: "",
     currentLatitude: "",
-    title: "Reacj & GoogleMap Test",
     marker: [],
     isMarkerShown: false
   };

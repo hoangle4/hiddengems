@@ -9,7 +9,7 @@ import SignUp from "./Signup";
 import Login from "./Login";
 import Profile from "./Profile";
 import Gem from "./Gem";
-import MapMarker from "./Home/marker";
+import Test from "./test.js";
 class App extends Component {
   render() {
     return (
@@ -22,7 +22,7 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/userprofile" component={Profile} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/test" component={MapMarker} />
+            <Route exact path="/test" component={Test} />
           </div>
         </Router>
       </Provider>
