@@ -4,7 +4,6 @@ import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import MapGem from "../Components/MapGem";
 import db from "../API/placeDB";
-import Marker from "./marker";
 class index extends Component {
   state = {
     sideDrawerOpen: false,
@@ -54,12 +53,12 @@ class index extends Component {
           {this.state.sideDrawerOpen ? <SideDrawer /> : null}
         </div> */}
         <div className="Map-container">
-          {/* <Map
+          <Map
             isMarkerClicked={this.state.isMarkerClicked}
             handleMarkerClick={this.handleMarkerClick}
             markerData={this.state.markerData}
             handleMapClick={this.handleMapClick}
-          /> */}
+          />
 
           <MapGem
             data={this.state.sideStory}

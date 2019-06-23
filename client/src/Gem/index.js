@@ -31,6 +31,7 @@ class Gem extends Component {
   };
 
   render() {
+    console.log(this.state.data);
     return (
       <Consumer>
         {value => {
@@ -41,11 +42,17 @@ class Gem extends Component {
                 <Fragment>
                   {this.state.data !== {} ? (
                     <Fragment>
+                      <Toolbar drawerClick={this.drawerToggleClickHandler} />
+                      {this.state.sideDrawerOpen ? (
+                        <SideDrawer isLoggedIn={this.state.isLoggedIn} />
+                      ) : null}
                       <Banner image={this.state.data.photos} />
                       <div className="container">
                         <Story
                           title={this.state.data.placeName}
                           story={this.state.data.description}
+                          author={this.state.data.createdBy}
+                          gems={this.state.data.placeCreated}
                         />
                       </div>
                     </Fragment>

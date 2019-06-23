@@ -3,7 +3,7 @@ import React from "react";
 function Banner(props) {
   return (
     <div className="gemBanner">
-      <img 
+      <img className = "gemImage"
         alt='Gem' 
         src={props.image} 
       />

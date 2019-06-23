@@ -2,18 +2,16 @@ import React, { Component, Fragment } from "react";
 import GemCards from "../Components/GemCards/";
 import Toolbar from "../Components/Toolbar";
 import SideDrawer from "../Components/SideDrawer/SideDrawer";
+import UserSearch from "../Components/UserSearch"
 import "./style.css";
 import { Consumer } from "../context";
 import UserBanner from "./parts/UserBanner";
 import Spinner from "../Components/Spinner";
-import exampleProfile from "./images/profileExample.jpg";
 import exampleBackground from "./images/backgroundExample.jpg";
 
 class Dashboard extends Component {
   state = {
     sideDrawerOpen: false,
-    isLoggedIn: true,
-    profile: exampleProfile,
     background: exampleBackground,
     gems: []
   };
@@ -32,11 +30,12 @@ class Dashboard extends Component {
               {loading ? (
                 <Spinner />
               ) : isAuthenticated && user !== null ? (
-                <Fragment>
+                <Fragment>                  
                   <Toolbar drawerClick={this.drawerToggleClickHandler} />
                   {this.state.sideDrawerOpen ? <SideDrawer /> : null}
                   <UserBanner background={this.state.background} user={user} />
                   <GemCards placeCreated={user.placeCreated} />
+                  <UserSearch/>
                 </Fragment>
               ) : (
                 window.location.reload()

@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Spinner from "../Spinner";
 import { Link } from "react-router-dom";
 import { Consumer } from "../../context";
+
 function FormGroup({
   placeName,
   isUploaded,
@@ -14,7 +15,7 @@ function FormGroup({
   handleFileChange
 }) {
   return (
-    <Fragment>
+    <Consumer>
       {value => {
         const { loading, isAuthenticated } = value;
         return (
@@ -126,7 +127,7 @@ function FormGroup({
           </Fragment>
         );
       }}
-    </Fragment>
+    </Consumer>
   );
 }
 

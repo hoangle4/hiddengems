@@ -1,4 +1,4 @@
-.Signup-container {
+.Login-container {
   font-size: 0.9rem;
   margin: 10% auto;
   padding: 4%;
@@ -13,15 +13,15 @@
   text-align: center;
   /* height: 50%; */
 }
-.Signup-form {
+.Login-form {
   width: 50%;
 }
-.Signup-input-label {
+.Login-input-label {
   margin: 0.7rem 2.3rem;
   margin-bottom: 0;
   text-align: left;
 }
-.Signup-form-field {
+.Login-form-field {
   font-size: 1.0rem;
   border-radius: 5px;
   height: 1.2rem;
@@ -29,12 +29,12 @@
   width: 75%;
   border: 5px solid white;
 }
-.Signup-submit-btn-container {
+.Login-submit-btn-container {
   width: 100%;
   padding: 0;
   margin: 0;
 }
-.Signup-submit-btn {
+.Login-submit-btn {
   margin-top: 1rem;
   width: 75%;
   height: 2.0rem;
@@ -44,7 +44,7 @@
   border: none;
   transition: all 0.3s;
 }
-.Signup-submit-btn:hover {
+.Login-submit-btn:hover {
   box-shadow: 1px 0px 3px rgba(0,0,0,0.5);
   background-color: rgb(95, 196, 255);
   color: white;
@@ -52,13 +52,13 @@
 }
 
 @media only screen and (max-width: 700px) {
-  .Signup-container {
+  .Login-container {
     margin-top: 40%;
   }
-  .Signup-form {
+  .Login-form {
     width: 90%;
   }
-  .Signup-input-label {
+  .Login-input-label {
     margin: 0.7rem 1.5rem;
     margin-bottom: 0;
   }

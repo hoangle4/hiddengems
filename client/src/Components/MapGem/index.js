@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import "./mapgem.css";
 import Spinner from "../Spinner";
 function SideGem({

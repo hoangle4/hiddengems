@@ -1,33 +1,39 @@
 .Toolbar {
-  position: fixed;
-  background: none;
-  top: 0;
-  left: 0;
-  font-family: 'Poiret One', cursive;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  width: 100%;
-  height: 10%;
-  z-index: 3;
+	position: fixed;
+	background: none;
+	top: 0;
+	left: 0;
+	font-family: 'Poiret One', cursive;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	width: 100%;
+	height: 10%;
+	z-index: 3;
 }
 .Toolbar-navigation {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 3rem;
-  align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0 3rem;
+	align-items: center;
 }
 .Toolbar-hamburger {
-  font-size: 2rem;
-  text-decoration: none;
+	font-size: 2rem;
+	text-decoration: none;
 }
 .Toolbar-logo {
-  text-decoration: none;
-  color: black;
-  font-size: 3vw;
+	text-decoration: none;
+	color: black;
+	font-size: 3vw;
+	background-color: rgb(95, 176, 252);
+	margin: 1%;
+	margin-top: 8%;
+	width: 15%;
+	padding: 2%;
+	border-radius: 20%;
 }
 .burger-icon {
-  cursor: pointer;
+	cursor: pointer;
 }
