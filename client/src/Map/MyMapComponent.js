@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { compose, lifecycle, withProps } from "recompose";
 import { FaPlus } from "react-icons/fa";
 import Spinner from "../Components/Spinner";
+import ViewCard from "../Components/OverLayView";
 import {
   withScriptjs,
   withGoogleMap,
@@ -10,6 +11,8 @@ import {
   StreetViewPanorama,
   OverlayView
 } from "react-google-maps";
+
+import { mapBtn } from "./StyleMap.css";
 const getPixelPositionOffset = (width, height) => ({
   x: -(width / 2),
   y: -(height / 2)
@@ -63,6 +66,13 @@ const MyMapComponent = compose(
         }}
         onClick={props.onMapClick}
       >
+        <button
+          onClick={e => console.log(e)}
+          title="Add Story Here"
+          style={mapBtn}
+        >
+          <FaPlus />
+        </button>
         <StreetViewPanorama
           defaultPosition={{
             lat: props.currentLatitude,
@@ -72,34 +82,6 @@ const MyMapComponent = compose(
           ref={props.onPanoramaMounted}
           onPositionChanged={props.onPositionChanged}
         >
-          {/* <button
-            onClick={e => console.log(e)}
-            draggable="false"
-            title="Toggle fullscreen view"
-            aria-label="Toggle fullscreen view"
-            type="button"
-            className="gm-control-active gm-fullscreen-control"
-            style={{
-              backGround: "none rgb(34, 34, 34)",
-              border: "0px",
-              margin: "10px",
-              padding: "0px",
-              position: "absolute",
-              cursor: "pointer",
-              userSelect: "none",
-              borderRadius: "2px",
-              height: "40px",
-              width: "40px ",
-              boxShadow: "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px",
-              overflow: "hidden",
-              top: " 0px",
-              right: "0px",
-              zIndex: 99
-            }}
-          >
-            <FaPlus />
-          </button> */}
-
           {props.mapMarkers[0] &&
             props.mapMarkers.map(position => (
               <OverlayView
@@ -109,17 +91,10 @@ const MyMapComponent = compose(
                 mapPaneName={OverlayView.OVERLAY_LAYER}
                 getPixelPositionOffset={getPixelPositionOffset}
               >
-                <a
-                  style={{
-                    background: `red`,
-                    color: `white`,
-                    padding: 5,
-                    borderRadius: `50%`
-                  }}
+                <ViewCard
+                  data={position}
                   onClick={() => props.onMarkerClick(position._id)}
-                >
-                  OverlayView
-                </a>
+                />
               </OverlayView>
             ))}
         </StreetViewPanorama>

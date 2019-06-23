@@ -32,12 +32,10 @@ class index extends Component {
   };
 
   handleMarkerClick = async id => {
-    this.setState({ isMarkerData: false });
     const result = await this.state.markerData.filter(data => data._id === id);
     this.setState({
       sideStory: result[0],
-      isMarkerClicked: !this.state.isMarkerClicked,
-      isMarkerData: true
+      isMarkerClicked: !this.state.isMarkerClicked
     });
   };
   handleMapClick = e => {
