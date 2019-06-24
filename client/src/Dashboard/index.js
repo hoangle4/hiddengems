@@ -25,20 +25,28 @@ class Dashboard extends Component {
 		return (
 			<Consumer>
 				{(value) => {
-					const { user, isAuthenticated, loading } = value;
+					const { user, isAuthenticated, loading, token, dispatch } = value;
+					console.log(user);
 					return (
 						<div className="dashContainer">
 							{loading ? (
 								<Spinner />
-							) : user !== null ? (
-								window.location.reload()
 							) : isAuthenticated ? (
 								<Fragment>
-									<Toolbar drawerClick={this.drawerToggleClickHandler} />
-									{this.state.sideDrawerOpen ? <SideDrawer /> : null}
-									<UserBanner background={this.state.background} user={user} />
-									<GemCards placeCreated={user.placeCreated} />
-									<UserSearch />
+									{user === null ? (
+										dispatch({
+											type: 'GET_USER',
+											payload: token
+										})
+									) : (
+										<Fragment>
+											<Toolbar drawerClick={this.drawerToggleClickHandler} />
+											{this.state.sideDrawerOpen ? <SideDrawer /> : null}
+											<UserBanner background={this.state.background} user={user} />
+											<GemCards placeCreated={user.placeCreated} />
+											<UserSearch />
+										</Fragment>
+									)}
 								</Fragment>
 							) : (
 								<Fragment>
