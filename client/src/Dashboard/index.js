@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import GemCards from '../Components/GemCards/';
 import Toolbar from '../Components/Toolbar';
 import SideDrawer from '../Components/SideDrawer/SideDrawer';
@@ -40,7 +41,15 @@ class Dashboard extends Component {
 									<UserSearch />
 								</Fragment>
 							) : (
-								<Spinner />
+								<Fragment>
+									<h5>Not Authorized</h5>
+									<div>
+										<p style={{ textAlign: 'center' }}>
+											You are not logged in. Please <Link to="/login">login</Link> or{' '}
+											<Link to="/signup">sign up</Link> to create place.
+										</p>
+									</div>
+								</Fragment>
 							)}
 						</div>
 					);
