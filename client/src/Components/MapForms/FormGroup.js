@@ -47,7 +47,7 @@ function FormGroup({
                     Photos
                   </label>
                   <button id="upload-file-btn">
-                    <i className="far fa-edit" /> Profile photo
+                    <i className="far fa-edit" /> Image
                   </button>
                   <input
                     type="file"

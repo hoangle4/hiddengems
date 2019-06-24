@@ -25,12 +25,12 @@ class MapFrom extends Component {
   };
 
   handleFileChange = e => {
-    if (!e.target.name) {
+    if (!e.target.files[0]) {
       console.error({ uploadErr: " file not found, please upload file again" });
       return;
     }
     const { files } = e.target;
-    const { name, type, lastModified, size } = files[0];
+    const { name, type, size } = files[0];
 
     if (!files || size > 5000000) {
       console.error({ uploadErr: " file too big, maximum size : 5mb" });
