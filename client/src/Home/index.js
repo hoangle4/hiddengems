@@ -53,10 +53,10 @@ class index extends Component {
   render() {
     return (
       <Fragment>
-        {/* <div>
+        <div>
           <Toolbar drawerClick={this.drawerToggleClickHandler} />
           {this.state.sideDrawerOpen ? <SideDrawer /> : null}
-        </div> */}
+        </div>
 
         {!this.state.dataReady ? (
           <Spinner />

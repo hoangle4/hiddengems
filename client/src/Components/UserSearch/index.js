@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 import API from "../../API/userDB";
 import Spinner from "../Spinner";
 
@@ -26,6 +27,7 @@ class UserSearch extends Component {
   };
 
   render() {
+    console.log(this.state.users);
     const showUsers = this.state.users.length > 0;
     return (
       <div className="Search">
@@ -45,28 +47,29 @@ class UserSearch extends Component {
             </button>
           </form>
         </div>
-        <div>
-          {showUsers ? (
-            <div className="userResults">
-              <div className="Results-container">
-                {this.state.users.map(user => (
-                  <div className="userBox">
-                    <img
-                      style={{ width: "200px", height: "200px" }}
-                      src={user.photos}
-                      alt={user.userName}
-                    />
-                    <h3>{user.userName}</h3>
-                    <p classname="truncGem">{user.description}</p>
-                  </div>
-                ))}
-              </div>
+        {showUsers ? (
+          <div className="Search-results">
+            <div className="Search-results-container">
+              {this.state.users.map(user => (
+                <a 
+                  key={user._id} href={`/userprofile/${user._id}`} 
+                  className="profileLink"
+                >
+                  <h3>{user.firstName} {user.lastName}</h3>
+                  <img
+                    style={{ width: "200px", height: "200px" }}
+                    src={user.avatar}
+                    alt={user.firstName}
+                  />
+                  {/* <p classname="truncGem">{user.description}</p> */}
+                </a>
+              ))}
             </div>
-          ) : (
-            <div />
-          )}
+          </div>
+        ) : (
+          <div />
+        )}
           ;
-        </div>
       </div>
     );
   }

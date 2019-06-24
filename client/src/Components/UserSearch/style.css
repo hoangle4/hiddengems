@@ -1,19 +1,15 @@
 .Search{
-    display: flex;
-    justify-content: center;
-
+    
 }
 
 .Search-container{
-    justify-content: center;
-    margin: 2%;
+    margin: auto;
     border: 0.5px solid #999;
     padding: 1rem;
     width: 60%;
 }
 
 .Search-form{
-
     width: 60%;
     padding: 0 10%;
     margin: 0 10%;
@@ -27,4 +23,24 @@
 .Search-submit-btn{
     padding:2%;
     background-color: rgb(95, 176, 252);
+}
+
+.Search-results{
+    display: flex;
+    justify-content: left;
+    width: 90%;
+    margin: auto;
+
+}
+
+.Search-results-container{
+    border: 0.5px solid #999;
+    width: 250px;
+    margin: 2%;
+    padding: 2%
+
+}
+
+.profileLink{
+    padding: 5%;
 }

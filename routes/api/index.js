@@ -10,4 +10,6 @@ router.get('/userSearch', apiController.userSearch);
 //@PRIVATE ROUTES
 router.get("/findOnePlace", auth, apiController.findOnePlace);
 router.get("/getUser", auth, apiController.getOneUser);
+router.get("/findOneUser", auth, apiController.getOneUser);
+
 module.exports = router;
