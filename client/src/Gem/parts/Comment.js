@@ -7,6 +7,10 @@ const Comment = () => {
     const { parentNode, value } = event.target;
     parentNode.setAttribute("data-text", value);
   };
+
+  const handleComment = event => {
+    console.log("commented");
+  };
   return (
     <div className="Comment_box">
       <h1 className="Comment_h1"> Comments: </h1>
@@ -38,6 +42,9 @@ const Comment = () => {
           value={message}
         />
       </div>
+      <button onClick={handleComment} className="Comment_button">
+        Comment
+      </button>
     </div>
   );
 };
