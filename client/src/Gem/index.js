@@ -55,7 +55,7 @@ class Gem extends Component {
                   </div>
                 </Fragment>
               ) : (
-                <Spinner getGem={this.getGem} />
+                <Spinner onLoad={this.getGem} />
               )}
             </Fragment>
           );

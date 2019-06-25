@@ -5,7 +5,9 @@ import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import Spinner from "../Components/Spinner";
 import MapGem from "../Components/MapGem";
 import db from "../API/placeDB";
-class index extends Component {
+import { calculateDistance } from "../Helper";
+
+class Home extends Component {
   state = {
     dataReady: false,
     sideDrawerOpen: false,
@@ -79,4 +81,4 @@ class index extends Component {
     );
   }
 }
-export default index;
+export default Home;
