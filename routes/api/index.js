@@ -6,6 +6,8 @@ const apiController = require("../../controllers/apiController");
 router.post("/login", apiController.loginUser);
 router.get("/findAllPlace", apiController.findAllPlace);
 router.get('/userSearch', apiController.userSearch);
+router.get('/userSearch2', apiController.userSearch);
+
 
 //@PRIVATE ROUTES
 router.get("/findOnePlace", auth, apiController.findOnePlace);

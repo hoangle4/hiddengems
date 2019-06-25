@@ -18,7 +18,7 @@ class Profile extends Component {
   };
 
   getUser = async () => {
-    const result = await API.findOneUser(this.props.match.params.id);
+    const result = await API.userSearch2(this.props.match.params.id);
     this.setState({ data: result.data, dataReady: true });
   };
 
