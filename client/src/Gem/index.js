@@ -24,6 +24,7 @@ class Gem extends Component {
 
   getGem = async () => {
     const result = await placeDB.findOnePlace(this.props.match.params.id);
+    if (!result) return;
     this.setState({ data: result.data, dataReady: true });
   };
 
@@ -40,12 +41,13 @@ class Gem extends Component {
             <Fragment>
               {!loading && isAuthenticated && this.state.dataReady ? (
                 <Fragment>
-                  <Toolbar drawerClick={this.drawerToggleClickHandler} />
+                  {/* <Toolbar drawerClick={this.drawerToggleClickHandler} />
                   {this.state.sideDrawerOpen ? (
                     <SideDrawer isLoggedIn={this.state.isLoggedIn} />
-                  ) : null}
-                  <Banner image={this.state.data.photos} />
-                  <div className="container">
+                  ) : null} */}
+                  <div className="Gem_container">
+                    <Banner image={this.state.data.photos} />
+
                     <Story
                       title={this.state.data.placeName}
                       story={this.state.data.description}

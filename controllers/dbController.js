@@ -80,7 +80,6 @@ module.exports = {
   },
   updateUserCreatedPlace: async (req, resp) => {
     try {
-      console.log("got here");
       const user = await models.User.findOneAndUpdate(
         { _id: req.user.id },
         {
@@ -89,7 +88,6 @@ module.exports = {
           }
         }
       );
-      console.log(user);
       resp.json(user);
     } catch (err) {
       console.error(err);

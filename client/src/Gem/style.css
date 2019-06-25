@@ -1,33 +1,54 @@
-.gemBanner{
-    height: auto;
-
-    margin: 100px 20% 10px 20%;
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap");
+.Banner {
+  font-family: "Roboto Slab", serif;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  text-align: center;
+  grid-column: 1;
+  grid-row: 1;
 }
 
-.gemImage {    
-    max-width: 100%;
-    height: auto;
-}
-.container {
-    justify-content: center;
-    margin: 5px;
-}
-
-.storyBox {
-    justify-content: center; 
-    width: 80%;
-    margin: 0 10%;  
-    background-color:  rgb(95, 176, 252);
-    border: 1px solid #000000;   
+.Banner_image {
+  max-width: 100%;
+  background-size: contain;
+  border: 0.5px solid rgb(151, 149, 149);
+  border-radius: 0.5rem;
+  box-shadow: 1.7px 1.7px 1.7px rgb(151, 149, 149);
 }
 
-.gemStory{ 
-    margin-left: 3%;
-    font-size: 2vw;
-    word-wrap: break-word;    
+.Banner_img_box {
+  margin: 1rem;
+}
+.Gem_container {
+  display: grid;
+  background-color: rgb(255, 255, 255);
+  font-size: 1rem;
 }
 
-h1 {
-    text-align: center;
-    font-size: 2vw;
+.Story_box {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  text-align: center;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.Story_box_container {
+  padding: 1rem;
+}
+
+.Story_p {
+  font-size: 1.3rem;
+  word-wrap: normal;
+  word-spacing: 0.2rem;
+  text-indent: 2rem;
+  line-height: 2rem;
+  text-align: justify;
+  color: rgb(47, 76, 80);
+}
+
+.Story_h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(47, 76, 80);
 }
