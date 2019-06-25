@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 import axios from "axios";
 
 export const Context = createContext();
@@ -29,14 +29,19 @@ export const getUser = async (dispatch, payload) => {
   });
 };
 
+export const getCurrentLatLng = (markerData, latLng, distance) =>
+  markerData.filter(
+    marker => calculateDistance(latLng, marker.coordinates[0]) <= distance
+  );
+
 export const calculateDistance = (pointA, pointB) => {
-  const latA = pointA.coordinate.latitude;
-  const lngA = pointA.coordinate.longitude;
+  const latA = pointA.lat;
+  const lngA = pointA.lng;
 
-  const latB = pointB.coordinate.latitude;
-  const lngB = pointB.coordinate.longitude;
+  const latB = pointB.lat;
+  const lngB = pointB.lng;
 
-  const R = 6371e3; // earth radius in meters
+  const R = 6371e3; // earth radius in meters 6371 if in kilomiters
   const φ1 = latA * (Math.PI / 180);
   const φ2 = latB * (Math.PI / 180);
   const Δφ = (latB - latA) * (Math.PI / 180);
@@ -48,7 +53,7 @@ export const calculateDistance = (pointA, pointB) => {
 
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-  const distance = R * c;
+  const distance = R * c; //in meters
   return distance;
 };
 
