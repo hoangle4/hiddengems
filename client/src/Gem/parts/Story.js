@@ -1,14 +1,14 @@
 import React from "react";
+import moment from "moment";
+import Chip from "./Chip";
 
-const Story = props => {
-  const author =
-    "Added By: " + props.author.firstName + " " + props.author.lastName;
+const Story = ({ story: { description, placeName }, author }) => {
   return (
     <div className="Story_box">
       <div className="Story_box_container">
-        <h1 className="Story_h1">{props.title}</h1>
-        <h3>{author}</h3>
-        <p className="Story_p">{props.story}</p>
+        <h1 className="Story_h1">{placeName}</h1>
+        <p className="Story_p">{description}</p>
+        <Chip author={author} />
       </div>
     </div>
   );

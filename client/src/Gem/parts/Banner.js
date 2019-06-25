@@ -1,10 +1,10 @@
 import React from "react";
 
-const Banner = props => {
+const Banner = ({ photos }) => {
   return (
     <div className="Banner">
       <div className="Banner_img_box">
-        <img className="Banner_image" alt="Gem" src={props.image} />
+        <img className="Banner_image" alt="Gem" src={photos} />
       </div>
     </div>
   );

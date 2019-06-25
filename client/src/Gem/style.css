@@ -52,3 +52,62 @@
   font-size: 2rem;
   color: rgb(47, 76, 80);
 }
+
+.Story_chip {
+  display: inline-flex;
+  flex-direction: row;
+  border: 0.5px solid rgb(151, 149, 149);
+  box-shadow: 1.7px 1.7px 1.7px rgb(151, 149, 149);
+  cursor: default;
+  height: 36px;
+  outline: none;
+  padding: 0;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  white-space: nowrap;
+  align-items: center;
+  border-radius: 1rem;
+  vertical-align: middle;
+  text-decoration: none;
+  justify-content: center;
+  float: left;
+}
+.Story_chip > a {
+  text-decoration: none;
+  color: rgb(68, 108, 114);
+}
+
+.Story_chip > a:hover {
+  color: rgb(47, 76, 80);
+}
+
+.Story_chip_head {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background-color: #32c5d2;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+  width: 36px;
+  color: #fff;
+  height: 36px;
+  font-size: 20px;
+  margin-right: -4px;
+  text-decoration: none;
+}
+
+.Story_chip_content {
+  font-weight: bold;
+  cursor: inherit;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  white-space: nowrap;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-decoration: none;
+}

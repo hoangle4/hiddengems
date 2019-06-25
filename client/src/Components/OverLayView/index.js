@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
-function OverLayView({
-  data: { dateCreated, description, photos, placeName, distance }
-}) {
+import { Link } from "react-router-dom";
+const OverLayView = ({
+  data: { dateCreated, description, photos, placeName, distance, _id }
+}) => {
   return (
     <Fragment>
       <div
@@ -22,7 +23,8 @@ function OverLayView({
           <div style={{ padding: " 0 20px 20px" }}>
             <h3>{placeName}</h3>
             <p>{description}</p>
-            <button
+            <a
+              href={`/gem/${_id}`}
               style={{
                 background: "gray",
                 border: "0",
@@ -32,12 +34,12 @@ function OverLayView({
               }}
             >
               Read more
-            </button>
+            </a>
           </div>
         </article>
       </div>
     </Fragment>
   );
-}
+};
 
 export default OverLayView;

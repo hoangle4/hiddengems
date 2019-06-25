@@ -14,7 +14,6 @@ import "./style.css";
 class Gem extends Component {
   state = {
     sideDrawerOpen: false,
-    isLoggedIn: true,
     dataReady: false,
     data: {}
   };
@@ -33,27 +32,29 @@ class Gem extends Component {
   };
 
   render() {
+    console.log(this.state.data);
+    const {
+      dataReady,
+      sideDrawerOpen,
+      data: { photos, createdBy },
+      data
+    } = this.state;
     return (
       <Consumer>
         {value => {
           const { isAuthenticated, loading } = value;
           return (
             <Fragment>
-              {!loading && isAuthenticated && this.state.dataReady ? (
+              {!loading && isAuthenticated && dataReady ? (
                 <Fragment>
-                  {/* <Toolbar drawerClick={this.drawerToggleClickHandler} />
-                  {this.state.sideDrawerOpen ? (
-                    <SideDrawer isLoggedIn={this.state.isLoggedIn} />
-                  ) : null} */}
+                  <Toolbar drawerClick={this.drawerToggleClickHandler} />
+                  {sideDrawerOpen ? (
+                    <SideDrawer isLoggedIn={isAuthenticated} />
+                  ) : null}
                   <div className="Gem_container">
-                    <Banner image={this.state.data.photos} />
+                    <Banner photos={photos} />
 
-                    <Story
-                      title={this.state.data.placeName}
-                      story={this.state.data.description}
-                      author={this.state.data.createdBy}
-                      gems={this.state.data.placeCreated}
-                    />
+                    <Story story={data} author={createdBy} />
                   </div>
                 </Fragment>
               ) : (

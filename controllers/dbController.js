@@ -42,7 +42,7 @@ module.exports = {
       const avatar = gravatar.url(email, {
         s: "200",
         r: "pg",
-        d: "mm"
+        d: "retro"
       });
 
       user = new models.User({
