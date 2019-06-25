@@ -4,6 +4,7 @@ import './Login.css';
 import { Consumer } from '../context';
 import API from '../API/userDB';
 import Spinner from '../Components/Spinner';
+import Navbar from '../Components/Navbar';
 
 class Login extends Component {
 	state = {
@@ -40,6 +41,7 @@ class Login extends Component {
 					const { dispatch, isAuthenticated, loading } = value;
 					return (
 						<Fragment>
+							<Navbar/>
 							{isAuthenticated ? (
 								<Redirect to="/dashboard" />
 							) : loading ? (
@@ -68,6 +70,18 @@ class Login extends Component {
 												Login
 											</button>
 										</form>
+										<p className="Login-signup-container">
+											<small>New to Hidden Gems? <a href="signup">Sign Up Here!</a></small>
+										</p>
+									</div>
+									<div className="Login-right-container">
+										<div className="Login-right-textbox">
+											<ul className="Login-right-list">
+												<li className="Login-right-bullets"><i className="fas fa-search"></i>Discover new places.</li>
+												<li className="Login-right-bullets"><i className="fas fa-book-open"></i>Create new stories.</li>
+												<li className="Login-right-bullets"><i className="fas fa-user-friends"></i>Share with your friends.</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							)}
