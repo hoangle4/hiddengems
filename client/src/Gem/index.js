@@ -2,13 +2,16 @@ import React, { Component, Fragment } from "react";
 
 import Banner from "./parts/Banner";
 import Story from "./parts/Story";
-import SideDrawer from "../Components/SideDrawer/SideDrawer";
+import Comment from "./parts/Comment";
+import GemNearby from "./parts/GemNearby";
 
 import Spinner from "../Components/Spinner";
 import { Consumer } from "../context";
+import placeDB from "../API/placeDB";
 
 import Toolbar from "../Components/Toolbar";
-import placeDB from "../API/placeDB";
+import SideDrawer from "../Components/SideDrawer/SideDrawer";
+
 import "./style.css";
 
 class Gem extends Component {
@@ -53,8 +56,9 @@ class Gem extends Component {
                   ) : null}
                   <div className="Gem_container">
                     <Banner photos={photos} />
-
                     <Story story={data} author={createdBy} />
+                    <GemNearby />
+                    <Comment />
                   </div>
                 </Fragment>
               ) : (

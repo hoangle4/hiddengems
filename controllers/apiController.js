@@ -52,15 +52,17 @@ module.exports = {
       resp.status(500).send("Server Error");
     }
   },
-  userSearch: async (req, resp) =>{
+  userSearch: async (req, resp) => {
     try {
       const results = await models.User.find({
-        firstName:req.query.firstName
-      }).select('-password -email').populate('placeCreated');
+        firstName: req.query.firstName
+      })
+        .select("-password -email")
+        .populate("placeCreated");
 
-      resp.json(results)
+      resp.json(results);
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   },
   findAllPlace: async (req, resp) => {
@@ -70,7 +72,10 @@ module.exports = {
   findOnePlace: async (req, resp) => {
     const results = await models.Gem.findById({
       _id: req.query.id
-    }).populate('createdBy');
+    }).populate({
+      path: "createdBy",
+      select: "-password -email"
+    });
     resp.json(results);
   }
 };
