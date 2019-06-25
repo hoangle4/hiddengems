@@ -1,82 +1,81 @@
-import React, { Component, Fragment } from "react";
-import Map from "../Map";
-import Toolbar from "../Components/Toolbar";
-import SideDrawer from "../Components/SideDrawer/SideDrawer";
-import Spinner from "../Components/Spinner";
-import MapGem from "../Components/MapGem";
-import db from "../API/placeDB";
-class index extends Component {
-  state = {
-    dataReady: false,
-    sideDrawerOpen: false,
-    isMarkerClicked: false,
-    isMarkerData: false,
-    sideStory: {},
-    markerData: []
-  };
+import React, { Component, Fragment } from 'react';
+import Map from '../Map';
+import Toolbar from '../Components/Toolbar';
+import SideDrawer from '../Components/SideDrawer/SideDrawer';
+import Spinner from '../Components/Spinner';
+import MapGem from '../Components/MapGem';
+import db from '../API/placeDB';
+import { calculateDistance } from '../Helper/calculateDistance';
 
-  componentWillMount = () => {
-    this.findAllPlace();
-  };
+class Home extends Component {
+	state = {
+		dataReady: false,
+		sideDrawerOpen: false,
+		isMarkerClicked: false,
+		isMarkerData: false,
+		sideStory: {},
+		markerData: []
+	};
 
-  findAllPlace = async () => {
-    const results = await db.findAllPlace();
-    this.setState({
-      markerData: results.data,
-      dataReady: true
-    });
-  };
+	componentWillMount = () => {
+		this.findAllPlace();
+	};
 
-  drawerToggleClickHandler = () => {
-    this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
-  };
+	findAllPlace = async () => {
+		const results = await db.findAllPlace();
+		this.setState({
+			markerData: results.data,
+			dataReady: true
+		});
+	};
 
-  handleMarkerClick = async id => {
-    const result = await this.state.markerData.filter(data => data._id === id);
-    this.setState({
-      sideStory: result[0],
-      isMarkerClicked: !this.state.isMarkerClicked
-    });
-  };
-  handleMapClick = e => {
-    if (this.state.isMarkerClicked) {
-      this.setState({
-        isMarkerClicked: false
-      });
-    }
+	drawerToggleClickHandler = () => {
+		this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
+	};
 
-    if (e) {
-      this.setState({ markerData: this.state.markerData.concat(e) });
-    }
-    return this.state.isMarkerClicked;
-  };
-  render() {
-    return (
-      <Fragment>
-        {/* <div>
+	handleMarkerClick = async (id) => {
+		const result = await this.state.markerData.filter((data) => data._id === id);
+		this.setState({
+			sideStory: result[0],
+			isMarkerClicked: !this.state.isMarkerClicked
+		});
+	};
+	handleMapClick = (e) => {
+		if (this.state.isMarkerClicked) {
+			this.setState({
+				isMarkerClicked: false
+			});
+		}
+
+		if (e) {
+			this.setState({ markerData: this.state.markerData.concat(e) });
+		}
+		return this.state.isMarkerClicked;
+	};
+	render() {
+		return (
+			<Fragment>
+				{/* <div>
           <Toolbar drawerClick={this.drawerToggleClickHandler} />
           {this.state.sideDrawerOpen ? <SideDrawer /> : null}
         </div> */}
 
-        {!this.state.dataReady ? (
-          <Spinner />
-        ) : (
-          <Fragment>
-            <Map
-              isMarkerClicked={this.state.isMarkerClicked}
-              handleMarkerClick={this.handleMarkerClick}
-              markerData={this.state.markerData}
-              handleMapClick={this.handleMapClick}
-            />
+				{!this.state.dataReady ? (
+					<Spinner />
+				) : (
+					<Fragment>
+						<Map
+							isMarkerClicked={this.state.isMarkerClicked}
+							handleMarkerClick={this.handleMarkerClick}
+							markerData={this.state.markerData}
+							handleMapClick={this.handleMapClick}
+						/>
 
-            <MapGem
-              data={this.state.sideStory}
-              isMarkerClicked={this.state.isMarkerClicked}
-            />
-          </Fragment>
-        )}
-      </Fragment>
-    );
-  }
+						<MapGem data={this.state.sideStory} isMarkerClicked={this.state.isMarkerClicked} />
+					</Fragment>
+				)}
+			</Fragment>
+		);
+	}
 }
-export default index;
+export default Home;
