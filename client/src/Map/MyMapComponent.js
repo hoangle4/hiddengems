@@ -1,111 +1,155 @@
-import React, { Fragment } from 'react';
-import { compose, lifecycle, withProps } from 'recompose';
-import { FaPlus } from 'react-icons/fa';
-import Spinner from '../Components/Spinner';
-import ViewCard from '../Components/OverLayView';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, StreetViewPanorama, OverlayView } from 'react-google-maps';
+import React, { Fragment } from "react";
+import { compose, lifecycle, withProps } from "recompose";
+import { FaPlus } from "react-icons/fa";
+import Spinner from "../Components/Spinner";
+import ViewCard from "../Components/OverLayView";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  StreetViewPanorama,
+  OverlayView
+} from "react-google-maps";
 
-import { mapBtn } from './StyleMap.css';
+import { mapBtn } from "./StyleMap.css";
 const getPixelPositionOffset = (width, height) => ({
-	x: -(width / 2),
-	y: -(height / 2)
+  x: -(width / 2),
+  y: -(height / 2)
 });
 
 const MyMapComponent = compose(
-	withProps({
-		googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${process.env.REACT_APP_GOOGLE_MAP_API}`,
-		loadingElement: <div style={{ height: '100%' }} />,
-		containerElement: <div style={{ height: '100vh' }} />,
-		mapElement: <div style={{ height: '100%' }} />
-	}),
-	lifecycle({
-		componentWillMount() {
-			const refs = {};
+  withProps({
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${
+      process.env.REACT_APP_GOOGLE_MAP_API
+    }`,
+    loadingElement: <div style={{ height: "100%" }} />,
+    containerElement: <div style={{ height: "100vh" }} />,
+    mapElement: <div style={{ height: "100%" }} />
+  }),
+  lifecycle({
+    componentWillMount() {
+      const refs = {};
 
-			this.setState({
-				position: null,
-				onPanoramaMounted: (ref) => {
-					refs.map = ref;
-				},
-
-				onPositionChanged: () => {
-					const position = refs.map.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.streetView.position;
-					return {
-						lat: position.lat(),
-						lng: position.lng()
-					};
-				}
-			});
-		},
-		componentDiMount() {
-			this.setState({ comReady: true });
-		}
-	}),
-	withScriptjs,
-	withGoogleMap
-)((props) => (
-	<Fragment>
-		{props.comReady ? (
-			<Spinner />
-		) : (
-			<GoogleMap defaultZoom={16} defaultCenter={props.latLng} onClick={props.onMapClick}>
-				<button onClick={props.handleAddStory} title="Add Story Here" style={mapBtn}>
-					<FaPlus />
-				</button>
-				<StreetViewPanorama
-					defaultPosition={props.latLng}
-					visible
-					ref={props.onPanoramaMounted}
-					onPositionChanged={() => props.handleViewPosition(props.onPositionChanged())}
-				>
-					{props.mapMarkers[0] &&
-						props.mapMarkers.map((position) => (
-							<OverlayView
-								id={position._id}
-								key={position._id}
-								position={position.coordinates[0]}
-								mapPaneName={OverlayView.OVERLAY_LAYER}
-								getPixelPositionOffset={getPixelPositionOffset}
-							>
-								<ViewCard data={position} onClick={() => props.onMarkerClick(position._id)} />
-							</OverlayView>
-						))}
-				</StreetViewPanorama>
-				{props.isMarkerShown && props.marker.map((position) => <Marker key={position} position={position} />)}
-				{props.mapMarkers[0] &&
-					props.mapMarkers.map((position) => (
-						<Marker
-							id={position._id}
-							key={position._id}
-							position={position.coordinates[0]}
-							onClick={() => props.onMarkerClick(position._id)}
-						/>
-					))}
-			</GoogleMap>
-		)}
-	</Fragment>
+      this.setState({
+        onPanoramaMounted: ref => {
+          refs.streetMap = ref;
+        },
+        onGoogleMapMounted: ref => {
+          refs.staticMap = ref;
+        },
+        onPositionChanged: () => {
+          const position =
+            refs.streetMap.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
+              .streetView.position;
+          return {
+            lat: position.lat(),
+            lng: position.lng()
+          };
+        },
+        getPositionOnDragEnd: () => {
+          const boundsPosition = refs.staticMap.getBounds();
+          const position = refs.staticMap.getCenter();
+          return {
+            bounds: {
+              sw: { lat: boundsPosition.na.j, lng: boundsPosition.ga.j },
+              ne: { lat: boundsPosition.na.l, lng: boundsPosition.ga.l }
+            },
+            lat: position.lat(),
+            lng: position.lng()
+          };
+        }
+      });
+    },
+    componentDiMount() {
+      this.setState({ comReady: true });
+    }
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props => (
+  <Fragment>
+    {props.comReady ? (
+      <Spinner />
+    ) : (
+      <GoogleMap
+        ref={props.onGoogleMapMounted}
+        defaultZoom={16}
+        defaultCenter={props.latLng}
+        onClick={props.onMapClick}
+        onDragEnd={() => props.onDragEnd(props.getPositionOnDragEnd())}
+      >
+        <button
+          onClick={props.handleAddStory}
+          title="Add Story Here"
+          style={mapBtn}
+        >
+          <FaPlus />
+        </button>
+        <StreetViewPanorama
+          defaultPosition={props.latLng}
+          visible
+          ref={props.onPanoramaMounted}
+          onPositionChanged={() =>
+            props.handleViewPosition(props.onPositionChanged())
+          }
+        >
+          {props.mapMarkers[0] &&
+            props.mapMarkers.map(position => (
+              <OverlayView
+                id={position._id}
+                key={position._id}
+                position={position.coordinates[0]}
+                mapPaneName={OverlayView.OVERLAY_LAYER}
+                getPixelPositionOffset={getPixelPositionOffset}
+              >
+                <ViewCard
+                  data={position}
+                  onClick={() => props.onMarkerClick(position._id)}
+                />
+              </OverlayView>
+            ))}
+        </StreetViewPanorama>
+        {props.isMarkerShown &&
+          props.marker.map(position => (
+            <Marker key={position} position={position} />
+          ))}
+        {props.mapMarkers[0] &&
+          props.mapMarkers.map(position => (
+            <Marker
+              id={position._id}
+              key={position._id}
+              position={position.coordinates[0]}
+              onClick={() => props.onMarkerClick(position._id)}
+            />
+          ))}
+      </GoogleMap>
+    )}
+  </Fragment>
 ));
 
 export const MyMap = ({
-	latLng,
-	isMarkerShown,
-	onMarkerClick,
-	onMapClick,
-	marker,
-	mapMarkers,
-	handleViewPosition,
-	handleAddStory
+  latLng,
+  isMarkerShown,
+  onMarkerClick,
+  onMapClick,
+  marker,
+  mapMarkers,
+  handleViewPosition,
+  handleAddStory,
+  onDragEnd
 }) => {
-	return (
-		<MyMapComponent
-			latLng={latLng}
-			isMarkerShown={isMarkerShown}
-			onMarkerClick={onMarkerClick}
-			onMapClick={onMapClick}
-			marker={marker}
-			mapMarkers={mapMarkers}
-			handleViewPosition={handleViewPosition}
-			handleAddStory={handleAddStory}
-		/>
-	);
+  return (
+    <MyMapComponent
+      latLng={latLng}
+      isMarkerShown={isMarkerShown}
+      onMarkerClick={onMarkerClick}
+      onMapClick={onMapClick}
+      marker={marker}
+      mapMarkers={mapMarkers}
+      handleViewPosition={handleViewPosition}
+      handleAddStory={handleAddStory}
+      onDragEnd={onDragEnd}
+    />
+  );
 };

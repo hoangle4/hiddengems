@@ -15,7 +15,5 @@ export const mapBtn = {
   bottom: "50%",
   top: "50%",
   right: "0%",
-  zIndex: 99,
-  transform: "translateX(100%)",
-  transform: "translateY(-50%)"
+  zIndex: 99
 };
