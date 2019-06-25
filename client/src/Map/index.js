@@ -42,10 +42,14 @@ class RenderMap extends PureComponent {
   };
 
   handleMapOnDragEnd = async latLng => {
+    const distance = await calculateDistance(
+      latLng.bounds.sw,
+      latLng.bounds.ne
+    );
     const results = await getCurrentLatLng(
       this.props.markerData,
       latLng,
-      10000
+      distance * 0.5
     );
     this.setState({ latLng, surroundMarkers: results });
   };

@@ -48,8 +48,13 @@ const MyMapComponent = compose(
           };
         },
         getPositionOnDragEnd: () => {
+          const boundsPosition = refs.staticMap.getBounds();
           const position = refs.staticMap.getCenter();
           return {
+            bounds: {
+              sw: { lat: boundsPosition.na.j, lng: boundsPosition.ga.j },
+              ne: { lat: boundsPosition.na.l, lng: boundsPosition.ga.l }
+            },
             lat: position.lat(),
             lng: position.lng()
           };
