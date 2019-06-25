@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 function OverLayView({
-  data: { dateCreated, description, photos, placeName }
+  data: { dateCreated, description, photos, placeName, distance }
 }) {
   return (
     <Fragment>
       <div
         style={{
-          width: "200px",
+          width: `${250 - distance / 2}px`,
           color: "#f2f2f2",
           background: "rgba(34,34,34,.6)"
         }}

@@ -4,7 +4,7 @@ import MapForms from "../Components/MapForms";
 import Spinner from "../Components/Spinner";
 import { Consumer } from "../context";
 import { MyMap } from "./MyMapComponent";
-import { calculateDistance, getCurrentLatLng } from "../Helper";
+import { calculateDistance, getCurrentRadiusMarker } from "../Helper";
 class RenderMap extends PureComponent {
   state = {
     locationReady: false,
@@ -37,7 +37,11 @@ class RenderMap extends PureComponent {
   };
 
   handleViewPosition = async latLng => {
-    const results = await getCurrentLatLng(this.props.markerData, latLng, 500);
+    const results = await getCurrentRadiusMarker(
+      this.props.markerData,
+      latLng,
+      500
+    );
     this.setState({ latLng, surroundMarkers: results });
   };
 
@@ -46,7 +50,8 @@ class RenderMap extends PureComponent {
       latLng.bounds.sw,
       latLng.bounds.ne
     );
-    const results = await getCurrentLatLng(
+
+    const results = await getCurrentRadiusMarker(
       this.props.markerData,
       latLng,
       distance * 0.5

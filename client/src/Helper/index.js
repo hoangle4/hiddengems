@@ -29,9 +29,11 @@ export const getUser = async (dispatch, payload) => {
   });
 };
 
-export const getCurrentLatLng = (markerData, latLng, distance) =>
+export const getCurrentRadiusMarker = (markerData, latLng, distance) =>
   markerData.filter(
-    marker => calculateDistance(latLng, marker.coordinates[0]) <= distance
+    marker =>
+      (marker.distance = calculateDistance(latLng, marker.coordinates[0])) <=
+      distance
   );
 
 export const calculateDistance = (pointA, pointB) => {
@@ -41,7 +43,7 @@ export const calculateDistance = (pointA, pointB) => {
   const latB = pointB.lat;
   const lngB = pointB.lng;
 
-  const R = 6371e3; // earth radius in meters 6371 if in kilomiters
+  const R = 6371e3; // earth radius in meters ---R = 6371e3 in meters R = 6371 if in kilomiters
   const φ1 = latA * (Math.PI / 180);
   const φ2 = latB * (Math.PI / 180);
   const Δφ = (latB - latA) * (Math.PI / 180);
