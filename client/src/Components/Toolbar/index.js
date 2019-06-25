@@ -18,12 +18,12 @@ class Toolbar extends Component {
   render() {
     return (
       <header className="Toolbar">
-        <nav className="Toolbar-navigation">
-          <h1 className="Toolbar-logo">
-            <Link className="Toolbar-logo" to="/">
+         <h1 className="Toolbar-logo">
+            <Link className="Toolbar-header" to="/">
               Hidden Gems
             </Link>
           </h1>
+        <nav className="Toolbar-navigation">
           {this.state.isNav ? <NavTab /> : null}
           <DrawerToggleButton click={this.props.drawerClick} />
         </nav>
