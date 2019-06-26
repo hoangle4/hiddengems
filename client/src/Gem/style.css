@@ -1,202 +1,213 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap");
 .Banner {
-  font-family: "Roboto Slab", serif;
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  text-align: center;
-  grid-column: 1;
-  grid-row: 1;
+	font-family: "Roboto Slab", serif;
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	text-align: center;
+	grid-column: 1;
+	grid-row: 1;
 }
 
 .Banner_image {
-  max-width: 100%;
-  background-size: contain;
-  border: 0.5px solid rgb(151, 149, 149);
-  border-radius: 0.5rem;
-  box-shadow: 1.7px 1.7px 1.7px rgb(151, 149, 149);
+	max-width: 100%;
+	background-size: contain;
+	border: 0.5px solid rgb(151, 149, 149);
+	border-radius: 0.5rem;
+	box-shadow: 1.7px 1.7px 1.7px rgb(151, 149, 149);
 }
 
 .Banner_img_box {
-  margin: 1rem;
+	margin: 1rem;
 }
 .Gem_container {
-  display: grid;
-  background-color: rgb(255, 255, 255);
-  font-size: 1rem;
+	display: grid;
+	background-color: rgb(255, 255, 255);
+	font-size: 1rem;
 }
 
 .Story_box {
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  text-align: center;
-  grid-column: 2;
-  grid-row: 1;
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	text-align: center;
+	grid-column: 2;
+	grid-row: 1;
 }
 
 .Story_box_container {
-  padding: 1rem;
+	padding: 1rem;
 }
 
 .Story_p {
-  font-size: 1.3rem;
-  word-wrap: normal;
-  word-spacing: 0.2rem;
-  text-indent: 2rem;
-  line-height: 2rem;
-  text-align: justify;
-  color: rgb(47, 76, 80);
+	font-size: 1.3rem;
+	word-wrap: normal;
+	word-spacing: 0.2rem;
+	text-indent: 2rem;
+	line-height: 2rem;
+	text-align: justify;
+	color: rgb(47, 76, 80);
 }
 
 .Story_h1,
-.Comment_h1 {
-  text-align: center;
-  font-size: 2rem;
-  color: rgb(47, 76, 80);
+.Comment_h1,
+.CommentList_h1 {
+	text-align: center;
+	font-size: 2rem;
+	color: rgb(47, 76, 80);
 }
 
 .Story_chip {
-  display: inline-flex;
-  flex-direction: row;
-  border: 0.5px solid rgb(151, 149, 149);
-  box-shadow: 1.7px 1.7px 1.7px rgb(151, 149, 149);
-  cursor: default;
-  height: 36px;
-  outline: none;
-  padding: 0;
-  font-size: 1rem;
-  font-family: "Open Sans", sans-serif;
-  white-space: nowrap;
-  align-items: center;
-  border-radius: 1rem;
-  vertical-align: middle;
-  text-decoration: none;
-  justify-content: center;
-  float: left;
+	display: inline-flex;
+	flex-direction: row;
+	border: 0.5px solid rgb(151, 149, 149);
+	box-shadow: 1.7px 1.7px 1.7px rgb(151, 149, 149);
+	cursor: default;
+	height: 36px;
+	outline: none;
+	padding: 0;
+	font-size: 1rem;
+	font-family: "Open Sans", sans-serif;
+	white-space: nowrap;
+	align-items: center;
+	border-radius: 1rem;
+	vertical-align: middle;
+	text-decoration: none;
+	justify-content: center;
+	float: left;
 }
 .Story_chip > a {
-  text-decoration: none;
-  color: rgb(68, 108, 114);
+	text-decoration: none;
+	color: rgb(68, 108, 114);
 }
 
 .Story_chip > a:hover {
-  color: rgb(47, 76, 80);
+	color: rgb(47, 76, 80);
 }
 
 .Story_chip_head {
-  display: flex;
-  position: relative;
-  overflow: hidden;
-  background-color: #32c5d2;
-  font-size: 1.25rem;
-  flex-shrink: 0;
-  align-items: center;
-  user-select: none;
-  border-radius: 50%;
-  justify-content: center;
-  width: 36px;
-  color: #fff;
-  height: 36px;
-  font-size: 20px;
-  margin-right: -4px;
-  text-decoration: none;
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	background-color: #32c5d2;
+	font-size: 1.25rem;
+	flex-shrink: 0;
+	align-items: center;
+	user-select: none;
+	border-radius: 50%;
+	justify-content: center;
+	width: 36px;
+	color: #fff;
+	height: 36px;
+	font-size: 20px;
+	margin-right: -4px;
+	text-decoration: none;
 }
 
 .Story_chip_content {
-  font-weight: bold;
-  cursor: inherit;
-  display: flex;
-  align-items: center;
-  user-select: none;
-  white-space: nowrap;
-  padding-left: 12px;
-  padding-right: 12px;
-  text-decoration: none;
+	font-weight: bold;
+	cursor: inherit;
+	display: flex;
+	align-items: center;
+	user-select: none;
+	white-space: nowrap;
+	padding-left: 12px;
+	padding-right: 12px;
+	text-decoration: none;
 }
 
 .Comment_box {
-  font-family: "Roboto Slab", serif;
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  grid-column: 2;
-  grid-row: 2;
+	font-family: "Roboto Slab", serif;
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	grid-column: 2;
+	grid-row: 2;
 }
 
 .Comment_h1 {
-  float: left;
+	float: left;
 }
 
 .Comment_input_wrapper,
 .Comment_textarea_wrapper {
-  width: 50%;
-  margin: 50px auto;
-  position: relative;
-  transition: all 2s ease-out;
+	width: 50%;
+	margin: 50px auto;
+	position: relative;
+	transition: all 2s ease-out;
 }
 .Comment_textarea_wrapper {
-  width: 80%;
+	width: 80%;
 }
 
 .Comment_input_wrapper::after,
 .Comment_textarea_wrapper::after {
-  content: attr(data-text);
-  font-size: 1.5rem;
-  line-height: 0;
-  height: 0;
-  max-width: 100%;
-  font-family: "Roboto, Arial, sans-serif";
-  border-bottom: 3px solid rgb(47, 76, 80);
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  overflow: hidden;
-  user-select: none;
-  color: transparent;
+	content: attr(data-text);
+	font-size: 1.5rem;
+	line-height: 0;
+	height: 0;
+	max-width: 100%;
+	font-family: "Roboto, Arial, sans-serif";
+	border-bottom: 3px solid rgb(47, 76, 80);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 3px;
+	overflow: hidden;
+	user-select: none;
+	color: transparent;
 }
 
 .Comment_input_wrapper:focus-within,
 .Comment_textarea_wrapper:focus-within {
-  border-top: 0.2px solid rgb(221, 221, 221);
-  border-right: 0.2px solid rgb(221, 221, 221);
-  border-left: 0.2px solid rgb(221, 221, 221);
+	border-top: 0.2px solid rgb(221, 221, 221);
+	border-right: 0.2px solid rgb(221, 221, 221);
+	border-left: 0.2px solid rgb(221, 221, 221);
 }
 
 .Comment_input,
 .Comment_textarea {
-  color: rgb(47, 76, 80);
-  border: none;
-  padding: 0;
-  border-radius: 0;
-  outline: none;
-  width: auto;
-  min-width: 100%;
-  font-size: 1.5rem;
-  line-height: 1em;
-  font-family: "Roboto, Arial, sans-serif";
-  border-bottom: 3px solid rgb(151, 149, 149);
-  background-color: transparent;
+	color: rgb(47, 76, 80);
+	border: none;
+	padding: 0;
+	border-radius: 0;
+	outline: none;
+	width: auto;
+	min-width: 100%;
+	font-size: 1.5rem;
+	line-height: 1em;
+	font-family: "Roboto, Arial, sans-serif";
+	border-bottom: 3px solid rgb(151, 149, 149);
+	background-color: transparent;
 }
 
 .Comment_textarea {
-  line-height: 1.3em;
-  height: 5rem;
+	line-height: 1.3em;
+	height: 5rem;
 }
 
 .Comment_button {
-  background: rgb(255, 255, 255);
-  border: 2px solid rgb(151, 149, 149);
-  color: rgb(68, 108, 114);
-  height: 3rem;
-  margin-top: 1rem;
-  width: 10rem;
+	background: rgb(255, 255, 255);
+	border: 2px solid rgb(151, 149, 149);
+	color: rgb(68, 108, 114);
+	height: 3rem;
+	margin-top: 1rem;
+	width: 10rem;
 }
 .Comment_button:hover {
-  background: rgb(151, 149, 149);
-  color: #fff;
-  cursor: pointer;
+	background: rgb(151, 149, 149);
+	color: #fff;
+	cursor: pointer;
 }
 
 .CommentList_box {
-  border-top: 2px solid rgb(151, 149, 149);
-  margin-top: 2rem;
+	border-top: 2px solid rgb(151, 149, 149);
+	margin-top: 2rem;
+	width: 100%;
+	grid-column: 2;
+	grid-row: 3;
+	clear: both;
+}
+
+.CommentList_commentbox {
+}
+
+.CommentList_h5 {
 }
