@@ -11,6 +11,13 @@ const db = {
   },
   findOnePlace: id => {
     return axios.get(`/api/findOnePlace?id=${id}`);
+  },
+  addComment: (title, message, placeID) => {
+    return axios.post("/db/addComment", {
+      title,
+      message,
+      placeID
+    });
   }
 };
 

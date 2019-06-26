@@ -92,5 +92,21 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
+  },
+  addComment: async (req, resp) => {
+    try {
+      const { title, message, placeID } = req.body;
+      const newComment = {
+        commentTitle: title,
+        commentMessage: message,
+        commentUser: req.user.id
+      };
+      const place = await models.Gem.findById(placeID);
+      place.comments.unshift(newComment);
+      const comment = place.save();
+      resp.json(comment);
+    } catch (err) {
+      console.error(err);
+    }
   }
 };

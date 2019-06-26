@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const dbController = require("../../controllers/dbController");
 const auth = require("../../middleware/auth");
-
-router.post("/createPlace", auth, dbController.createPlace);
-
+//@PUBLIC ROUTES
 router.post("/createUser", dbController.createUser);
 
+//@PRIVATE ROUTES
+router.post("/createPlace", auth, dbController.createPlace);
+router.post("/addComment", auth, dbController.addComment);
 router.post(
   "/updateUserCreatedPlace",
   auth,
   dbController.updateUserCreatedPlace
 );
+
 module.exports = router;

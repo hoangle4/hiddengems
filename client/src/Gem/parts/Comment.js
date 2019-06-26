@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-
-const Comment = () => {
+import React, { Fragment, useState } from "react";
+import placeDB from "../../API/placeDB";
+import CommentList from "./CommentList";
+const Comment = ({ placeID }) => {
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const handleOnChange = event => {
@@ -8,12 +9,17 @@ const Comment = () => {
     parentNode.setAttribute("data-text", value);
   };
 
-  const handleComment = event => {
-    console.log("commented");
+  const handleComment = async event => {
+    event.preventDefault();
+    const comment = await placeDB.addComment(title, message, placeID);
+    console.log(comment);
+    if (!comment) return console.error({ err: "Error Commenting" });
+    setTitle("");
+    setMessage("");
   };
   return (
     <div className="Comment_box">
-      <h1 className="Comment_h1"> Comments: </h1>
+      <h1 className="Comment_h1"> Comment </h1>
       <div className="Comment_input_wrapper" data-text="">
         <input
           name="title"
@@ -45,6 +51,7 @@ const Comment = () => {
       <button onClick={handleComment} className="Comment_button">
         Comment
       </button>
+      <CommentList />
     </div>
   );
 };

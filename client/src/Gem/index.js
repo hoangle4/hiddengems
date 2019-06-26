@@ -27,7 +27,11 @@ class Gem extends Component {
   getGem = async () => {
     const result = await placeDB.findOnePlace(this.props.match.params.id);
     if (!result) return;
-    this.setState({ data: result.data, dataReady: true });
+    this.setState({
+      data: result.data,
+      dataReady: true,
+      placeID: this.props.match.params.id
+    });
   };
 
   drawerToggleClickHandler = () => {
@@ -40,7 +44,8 @@ class Gem extends Component {
       dataReady,
       sideDrawerOpen,
       data: { photos, createdBy },
-      data
+      data,
+      placeID
     } = this.state;
     return (
       <Consumer>
@@ -58,7 +63,7 @@ class Gem extends Component {
                     <Banner photos={photos} />
                     <Story story={data} author={createdBy} />
                     <GemNearby />
-                    <Comment />
+                    <Comment placeID={placeID} />
                   </div>
                 </Fragment>
               ) : (
