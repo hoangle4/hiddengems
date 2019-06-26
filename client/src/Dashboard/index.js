@@ -1,28 +1,30 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
-import GemCards from "../Components/GemCards/";
-import Toolbar from "../Components/Toolbar";
-import SideDrawer from "../Components/SideDrawer/SideDrawer";
-import UserSearch from "../Components/UserSearch";
-import "./style.css";
-import { Consumer } from "../context";
-import UserBanner from "../Components/UserBanner";
-import Spinner from "../Components/Spinner";
-import exampleBackground from "./images/backgroundExample.jpg";
+
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import GemCards from '../Components/GemCards/';
+import Toolbar from '../Components/Toolbar';
+import SideDrawer from '../Components/SideDrawer/SideDrawer';
+import UserSearch from '../Components/UserSearch';
+import './style.css';
+import { Consumer } from '../context';
+import UserBanner from '../Components/UserBanner';
+import Spinner from '../Components/Spinner';
+import exampleBackground from './images/backgroundExample.jpg';
+
 
 class Dashboard extends Component {
-  state = {
-    sideDrawerOpen: false,
-    background: exampleBackground,
-    gems: []
-  };
+	state = {
+		sideDrawerOpen: false,
+		background: exampleBackground,
+		gems: []
+	};
 
-  drawerToggleClickHandler = () => {
-    this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
-  };
+	drawerToggleClickHandler = () => {
+		this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
+	};
 
-  getAuthenticate = async (dispatch, token) =>
-    dispatch({ type: "GET_USER", payload: token });
+	getAuthenticate = async (dispatch, token) => dispatch({ type: 'GET_USER', payload: token });
+
 
   render() {
     return (
