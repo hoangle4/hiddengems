@@ -6,7 +6,7 @@ import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import UserSearch from "../Components/UserSearch";
 import "./style.css";
 import { Consumer } from "../context";
-import UserBanner from "./parts/UserBanner";
+import UserBanner from "../Components/UserBanner";
 import Spinner from "../Components/Spinner";
 import exampleBackground from "./images/backgroundExample.jpg";
 
