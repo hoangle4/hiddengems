@@ -47,7 +47,10 @@ class Dashboard extends Component {
                         background={this.state.background}
                         user={user}
                       />
-                      <GemCards placeCreated={user.placeCreated} />
+                      <GemCards 
+                        placeCreated={user.placeCreated} 
+                        user = {user}
+                      />
                       <UserSearch />
                     </Fragment>
                   )}

@@ -27,7 +27,6 @@ class UserSearch extends Component {
   };
 
   render() {
-    console.log(this.state.users);
     const showUsers = this.state.users.length > 0;
     return (
       <div className="Search">
