@@ -1,14 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-function Banner(props) {
+const Banner = ({ photos }) => {
   return (
-    <div className="gemBanner">
-      <img className = "gemImage"
-        alt='Gem' 
-        src={props.image} 
-      />
+    <div className="Banner">
+      <div className="Banner_img_box">
+        <img className="Banner_image" alt="Gem" src={photos} />
+      </div>
     </div>
   );
-}
+};
 
 export default Banner;

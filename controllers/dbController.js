@@ -42,7 +42,7 @@ module.exports = {
       const avatar = gravatar.url(email, {
         s: "200",
         r: "pg",
-        d: "mm"
+        d: "retro"
       });
 
       user = new models.User({
@@ -80,7 +80,6 @@ module.exports = {
   },
   updateUserCreatedPlace: async (req, resp) => {
     try {
-      console.log("got here");
       const user = await models.User.findOneAndUpdate(
         { _id: req.user.id },
         {
@@ -89,8 +88,23 @@ module.exports = {
           }
         }
       );
-      console.log(user);
       resp.json(user);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  addComment: async (req, resp) => {
+    try {
+      const { title, message, placeID } = req.body;
+      const newComment = {
+        commentTitle: title,
+        commentMessage: message,
+        commentUser: req.user.id
+      };
+      const place = await models.Gem.findById(placeID);
+      place.comments.unshift(newComment);
+      const comment = place.save();
+      resp.json(comment);
     } catch (err) {
       console.error(err);
     }
