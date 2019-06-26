@@ -1,0 +1,43 @@
+.gemContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gemLink{
+    margin: 2%;
+    border: 0.5px solid #999;
+    padding: 1rem;
+    
+}
+
+.gemGroup.p{
+    font-size: 2vw;
+    width: 10%;
+}
+
+.gemBox{
+    width: 250px;
+    height: 350px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.gemName{
+    font-size: 3vw;
+}
+
+button{
+    padding: 1%;
+    margin: 1%;
+    background-color: rgb(95, 176, 252);
+}
+
+.gem{
+    width: 20vw;
+}
+
+.cardImage{
+    max-width: 100%;
+}
