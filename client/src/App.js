@@ -11,6 +11,8 @@ import Profile from "./Profile";
 import Gem from "./Gem";
 import Test from "./test.js";
 import Landing from "./Landing"
+
+import './App.css';
 class App extends Component {
   render() {
     return (

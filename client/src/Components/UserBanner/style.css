@@ -1,11 +1,17 @@
 .userBanner {
     display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0;
+    height: 25vh;
+    background: url(./gradient.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .profileImage{
-    width: 15%;
-    height: 15%;
+    height: 18vh;
+    border-radius: 150px;
 }

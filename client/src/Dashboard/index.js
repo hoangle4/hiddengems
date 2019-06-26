@@ -41,7 +41,7 @@ class Dashboard extends Component {
                     />
                   ) : (
                     <Fragment>
-                      <Toolbar drawerClick={this.drawerToggleClickHandler} />
+                      {/* <Toolbar drawerClick={this.drawerToggleClickHandler} /> */}
                       {this.state.sideDrawerOpen ? <SideDrawer /> : null}
                       <UserBanner
                         background={this.state.background}
