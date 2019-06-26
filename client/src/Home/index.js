@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Map from "../Map";
-// import Toolbar from "../Components/Toolbar";
-// import SideDrawer from "../Components/SideDrawer/SideDrawer";
+import Toolbar from "../Components/Toolbar";
+import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import Spinner from "../Components/Spinner";
 import MapGem from "../Components/MapGem";
 import db from "../API/placeDB";
