@@ -15,6 +15,15 @@ export default {
     console.log(firstName);
     return axios.get(`/api/userSearch?firstName=${firstName}`)
   },
+  userSearch2: _id => {
+    console.log(_id);
+    return axios.get(`/api/userSearch2?_id=${_id}`)
+  },
+
+  findOneUser: _id => {
+    console.log(_id);
+    return axios.get(`/api/userSearch2?_id=${_id}`)
+  },
 
   login: user => {
     console.log(user);

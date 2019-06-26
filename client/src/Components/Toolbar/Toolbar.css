@@ -1,7 +1,7 @@
 .Toolbar {
 	position: fixed;
 	background: none;
-	top: 0;
+	top: 60px;
 	left: 0;
 	font-family: 'Poiret One', cursive;
 	display: flex;
@@ -41,7 +41,6 @@
 	font-size: 2rem;
 	text-decoration: none;
 }
-
 .burger-icon {
 	cursor: pointer;
 }

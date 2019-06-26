@@ -68,6 +68,7 @@ class MapFrom extends Component {
     if (!results) return;
 
     const response = await userDB.updateUserCreatedPlace(results.data._id);
+    console.log(response);
     if (!response) return;
 
     this.props.updateMaker(results.data);
