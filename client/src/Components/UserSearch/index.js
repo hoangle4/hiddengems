@@ -49,22 +49,23 @@ class UserSearch extends Component {
         </div>
         {showUsers ? (
           <div className="Search-results">
-            <div className="Search-results-container">
               {this.state.users.map(user => (
                 <a 
                   key={user._id} href={`/userprofile/${user._id}`} 
                   className="profileLink"
                 >
-                  <h3>{user.firstName} {user.lastName}</h3>
-                  <img
-                    style={{ width: "200px", height: "200px" }}
-                    src={user.avatar}
-                    alt={user.firstName}
-                  />
-                  {/* <p classname="truncGem">{user.description}</p> */}
+                  <div className = "profileBox">
+                    <h3 className = "profileName">{user.firstName} {user.lastName}</h3>
+                    <img
+                      className = "profilePic"
+                      style={{ width: "200px", height: "200px" }}
+                      src={user.avatar}
+                      alt={user.firstName}
+                    />
+                    {/* <p classname="truncGem">{user.description}</p> */}
+                  </div>
                 </a>
               ))}
-            </div>
           </div>
         ) : (
           <div />
