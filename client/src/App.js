@@ -10,6 +10,7 @@ import Login from "./Login";
 import Profile from "./Profile";
 import Gem from "./Gem";
 import Test from "./test.js";
+import Landing from "./Landing"
 class App extends Component {
   render() {
     return (
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/userprofile" component={Profile} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/test" component={Test} />
+            <Route exact path="/landing" component={Landing} />
           </div>
         </Router>
       </Provider>
