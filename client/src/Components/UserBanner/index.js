@@ -9,10 +9,10 @@ function userBanner({
   return (
     <div
       className="userBanner"
-      style={{ backgroundImage: `URL('${background}')` }}
+      // style={{ backgroundImage: `URL('${background}')` }}
     >
       <img src={avatar} alt="smallProfile" className="profileImage" />
-      <div>
+      <div className="userBanner-display-info">
         <p>
           {firstName} {lastName}
         </p>
