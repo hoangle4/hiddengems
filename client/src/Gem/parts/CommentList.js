@@ -1,14 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import userDB from '../../API/userDB';
 const CommentList = ({ comments: { commentMessage, commentTitle, commentUser } }) => {
-	useEffect = () => {};
+	const [ user, setUser ] = useState('');
+	const getUser = async () => {
+		const user = await userDB.userSearch2(commentUser);
+		setUser(user.data[0]);
+	};
+	useEffect(() => {
+		getUser();
+	}, []);
+
 	return (
 		<div className="CommentList_commentbox">
 			<Link to={`/profile/${commentUser}`}>
-				<img className="Comment_list_img" src="..." alt="..." />
+				<img className="Comment_list_img" src={user.avatar} alt={commentTitle} />
 			</Link>
-			<h5 className="CommentList_h5">{commentTitle}</h5>
-			<p>{commentMessage}</p>
+			<div>
+				<h5 className="CommentList_h5">{commentTitle}</h5>
+				<p>{commentMessage}</p>
+			</div>
 		</div>
 	);
 };
