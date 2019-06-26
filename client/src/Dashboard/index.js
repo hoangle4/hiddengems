@@ -1,3 +1,4 @@
+
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import GemCards from '../Components/GemCards/';
@@ -9,6 +10,7 @@ import { Consumer } from '../context';
 import UserBanner from '../Components/UserBanner';
 import Spinner from '../Components/Spinner';
 import exampleBackground from './images/backgroundExample.jpg';
+
 
 class Dashboard extends Component {
 	state = {
