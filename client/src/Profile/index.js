@@ -7,6 +7,7 @@ import API from "../API/userDB";
 import "./style.css";
 import GemCards from "../Components/GemCards/";
 import UserBanner from "../Components/UserBanner"
+import UserSearch from "../Components/UserSearch";
 import exampleBackground from "../Dashboard/images/backgroundExample.jpg"
 
 
@@ -58,6 +59,7 @@ class Profile extends Component {
                   placeCreated={this.state.data[0].placeCreated}
                   user = {user}
                 />
+                <UserSearch />
                 </div>
 							):(
 								<div>data not ready</div>
