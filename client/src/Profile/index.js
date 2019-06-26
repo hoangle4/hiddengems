@@ -5,13 +5,19 @@ import { Consumer } from "../context";
 import Toolbar from "../Components/Toolbar";
 import API from "../API/userDB";
 import "./style.css";
+import GemCards from "../Components/GemCards/";
+import UserBanner from "../Components/UserBanner"
+import exampleBackground from "../Dashboard/images/backgroundExample.jpg"
+
 
 class Profile extends Component {
   state = {
     sideDrawerOpen: false,
     isLoggedIn: true,
     dataReady: false,
-    data: {}
+    data: {},
+
+    background: exampleBackground,
   };
   componentDidMount = () => {
     this.getUser();
@@ -43,7 +49,11 @@ class Profile extends Component {
 				  ) : null}
 				  		<div>
 							{dataReady ?(
-								<div>data is ready</div> 
+								<UserBanner
+                  background={this.state.background}
+                  user={this.state.data[0]._id}
+                />
+              // <div>data is ready></div>
 							):(
 								<div>data not ready</div>
 							)}
