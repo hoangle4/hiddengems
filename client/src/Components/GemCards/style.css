@@ -1,43 +1,89 @@
-.gemContainer{
+.GemCards-gemContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
-.gemLink{
+.GemCards-gemLink {
     margin: 2%;
-    border: 0.5px solid #999;
+    background: #6f70f5;
+    border-radius: 5px;
     padding: 1rem;
-    
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    transition: 0.2s;
 }
-
-.gemGroup.p{
-    font-size: 2vw;
-    width: 10%;
+.GemCards-gemLink:hover {
+    box-shadow: 0px 2px 5px rgba(25, 25, 25, 0.5)
 }
-
-.gemBox{
-    width: 250px;
-    height: 350px;
+.GemCards-gemBox {
+    width: 20vw;
+    height: 50vh;
     white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
 }
-.gemName{
-    font-size: 3vw;
+.GemCards-Image {
+    display: block;
+    margin: auto;
+    border-radius: 5px;
 }
-
-button{
-    padding: 1%;
-    margin: 1%;
+.GemCards-text-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 4%;
+    height: 20%;
+}
+.GemCards-Name {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+.GemCards-truncGem {
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+}
+.GemCards-button-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+.GemCards-editBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
     background-color: rgb(95, 176, 252);
+    transition: 0.3s all;
 }
-
-.gem{
-    width: 20vw;
+.GemCards-editBtn:hover {
+    cursor: pointer;
+    border-radius: 5px;
 }
-
-.cardImage{
-    max-width: 100%;
+.GemCards-deleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background: #df4a4a;
+    width: 60px;
+    height: 60px;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: 0.3s all;
+}
+.GemCards-deleteBtn:hover {
+    cursor: pointer;
+    border-radius: 5px;
 }
