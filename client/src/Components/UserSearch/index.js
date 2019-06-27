@@ -27,11 +27,11 @@ class UserSearch extends Component {
   };
 
   render() {
-    console.log(this.state.users);
     const showUsers = this.state.users.length > 0;
     return (
       <div className="Search">
         <div className="Search-container">
+          <h1>Search for Fellow Explorers</h1>
           <form className="Search-form" onSubmit={this.userSearch}>
             <h3 className="Search-input-label">First Name</h3>
             <input
@@ -43,7 +43,7 @@ class UserSearch extends Component {
               onChange={this.handleOnChange}
             />
             <button className="Search-submit-btn" type="submit">
-              Search for Portlandian
+              Search
             </button>
           </form>
         </div>

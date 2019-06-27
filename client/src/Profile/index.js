@@ -7,6 +7,7 @@ import API from "../API/userDB";
 import "./style.css";
 import GemCards from "../Components/GemCards/";
 import UserBanner from "../Components/UserBanner"
+import UserSearch from "../Components/UserSearch";
 import exampleBackground from "../Dashboard/images/backgroundExample.jpg"
 
 
@@ -38,7 +39,7 @@ class Profile extends Component {
     return (
 		<Consumer>
         {value => {
-          const { isAuthenticated, loading } = value;
+          const { isAuthenticated, loading, user } = value;
           return (
             <Fragment>
               {!loading && isAuthenticated && this.state.dataReady ? (
@@ -49,11 +50,17 @@ class Profile extends Component {
 				  ) : null}
 				  		<div>
 							{dataReady ?(
+                <div>
 								<UserBanner
                   background={this.state.background}
-                  user={this.state.data[0]._id}
+                  user={this.state.data[0]}
                 />
-              // <div>data is ready></div>
+                <GemCards 
+                  placeCreated={this.state.data[0].placeCreated}
+                  user = {user}
+                />
+                <UserSearch />
+                </div>
 							):(
 								<div>data not ready</div>
 							)}
