@@ -1,7 +1,7 @@
 .Toolbar {
-	position: fixed;
+	position: absolute;
 	background: none;
-	top: 60px;
+	top: 0;
 	left: 0;
 	font-family: 'Poiret One', cursive;
 	display: flex;

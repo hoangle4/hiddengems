@@ -1,15 +1,15 @@
-
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import GemCards from '../Components/GemCards/';
-import Toolbar from '../Components/Toolbar';
-import SideDrawer from '../Components/SideDrawer/SideDrawer';
-import UserSearch from '../Components/UserSearch';
-import './style.css';
-import { Consumer } from '../context';
-import UserBanner from '../Components/UserBanner';
-import Spinner from '../Components/Spinner';
-import exampleBackground from './images/backgroundExample.jpg';
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
+import GemCards from "../Components/GemCards/";
+import Toolbar from "../Components/Toolbar";
+import SideDrawer from "../Components/SideDrawer/SideDrawer";
+import UserSearch from "../Components/UserSearch";
+import "./style.css";
+import { Consumer } from "../context";
+import UserBanner from "../Components/UserBanner";
+import Spinner from "../Components/Spinner";
+import BubbleNav from "../Components/BubbleNav"
+import exampleBackground from "./images/backgroundExample.jpg";
 
 
 class Dashboard extends Component {
@@ -43,7 +43,7 @@ class Dashboard extends Component {
                     />
                   ) : (
                     <Fragment>
-                      <Toolbar drawerClick={this.drawerToggleClickHandler} />
+                      {/* <Toolbar drawerClick={this.drawerToggleClickHandler} /> */}
                       {this.state.sideDrawerOpen ? <SideDrawer /> : null}
                       <UserBanner
                         background={this.state.background}
@@ -67,9 +67,12 @@ class Dashboard extends Component {
                       <Link to="/signup">sign up</Link> to create place.
                     </p>
                   </div>
+                  
                 </Fragment>
               )}
+              <BubbleNav />
             </div>
+            
           );
         }}
       </Consumer>
