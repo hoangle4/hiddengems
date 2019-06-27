@@ -6,7 +6,11 @@
 }
 .GemCards-gemLink {
     margin: 2%;
-    background: #6f70f5;
+    background: url('./Venice.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     border-radius: 5px;
     padding: 1rem;
     color: white;
