@@ -4,6 +4,7 @@ const SearchForm = () => {
 	const [ cityInput, setCityInput ] = useState('');
 	const [ stateInput, setStateInput ] = useState('');
 	const [ zipcodeInput, setZipcodeInput ] = useState('');
+	const [ latLngResult, setlatLngResult ] = useState({ lat: '', lng: '' });
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
@@ -15,6 +16,10 @@ const SearchForm = () => {
 			}
 		);
 		const latLng = await results.json();
+		setlatLngResult({
+			lat: latLng.results[0].geometry.location.lat,
+			lng: latLng.results[0].geometry.location.lng
+		});
 		console.log(latLng);
 	};
 	return (
