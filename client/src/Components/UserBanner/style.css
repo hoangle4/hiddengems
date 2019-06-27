@@ -1,11 +1,19 @@
 .userBanner {
+    font-family: 'Fugaz One', cursive;
     display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    
+    justify-content: space-around;
+    align-items: center;
+    background: url(./gradient.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 25vh;
 }
-
-.profileImage{
-    width: 15%;
-    height: 15%;
+.profileImage {
+    height: 20vh;
+    border-radius: 150px;
+}
+.userBanner-display-info {
+    color: white;
 }
