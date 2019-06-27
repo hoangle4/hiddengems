@@ -8,6 +8,7 @@ import "./style.css";
 import { Consumer } from "../context";
 import UserBanner from "../Components/UserBanner";
 import Spinner from "../Components/Spinner";
+import BubbleNav from "../Components/BubbleNav"
 import exampleBackground from "./images/backgroundExample.jpg";
 
 class Dashboard extends Component {
@@ -62,9 +63,12 @@ class Dashboard extends Component {
                       <Link to="/signup">sign up</Link> to create place.
                     </p>
                   </div>
+                  
                 </Fragment>
               )}
+              <BubbleNav />
             </div>
+            
           );
         }}
       </Consumer>
