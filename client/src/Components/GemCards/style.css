@@ -18,6 +18,7 @@
 }
 
 .gemBox{
+    margin:auto;
     width: 250px;
     height: 350px;
     white-space: nowrap; 

@@ -108,5 +108,16 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
-  }
+  },
+  deletePlace: async (req, resp) => {
+		try{
+			await models.Gem
+				.deleteOne({
+					id:req.query.id
+				});
+			resp.status(200).send("Deleted Gem")
+		} catch (err) {
+			console.log(err);
+		}
+	},
 };

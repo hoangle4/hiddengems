@@ -77,5 +77,5 @@ module.exports = {
 			})
 			.populate('createdBy');
 		resp.json(results);
-	}
+	},
 };

@@ -1,12 +1,15 @@
+import './style.css';
 
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Consumer } from '../context';
+import placeDB from "../API/placeDB";
+import userDB from "../API/userDB";
+
 import GemCards from '../Components/GemCards/';
 import Toolbar from '../Components/Toolbar';
 import SideDrawer from '../Components/SideDrawer/SideDrawer';
 import UserSearch from '../Components/UserSearch';
-import './style.css';
-import { Consumer } from '../context';
 import UserBanner from '../Components/UserBanner';
 import Spinner from '../Components/Spinner';
 import exampleBackground from './images/backgroundExample.jpg';
@@ -16,7 +19,7 @@ class Dashboard extends Component {
 	state = {
 		sideDrawerOpen: false,
 		background: exampleBackground,
-		gems: []
+    gems: [],
 	};
 
 	drawerToggleClickHandler = () => {
@@ -25,6 +28,12 @@ class Dashboard extends Component {
 
 	getAuthenticate = async (dispatch, token) => dispatch({ type: 'GET_USER', payload: token });
 
+  deleteClick = async (id) => {
+    console.log( id );
+    const results = await placeDB.deletePlace(id);    
+    const newState = await this.state.gems.filter(gems => id !== gems.id);
+    this.setState({ gems: newState });
+  };
 
   render() {
     return (
@@ -52,6 +61,7 @@ class Dashboard extends Component {
                       <GemCards 
                         placeCreated={user.placeCreated} 
                         user = {user}
+                        deleteClick={this.deleteClick}
                       />
                       <UserSearch />
                     </Fragment>
