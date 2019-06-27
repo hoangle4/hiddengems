@@ -47,30 +47,35 @@ module.exports = {
 				})
 				.select('-password -email')
 				.populate('placeCreated');
-      resp.json(results)
-    } catch (err) {
-      console.error(err)
-    }
-  },
-  userSearch2: async (req, resp) =>{
-    try {
-      const results = await models.User.find({
-        _id:req.query._id
-      }).select('-password -email').populate('placeCreated');
+			resp.json(results);
+		} catch (err) {
+			console.error(err);
+		}
+	},
+	userSearch2: async (req, resp) => {
+		try {
+			const results = await models.User
+				.find({
+					_id: req.query._id
+				})
+				.select('-password -email')
+				.populate('placeCreated');
 
-      resp.json(results)
-    } catch (err) {
-      console.error(err)
-    }
-  },
-  findAllPlace: async (req, resp) => {
-    const results = await models.Gem.find();
-    resp.json(results);
-  },
-  findOnePlace: async (req, resp) => {
-    const results = await models.Gem.findById({
-      _id: req.query.id
-    }).populate('createdBy');
-    resp.json(results);
-  }
+			resp.json(results);
+		} catch (err) {
+			console.error(err);
+		}
+	},
+	findAllPlace: async (req, resp) => {
+		const results = await models.Gem.find();
+		resp.json(results);
+	},
+	findOnePlace: async (req, resp) => {
+		const results = await models.Gem
+			.findById({
+				_id: req.query.id
+			})
+			.populate('createdBy');
+		resp.json(results);
+	}
 };

@@ -11,19 +11,20 @@ import Spinner from "../Components/Spinner";
 import BubbleNav from "../Components/BubbleNav"
 import exampleBackground from "./images/backgroundExample.jpg";
 
+
 class Dashboard extends Component {
-  state = {
-    sideDrawerOpen: false,
-    background: exampleBackground,
-    gems: []
-  };
+	state = {
+		sideDrawerOpen: false,
+		background: exampleBackground,
+		gems: []
+	};
 
-  drawerToggleClickHandler = () => {
-    this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
-  };
+	drawerToggleClickHandler = () => {
+		this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
+	};
 
-  getAuthenticate = async (dispatch, token) =>
-    dispatch({ type: "GET_USER", payload: token });
+	getAuthenticate = async (dispatch, token) => dispatch({ type: 'GET_USER', payload: token });
+
 
   render() {
     return (
@@ -48,7 +49,10 @@ class Dashboard extends Component {
                         background={this.state.background}
                         user={user}
                       />
-                      <GemCards placeCreated={user.placeCreated} />
+                      <GemCards 
+                        placeCreated={user.placeCreated} 
+                        user = {user}
+                      />
                       <UserSearch />
                     </Fragment>
                   )}

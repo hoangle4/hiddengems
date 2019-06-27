@@ -3,7 +3,10 @@ import React from "react";
 import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function GemCards({ placeCreated }) {
+function GemCards({ placeCreated, user }) {
+  const showCrud = (user._id === placeCreated[0].createdBy)
+  console.log(showCrud);
+
   return (
     <div className="GemCards-gemContainer">
       {placeCreated.map(place => (
