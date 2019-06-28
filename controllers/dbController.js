@@ -108,5 +108,15 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
-  }
+  },
+  deletePlace: async (req, resp) => {
+
+		try{
+			const result = await models.Gem.findByIdAndDelete({_id:req.query.id})
+        
+			resp.json({gem:req.query.id})
+		} catch (err) {
+			console.log(err);
+		}
+	},
 };
