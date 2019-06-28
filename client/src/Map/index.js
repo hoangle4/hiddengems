@@ -20,26 +20,27 @@ class RenderMap extends PureComponent {
 	};
 
 	getPosition = async () => {
-		await this.setState({
-			latLng: this.props.latLng,
-			locationReady: true
-		});
-
-		// navigator.geolocation.getCurrentPosition(
-		//   position => {
-		//     this.setState({
-		//       latLng: {
-		//         lng: position.coords.longitude,
-		//         lat: position.coords.latitude
-		//       },
-		//       locationReady: true
-		//     });
-		//   },
-		//   err => console.error(err.message),
-		//   {
-		//     enableHighAccuracy: true
-		//   }
-		// );
+		if (this.props.latLng.lat && this.props.latLng.lng)
+			await this.setState({
+				latLng: this.props.latLng,
+				locationReady: true
+			});
+		else
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					this.setState({
+						latLng: {
+							lng: position.coords.longitude,
+							lat: position.coords.latitude
+						},
+						locationReady: true
+					});
+				},
+				(err) => console.error(err.message),
+				{
+					enableHighAccuracy: true
+				}
+			);
 	};
 
 	handleViewPosition = async (latLng) => {
