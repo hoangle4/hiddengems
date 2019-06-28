@@ -13,7 +13,7 @@ const BubbleNav = () => {
 					<Fragment>
 						<div className="BubbleNav">
 							<div className="BubbleNav-lower-bubble">
-								<Link to="/">
+								<Link to="/map">
 									<i className="fas fa-home" />
 								</Link>
 							</div>
