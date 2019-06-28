@@ -80,10 +80,14 @@ function FormGroup({
                     value={category}
                     onChange={handleOnChange}
                   >
-                    <option value="restaurants">Restaurants</option>
+                    <option value=""></option>
                     <option value="auto">Auto</option>
-                    <option value="bars">Bars</option>
+                    <option value="bars">Bar</option>
+                    <option value="coffeeshop">Coffee Shop</option>
                     <option value="reacreationalarea">Recreational Area</option>
+                    <option value="restaurants">Restaurant</option>
+                    <option value="park">Park</option>
+                    <option value="specialist">Specialist</option>
                   </select>
                 </div>
                 <div className="input-container">
