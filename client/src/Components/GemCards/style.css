@@ -15,7 +15,7 @@
     padding: 1rem;
     color: white;
     text-decoration: none;
-    height: 100%;
+    height: 375px;
     transition: 0.2s;
 }
 .GemCards-gemLink:hover {
@@ -47,6 +47,8 @@
     width: 100%;
     text-align: center;
     margin: 0;
+    text-decoration: none;
+    color: white;
 }
 .GemCards-truncGem {
     font-size: 0.8rem;
