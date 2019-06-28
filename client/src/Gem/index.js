@@ -13,6 +13,8 @@ import placeDB from '../API/placeDB';
 import Toolbar from '../Components/Toolbar';
 import SideDrawer from '../Components/SideDrawer/SideDrawer';
 
+import BubbleNav from '../Components/BubbleNav';
+
 import './style.css';
 
 class Gem extends Component {
@@ -50,13 +52,16 @@ class Gem extends Component {
 						<Fragment>
 							{!loading && isAuthenticated && dataReady ? (
 								<Fragment>
-									<Toolbar drawerClick={this.drawerToggleClickHandler} />
-									{sideDrawerOpen ? <SideDrawer isLoggedIn={isAuthenticated} /> : null}
+									
+									{/* <Toolbar drawerClick={this.drawerToggleClickHandler} />
+									{sideDrawerOpen ? <SideDrawer isLoggedIn={isAuthenticated} /> : null} */}
 									<div className="Gem_container">
-										<Banner photos={photos} />
-										<Story story={data} author={createdBy} />
-										<GemNearby />
-										<Comment placeID={placeID} />
+										<div className="Gem-Header">
+											<Story story={data} author={createdBy} photos={photos} />
+											{/* <Banner photos={photos} /> */}
+											{/* <GemNearby /> */}
+										</div>	
+											<Comment placeID={placeID} />
 										<div className="CommentList_box">
 											<h1 className="CommentList_h1"> Comments </h1>
 											{comments.length !== 0 ? (
@@ -81,6 +86,7 @@ class Gem extends Component {
 									</p>
 								</div>
 							)}
+							<BubbleNav />
 						</Fragment>
 					);
 				}}

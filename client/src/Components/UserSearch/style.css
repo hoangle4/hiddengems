@@ -9,6 +9,10 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    /* border: 1px solid #202020; */
+    -webkit-box-shadow: 0px -1px 6px rgba(25, 25, 25, 0.5);
+    -moz-box-shadow: 0px -1px 6px rgba(25, 25, 25, 0.5);
+    box-shadow: 0px -1px 6px rgba(25, 25, 25, 0.5);
 }
 .Search-container {
     display: flex;
