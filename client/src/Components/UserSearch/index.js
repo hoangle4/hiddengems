@@ -33,7 +33,7 @@ class UserSearch extends Component {
         <div className="Search-container">
           <h2 className="Search-header">Search for Fellow Explorers</h2>
           <form className="Search-form" onSubmit={this.userSearch}>
-            <h3 className="Search-input-label">First Name</h3>
+            {/* <h3 className="Search-input-label">First Name</h3> */}
             <input
               required
               className="Search-form-field"
@@ -70,7 +70,6 @@ class UserSearch extends Component {
         ) : (
           <div />
         )}
-          ;
       </div>
     );
   }

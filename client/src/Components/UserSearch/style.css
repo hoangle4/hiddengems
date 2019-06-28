@@ -1,6 +1,14 @@
-.Search{
-    background: rgb(0, 0, 0);
+.Search {
+    background: url(./gradient.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     font-family: 'Fugaz One', cursive;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 .Search-container {
     display: flex;
@@ -18,19 +26,39 @@
 }
 
 .Search-form {
-    /* width: 60%;
-    padding: 0 10%;
-    margin: 0 10%; */
+
 }
 
 .Search-form-field {
-    /* width: 80%;
-    height: 3em; */
+    margin: 0.3rem;
+    border-radius: 5px;
+    padding: 0 1rem;
+    width: 20vw;
+    height: 1.9rem;
+    border-width: 1px;
+    font-size: 1.0rem;
+    border-style: none;
+    transition: 0.4s all;
+}
+.Search-form-field:hover {
+    box-shadow: 1px 3px 0px #f65d82;
 }
 
 .Search-submit-btn {
-    /* padding:2%;
-    background-color: rgb(95, 176, 252); */
+    width: 20vw;
+    height: 1.9rem;
+    border-radius: 5px;
+    border-style: none;
+    border-width: 0px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    background: rgb(112, 112, 245);
+    color: white;
+    transition: 0.4s all cubic-bezier(.7,1.34,.77,.74);
+}
+.Search-submit-btn:hover {
+    cursor: pointer;
+    box-shadow: 1px 3px 0px #f65d82;
 }
 
 .Search-results {

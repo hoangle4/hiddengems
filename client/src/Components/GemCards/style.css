@@ -23,12 +23,14 @@
 }
 .GemCards-gemBox {
     width: 20vw;
-    height: 375px;
+    height: 100%;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .GemCards-Image {
+    max-width: 100%;
+    height: auto;
     display: block;
     margin: auto;
     border-radius: 5px;
