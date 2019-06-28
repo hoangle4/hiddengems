@@ -6,6 +6,9 @@ const db = {
       place
     });
   },
+  deletePlace:id => {
+    return axios.delete(`/db/deletePlace?id=${id}`);
+  },
   findAllPlace: () => {
     return axios.get("/api/findAllPlace");
   },
@@ -18,7 +21,7 @@ const db = {
       message,
       placeID
     });
-  }
+  },
 };
 
 export default db;
