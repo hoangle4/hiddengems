@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-
+import { Link } from 'react-router-dom';
 import Banner from './parts/Banner';
 import Story from './parts/Story';
 import Comment from './parts/Comment';
@@ -74,7 +74,12 @@ class Gem extends Component {
 									</div>
 								</Fragment>
 							) : (
-								<Spinner onLoad={this.getGem} />
+								<div onLoad={this.getGem}>
+									<p style={{ textAlign: 'center' }}>
+										You are not logged in. Please <Link to="/login">login</Link> or{' '}
+										<Link to="/signup">sign up</Link> to create place.
+									</p>
+								</div>
 							)}
 						</Fragment>
 					);
