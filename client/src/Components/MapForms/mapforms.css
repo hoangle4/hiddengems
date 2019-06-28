@@ -101,3 +101,13 @@ h5 {
   top: 0;
   opacity: 0;
 }
+
+.x_btn {
+  float: right;
+  margin-right: 1rem;
+  color: red;
+  border: 0.5px rgb(255, 180, 180) solid;
+  padding: 2px;
+  cursor: pointer;
+  background: white;
+}

@@ -5,11 +5,10 @@ import { Consumer } from "../context";
 import Toolbar from "../Components/Toolbar";
 import API from "../API/userDB";
 import "./style.css";
-import GemCards from "../Components/GemCards/";
-import UserBanner from "../Components/UserBanner"
+import GemCards from "../Components/GemCards";
+import UserBanner from "../Components/UserBanner";
 import UserSearch from "../Components/UserSearch";
-import exampleBackground from "../Dashboard/images/backgroundExample.jpg"
-
+import exampleBackground from "../Dashboard/images/backgroundExample.jpg";
 
 class Profile extends Component {
   state = {
@@ -18,7 +17,7 @@ class Profile extends Component {
     dataReady: false,
     data: {},
 
-    background: exampleBackground,
+    background: exampleBackground
   };
   componentDidMount = () => {
     this.getUser();
@@ -35,9 +34,9 @@ class Profile extends Component {
 
   render() {
     console.log(this.state.data);
-	const dataReady = this.state.dataReady;
+    const dataReady = this.state.dataReady;
     return (
-		<Consumer>
+      <Consumer>
         {value => {
           const { isAuthenticated, loading, user } = value;
           return (
@@ -47,24 +46,24 @@ class Profile extends Component {
                   <Toolbar drawerClick={this.drawerToggleClickHandler} />
                   {this.state.sideDrawerOpen ? (
                     <SideDrawer isLoggedIn={this.state.isLoggedIn} />
-				  ) : null}
-				  		<div>
-							{dataReady ?(
-                <div>
-								<UserBanner
-                  background={this.state.background}
-                  user={this.state.data[0]}
-                />
-                <GemCards 
-                  placeCreated={this.state.data[0].placeCreated}
-                  user = {user}
-                />
-                <UserSearch />
-                </div>
-							):(
-								<div>data not ready</div>
-							)}
-						</div>
+                  ) : null}
+                  <div>
+                    {dataReady ? (
+                      <div>
+                        <UserBanner
+                          background={this.state.background}
+                          user={this.state.data[0]}
+                        />
+                        <GemCards
+                          placeCreated={this.state.data[0].placeCreated}
+                          user={user}
+                        />
+                        <UserSearch />
+                      </div>
+                    ) : (
+                      <div>data not ready</div>
+                    )}
+                  </div>
                 </Fragment>
               ) : (
                 <Spinner getGem={this.getGem} />
@@ -73,10 +72,8 @@ class Profile extends Component {
           );
         }}
       </Consumer>
-
-	)	     
-  };
+    );
+  }
 }
 
 export default Profile;
-

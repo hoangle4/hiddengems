@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Spinner from "../Spinner";
+import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Consumer } from "../../context";
 
@@ -12,7 +13,8 @@ function FormGroup({
   description,
   handleOnChange,
   handleOnClick,
-  handleFileChange
+  handleFileChange,
+  handleOnFormClose
 }) {
   return (
     <Consumer>
@@ -26,8 +28,10 @@ function FormGroup({
               <Fragment>
                 <h5>
                   Place Details
-                  <span className="x_btn" style={{ cursor: "pointer" }}>
-                    <small>X</small>
+                  <span style={{ cursor: "pointer" }}>
+                    <button className="x_btn" onClick={handleOnFormClose}>
+                      <FaTimes />
+                    </button>
                   </span>
                 </h5>
                 <div className="input-container">
