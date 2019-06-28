@@ -76,13 +76,12 @@ const MyMapComponent = compose(
         ref={props.onGoogleMapMounted}
         defaultZoom={13}
         defaultCenter={props.latLng}
-        onDrag={() => props.onDragEnd(props.getPositionOnDragEnd())}
+        onDragEnd={() => props.onDragEnd(props.getPositionOnDragEnd())}
       >
-        <Marker
-          position={props.latLng}
-          icon="/pin_location.png"
-          size={{ width: "50px", height: "50px" }}
+        <img
+          src="/pin_location.png"
           onClick={props.onCenterMapClick}
+          className="MyMapComponent_pin_img"
         />
         <button
           onClick={props.handleAddStory}
@@ -100,7 +99,7 @@ const MyMapComponent = compose(
         </button>
         {props.isStreetView ? (
           <StreetViewPanorama
-            position={props.latLng}
+            defaultPosition={props.latLng}
             visible
             ref={props.onPanoramaMounted}
             onPositionChanged={() =>

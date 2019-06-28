@@ -11,6 +11,7 @@ class RenderMap extends PureComponent {
     locationReady: false,
     latLng: {},
     marker: [],
+    distance: 7000,
     surroundMarkers: [],
     isMarkerShown: false,
     isStreetView: false,
@@ -47,11 +48,10 @@ class RenderMap extends PureComponent {
   };
 
   getSurroundMarkers = async () => {
-    console.log("click");
     const results = await getCurrentRadiusMarker(
       this.props.markerData,
       this.state.latLng,
-      10000
+      this.state.distance
     );
     this.setState({ surroundMarkers: results, areSurroundMarkers: true });
   };
@@ -70,13 +70,11 @@ class RenderMap extends PureComponent {
       latLng.bounds.sw,
       latLng.bounds.ne
     );
-
-    const results = await getCurrentRadiusMarker(
-      this.props.markerData,
+    await this.setState({
       latLng,
-      distance * 0.5
-    );
-    this.setState({ latLng, surroundMarkers: results });
+      distance: distance * 0.5,
+      areSurroundMarkers: false
+    });
   };
 
   handleAddStory = async () => {
@@ -146,6 +144,7 @@ class RenderMap extends PureComponent {
                     handleViewPosition={this.handleViewPosition}
                     handleAddStory={this.handleAddStory}
                     onDragEnd={this.handleMapOnDragEnd}
+                    handleMapOnDrag={this.handleMapOnDrag}
                     isStreetView={isStreetView}
                     handleStreetView={this.handleStreetView}
                     onCenterMapClick={this.onCenterMapClick}

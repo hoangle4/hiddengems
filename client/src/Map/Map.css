@@ -46,6 +46,15 @@
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
   z-index: 99;
 }
+.MyMapComponent_pin_img {
+  width: 43px;
+  position: absolute;
+  bottom: 50%;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  z-index: 99;
+}
 
 .RedoSearch_Button {
   background: rgba(34, 34, 34, 0.7);
