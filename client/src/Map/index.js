@@ -11,19 +11,20 @@ class RenderMap extends PureComponent {
 		latLng: {},
 		marker: [],
 		surroundMarkers: [],
-		isMarkerShown: false
+		isMarkerShown: false,
+		isStreetView: false
 	};
 
-	componentDidMount = async () => {
+	componentDidMount = () => {
 		this.getPosition();
 	};
 
-	getPosition = () => {
-		console.log(this.props.latLng);
-		this.setState({
+	getPosition = async () => {
+		await this.setState({
 			latLng: this.props.latLng,
 			locationReady: true
 		});
+
 		// navigator.geolocation.getCurrentPosition(
 		//   position => {
 		//     this.setState({
@@ -77,6 +78,12 @@ class RenderMap extends PureComponent {
 		}
 	};
 
+	handleStreetView = async () => [
+		this.setState({
+			isStreetView: !this.state.isStreetView
+		})
+	];
+
 	handleFormClick = async (e) => {
 		this.setState({
 			isMarkerShown: !this.state.isMarkerShown
@@ -84,7 +91,7 @@ class RenderMap extends PureComponent {
 		this.props.handleMapClick(e);
 	};
 	render() {
-		const { latLng, marker, isMarkerShown, locationReady } = this.state;
+		const { latLng, marker, isMarkerShown, locationReady, isStreetView } = this.state;
 		return (
 			<Consumer>
 				{(value) => {
@@ -104,6 +111,8 @@ class RenderMap extends PureComponent {
 										handleViewPosition={this.handleViewPosition}
 										handleAddStory={this.handleAddStory}
 										onDragEnd={this.handleMapOnDragEnd}
+										isStreetView={isStreetView}
+										handleStreetView={this.handleStreetView}
 									/>
 
 									<MapForms
