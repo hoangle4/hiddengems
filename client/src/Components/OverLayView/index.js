@@ -1,8 +1,23 @@
 import React, { Fragment } from "react";
 import "./style.css";
 const OverLayView = ({
-  data: { dateCreated, description, photos, placeName, distance, _id }
+  data: {
+    dateCreated,
+    description,
+    photos,
+    placeName,
+    distance,
+    _id,
+    coordinates
+  },
+  handleViewPosition
 }) => {
+  console.log(handleViewPosition);
+
+  const changePosition = e => {
+    e.preventDefault();
+    handleViewPosition(coordinates[0]);
+  };
   return (
     <Fragment>
       <div
@@ -22,6 +37,7 @@ const OverLayView = ({
           <button
             style={{ fontSize: `${25 - distance / 20}px` }}
             className="OverLayView_Button"
+            onClick={changePosition}
           >
             Go To
           </button>

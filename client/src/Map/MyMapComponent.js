@@ -118,6 +118,7 @@ const MyMapComponent = compose(
                   <ViewCard
                     data={position}
                     onClick={() => props.onMarkerClick(position._id)}
+                    handleViewPosition={props.handleViewPosition}
                   />
                 </OverlayView>
               ))}
