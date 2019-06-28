@@ -7,7 +7,7 @@ const db = {
     });
   },
   deletePlace:id => {
-    return axios.delete(`/api/deletePlace?id=${id}`);
+    return axios.delete(`/db/deletePlace?id=${id}`);
   },
   findAllPlace: () => {
     return axios.get("/api/findAllPlace");

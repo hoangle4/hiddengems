@@ -110,12 +110,11 @@ module.exports = {
     }
   },
   deletePlace: async (req, resp) => {
+
 		try{
-			await models.Gem
-				.deleteOne({
-					id:req.query.id
-				});
-			resp.status(200).send("Deleted Gem")
+			const result = await models.Gem.findByIdAndDelete({_id:req.query.id})
+        
+			resp.json({gem:req.query.id})
 		} catch (err) {
 			console.log(err);
 		}

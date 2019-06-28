@@ -4,7 +4,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Consumer } from '../context';
 import placeDB from "../API/placeDB";
-import userDB from "../API/userDB";
+// import userDB from "../API/userDB";
 
 import GemCards from '../Components/GemCards/';
 import Toolbar from '../Components/Toolbar';
