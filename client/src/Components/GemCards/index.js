@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './style.css';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function GemCards({ placeCreated, user, deleteClick }) {
+function GemCards({ placeCreated, user, deleteClick, editClick }) {
 	const showCrud = user._id === placeCreated[0].createdBy;
 	console.log(showCrud);
 
@@ -26,7 +26,12 @@ function GemCards({ placeCreated, user, deleteClick }) {
 					<div>
 						{showCrud ? (
 							<div className="GemCards-button-container">
-								<button type="submit" className="GemCards-editBtn" id={place._id}>
+								<button 
+									type="submit" 
+									className="GemCards-editBtn" 
+									id={place._id}
+									onClick={() => editClick(place._id)}
+								>
 									<i className="fas fa-edit" />
 								</button>
 								<button

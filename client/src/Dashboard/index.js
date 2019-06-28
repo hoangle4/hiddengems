@@ -12,11 +12,16 @@ import { Consumer } from '../context';
 import UserBanner from '../Components/UserBanner';
 import Spinner from '../Components/Spinner';
 import BubbleNav from '../Components/BubbleNav';
+import EditGemForms from '../Components/EditGemForms';
+
 
 class Dashboard extends Component {
 	state = {
 		sideDrawerOpen: false,
-		gems: []
+		gems: [],
+
+		marker: [],
+		isActiveEdit: false,
 	};
 
 	drawerToggleClickHandler = () => {
@@ -26,10 +31,23 @@ class Dashboard extends Component {
 	getAuthenticate = async (dispatch, token) => dispatch({ type: 'GET_USER', payload: token });
 
 	deleteClick = async (id) => {
-		console.log(id);
 		const results = await placeDB.deletePlace(id);
 		const newState = await this.state.gems.filter((gems) => id !== gems.id);
 		this.setState({ gems: newState });
+	};
+
+	editClick = async (id) => {
+		console.log(id);
+		this.setState({ isActiveEdit: !this.state.isActiveEdit });
+
+		
+
+	}
+
+	handleFormClick = async (e) => {
+		this.setState({
+			isActiveEdit: !this.state.isActiveEdit
+		});
 	};
 
 	render() {
@@ -54,6 +72,12 @@ class Dashboard extends Component {
 												placeCreated={user.placeCreated}
 												user={user}
 												deleteClick={this.deleteClick}
+												editClick={this.editClick}
+											/>
+											<EditGemForms
+												updateMaker={this.handleFormClick}
+												isActiveEdit={this.state.isActiveEdit}
+												coordinates={this.state.marker}
 											/>
 											<UserSearch />
 										</Fragment>
