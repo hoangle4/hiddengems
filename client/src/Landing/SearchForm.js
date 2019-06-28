@@ -68,5 +68,6 @@ const SearchForm = () => {
 			)}
 		</Fragment>
 	);
+
 };
 export default SearchForm;
