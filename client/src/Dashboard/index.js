@@ -60,7 +60,7 @@ class Dashboard extends Component {
                       />
                       <GemCards 
                         placeCreated={user.placeCreated} 
-                        user = {user}
+                        user={user}
                         deleteClick={this.deleteClick}
                       />
                       <UserSearch />
