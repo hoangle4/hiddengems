@@ -4,7 +4,8 @@ import "./mapgem.css";
 import Spinner from "../Spinner";
 function SideGem({
   isMarkerClicked,
-  data: { photos, placeName, description, _id }
+  data: { photos, placeName, description, _id },
+  handleCloseSideBar
 }) {
   return (
     <Fragment>
@@ -24,6 +25,12 @@ function SideGem({
                   <Link to={`/gem/${_id}`} className="btn-learnmore">
                     Read More
                   </Link>
+                  <button
+                    onClick={handleCloseSideBar}
+                    className="MapGem_button"
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
             </Fragment>

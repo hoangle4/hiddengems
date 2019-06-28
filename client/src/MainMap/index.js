@@ -51,6 +51,10 @@ class Home extends Component {
     }
     return this.state.isMarkerClicked;
   };
+
+  handleCloseSideBar = () => {
+    this.setState({ isMarkerClicked: false });
+  };
   render() {
     return (
       <Fragment>
@@ -77,6 +81,7 @@ class Home extends Component {
             <MapGem
               data={this.state.sideStory}
               isMarkerClicked={this.state.isMarkerClicked}
+              handleCloseSideBar={this.handleCloseSideBar}
             />
           </Fragment>
         )}

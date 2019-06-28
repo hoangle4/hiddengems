@@ -80,13 +80,13 @@ class RenderMap extends PureComponent {
   };
 
   handleAddStory = async () => {
-    if (this.props.isMarkerClicked) {
+    if (this.state.isMarkerClicked) {
       this.props.handleMapClick();
-    } else {
-      this.setState({
-        marker: [this.state.latLng]
-      });
     }
+    this.setState({
+      marker: [this.state.latLng],
+      isMarkerClicked: !this.state.isMarkerClicked
+    });
   };
 
   handleMapClick = async event => {
@@ -114,7 +114,7 @@ class RenderMap extends PureComponent {
 
   handleFormClick = async e => {
     this.setState({
-      isMarkerShown: !this.state.isMarkerShown
+      isMarkerClicked: !this.state.isMarkerClicked
     });
     this.props.handleMapClick(e);
   };
@@ -152,7 +152,7 @@ class RenderMap extends PureComponent {
                   />
 
                   <MapForms
-                    updateMaker={this.handleFormClick}
+                    updateMarker={this.handleFormClick}
                     isMarkerClicked={this.state.isMarkerClicked}
                     coordinates={marker}
                   />

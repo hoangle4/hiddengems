@@ -77,7 +77,6 @@ const MyMapComponent = compose(
         defaultZoom={13}
         defaultCenter={props.latLng}
         onDrag={() => props.onDragEnd(props.getPositionOnDragEnd())}
-        onClick={props.onMapClick}
       >
         <Marker
           position={props.latLng}
