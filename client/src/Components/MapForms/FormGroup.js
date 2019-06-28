@@ -27,7 +27,7 @@ function FormGroup({
                 <h5>
                   Place Details
                   <span className="x_btn" style={{ cursor: "pointer" }}>
-                    <small>X</small>
+                    <small></small>
                   </span>
                 </h5>
                 <div className="input-container">
