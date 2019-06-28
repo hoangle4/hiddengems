@@ -219,17 +219,42 @@
 }
 .CommentList_box {
 	border-top: 2px solid rgb(151, 149, 149);
-	margin-top: 2rem;
+	margin-top: 3vh;
+	padding: 0 10vw;
+	width: 100vw;
+}
+.CommentList_h1 {
+	font-family: 'Fugaz One', cursive;
+	text-align: center;
 	width: 100%;
-	grid-column: 2;
-	grid-row: 3;
-	clear: both;
-	border-bottom: 1px solid rgb(151, 149, 149);
+	color: #f55d83;
+	margin-bottom: 10vh;
 }
 .CommentList_commentbox {
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 4vh 0;
+	max-width: 80vw;
+	padding: 0 3vw;
+	background: rgba(184, 184, 184, 0.13);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.479);
+	border-radius: 5px;
+	min-height: 20vh;
+}
+.Comment_list_img {
+	width: 8vw;
+	height: auto;
+	border-radius: 100%;
+}
+.CommentList_text {
+	text-align: center;
+	width: 100%;
+	margin-left: -7vw;
 }
 .CommentList_h5 {
+	font-family: 'Fugaz One', cursive;
+	color: #767ef0;
 	font-size: 1.6rem;
 	margin: 0.5em;
 }

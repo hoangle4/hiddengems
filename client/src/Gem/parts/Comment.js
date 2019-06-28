@@ -48,7 +48,7 @@ const Comment = ({ placeID }) => {
 				/>
 			</div>
 			<button onClick={handleComment} className="Comment_button">
-				Comment
+				Post Comment
 			</button>
 		</div>
 	);
