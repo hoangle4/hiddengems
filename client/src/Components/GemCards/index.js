@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './style.css';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
@@ -9,16 +10,19 @@ function GemCards({ placeCreated, user, deleteClick }) {
 	return (
 		<div className="GemCards-gemContainer">
 			{placeCreated.map((place) => (
-				<div key={place._id} className="gemLink">
-					<a href={`/gem/${place._id}`}>
+				<div key={place._id} className="GemCards-gemLink">
+
 						<div className="GemCards-gemBox">
-							<img style={{ width: '200px', height: '200px' }} src={place.photos} alt={place.placeName} />
+            <Link to={`/gem/${place._id}`}>
+							<img style={{ width: '200px', height: '200px' }} className="GemCards-Image" src={place.photos} alt={place.placeName} />					</Link>
 							<div className="GemCards-text-container">
+              <Link to={`/gem/${place._id}`}>
 								<h3 className="GemCards-Name">{place.placeName}</h3>
+                </Link>
 								<p className="GemCards-truncGem">{place.description}</p>
 							</div>
 						</div>
-					</a>
+
 					<div>
 						{showCrud ? (
 							<div className="GemCards-button-container">

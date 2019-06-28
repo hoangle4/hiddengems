@@ -40,6 +40,8 @@
     align-items: flex-start;
     margin-top: 4%;
     height: 20%;
+    color:white;
+    text-decoration: none;
 }
 .GemCards-Name {
     width: 100%;
