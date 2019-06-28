@@ -68,6 +68,12 @@ class Home extends Component {
 							handleMarkerClick={this.handleMarkerClick}
 							markerData={this.state.markerData}
 							handleMapClick={this.handleMapClick}
+
+							latLng={{
+								lat: parseFloat(this.props.match.params.lat),
+								lng: parseFloat(this.props.match.params.lng)
+							}}
+
 						/>
 
 						<MapGem data={this.state.sideStory} isMarkerClicked={this.state.isMarkerClicked} />
