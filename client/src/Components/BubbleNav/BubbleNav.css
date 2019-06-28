@@ -1,5 +1,5 @@
 .BubbleNav {
-  position: absolute;
+  position: fixed;
   top: 70vh;
   left: 90vw;
   height: 15vh;
@@ -20,7 +20,7 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background: #f65d82;
+  background: rgb(112, 112, 245);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,6 +32,7 @@
 .BubbleNav-lower-bubble:hover {
   cursor: pointer;
   box-shadow: 1px 3px 8px rgba(25, 25, 25, 0.5);
+  background: #f65d82;
 }
 .BubbleNav:hover #Bubblenav-second-bubble {
   top: 8vh;
