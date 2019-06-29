@@ -6,8 +6,8 @@ const db = {
       place
     });
   },
-  updatePlace: (id, place) => {
-    return axios.put(`/db/updatePlace?id=${id}`,{
+  updatePlace: (place) => {
+    return axios.put(`/db/updatePlace?id=${place._id}`,{
       place
     });
   },

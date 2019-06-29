@@ -63,10 +63,8 @@ class EditGemForm extends Component {
   };
 
   handleOnClick = async () => {
-
     const results = await placeDB.updatePlace(this.state);
-    if (!results) return;
-  
+    if (!results) return;  
     this.setState({
       placeName: "",
       photos: "",
