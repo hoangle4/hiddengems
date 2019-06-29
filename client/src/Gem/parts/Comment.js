@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import placeDB from '../../API/placeDB';
-const Comment = ({ placeID }) => {
+const Comment = ({ placeID, updateComment }) => {
 	const [ title, setTitle ] = useState('');
 	const [ message, setMessage ] = useState('');
 	const handleOnChange = (event) => {
@@ -10,15 +10,15 @@ const Comment = ({ placeID }) => {
 
 	const handleComment = async (event) => {
 		event.preventDefault();
-		const comment = await placeDB.addComment(title, message, placeID);
-		console.log(comment);
-		if (!comment) return console.error({ err: 'Error Commenting' });
+		const place = await placeDB.addComment(title, message, placeID);
+		if (!place) return console.error({ err: 'Error Commenting' });
 		setTitle('');
 		setMessage('');
+		updateComment(place.data.comments);
 	};
 	return (
 		<div className="Comment_box">
-			<h1 className="Comment_h1">Add A Comment</h1>
+			<h1 className="Comment_h1"> Comment </h1>
 			<div className="Comment_input_wrapper" data-text="">
 				<input
 					name="title"

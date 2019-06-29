@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Spinner from '../../Components/Spinner';
 import userDB from '../../API/userDB';
 const CommentList = ({ comments: { commentMessage, commentTitle, commentUser } }) => {
 	const [ user, setUser ] = useState('');
@@ -14,7 +15,7 @@ const CommentList = ({ comments: { commentMessage, commentTitle, commentUser } }
 	return (
 		<div className="CommentList_commentbox">
 			<Link to={`/profile/${commentUser}`}>
-				<img className="Comment_list_img" src={user.avatar} alt={commentTitle} />
+				{!user ? <Spinner /> : <img className="Comment_list_img" src={user.avatar} alt={commentTitle} />}
 			</Link>
 			<div className="CommentList_text">
 				<h5 className="CommentList_h5">{commentTitle}</h5>
