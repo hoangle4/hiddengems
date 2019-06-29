@@ -35,41 +35,36 @@ function FormGroup({
 								</span>
 								<div className="FormGroup-input-container">
 									<input
-										className="input"
+										className="FormGroup-input"
 										name="placeName"
-										placeholder="Place name"
+										placeholder="Title"
 										value={placeName}
 										onChange={handleOnChange}
 									/>
 								</div>
 								<div className="FormGroup-input-container upload-btn-wrapper">
-									{/* <label className="label" htmlFor="photos">
-                    Photos
-                  </label> */}
-									<button id="upload-file-btn">
-										<i className="far fa-edit" /> Image
-									</button>
-									<input
+                    <input
 										type="file"
-										className="file_input"
+										className="FormGroup-file_input"
 										name="photos"
 										onChange={handleFileChange}
-									/>
+									  />
+                    <label for="photos" className="FormGroup-file_input">Upload Image</label>
 								</div>
 								{progress ? (
-									<div className="progress-bar-container">
-										<p className="progress-bar" style={{ width: `${parseInt(progress)}%` }} />
+									<div className="FormGroup-progress-bar-container">
+										<p className="FormGroup-progress-bar" style={{ width: `${parseInt(progress)}%` }} />
 										<small> {parseInt(progress) + '%'}</small>
 									</div>
 								) : null}
 								{isUploaded ? (
-									<div className="img-input-container">
-										<img src={photos} alt="..." />
+									<div className="FormGroup-img-container">
+										<img className="FormGroup-img" src={photos} alt="..." />
 									</div>
 								) : null}
 								<div className="FormGroup-input-container">
 									<select
-										className="input"
+										className="FormGroup-input FormGroup-dropdown"
 										name="category"
 										value={category}
 										onChange={handleOnChange}
@@ -82,7 +77,7 @@ function FormGroup({
 								</div>
 								<div className="FormGroup-input-container">
 									<textarea
-										className="input"
+										className="FormGroup-input FormGroup-textarea"
 										name="description"
 										placeholder=" Story, Description ..."
 										value={description}
