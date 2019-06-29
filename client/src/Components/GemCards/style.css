@@ -1,4 +1,5 @@
 .GemCards-gemContainer {
+    min-height: 65vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
