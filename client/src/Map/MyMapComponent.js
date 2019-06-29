@@ -78,11 +78,6 @@ const MyMapComponent = compose(
         defaultCenter={props.latLng}
         onDragEnd={() => props.onDragEnd(props.getPositionOnDragEnd())}
       >
-        <img
-          src="/pin_location.png"
-          onClick={props.onCenterMapClick}
-          className="MyMapComponent_pin_img"
-        />
         <button
           onClick={props.handleAddStory}
           title="Add Story Here"
@@ -100,7 +95,7 @@ const MyMapComponent = compose(
         {props.isStreetView ? (
           <StreetViewPanorama
             defaultPosition={props.latLng}
-            visible
+            visible={props.isStreetView}
             ref={props.onPanoramaMounted}
             onPositionChanged={() =>
               props.handleViewPosition(props.onPositionChanged())
@@ -123,7 +118,13 @@ const MyMapComponent = compose(
                 </OverlayView>
               ))}
           </StreetViewPanorama>
-        ) : null}
+        ) : (
+          <img
+            src="/pin_location.png"
+            onClick={props.onCenterMapClick}
+            className="MyMapComponent_pin_img"
+          />
+        )}
 
         {props.isMarkerShown &&
           props.marker.map(position => (
