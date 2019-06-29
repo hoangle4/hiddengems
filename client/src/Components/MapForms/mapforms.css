@@ -69,7 +69,7 @@
   border: none;
   transition: 0.25s all;
   padding: .2rem;
-  margin: -5vh 0;
+  margin: 0vh 0;
 }
 .FormGroup-input:hover, .FormGroup-input:focus {
   outline: 0;
