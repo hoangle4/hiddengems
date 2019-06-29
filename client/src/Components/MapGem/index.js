@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import "./mapgem.css";
 import Spinner from "../Spinner";
 function SideGem({
   isMarkerClicked,
@@ -9,15 +8,45 @@ function SideGem({
 }) {
   return (
     <Fragment>
-      <div className={`gemCard ${isMarkerClicked ? "card-active" : ""}`}>
-        <div className="card">
-          {!isMarkerClicked ? (
-            <Fragment>
-              <Spinner />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <img src={photos} className="card-img-top" alt="..." />
+      <ul className="MainMap_Sidenav">
+        <li>
+          <a href="#">
+            <i className="fa fa-check" />
+            <b>Tasks</b>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i className="fa fa-inbox" />
+            <b>Messages</b>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i className="fa fa-pencil" />
+            <b>New Post</b>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i className="fa fa-cog" />
+            <b>Settings</b>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i className="fa fa-star" />
+            <b>Starred</b>
+          </a>
+        </li>
+        <li>
+          <a href="#" onClick={handleCloseSideBar}>
+            <i className="fa fa-power-off" />
+            <b>Logout</b>
+          </a>
+        </li>
+      </ul>
+      {/* <img src={photos} className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">{placeName}</h5>
                 <p className="card-text">{description}</p>
@@ -32,11 +61,7 @@ function SideGem({
                     Close
                   </button>
                 </div>
-              </div>
-            </Fragment>
-          )}
-        </div>
-      </div>
+              </div> */}
     </Fragment>
   );
 }

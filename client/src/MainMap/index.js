@@ -5,6 +5,7 @@ import SideDrawer from "../Components/SideDrawer/SideDrawer";
 import Spinner from "../Components/Spinner";
 import MapGem from "../Components/MapGem";
 import db from "../API/placeDB";
+import "./MainMap.css";
 
 class Home extends Component {
   state = {
@@ -63,22 +64,34 @@ class Home extends Component {
           <Spinner />
         ) : (
           <Fragment>
-            <Map
-              isMarkerClicked={this.state.isMarkerClicked}
-              handleMarkerClick={this.handleMarkerClick}
-              markerData={this.state.markerData}
-              handleMapClick={this.handleMapClick}
-              latLng={{
-                lat: parseFloat(this.props.match.params.lat),
-                lng: parseFloat(this.props.match.params.lng)
-              }}
-            />
+            <div id="MainMap_Wrapper">
+              <div className="MainMap_Mobile ">
+                <input
+                  type="checkbox"
+                  id="tm"
+                  checked={this.state.isMarkerClicked}
+                />
 
-            <MapGem
-              data={this.state.sideStory}
-              isMarkerClicked={this.state.isMarkerClicked}
-              handleCloseSideBar={this.handleCloseSideBar}
-            />
+                <MapGem
+                  data={this.state.sideStory}
+                  isMarkerClicked={this.state.isMarkerClicked}
+                  handleCloseSideBar={this.handleCloseSideBar}
+                />
+
+                <section>
+                  <Map
+                    isMarkerClicked={this.state.isMarkerClicked}
+                    handleMarkerClick={this.handleMarkerClick}
+                    markerData={this.state.markerData}
+                    handleMapClick={this.handleMapClick}
+                    latLng={{
+                      lat: parseFloat(this.props.match.params.lat),
+                      lng: parseFloat(this.props.match.params.lng)
+                    }}
+                  />
+                </section>
+              </div>
+            </div>
           </Fragment>
         )}
       </Fragment>
