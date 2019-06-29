@@ -4,8 +4,11 @@ import './style.css';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function GemCards({ placeCreated, user, deleteClick, editClick }) {
-	const showCrud = user._id === placeCreated[0].createdBy;
-	console.log(showCrud);
+	if (placeCreated.length>0){
+		var showCrud = user._id === placeCreated[0].createdBy;
+	} else {
+		var showCrud = false;
+	}
 
 	return (
 		<div className="GemCards-gemContainer">
@@ -30,7 +33,7 @@ function GemCards({ placeCreated, user, deleteClick, editClick }) {
 									type="submit" 
 									className="GemCards-editBtn" 
 									id={place._id}
-									onClick={() => editClick(place._id)}
+									onClick={() => editClick(place)}
 								>
 									<i className="fas fa-edit" />
 								</button>

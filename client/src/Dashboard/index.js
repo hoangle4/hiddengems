@@ -19,9 +19,8 @@ class Dashboard extends Component {
 	state = {
 		sideDrawerOpen: false,
 		gems: [],
-
-		marker: [],
 		isActiveEdit: false,
+		editPlace: {},
 	};
 
 	drawerToggleClickHandler = () => {
@@ -36,11 +35,12 @@ class Dashboard extends Component {
 		this.setState({ gems: newState });
 	};
 
-	editClick = async (id) => {
-		console.log(id);
-		this.setState({ isActiveEdit: !this.state.isActiveEdit });
-
-		
+	editClick = async (place) => {
+		console.log(place);
+		await this.setState({ editPlace: place,
+			isActiveEdit: !this.state.isActiveEdit
+		 });
+		console.log(this.state.editPlace);
 
 	}
 
@@ -74,11 +74,12 @@ class Dashboard extends Component {
 												deleteClick={this.deleteClick}
 												editClick={this.editClick}
 											/>
-											<EditGemForms
+											{this.state.isActiveEdit ?											<EditGemForms
 												updateMaker={this.handleFormClick}
-												isActiveEdit={this.state.isActiveEdit}
-												coordinates={this.state.marker}
-											/>
+												
+												editPlace={this.state.editPlace}
+											/> : null }
+
 											<UserSearch />
 										</Fragment>
 									)}

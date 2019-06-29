@@ -21,7 +21,6 @@ export default {
 	},
 
 	login: (user) => {
-		console.log(user);
 		return axios.post('/api/login', {
 			email: user.email,
 			password: user.password

@@ -109,6 +109,22 @@ module.exports = {
       console.error(err);
     }
   },
+  updatePlace: async (req, resp) => {
+    try {
+      const place = await models.Gem.findOneAndUpdate(
+        console.log(req.user),
+        { _id: req.user.id },
+        {
+          $push: {
+            placeCreated: req.body._id
+          }
+        }
+      );
+      resp.json(place);
+    } catch (err) {
+      console.error(err);
+    }
+  },
   deletePlace: async (req, resp) => {
 
 		try{
@@ -118,5 +134,5 @@ module.exports = {
 		} catch (err) {
 			console.log(err);
 		}
-	},
+  },
 };

@@ -4,12 +4,7 @@ import { Link } from "react-router-dom";
 import { Consumer } from "../../context";
 
 function FormGroup({
-  placeName,
-  isUploaded,
-  photos,
-  category,
-  progress,
-  description,
+  value: { placeName, isUploaded, photos, category, progress, description },
   handleOnChange,
   handleOnClick,
   handleFileChange
@@ -27,7 +22,7 @@ function FormGroup({
                 <h5>
                   Place Details
                   <span className="x_btn" style={{ cursor: "pointer" }}>
-                    <small></small>
+                    <small />
                   </span>
                 </h5>
                 <div className="input-container">
@@ -80,7 +75,7 @@ function FormGroup({
                     value={category}
                     onChange={handleOnChange}
                   >
-                    <option value=""></option>
+                    <option value="" />
                     <option value="auto">Auto</option>
                     <option value="bars">Bar</option>
                     <option value="coffeeshop">Coffee Shop</option>
@@ -106,7 +101,7 @@ function FormGroup({
                   <input
                     type="submit"
                     className="create-btn"
-                    value="Create Place"
+                    value="Update Place"
                     disabled={!isUploaded}
                     onClick={handleOnClick}
                   />

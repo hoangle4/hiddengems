@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import FromGroup from "./FormGroup";
+import FromGroup from "./EditFormGroup";
 import placeDB from "../../API/placeDB";
-import userDB from "../../API/userDB";
 import { Consumer } from "../../context";
 import Spinner from "../Spinner";
 import firebaseStorage from "../Firebase";
 import "./mapforms.css";
+
 class EditGemForm extends Component {
   state = {
     placeName: "",
@@ -14,9 +14,10 @@ class EditGemForm extends Component {
     description: "",
     progress: "",
     coordinates: "",
+    _id: "",
     isUploaded: false
   };
-
+  
   handleOnChange = e => {
     const { name, value } = e.target;
     this.setState({
@@ -62,49 +63,61 @@ class EditGemForm extends Component {
   };
 
   handleOnClick = async () => {
-    await this.setState({ coordinates: this.props.coordinates });
 
-    const results = await placeDB.createPlace(this.state);
+    const results = await placeDB.updatePlace(this.state);
     if (!results) return;
-
-    const response = await userDB.updateUserCreatedPlace(results.data._id);
-    console.log(response);
-    if (!response) return;
-
-    this.props.updateMaker(results.data);
+  
     this.setState({
       placeName: "",
       photos: "",
       category: "",
       description: "",
       progress: "",
-      coordinates: ""
+      coordinates: "",
+      _id: "",
     });
   };
 
+  componentDidMount = () => {
+    this.updateState()
+  }
+  
+  updateState = () => {
+    this.setState({
+			placeName: this.props.editPlace.placeName,
+			photos: this.props.editPlace.photos,
+			category: this.props.editPlace.category,
+			description: this.props.editPlace.description,
+			progress: this.props.editPlace.progress,
+      coordinates: this.props.editPlace.coordinates,
+      _id: this.props.editPlace._id,
+		  });
+  } 
+
   render() {
-    const { isActiveEdit } = this.props;
+    console.log(this.state);
+    const { isActiveEdit  } = this.props;
     return (
       <Consumer>
         {value => {
-          return (
+          return ( 
             <Fragment>
-              <div
-                className={`form-group ${isActiveEdit ? "form-active" : ""}`}
-              >
-                <FromGroup
-                  value={this.state}
-                  progress={this.state.progress}
-                  isUploaded={this.state.isUploaded}
-                  photos={this.state.photos}
-                  handleOnChange={this.handleOnChange}
-                  handleOnClick={this.handleOnClick}
-                  handleFileChange={this.handleFileChange}
-                />
-              </div>
+                <div
+                  className="form-group form-active"
+                >
+                  <FromGroup
+                    value={this.state}
+                    progress={this.state.progress}
+                    isUploaded={this.state.isUploaded}
+                    photos={this.state.photos}
+                    handleOnChange={this.handleOnChange}
+                    handleOnClick={this.handleOnClick}
+                    handleFileChange={this.handleFileChange}
+                  />
+                </div>
             </Fragment>
           );
-        }}
+        }}  
       </Consumer>
     );
   }
