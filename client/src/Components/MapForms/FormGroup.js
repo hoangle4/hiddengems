@@ -24,16 +24,13 @@ function FormGroup({
               <Spinner />
             ) : isAuthenticated ? (
               <Fragment>
-                <h5>
-                  Place Details
-                  <span className="x_btn" style={{ cursor: "pointer" }}>
-                    <small>X</small>
-                  </span>
+                <h5 className="FormGroup-header">
+                  Add Gem
                 </h5>
-                <div className="input-container">
-                  <label className="label" htmlFor="placeName">
-                    Place Name
-                  </label>
+                <span className="x_btn FormGroup-top-x" style={{ cursor: "pointer" }}>
+                  <i className="far fa-times-circle"></i>
+                </span>
+                <div className="FormGroup-input-container">
                   <input
                     className="input"
                     name="placeName"
@@ -42,10 +39,10 @@ function FormGroup({
                     onChange={handleOnChange}
                   />
                 </div>
-                <div className="input-container upload-btn-wrapper">
-                  <label className="label" htmlFor="photos">
+                <div className="FormGroup-input-container upload-btn-wrapper">
+                  {/* <label className="label" htmlFor="photos">
                     Photos
-                  </label>
+                  </label> */}
                   <button id="upload-file-btn">
                     <i className="far fa-edit" /> Image
                   </button>
@@ -70,10 +67,7 @@ function FormGroup({
                     <img src={photos} alt="..." />
                   </div>
                 ) : null}
-                <div className="input-container">
-                  <label className="label" htmlFor="category">
-                    Category
-                  </label>
+                <div className="FormGroup-input-container">
                   <select
                     className="input"
                     name="category"
@@ -86,10 +80,7 @@ function FormGroup({
                     <option value="reacreationalarea">Recreational Area</option>
                   </select>
                 </div>
-                <div className="input-container">
-                  <label className="label" htmlFor="description">
-                    Description
-                  </label>
+                <div className="FormGroup-input-container">
                   <textarea
                     className="input"
                     name="description"

@@ -1,7 +1,7 @@
 .BubbleNav {
   position: fixed;
-  top: 70vh;
-  left: 90vw;
+  top: 65vh;
+  right: 3vw;
   height: 15vh;
   width: 5vw;
 }

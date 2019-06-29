@@ -18,7 +18,7 @@ const Comment = ({ placeID }) => {
 	};
 	return (
 		<div className="Comment_box">
-			<h1 className="Comment_h1"> Comment </h1>
+			<h1 className="Comment_h1">Add A Comment</h1>
 			<div className="Comment_input_wrapper" data-text="">
 				<input
 					name="title"
@@ -48,7 +48,7 @@ const Comment = ({ placeID }) => {
 				/>
 			</div>
 			<button onClick={handleComment} className="Comment_button">
-				Comment
+				Post Comment
 			</button>
 		</div>
 	);

@@ -1,8 +1,10 @@
 .GemCards-gemContainer {
+    min-height: 65vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-bottom: 10vh;
 }
 .GemCards-gemLink {
     margin: 2%;
@@ -15,7 +17,7 @@
     padding: 1rem;
     color: white;
     text-decoration: none;
-    height: 100%;
+    height: 375px;
     transition: 0.2s;
 }
 .GemCards-gemLink:hover {
@@ -23,12 +25,14 @@
 }
 .GemCards-gemBox {
     width: 20vw;
-    height: 375px;
+    height: 100%;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .GemCards-Image {
+    max-width: 100%;
+    height: auto;
     display: block;
     margin: auto;
     border-radius: 5px;
@@ -47,6 +51,8 @@
     width: 100%;
     text-align: center;
     margin: 0;
+    text-decoration: none;
+    color: white;
 }
 .GemCards-truncGem {
     font-size: 0.8rem;

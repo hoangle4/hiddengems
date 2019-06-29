@@ -13,6 +13,8 @@ import placeDB from '../API/placeDB';
 import Toolbar from '../Components/Toolbar';
 import SideDrawer from '../Components/SideDrawer/SideDrawer';
 
+import BubbleNav from '../Components/BubbleNav';
+
 import './style.css';
 
 class Gem extends Component {
@@ -50,13 +52,14 @@ class Gem extends Component {
 						<Fragment>
 							{!loading && isAuthenticated && dataReady ? (
 								<Fragment>
-									<Toolbar drawerClick={this.drawerToggleClickHandler} />
-									{sideDrawerOpen ? <SideDrawer isLoggedIn={isAuthenticated} /> : null}
+									
+									{/* <Toolbar drawerClick={this.drawerToggleClickHandler} />
+									{sideDrawerOpen ? <SideDrawer isLoggedIn={isAuthenticated} /> : null} */}
 									<div className="Gem_container">
-										<Banner photos={photos} />
-										<Story story={data} author={createdBy} />
-										<GemNearby />
-										<Comment placeID={placeID} />
+										<Story story={data} author={createdBy} photos={photos} />
+										{/* <Banner photos={photos} /> */}
+										{/* <GemNearby /> */}
+											<Comment placeID={placeID} />
 										<div className="CommentList_box">
 											<h1 className="CommentList_h1"> Comments </h1>
 											{comments.length !== 0 ? (
@@ -72,15 +75,25 @@ class Gem extends Component {
 											)}
 										</div>
 									</div>
+									<BubbleNav />
 								</Fragment>
 							) : (
 								<div onLoad={this.getGem}>
-									<p style={{ textAlign: 'center' }}>
-										You are not logged in. Please <Link to="/login">login</Link> or{' '}
-										<Link to="/signup">sign up</Link> to create place.
-									</p>
+									<div className="Gem-login-text-container">
+										<p className="Gem-login-header">
+											<i className="far fa-sad-cry"></i> 
+											 You are not logged in. 
+											<i className="far fa-sad-cry"></i>
+										</p>
+										<p className="Gem-login-text">
+											Please <Link className="Gem-login-links" to="/login">login</Link> or{' '}
+											<Link className="Gem-login-links" to="/signup">sign up</Link> to create and read gems.
+										</p>
+									</div>
+									
 								</div>
 							)}
+							
 						</Fragment>
 					);
 				}}

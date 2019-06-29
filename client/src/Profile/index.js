@@ -8,6 +8,7 @@ import "./style.css";
 import GemCards from "../Components/GemCards/";
 import UserBanner from "../Components/UserBanner"
 import UserSearch from "../Components/UserSearch";
+import BubbleNav from "../Components/BubbleNav";
 import exampleBackground from "../Dashboard/images/backgroundExample.jpg"
 
 
@@ -44,10 +45,10 @@ class Profile extends Component {
             <Fragment>
               {!loading && isAuthenticated && this.state.dataReady ? (
                 <Fragment>
-                  <Toolbar drawerClick={this.drawerToggleClickHandler} />
+                  {/* <Toolbar drawerClick={this.drawerToggleClickHandler} />
                   {this.state.sideDrawerOpen ? (
                     <SideDrawer isLoggedIn={this.state.isLoggedIn} />
-				  ) : null}
+				  ) : null} */}
 				  		<div>
 							{dataReady ?(
                 <div>
@@ -69,6 +70,7 @@ class Profile extends Component {
               ) : (
                 <Spinner getGem={this.getGem} />
               )}
+              <BubbleNav />
             </Fragment>
           );
         }}

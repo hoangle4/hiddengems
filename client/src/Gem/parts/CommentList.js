@@ -16,9 +16,9 @@ const CommentList = ({ comments: { commentMessage, commentTitle, commentUser } }
 			<Link to={`/profile/${commentUser}`}>
 				<img className="Comment_list_img" src={user.avatar} alt={commentTitle} />
 			</Link>
-			<div>
+			<div className="CommentList_text">
 				<h5 className="CommentList_h5">{commentTitle}</h5>
-				<p>{commentMessage}</p>
+				<p className="CommentList_message">{commentMessage}</p>
 			</div>
 		</div>
 	);

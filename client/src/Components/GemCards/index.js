@@ -16,15 +16,12 @@ function GemCards({ placeCreated, user, deleteClick }) {
             <Link to={`/gem/${place._id}`}>
 							<img style={{ width: '200px', height: '200px' }} className="GemCards-Image" src={place.photos} alt={place.placeName} />					</Link>
 							<div className="GemCards-text-container">
-              <Link to={`/gem/${place._id}`}>
+              <Link to={`/gem/${place._id}`} className="GemCards-Name">
 								<h3 className="GemCards-Name">{place.placeName}</h3>
                 </Link>
 								<p className="GemCards-truncGem">{place.description}</p>
 							</div>
-						</div>
-
-					<div>
-						{showCrud ? (
+							{showCrud ? (
 							<div className="GemCards-button-container">
 								<button type="submit" className="GemCards-editBtn" id={place._id}>
 									<i className="fas fa-edit" />
@@ -39,7 +36,8 @@ function GemCards({ placeCreated, user, deleteClick }) {
 								</button>
 							</div>
 						) : null}
-					</div>
+						</div>
+						
 				</div>
 			))}
 		</div>

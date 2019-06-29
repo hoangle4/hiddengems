@@ -4,7 +4,6 @@ import placeDB from '../API/placeDB';
 
 import { Link } from 'react-router-dom';
 import GemCards from '../Components/GemCards/';
-import Toolbar from '../Components/Toolbar';
 import SideDrawer from '../Components/SideDrawer/SideDrawer';
 import UserSearch from '../Components/UserSearch';
 import './style.css';
