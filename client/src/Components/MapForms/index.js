@@ -61,7 +61,7 @@ class MapFrom extends Component {
     );
   };
 
-  handleOnClick = async e => {
+  handleOnClick = async () => {
     await this.setState({ coordinates: this.props.coordinates });
 
     const results = await placeDB.createPlace(this.state);
@@ -70,14 +70,12 @@ class MapFrom extends Component {
     const response = await userDB.updateUserCreatedPlace(results.data._id);
     console.log(response);
     if (!response) return;
-
-    this.props.updateMarker(results.data);
-    this.handleOnFormClose(e);
+    this.handleOnFormClose();
   };
 
   handleOnFormClose = e => {
     this.props.updateMarker();
-    e.preventDefault();
+    if (e) e.preventDefault();
     this.setState({
       placeName: "",
       photos: "",

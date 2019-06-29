@@ -8,7 +8,7 @@ const Story = ({ story: { description, placeName }, author }) => {
       <div className="Story_box_container">
         <h1 className="Story_h1">{placeName}</h1>
         <p className="Story_p">{description}</p>
-        <Chip author={author} />
+        {author ? <Chip author={author} /> : <div>Author does not exsist</div>}
       </div>
     </div>
   );

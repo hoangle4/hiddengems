@@ -39,17 +39,13 @@ class Home extends Component {
       isMarkerClicked: true
     });
   };
-  handleMapClick = e => {
+  handleMapClick = () => {
     if (this.state.isMarkerClicked) {
       this.setState({
         isMarkerClicked: false
       });
     }
-
-    if (e) {
-      this.setState({ markerData: this.state.markerData.concat(e) });
-    }
-    return this.state.isMarkerClicked;
+    this.findAllPlace();
   };
 
   handleCloseSideBar = () => {

@@ -110,11 +110,11 @@ class RenderMap extends PureComponent {
     })
   ];
 
-  handleFormClick = async e => {
+  handleFormClick = async () => {
     this.setState({
       isMarkerClicked: !this.state.isMarkerClicked
     });
-    this.props.handleMapClick(e);
+    this.props.handleMapClick();
   };
   render() {
     const {
