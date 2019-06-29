@@ -16,7 +16,6 @@ const Story = ({ story: { description, placeName }, author, photos }) => {
           <p className="Story_p">{description}</p>
           <i className="fas fa-quote-right fa1"></i>
         </div>
-       
       </div>
       
     </div>

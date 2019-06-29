@@ -18,7 +18,7 @@ const CommentList = ({ comments: { commentMessage, commentTitle, commentUser } }
 			</Link>
 			<div className="CommentList_text">
 				<h5 className="CommentList_h5">{commentTitle}</h5>
-				<p>{commentMessage}</p>
+				<p className="CommentList_message">{commentMessage}</p>
 			</div>
 		</div>
 	);

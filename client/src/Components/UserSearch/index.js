@@ -39,6 +39,7 @@ class UserSearch extends Component {
               className="Search-form-field"
               type="text"
               name="firstName"
+              placeholder="First Name"
               value={this.state.firstName}
               onChange={this.handleOnChange}
             />

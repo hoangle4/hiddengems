@@ -56,11 +56,9 @@ class Gem extends Component {
 									{/* <Toolbar drawerClick={this.drawerToggleClickHandler} />
 									{sideDrawerOpen ? <SideDrawer isLoggedIn={isAuthenticated} /> : null} */}
 									<div className="Gem_container">
-										<div className="Gem-Header">
-											<Story story={data} author={createdBy} photos={photos} />
-											{/* <Banner photos={photos} /> */}
-											{/* <GemNearby /> */}
-										</div>	
+										<Story story={data} author={createdBy} photos={photos} />
+										{/* <Banner photos={photos} /> */}
+										{/* <GemNearby /> */}
 											<Comment placeID={placeID} />
 										<div className="CommentList_box">
 											<h1 className="CommentList_h1"> Comments </h1>
@@ -77,16 +75,25 @@ class Gem extends Component {
 											)}
 										</div>
 									</div>
+									<BubbleNav />
 								</Fragment>
 							) : (
 								<div onLoad={this.getGem}>
-									<p style={{ textAlign: 'center' }}>
-										You are not logged in. Please <Link to="/login">login</Link> or{' '}
-										<Link to="/signup">sign up</Link> to create place.
-									</p>
+									<div className="Gem-login-text-container">
+										<p className="Gem-login-header">
+											<i className="far fa-sad-cry"></i> 
+											 You are not logged in. 
+											<i className="far fa-sad-cry"></i>
+										</p>
+										<p className="Gem-login-text">
+											Please <Link className="Gem-login-links" to="/login">login</Link> or{' '}
+											<Link className="Gem-login-links" to="/signup">sign up</Link> to create and read gems.
+										</p>
+									</div>
+									
 								</div>
 							)}
-							<BubbleNav />
+							
 						</Fragment>
 					);
 				}}
