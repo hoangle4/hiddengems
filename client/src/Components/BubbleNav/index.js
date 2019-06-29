@@ -14,7 +14,7 @@ const BubbleNav = () => {
 						<div className="BubbleNav">
 							<div className="BubbleNav-lower-bubble">
 								<Link to="/map">
-									<i className="fas fa-home" />
+									<i className="fas fa-map-marked-alt"></i>
 								</Link>
 							</div>
 							<div className="BubbleNav-lower-bubble" id="Bubblenav-second-bubble">

@@ -70,8 +70,12 @@ class MapFrom extends Component {
     const response = await userDB.updateUserCreatedPlace(results.data._id);
     console.log(response);
     if (!response) return;
+    this.handleOnFormClose();
+  };
 
-    this.props.updateMaker(results.data);
+  handleOnFormClose = e => {
+    this.props.updateMarker();
+    if (e) e.preventDefault();
     this.setState({
       placeName: "",
       photos: "",
@@ -83,14 +87,14 @@ class MapFrom extends Component {
   };
 
   render() {
-    const { isPinDropped } = this.props;
+    const { isMarkerClicked } = this.props;
     return (
       <Consumer>
         {value => {
           return (
             <Fragment>
               <div
-                className={`form-group ${isPinDropped ? "form-active" : ""}`}
+                className={`form-group ${isMarkerClicked ? "form-active" : ""}`}
               >
                 <FromGroup
                   value={this.state}
@@ -100,6 +104,7 @@ class MapFrom extends Component {
                   handleOnChange={this.handleOnChange}
                   handleOnClick={this.handleOnClick}
                   handleFileChange={this.handleFileChange}
+                  handleOnFormClose={this.handleOnFormClose}
                 />
               </div>
             </Fragment>

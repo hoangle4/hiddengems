@@ -1,3 +1,6 @@
 .dashContainer {
     display: inline-flexbox;
+    /* height: 100vh; */
+    overflow: hidden;
+    display: block;
 }

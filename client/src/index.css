@@ -7,6 +7,16 @@ body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
 }
+#root {
+  height: 100%;
+}
+.Nav-container {
+  min-height: 90vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  /* padding-bottom: 100px; */
+}
 #mapbox {
   height: 100vh;
   width: 100vw;

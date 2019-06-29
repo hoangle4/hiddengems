@@ -1,38 +1,67 @@
 #MyMapComponent_add_btn {
-	background: rgba(34, 34, 34, 1);
-	color: rgba(255, 255, 255, 1);
-	border: 4px;
-	margin: 10px;
-	padding: 0px;
-	position: absolute;
-	cursor: pointer;
-	user-select: none;
-	border-radius: 2px;
-	height: 40px;
-	width: 40px;
-	box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
-	overflow: hidden;
-	bottom: 50%;
-	top: 50%;
-	right: 0%;
-	z-index: 99;
+  background: rgba(34, 34, 34, 1);
+  color: rgba(255, 255, 255, 1);
+  border: 4px;
+  margin: 10px;
+  padding: 0px;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
+  overflow: hidden;
+  bottom: 50%;
+  top: 50%;
+  right: 0%;
+  z-index: 99;
 }
 .MyMapComponent_switch_btn {
-	background: rgba(34, 34, 34, 1);
-	color: rgba(255, 255, 255, 1);
-	border: 4px;
-	margin: 10px;
-	padding: 0px;
-	position: absolute;
-	cursor: pointer;
-	user-select: none;
-	border-radius: 2px;
-	height: 40px;
-	width: 40px;
-	box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
-	overflow: hidden;
-	bottom: 40%;
-	top: 60%;
-	right: 0%;
-	z-index: 99;
+  background: rgba(34, 34, 34, 1);
+  color: rgba(255, 255, 255, 1);
+  border: 4px;
+  margin: 10px;
+  padding: 0px;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
+  overflow: hidden;
+  bottom: 40%;
+  top: 60%;
+  right: 0%;
+  z-index: 99;
+}
+.RedoSearch_Wrapper {
+  position: absolute;
+  bottom: 15%;
+  top: 85%;
+  width: 20%;
+  margin: 0 40%;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
+  z-index: 99;
+}
+.MyMapComponent_pin_img {
+  width: 43px;
+  position: absolute;
+  bottom: 50%;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  z-index: 99;
+}
+
+.RedoSearch_Button {
+  background: rgba(34, 34, 34, 0.7);
+  color: rgba(255, 255, 255, 1);
+  border: 4px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 1.5rem;
+  font-size: 1.5rem;
 }

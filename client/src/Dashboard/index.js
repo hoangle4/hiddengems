@@ -4,10 +4,7 @@ import placeDB from '../API/placeDB';
 
 import { Link } from 'react-router-dom';
 import GemCards from '../Components/GemCards/';
-import Toolbar from '../Components/Toolbar';
-import SideDrawer from '../Components/SideDrawer/SideDrawer';
 import UserSearch from '../Components/UserSearch';
-import './style.css';
 import { Consumer } from '../context';
 import UserBanner from '../Components/UserBanner';
 import Spinner from '../Components/Spinner';
@@ -21,10 +18,6 @@ class Dashboard extends Component {
 		gems: [],
 		isActiveEdit: false,
 		editPlace: {},
-	};
-
-	drawerToggleClickHandler = () => {
-		this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
 	};
 
 	getAuthenticate = async (dispatch, token) => dispatch({ type: 'GET_USER', payload: token });
@@ -65,8 +58,6 @@ class Dashboard extends Component {
 										<Spinner onLoad={() => this.getAuthenticate(dispatch, token)} />
 									) : (
 										<Fragment>
-											{/* <Toolbar drawerClick={this.drawerToggleClickHandler} /> */}
-											{this.state.sideDrawerOpen ? <SideDrawer /> : null}
 											<UserBanner user={user} />
 											<GemCards
 												placeCreated={user.placeCreated}
