@@ -1,68 +1,46 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import Spinner from "../Spinner";
-function SideGem({
-  isMarkerClicked,
-  data: { photos, placeName, description, _id },
-  handleCloseSideBar
-}) {
-  return (
-    <Fragment>
-      <ul className="MainMap_Sidenav">
-        <li>
-          <a href="#">
-            <i className="fa fa-check" />
-            <b>Tasks</b>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-inbox" />
-            <b>Messages</b>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-pencil" />
-            <b>New Post</b>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-cog" />
-            <b>Settings</b>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-star" />
-            <b>Starred</b>
-          </a>
-        </li>
-        <li>
-          <a href="#" onClick={handleCloseSideBar}>
-            <i className="fa fa-power-off" />
-            <b>Logout</b>
-          </a>
-        </li>
-      </ul>
-      {/* <img src={photos} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">{placeName}</h5>
-                <p className="card-text">{description}</p>
-                <div className="btn-div" style={{ textAlign: "center" }}>
-                  <Link to={`/gem/${_id}`} className="btn-learnmore">
-                    Read More
-                  </Link>
-                  <button
-                    onClick={handleCloseSideBar}
-                    className="MapGem_button"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div> */}
-    </Fragment>
-  );
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Truncate } from '../../Helper';
+import Spinner from '../Spinner';
+import './style.css';
+function SideGem({ data: { photos, placeName, description, _id }, handleCloseSideBar }) {
+	const [ truncatedTitle, setTruncatedTitle ] = useState('');
+	// console.log(placeName);
+	useEffect(() => {
+		if (!placeName) return;
+		console.log(Truncate(placeName, 10));
+	}, []);
+	return (
+		<Fragment>
+			<ul className="MainMap_Sidenav">
+				<li>
+					<b>
+						<Link className="MapGem_Title" to={`/gem/${_id}`}>
+							{truncatedTitle}
+						</Link>
+					</b>
+				</li>
+				<li>
+					<img src={photos} className="MapGem_Img" alt="..." />
+				</li>
+
+				<li className="MapGem_Description">
+					<b>{description}</b>
+				</li>
+				<li>
+					<Link to={`/gem/${_id}`}>
+						<i className="fa fa-book-reader" />
+						<b>Read More</b>
+					</Link>
+				</li>
+				<li>
+					<a href="#" onClick={handleCloseSideBar}>
+						<i className="fa fa-times" />
+						<b>Close</b>
+					</a>
+				</li>
+			</ul>
+		</Fragment>
+	);
 }
 export default SideGem;

@@ -1,0 +1,14 @@
+.MapGem_Img {
+	background-size: cover;
+	width: 30vw;
+}
+.MapGem_Title {
+	font-size: 1.3rem;
+}
+
+.MapGem_Description {
+	color: white;
+	padding: 0.5rem;
+	text-indent: 1rem;
+	text-align: justify;
+}
