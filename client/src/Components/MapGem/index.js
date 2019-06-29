@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 import { Truncate } from '../../Helper';
 import Spinner from '../Spinner';
 import './style.css';
-function SideGem({ data: { photos, placeName, description, _id }, handleCloseSideBar }) {
+function SideGem({ data: { photos, placeName, description, _id }, handleCloseSideBar, isMarkerClicked }) {
 	const [ truncatedTitle, setTruncatedTitle ] = useState('');
-	// console.log(placeName);
-	useEffect(() => {
-		if (!placeName) return;
-		console.log(Truncate(placeName, 10));
-	}, []);
+	console.log(truncatedTitle);
+	// const initTruncate = () => {
+	// 	if (isMarkerClicked) ;
+	// };
+	useEffect(
+		() => {
+			if (!placeName) return;
+			setTruncatedTitle(Truncate(placeName, 25));
+		},
+		[ placeName ]
+	);
 	return (
 		<Fragment>
 			<ul className="MainMap_Sidenav">
