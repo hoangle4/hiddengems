@@ -6,6 +6,7 @@
   border-radius: 1rem;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  display: flexbox;
 }
 .OverLayView_H3 {
   position: absolute;

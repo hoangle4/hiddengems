@@ -1,15 +1,8 @@
 import React, { Fragment } from "react";
+import { FaSearchPlus } from "react-icons/fa";
 import "./style.css";
 const OverLayView = ({
-  data: {
-    dateCreated,
-    description,
-    photos,
-    placeName,
-    distance,
-    _id,
-    coordinates
-  },
+  data: { photos, placeName, distance, _id, coordinates },
   handleViewPosition
 }) => {
   console.log(handleViewPosition);
@@ -30,7 +23,7 @@ const OverLayView = ({
           <a
             href={`/gem/${_id}`}
             className="OverLayView_A"
-            style={{ fontSize: `${25 - distance / 20}px` }}
+            style={{ fontSize: `${17 - distance / 30}px` }}
           >
             Read more
           </a>
@@ -39,7 +32,7 @@ const OverLayView = ({
             className="OverLayView_Button"
             onClick={changePosition}
           >
-            Go To
+            <FaSearchPlus />
           </button>
         </div>
       </div>
