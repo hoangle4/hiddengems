@@ -63,7 +63,14 @@ class EditGemForm extends Component {
   handleOnClick = async () => {
     const results = await placeDB.updatePlace(this.state);
     if (!results) return;
-    console.log(results);
+    await this.props.updateEditedPlace(results.data);
+  };
+
+  componentDidMount = () => {
+    this.updateState();
+  };
+
+  componentWillUnmount = () => {
     this.setState({
       placeName: "",
       photos: "",
@@ -73,11 +80,6 @@ class EditGemForm extends Component {
       coordinates: "",
       _id: ""
     });
-    this.props.handleFormClick();
-  };
-
-  componentDidMount = () => {
-    this.updateState();
   };
 
   updateState = () => {

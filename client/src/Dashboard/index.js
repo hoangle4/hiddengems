@@ -33,13 +33,23 @@ class Dashboard extends Component {
     this.setState({ placeCreated: newState });
   };
 
+  updateEditedPlace = async place => {
+    const newPlaceCreate = await this.state.placeCreated.map(p => {
+      if (place._id !== p._id) return p;
+      return place;
+    });
+
+    this.setState({
+      placeCreated: newPlaceCreate,
+      isActiveEdit: !this.state.isActiveEdit
+    });
+  };
+
   editClick = async place => {
-    console.log(place);
     await this.setState({
       editPlace: place,
       isActiveEdit: !this.state.isActiveEdit
     });
-    console.log(this.state.editPlace);
   };
 
   handleFormClick = async e => {
@@ -49,7 +59,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { dataReady, placeCreated, editPlace } = this.state;
+    const { dataReady, placeCreated, editPlace, isActiveEdit } = this.state;
     return (
       <Consumer>
         {value => {
@@ -77,10 +87,11 @@ class Dashboard extends Component {
                     deleteClick={this.deleteClick}
                     editClick={this.editClick}
                   />
-                  {this.state.isActiveEdit ? (
+                  {isActiveEdit ? (
                     <EditGemForms
                       editPlace={editPlace}
                       handleFormClick={this.handleFormClick}
+                      updateEditedPlace={this.updateEditedPlace}
                     />
                   ) : null}
                   <UserSearch />

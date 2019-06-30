@@ -112,13 +112,13 @@ module.exports = {
   updatePlace: async (req, resp) => {
     try {
       const { category, description, photos, placeName, _id } = req.body.place;
-      const place = await models.Gem.findOneAndUpdate(
-        { _id: _id },
-        {
-          $set: { category, description, photos, placeName }
-        }
-      );
-      resp.json(place);
+      const place = await models.Gem.findById({ _id });
+      place.placeName = placeName;
+      place.category = category;
+      place.description = description;
+      place.photos = photos;
+      const result = await place.save();
+      resp.json(result);
     } catch (err) {
       console.error(err);
     }
