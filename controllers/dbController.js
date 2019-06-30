@@ -110,15 +110,12 @@ module.exports = {
     }
   },
   updatePlace: async (req, resp) => {
-    console.log(req.body);
     try {
+      const { category, description, photos, placeName, _id } = req.body.place;
       const place = await models.Gem.findOneAndUpdate(
-        { _id: req.body._id },
+        { _id: _id },
         {
-          $push: {
-            // What should I do here?
-            placeCreated: req.body
-          }
+          $set: { category, description, photos, placeName }
         }
       );
       resp.json(place);

@@ -49,7 +49,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { dataReady, placeCreated } = this.state;
+    const { dataReady, placeCreated, editPlace } = this.state;
     return (
       <Consumer>
         {value => {
@@ -75,11 +75,12 @@ class Dashboard extends Component {
                     placeCreated={placeCreated}
                     user={user}
                     deleteClick={this.deleteClick}
+                    editClick={this.editClick}
                   />
                   {this.state.isActiveEdit ? (
                     <EditGemForms
-                      updateMaker={this.handleFormClick}
-                      editPlace={this.state.editPlace}
+                      editPlace={editPlace}
+                      handleFormClick={this.handleFormClick}
                     />
                   ) : null}
                   <UserSearch />

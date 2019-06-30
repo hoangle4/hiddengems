@@ -44,7 +44,7 @@ class EditGemForm extends Component {
       async results => {
         let progress =
           (await (results.bytesTransferred / results.totalBytes)) * 100;
-        console.log("Upload is " + progress + "% done");
+        // console.log("Upload is " + progress + "% done");
         this.setState({ progress: progress });
       },
       err => console.log(err),
@@ -63,6 +63,7 @@ class EditGemForm extends Component {
   handleOnClick = async () => {
     const results = await placeDB.updatePlace(this.state);
     if (!results) return;
+    console.log(results);
     this.setState({
       placeName: "",
       photos: "",
@@ -72,6 +73,7 @@ class EditGemForm extends Component {
       coordinates: "",
       _id: ""
     });
+    this.props.handleFormClick();
   };
 
   componentDidMount = () => {
@@ -91,8 +93,6 @@ class EditGemForm extends Component {
   };
 
   render() {
-    console.log(this.state);
-    const { isActiveEdit } = this.props;
     return (
       <Consumer>
         {value => {
@@ -107,6 +107,7 @@ class EditGemForm extends Component {
                   handleOnChange={this.handleOnChange}
                   handleOnClick={this.handleOnClick}
                   handleFileChange={this.handleFileChange}
+                  closeForm={this.props.handleFormClick}
                 />
               </div>
             </Fragment>
