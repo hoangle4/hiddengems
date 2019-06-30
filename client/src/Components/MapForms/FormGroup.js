@@ -1,21 +1,24 @@
-import React, { Fragment } from "react";
-import Spinner from "../Spinner";
-import { Link } from "react-router-dom";
-import { Consumer } from "../../context";
+import React, { Fragment } from 'react';
+import Spinner from '../Spinner';
+import { Link } from 'react-router-dom';
+import { Consumer } from '../../context';
 
 function FormGroup({
-  placeName,
-  isUploaded,
-  photos,
-  category,
-  progress,
-  description,
-  handleOnChange,
-  handleOnClick,
-  handleFileChange,
-  handleOnFormClose
+	placeName,
+	isUploaded,
+	photos,
+	category,
+	progress,
+	description,
+	handleOnChange,
+	handleOnClick,
+	handleFileChange,
+	handleOnFormClose
 }) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin
 	return (
 		<Consumer>
 			{(value) => {
@@ -44,17 +47,35 @@ function FormGroup({
 									/>
 								</div>
 								<div className="FormGroup-input-container upload-btn-wrapper">
+<<<<<<< HEAD
                     <input
+=======
+									<input
+>>>>>>> origin
 										type="file"
 										className="FormGroup-file_input"
 										name="photos"
 										onChange={handleFileChange}
+<<<<<<< HEAD
 									  />
                     <label for="photos" className="FormGroup-file_input">Upload Image</label>
 								</div>
 								{progress ? (
 									<div className="FormGroup-progress-bar-container">
 										<p className="FormGroup-progress-bar" style={{ width: `${parseInt(progress)}%` }} />
+=======
+									/>
+									<label for="photos" className="FormGroup-file_input">
+										Upload Image
+									</label>
+								</div>
+								{progress ? (
+									<div className="FormGroup-progress-bar-container">
+										<p
+											className="FormGroup-progress-bar"
+											style={{ width: `${parseInt(progress)}%` }}
+										/>
+>>>>>>> origin
 										<small> {parseInt(progress) + '%'}</small>
 									</div>
 								) : null}
@@ -70,10 +91,21 @@ function FormGroup({
 										value={category}
 										onChange={handleOnChange}
 									>
+<<<<<<< HEAD
 										<option value="restaurants">Restaurants</option>
 										<option value="auto">Auto</option>
 										<option value="bars">Bars</option>
 										<option value="reacreationalarea">Recreational Area</option>
+=======
+										<option value="" />
+										<option value="auto">Auto</option>
+										<option value="bars">Bar</option>
+										<option value="coffeeshop">Coffee Shop</option>
+										<option value="reacreationalarea">Recreational Area</option>
+										<option value="restaurants">Restaurant</option>
+										<option value="park">Park</option>
+										<option value="specialist">Specialist</option>
+>>>>>>> origin
 									</select>
 								</div>
 								<div className="FormGroup-input-container">
@@ -116,6 +148,7 @@ function FormGroup({
 			}}
 		</Consumer>
 	);
+<<<<<<< HEAD
 =======
   return (
     <Consumer>
@@ -229,6 +262,8 @@ function FormGroup({
       }}
     </Consumer>
   );
+>>>>>>> origin
+=======
 >>>>>>> origin
 }
 
