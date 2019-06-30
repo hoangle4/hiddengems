@@ -17,9 +17,9 @@
 
 .UserBanner_avatar-wrapper {
 	position: relative;
-	height: 175px;
-	width: 175px;
-	margin: 50px auto;
+	height: 150px;
+	width: 150px;
+	/* margin: 50px ; */
 	border-radius: 50%;
 	overflow: hidden;
 	box-shadow: 1px 1px 15px -5px black;
@@ -27,7 +27,7 @@
 }
 
 .UserBanner_avatar-wrapper:hover {
-	transform: scale(0.5);
+	transform: scale(1.1);
 	cursor: pointer;
 }
 .UserBanner_avatar-wrapper:hover .UserBanner_profile-pic {
@@ -63,11 +63,12 @@
 }
 .fa-arrow-circle-up {
 	position: absolute;
-	font-size: 234px;
-	top: -25px;
-	left: -27px;
+	font-size: 10rem;
+	top: -5px;
+	left: -5px;
 	text-align: center;
 	opacity: 0;
 	transition: all .3s ease;
-	color: #34495e;
+	color: #6f70f5;
+	background: #f55d83;
 }
