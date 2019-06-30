@@ -4,16 +4,10 @@ import { Link } from "react-router-dom";
 import { Consumer } from "../../context";
 
 function FormGroup({
-  placeName,
-  isUploaded,
-  photos,
-  category,
-  progress,
-  description,
+  value: { placeName, isUploaded, photos, category, progress, description },
   handleOnChange,
   handleOnClick,
-  handleFileChange,
-  handleOnFormClose
+  handleFileChange
 }) {
   return (
     <Consumer>
@@ -25,15 +19,16 @@ function FormGroup({
               <Spinner />
             ) : isAuthenticated ? (
               <Fragment>
-                <h5 className="FormGroup-header">Add Gem</h5>
-                <span
-                  className="x_btn FormGroup-top-x"
-                  style={{ cursor: "pointer" }}
-                  onClick={handleOnFormClose}
-                >
-                  <i className="far fa-times-circle" />
-                </span>
-                <div className="FormGroup-input-container">
+                <h5>
+                  Place Details
+                  <span className="x_btn" style={{ cursor: "pointer" }}>
+                    <small />
+                  </span>
+                </h5>
+                <div className="input-container">
+                  <label className="label" htmlFor="placeName">
+                    Place Name
+                  </label>
                   <input
                     className="input"
                     name="placeName"
@@ -42,10 +37,10 @@ function FormGroup({
                     onChange={handleOnChange}
                   />
                 </div>
-                <div className="FormGroup-input-container upload-btn-wrapper">
-                  {/* <label className="label" htmlFor="photos">
+                <div className="input-container upload-btn-wrapper">
+                  <label className="label" htmlFor="photos">
                     Photos
-                  </label> */}
+                  </label>
                   <button id="upload-file-btn">
                     <i className="far fa-edit" /> Image
                   </button>
@@ -70,20 +65,30 @@ function FormGroup({
                     <img src={photos} alt="..." />
                   </div>
                 ) : null}
-                <div className="FormGroup-input-container">
+                <div className="input-container">
+                  <label className="label" htmlFor="category">
+                    Category
+                  </label>
                   <select
                     className="input"
                     name="category"
                     value={category}
                     onChange={handleOnChange}
                   >
-                    <option value="restaurants">Restaurants</option>
+                    <option value="" />
                     <option value="auto">Auto</option>
-                    <option value="bars">Bars</option>
+                    <option value="bars">Bar</option>
+                    <option value="coffeeshop">Coffee Shop</option>
                     <option value="reacreationalarea">Recreational Area</option>
+                    <option value="restaurants">Restaurant</option>
+                    <option value="park">Park</option>
+                    <option value="specialist">Specialist</option>
                   </select>
                 </div>
-                <div className="FormGroup-input-container">
+                <div className="input-container">
+                  <label className="label" htmlFor="description">
+                    Description
+                  </label>
                   <textarea
                     className="input"
                     name="description"
@@ -96,7 +101,7 @@ function FormGroup({
                   <input
                     type="submit"
                     className="create-btn"
-                    value="Create Place"
+                    value="Update Place"
                     disabled={!isUploaded}
                     onClick={handleOnClick}
                   />

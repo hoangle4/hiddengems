@@ -12,6 +12,7 @@ router.post(
   auth,
   dbController.updateUserCreatedPlace
 );
+router.put("/updatePlace", auth, dbController.updatePlace);
 router.delete("/deletePlace", auth, dbController.deletePlace);
 
 

@@ -6,6 +6,11 @@ const db = {
       place
     });
   },
+  updatePlace: (place) => {
+    return axios.put(`/db/updatePlace?id=${place._id}`,{
+      place
+    });
+  },
   deletePlace:id => {
     return axios.delete(`/db/deletePlace?id=${id}`);
   },

@@ -8,11 +8,14 @@ import { Consumer } from "../context";
 import UserBanner from "../Components/UserBanner";
 import Spinner from "../Components/Spinner";
 import BubbleNav from "../Components/BubbleNav";
+import EditGemForms from "../Components/EditGemForms";
 
 class Dashboard extends Component {
   state = {
     dataReady: false,
-    placeCreated: []
+    placeCreated: [],
+    isActiveEdit: false,
+    editPlace: {}
   };
 
   getAuthenticate = async (dispatch, token) =>
@@ -28,6 +31,21 @@ class Dashboard extends Component {
       place => id !== place._id
     );
     this.setState({ placeCreated: newState });
+  };
+
+  editClick = async place => {
+    console.log(place);
+    await this.setState({
+      editPlace: place,
+      isActiveEdit: !this.state.isActiveEdit
+    });
+    console.log(this.state.editPlace);
+  };
+
+  handleFormClick = async e => {
+    this.setState({
+      isActiveEdit: !this.state.isActiveEdit
+    });
   };
 
   render() {
@@ -58,6 +76,12 @@ class Dashboard extends Component {
                     user={user}
                     deleteClick={this.deleteClick}
                   />
+                  {this.state.isActiveEdit ? (
+                    <EditGemForms
+                      updateMaker={this.handleFormClick}
+                      editPlace={this.state.editPlace}
+                    />
+                  ) : null}
                   <UserSearch />
                 </Fragment>
               )}
