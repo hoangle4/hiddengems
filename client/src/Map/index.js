@@ -106,7 +106,15 @@ class RenderMap extends PureComponent {
 		this.props.handleMapClick();
 	};
 	render() {
-		const { latLng, marker, isMarkerShown, locationReady, isStreetView, areSurroundMarkers } = this.state;
+		const {
+			latLng,
+			marker,
+			isMarkerShown,
+			locationReady,
+			isStreetView,
+			areSurroundMarkers,
+			isMarkerClicked
+		} = this.state;
 		return (
 			<Consumer>
 				{(value) => {
@@ -132,11 +140,11 @@ class RenderMap extends PureComponent {
 										onCenterMapClick={this.onCenterMapClick}
 									/>
 
-									{/* <MapForms
-                    updateMarker={this.handleFormClick}
-                    isMarkerClicked={this.state.isMarkerClicked}
-                    coordinates={marker}
-                  /> */}
+									<MapForms
+										updateMarker={this.handleFormClick}
+										isMarkerClicked={this.state.isMarkerClicked}
+										coordinates={marker}
+									/>
 									<RedoSearch
 										areSurroundMarkers={areSurroundMarkers}
 										getSurroundMarkers={this.getSurroundMarkers}
