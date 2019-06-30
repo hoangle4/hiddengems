@@ -30,14 +30,18 @@ class Home extends Component {
   };
 
   drawerToggleClickHandler = () => {
-    this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
+    this.setState({
+      sideDrawerOpen: !this.state.sideDrawerOpen,
+      isMarkerClicked: false
+    });
   };
 
   handleMarkerClick = async id => {
     const result = await this.state.markerData.filter(data => data._id === id);
     this.setState({
       sideStory: result[0],
-      isMarkerClicked: true
+      isMarkerClicked: true,
+      sideDrawerOpen: false
     });
   };
   handleMapClick = () => {
@@ -57,7 +61,7 @@ class Home extends Component {
       <Fragment>
         <div>
           <Toolbar drawerClick={this.drawerToggleClickHandler} />
-          {this.state.sideDrawerOpen ? <SideDrawer /> : null}
+          {this.state.sideDrawerOpen ? null : null}
         </div>
 
         {!this.state.dataReady ? (
@@ -71,6 +75,12 @@ class Home extends Component {
                   id="tm"
                   checked={this.state.isMarkerClicked}
                 />
+                <input
+                  type="checkbox"
+                  id="nv"
+                  checked={this.state.sideDrawerOpen}
+                />
+                <SideDrawer />
 
                 <MapGem
                   data={this.state.sideStory}

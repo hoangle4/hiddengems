@@ -4,16 +4,11 @@ import { Link } from "react-router-dom";
 import { Consumer } from "../../context";
 
 function FormGroup({
-  placeName,
-  isUploaded,
-  photos,
-  category,
-  progress,
-  description,
+  value: { placeName, isUploaded, photos, category, progress, description },
   handleOnChange,
   handleOnClick,
   handleFileChange,
-  handleOnFormClose
+  closeForm
 }) {
   return (
     <Consumer>
@@ -25,11 +20,11 @@ function FormGroup({
               <Spinner />
             ) : isAuthenticated ? (
               <Fragment>
-                <h5 className="FormGroup-header">Add Gem</h5>
+                <h5>Edit Gem</h5>
                 <span
                   className="x_btn FormGroup-top-x"
                   style={{ cursor: "pointer" }}
-                  onClick={handleOnFormClose}
+                  onClick={closeForm}
                 >
                   <i className="far fa-times-circle" />
                 </span>
@@ -100,7 +95,7 @@ function FormGroup({
                   <input
                     type="submit"
                     className="create-btn"
-                    value="Create Place"
+                    value="Update Place"
                     disabled={!isUploaded}
                     onClick={handleOnClick}
                   />

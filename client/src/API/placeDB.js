@@ -6,7 +6,12 @@ const db = {
       place
     });
   },
-  deletePlace:id => {
+  updatePlace: place => {
+    return axios.put("/db/updatePlace", {
+      place
+    });
+  },
+  deletePlace: id => {
     return axios.delete(`/db/deletePlace?id=${id}`);
   },
   findAllPlace: () => {
@@ -21,7 +26,7 @@ const db = {
       message,
       placeID
     });
-  },
+  }
 };
 
 export default db;

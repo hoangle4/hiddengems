@@ -1,28 +1,131 @@
-.SideDrawer {
-  height: 100%;
-  background: white;
-  box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
-  position: fixed;
-  top: 0;
+.SideDrawer_Sidenav {
+  background-image: linear-gradient(
+    to top,
+    rgba(105, 94, 127, 0.54) 0%,
+    rgba(255, 92, 92, 0.57) 15%,
+    rgba(255, 160, 17, 0.59) 27%,
+    rgba(252, 236, 93, 0.61) 37%,
+    rgba(255, 229, 145, 0.63) 46%,
+    rgba(111, 196, 173, 0.65) 58%,
+    rgba(106, 132, 186, 0.67) 69%,
+    rgba(209, 119, 195, 0.69) 79%,
+    rgba(216, 213, 125, 0.7) 89%,
+    rgba(216, 213, 125, 0.72) 100%
+  );
+  background-size: 100% 300%;
+  transition: all 2s linear;
+  width: 20vw;
+  position: absolute;
   right: 0;
-  width: 70%;
-  max-width: 400px;
-  z-index: 2;
-  padding-top: 15%;
+  top: 0;
+  bottom: 0;
+  padding-top: 150px;
 }
 
-.SideDrawer ul {
-  height: 100%;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.SideDrawer_Sidenav:hover {
+  background-position: center right, top right;
 }
-.SideDrawer a {
-  color: black;
+.SideDrawer_Sidenav li {
+  list-style-type: none;
+}
+
+.SideDrawer_Sidenav a {
+  color: rgb(50, 16, 63);
+  text-shadow: 1px 1px rgb(207, 181, 218);
   text-decoration: none;
-  font-size: 1.2rem;
 }
-.SideDrawer li {
-  margin: 0.5rem 0;
+
+.SideDrawer_Sidenav b {
+  font: bold 12px/48px Montserrat;
+  display: block;
+  opacity: 0;
+  -webkit-transform: translateX(50px);
+  -moz-transform: translateX(50px);
+  -ms-transform: translateX(50px);
+  -o-transform: translateX(50px);
+  transform: translateX(50px);
+
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.SideDrawer_Sidenav i {
+  display: block;
+  width: 50px;
+  float: left;
+  font-size: 16px;
+  line-height: 48px;
+  text-align: center;
+}
+/*Animation controls using checkbox hack*/
+/*Animate content area to the right*/
+#nv:checked ~ section {
+  -webkit-transform: translateX(-20vw);
+  -moz-transform: translateX(-20vw);
+  -ms-transform: translateX(-20vw);
+  -o-transform: translateX(-20vw);
+  transform: translateX(-20vw);
+}
+
+/*Animate links from right to left + fade in effect*/
+#nv:checked ~ .SideDrawer_Sidenav b {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/*Adding delay to link animation - in multiples of .08s*/
+/*One can use jQuery also for creating the delayed effect. But I will stick to manual CSS for this walkthrough.*/
+#nv:checked ~ .SideDrawer_Sidenav li:nth-child(1) b {
+  -webkit-transition-delay: 0.08s;
+  -moz-transition-delay: 0.08s;
+  -ms-transition-delay: 0.08s;
+  -o-transition-delay: 0.08s;
+  transition-delay: 0.08s;
+}
+
+#nv:checked ~ .SideDrawer_Sidenav li:nth-child(2) b {
+  -webkit-transition-delay: 0.16s;
+  -moz-transition-delay: 0.16s;
+  -ms-transition-delay: 0.16s;
+  -o-transition-delay: 0.16s;
+  transition-delay: 0.16s;
+}
+
+#nv:checked ~ .SideDrawer_Sidenav li:nth-child(3) b {
+  -webkit-transition-delay: 0.24s;
+  -moz-transition-delay: 0.24s;
+  -ms-transition-delay: 0.24s;
+  -o-transition-delay: 0.24s;
+  transition-delay: 0.24s;
+}
+
+#nv:checked ~ .SideDrawer_Sidenav li:nth-child(4) b {
+  -webkit-transition-delay: 0.32s;
+  -moz-transition-delay: 0.32s;
+  -ms-transition-delay: 0.32s;
+  -o-transition-delay: 0.32s;
+  transition-delay: 0.32s;
+}
+
+#nv:checked ~ .SideDrawer_Sidenav li:nth-child(5) b {
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -ms-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+#nv:checked ~ .SideDrawer_Sidenav li:nth-child(6) b {
+  -webkit-transition-delay: 0.48s;
+  -moz-transition-delay: 0.48s;
+  -ms-transition-delay: 0.48s;
+  -o-transition-delay: 0.48s;
+  transition-delay: 0.48s;
 }
