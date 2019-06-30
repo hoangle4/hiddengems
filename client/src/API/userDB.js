@@ -31,14 +31,9 @@ export default {
 			id
 		});
 	},
-	// update profile picture
-	updateProfilePicture: (user) => {
-		axios.post('/update/profile-picture', {
-			url: user.url,
-			// might want to user something else to verify user.. not sure yet
-			user: user.user
+	updateUserAvatar: (avatar) => {
+		return axios.put('/db/updateUserAvatar', {
+			avatar
 		});
 	}
-	// update bg photo
-	// update password
 };

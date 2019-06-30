@@ -72,3 +72,10 @@
 	color: #6f70f5;
 	background: #f55d83;
 }
+.UserBanner_progress_ring {
+}
+.UserBanner_progress_ring_circle {
+	transition: 0.35s stroke-dashoffset;
+	transform: rotate(90deg);
+	transform: translate(50%, 50%);
+}

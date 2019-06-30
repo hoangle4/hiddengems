@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import userDB from '../../API/userDB';
 import firebaseStorage from '../Firebase';
+import spinner from '../Spinner/spinner.gif';
 import './style.css';
 import moment from 'moment';
 
 const UserBanner = ({ user }) => {
 	const [ avatar, setAvatar ] = useState('');
-	const [ progress, setProgress ] = useState('');
+	const [ progress, setProgress ] = useState(0);
 	const [ isUploaded, setIsUploaded ] = useState(false);
 	const [ dateCreated, setDataCreated ] = useState('');
 	const [ firstName, setFirstName ] = useState('');
@@ -16,6 +18,44 @@ const UserBanner = ({ user }) => {
 		setFirstName(user.firstName);
 		setLastName(user.lastName);
 	}, []);
+
+	useEffect(
+		() => {
+			upLoadImage();
+		},
+		[ avatar ]
+	);
+
+	useEffect(
+		() => {
+			runAnimation();
+		},
+		[ progress ]
+	);
+
+	const runAnimation = async () => {
+		const circle = await document.querySelector('circle');
+		const radius = await circle.r.baseVal.value;
+		const circumference = (await radius) * 2 * Math.PI;
+
+		circle.style.strokeDasharray = await `${circumference} ${circumference}`;
+		circle.style.strokeDashoffset = await `${circumference}`;
+
+		const offset = (await circumference) - progress / 100 * circumference;
+		circle.style.strokeDashoffset = offset;
+		if (progress == 100)
+			setTimeout(() => {
+				setProgress(0);
+			}, 2000);
+	};
+
+	const upLoadImage = async () => {
+		if (!isUploaded) return;
+		const result = await userDB.updateUserAvatar(avatar);
+		if (!result);
+		await setAvatar(result.data);
+		setIsUploaded(false);
+	};
 
 	const handleFileChange = (e) => {
 		if (!e.target.files[0]) {
@@ -29,6 +69,8 @@ const UserBanner = ({ user }) => {
 			console.error({ uploadErr: ' file too big, maximum size : 5mb' });
 			return;
 		}
+
+		setIsUploaded(true);
 
 		const storageRef = firebaseStorage.ref('placePhotos/' + name);
 		const upLoadFile = storageRef.put(files[0], { type });
@@ -45,7 +87,6 @@ const UserBanner = ({ user }) => {
 				// Upload completed successfully, now we can get the download URL
 				upLoadFile.snapshot.ref.getDownloadURL().then((downloadURL) => {
 					setAvatar(downloadURL);
-					setIsUploaded(true);
 				});
 			}
 		);
@@ -54,8 +95,19 @@ const UserBanner = ({ user }) => {
 	return (
 		<div className="userBanner">
 			<div className="UserBanner_avatar-wrapper">
-				<img src={avatar} className="UserBanner_profile-pic" />
+				<img src={!isUploaded ? avatar : spinner} className="UserBanner_profile-pic" />
 				<div className="UserBanner_upload-button">
+					<svg className="UserBanner_progress_ring" width="150" height="150">
+						<circle
+							className="UserBanner_progress_ring_circle"
+							stroke="#6f70f5"
+							strokeWidth="4"
+							fill="transparent"
+							r="73"
+							cx="0"
+							cy="0"
+						/>
+					</svg>
 					<i
 						className="fa fa-arrow-circle-up"
 						aria-hidden="true"
