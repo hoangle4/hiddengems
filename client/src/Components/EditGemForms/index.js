@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from "react";
-import FromGroup from "./FormGroup";
+import FromGroup from "./EditFormGroup";
 import placeDB from "../../API/placeDB";
-import userDB from "../../API/userDB";
 import { Consumer } from "../../context";
 import firebaseStorage from "../Firebase";
-import "./mapforms.css";
-class MapFrom extends Component {
+
+class EditGemForm extends Component {
   state = {
     placeName: "",
     photos: "",
@@ -13,6 +12,7 @@ class MapFrom extends Component {
     description: "",
     progress: "",
     coordinates: "",
+    _id: "",
     isUploaded: false
   };
 
@@ -44,7 +44,7 @@ class MapFrom extends Component {
       async results => {
         let progress =
           (await (results.bytesTransferred / results.totalBytes)) * 100;
-        console.log("Upload is " + progress + "% done");
+        // console.log("Upload is " + progress + "% done");
         this.setState({ progress: progress });
       },
       err => console.log(err),
@@ -61,40 +61,46 @@ class MapFrom extends Component {
   };
 
   handleOnClick = async () => {
-    await this.setState({ coordinates: this.props.coordinates });
-
-    const results = await placeDB.createPlace(this.state);
+    const results = await placeDB.updatePlace(this.state);
     if (!results) return;
-
-    const response = await userDB.updateUserCreatedPlace(results.data._id);
-    console.log(response);
-    if (!response) return;
-    this.handleOnFormClose();
+    await this.props.updateEditedPlace(results.data);
   };
 
-  handleOnFormClose = e => {
-    this.props.updateMarker();
-    if (e) e.preventDefault();
+  componentDidMount = () => {
+    this.updateState();
+  };
+
+  componentWillUnmount = () => {
     this.setState({
       placeName: "",
       photos: "",
       category: "",
       description: "",
       progress: "",
-      coordinates: ""
+      coordinates: "",
+      _id: ""
+    });
+  };
+
+  updateState = () => {
+    this.setState({
+      placeName: this.props.editPlace.placeName,
+      photos: this.props.editPlace.photos,
+      category: this.props.editPlace.category,
+      description: this.props.editPlace.description,
+      progress: this.props.editPlace.progress,
+      coordinates: this.props.editPlace.coordinates,
+      _id: this.props.editPlace._id
     });
   };
 
   render() {
-    const { isMarkerClicked } = this.props;
     return (
       <Consumer>
         {value => {
           return (
             <Fragment>
-              <div
-                className={`form-group ${isMarkerClicked ? "form-active" : ""}`}
-              >
+              <div className="form-group form-active">
                 <FromGroup
                   value={this.state}
                   progress={this.state.progress}
@@ -103,7 +109,7 @@ class MapFrom extends Component {
                   handleOnChange={this.handleOnChange}
                   handleOnClick={this.handleOnClick}
                   handleFileChange={this.handleFileChange}
-                  handleOnFormClose={this.handleOnFormClose}
+                  closeForm={this.props.handleFormClick}
                 />
               </div>
             </Fragment>
@@ -114,4 +120,4 @@ class MapFrom extends Component {
   }
 }
 
-export default MapFrom;
+export default EditGemForm;
