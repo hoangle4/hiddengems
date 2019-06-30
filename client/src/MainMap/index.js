@@ -30,14 +30,18 @@ class Home extends Component {
   };
 
   drawerToggleClickHandler = () => {
-    this.setState({ sideDrawerOpen: !this.state.sideDrawerOpen });
+    this.setState({
+      sideDrawerOpen: !this.state.sideDrawerOpen,
+      isMarkerClicked: false
+    });
   };
 
   handleMarkerClick = async id => {
     const result = await this.state.markerData.filter(data => data._id === id);
     this.setState({
       sideStory: result[0],
-      isMarkerClicked: true
+      isMarkerClicked: true,
+      sideDrawerOpen: false
     });
   };
   handleMapClick = () => {

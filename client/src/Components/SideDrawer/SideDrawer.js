@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./SideDrawer.css";
 import { Consumer } from "../../context";
@@ -10,7 +10,7 @@ function SideDrawer() {
       {value => {
         const { isAuthenticated, loading, dispatch } = value;
         return (
-          <nav className="SideDrawer">
+          <Fragment>
             {loading ? (
               <Spinner />
             ) : isAuthenticated ? (
@@ -38,22 +38,22 @@ function SideDrawer() {
                 </li>
               </ul>
             ) : (
-              <ul>
+              <ul className="SideDrawer_Sidenav">
                 <li className="MapGem_Button_Li">
                   <Link to="/login">
-                    <i className="fa fa-power-on" />
+                    <i className="fa fa-arrow-right" />
                     <b>Login</b>
                   </Link>
                 </li>
                 <li className="MapGem_Button_Li">
                   <Link to="/signup">
-                    <i className="fa fa-arrow-up" />
+                    <i className="fa fa-home" />
                     <b>Home</b>
                   </Link>
                 </li>
               </ul>
             )}
-          </nav>
+          </Fragment>
         );
       }}
     </Consumer>
