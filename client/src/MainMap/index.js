@@ -57,7 +57,7 @@ class Home extends Component {
       <Fragment>
         <div>
           <Toolbar drawerClick={this.drawerToggleClickHandler} />
-          {this.state.sideDrawerOpen ? <SideDrawer /> : null}
+          {this.state.sideDrawerOpen ? null : null}
         </div>
 
         {!this.state.dataReady ? (
@@ -71,6 +71,12 @@ class Home extends Component {
                   id="tm"
                   checked={this.state.isMarkerClicked}
                 />
+                <input
+                  type="checkbox"
+                  id="nv"
+                  checked={this.state.sideDrawerOpen}
+                />
+                <SideDrawer />
 
                 <MapGem
                   data={this.state.sideStory}

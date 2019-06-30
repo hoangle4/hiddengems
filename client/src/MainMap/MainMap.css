@@ -3,8 +3,8 @@
   padding: 0;
 }
 
-#MainMap_Wrapper {
-}
+/* #MainMap_Wrapper {
+} */
 
 .MainMap_Mobile {
   float: left;
@@ -15,6 +15,9 @@
 
 /*Hiding the checkbox*/
 #tm {
+  display: none;
+}
+#nv {
   display: none;
 }
 

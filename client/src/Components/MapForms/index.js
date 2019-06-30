@@ -3,7 +3,6 @@ import FromGroup from "./FormGroup";
 import placeDB from "../../API/placeDB";
 import userDB from "../../API/userDB";
 import { Consumer } from "../../context";
-import Spinner from "../Spinner";
 import firebaseStorage from "../Firebase";
 import "./mapforms.css";
 class MapFrom extends Component {
