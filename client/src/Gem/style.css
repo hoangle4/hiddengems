@@ -82,6 +82,7 @@
 .Story_image {
 	border-radius: 5px;
 	box-shadow: 0px 2px 5px rgb(0, 0, 0);
+	max-height: 30vh;
 }
 .Story-textbox  {
 	margin: 2vh 0;
