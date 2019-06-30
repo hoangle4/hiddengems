@@ -1,19 +1,73 @@
 .userBanner {
-    font-family: 'Fugaz One', cursive;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: url(./gradient.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 25vh;
+	font-family: 'Fugaz One', cursive;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: url(./gradient.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 25vh;
 }
-.profileImage {
-    height: 20vh;
-    border-radius: 150px;
-}
+
 .userBanner-display-info {
-    color: white;
+	color: white;
+}
+
+.UserBanner_avatar-wrapper {
+	position: relative;
+	height: 175px;
+	width: 175px;
+	margin: 50px auto;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 1px 1px 15px -5px black;
+	transition: all .3s ease;
+}
+
+.UserBanner_avatar-wrapper:hover {
+	transform: scale(0.5);
+	cursor: pointer;
+}
+.UserBanner_avatar-wrapper:hover .UserBanner_profile-pic {
+	opacity: 0;
+}
+.UserBanner_profile-pic {
+	height: 100%;
+	width: 100%;
+	transition: all .3s ease;
+}
+.UserBanner_profile-pic:after {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	content: "\f007";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-size: 190px;
+	background: #ecf0f1;
+	color: #34495e;
+	text-align: center;
+}
+.UserBanner_upload-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+.UserBanner_upload-button:hover .fa-arrow-circle-up {
+	opacity: 1;
+}
+.fa-arrow-circle-up {
+	position: absolute;
+	font-size: 234px;
+	top: -25px;
+	left: -27px;
+	text-align: center;
+	opacity: 0;
+	transition: all .3s ease;
+	color: #34495e;
 }
