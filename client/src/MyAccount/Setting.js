@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import userDB from "../API/userDB";
 
 const Setting = ({ user }) => {
   const [settingUser, UpdateUser] = useState({
@@ -25,8 +26,10 @@ const Setting = ({ user }) => {
     []
   );
 
-  const updateUserInfo = event => {
+  const updateUserInfo = async event => {
     event.preventDefault();
+    const result = await userDB.updateUserInfo(settingUser);
+    console.log(result);
   };
   return (
     <div className="Setting_container">
