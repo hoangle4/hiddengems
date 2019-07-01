@@ -38,7 +38,7 @@ const BubbleNav = () => {
                 id="Bubblenav-third-bubble"
               >
                 <a
-                  to="/"
+                  href="/"
                   onClick={() => dispatch({ type: "LOG_OUT", payload: null })}
                 >
                   <i className="fas fa-sign-out-alt" />

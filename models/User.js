@@ -7,11 +7,15 @@ var UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  // username: {
-  //   type: String,
-  //   unique: true,
-  //   required: true
-  // },
+  address: {
+    type: String
+  },
+  cityState: {
+    type: String
+  },
+  phoneNumber: {
+    type: Number
+  },
   password: {
     type: String,
     required: true

@@ -2,33 +2,35 @@ import React, { useState, useEffect } from "react";
 import userDB from "../API/userDB";
 
 const Setting = ({ user }) => {
-  const [settingUser, UpdateUser] = useState({
-    firstName: "",
-    lastName: "",
-    address: "",
-    cityState: "",
-    email: "",
-    phoneNumber: "",
-    avatar: ""
-  });
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [cityState, setCityState] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState(0);
+  const [avatar, setAvatar] = useState("");
 
-  useEffect(
-    () =>
-      UpdateUser({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        address: user.address,
-        cityState: user.cityState,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-        avatar: user.avatar
-      }),
-    []
-  );
+  useEffect(() => {
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setAddress(user.address);
+    setCityState(user.cityState);
+    setEmail(user.email);
+    setPhoneNumber(user.phoneNumber);
+    setAvatar(user.avatar);
+  }, []);
 
   const updateUserInfo = async event => {
     event.preventDefault();
-    const result = await userDB.updateUserInfo(settingUser);
+    const result = await userDB.updateUserInfo({
+      user: {
+        firstName,
+        lastName,
+        address,
+        cityState,
+        phoneNumber
+      }
+    });
     console.log(result);
   };
   return (
@@ -43,7 +45,8 @@ const Setting = ({ user }) => {
             <input
               className="Setting_input"
               type="text"
-              value={settingUser.firstName}
+              value={firstName}
+              onChange={e => setFirstName(e.target.value)}
             />
           </div>
           <div className="Setting_item">
@@ -51,7 +54,8 @@ const Setting = ({ user }) => {
             <input
               className="Setting_input"
               type="text"
-              value={settingUser.lastName}
+              value={lastName}
+              onChange={e => setLastName(e.target.value)}
             />
           </div>
           <div className="Setting_item">
@@ -59,7 +63,8 @@ const Setting = ({ user }) => {
             <input
               className="Setting_input"
               type="text"
-              value={settingUser.address}
+              value={address}
+              onChange={e => setAddress(e.target.value)}
             />
           </div>
           <div className="Setting_item">
@@ -67,7 +72,8 @@ const Setting = ({ user }) => {
             <input
               className="Setting_input"
               type="text"
-              value={settingUser.cityState}
+              value={cityState}
+              onChange={e => setCityState(e.target.value)}
             />
           </div>
           <div className="Setting_item">
@@ -75,7 +81,8 @@ const Setting = ({ user }) => {
             <input
               className="Setting_input"
               type="text"
-              value={settingUser.email}
+              value={email}
+              disabled={true}
             />
           </div>
           <div className="Setting_item">
@@ -83,7 +90,8 @@ const Setting = ({ user }) => {
             <input
               className="Setting_input"
               type="text"
-              value={settingUser.phoneNumber}
+              value={phoneNumber}
+              onChange={e => setPhoneNumber(e.target.value)}
             />
           </div>
         </div>

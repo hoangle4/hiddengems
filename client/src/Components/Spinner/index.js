@@ -2,9 +2,9 @@ import React, { Fragment, useEffect } from "react";
 import spinner from "./spinner.gif";
 
 const Spinner = ({ onLoad }) => {
-  useEffect(() => onLoad);
   return (
     <Fragment>
+      <img src={spinner} onLoad={onLoad} style={{ display: "none" }} />
       <div
         style={{ width: "75px", margin: "auto", display: "block", zIndex: 99 }}
         className="lds-svg ng-scope"
@@ -126,7 +126,7 @@ const Spinner = ({ onLoad }) => {
             <circle
               fill="none"
               stroke="#7f9626"
-              stroke-width="5"
+              strokeWidth="5"
               cx="50"
               cy="50"
               r="34"

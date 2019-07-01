@@ -105,10 +105,21 @@ module.exports = {
   },
   updateUserInfo: async (req, resp) => {
     try {
-      const user = await models.User.findById(req.user.id);
-      // user.avatar = req.body.avatar;
-      // const result = await user.save();
-      resp.json(req.body);
+      const {
+        firstName,
+        lastName,
+        address,
+        cityState,
+        phoneNumber
+      } = req.body.user.user;
+      const user = await models.User.findById(req.user.id).select("-password");
+      user.phoneNumber = phoneNumber;
+      user.cityState = cityState;
+      user.address = address;
+      user.lastName = lastName;
+      user.firstName = firstName;
+      const result = await user.save();
+      resp.json(result);
     } catch (err) {
       console.error(err);
     }

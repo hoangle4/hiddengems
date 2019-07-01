@@ -66,7 +66,7 @@ class Dashboard extends Component {
           const { user, isAuthenticated, loading, token, dispatch } = value;
           return (
             <div className="dashContainer">
-              {loading && !isAuthenticated && user === null ? (
+              {loading && !isAuthenticated ? (
                 <Fragment>
                   <Spinner
                     onLoad={() => {
@@ -74,6 +74,10 @@ class Dashboard extends Component {
                     }}
                   />
                 </Fragment>
+              ) : user === null ? (
+                <Spinner
+                  onLoad={() => dispatch({ type: "GET_USER", payload: token })}
+                />
               ) : !dataReady ? (
                 <Spinner
                   onLoad={() => this.setPlaceCreate(user.placeCreated)}
