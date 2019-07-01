@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Setting = () => {
+const Setting = ({ user }) => {
+  const [settingUser, UpdateUser] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    cityState: "",
+    email: "",
+    phoneNumber: "",
+    avatar: ""
+  });
+
+  useEffect(
+    () =>
+      UpdateUser({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+        cityState: user.cityState,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        avatar: user.avatar
+      }),
+    []
+  );
+
+  const updateUserInfo = event => {
+    event.preventDefault();
+  };
   return (
     <div className="Setting_container">
       <div className="Setting_header">
@@ -10,27 +37,51 @@ const Setting = () => {
         <div className="Setting_left-section">
           <div className="Setting_item">
             <div className="Setting_text">First Name</div>
-            <input className="Setting_input" type="text" />
+            <input
+              className="Setting_input"
+              type="text"
+              value={settingUser.firstName}
+            />
           </div>
           <div className="Setting_item">
             <div className="Setting_text">Last Name</div>
-            <input className="Setting_input" type="text" />
+            <input
+              className="Setting_input"
+              type="text"
+              value={settingUser.lastName}
+            />
           </div>
           <div className="Setting_item">
             <div className="Setting_text">Address</div>
-            <input className="Setting_input" type="text" />
+            <input
+              className="Setting_input"
+              type="text"
+              value={settingUser.address}
+            />
           </div>
           <div className="Setting_item">
-            <div className="Setting_text">City & State</div>
-            <input className="Setting_input" type="text" />
+            <div className="Setting_text">City {`&`} State</div>
+            <input
+              className="Setting_input"
+              type="text"
+              value={settingUser.cityState}
+            />
           </div>
           <div className="Setting_item">
             <div className="Setting_text">Email</div>
-            <input className="Setting_input" type="text" />
+            <input
+              className="Setting_input"
+              type="text"
+              value={settingUser.email}
+            />
           </div>
           <div className="Setting_item">
             <div className="Setting_text">Phone Number</div>
-            <input className="Setting_input" type="text" />
+            <input
+              className="Setting_input"
+              type="text"
+              value={settingUser.phoneNumber}
+            />
           </div>
         </div>
         <span className="Setting_line" />
@@ -60,7 +111,9 @@ const Setting = () => {
             </div>
           </div>
           <div className="Setting_btn">
-            <button type="button">Update</button>
+            <button type="button" onClick={updateUserInfo}>
+              Update
+            </button>
           </div>
         </div>
       </div>

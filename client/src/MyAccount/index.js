@@ -77,7 +77,9 @@ const MyAccount = () => {
                 {loading && !isAuthenticated && user === null ? (
                   <Spinner />
                 ) : (
-                  <Fragment>{setting ? <Setting /> : null}</Fragment>
+                  <Fragment>
+                    {setting ? <Setting user={user} /> : null}
+                  </Fragment>
                 )}
               </div>
             </div>
