@@ -40,6 +40,9 @@
 .BubbleNav:hover #Bubblenav-third-bubble {
   top: 14vh;
 }
+.BubbleNav:hover #Bubblenav-forth-bubble {
+  top: -4vh;
+}
 .BubbleNav-main-bubble {
   position: absolute;
   top: 20vh;
