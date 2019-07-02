@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import userDB from "../API/userDB";
 
-const Setting = ({ user }) => {
+const Setting = ({ user, dispatch }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -31,14 +31,15 @@ const Setting = ({ user }) => {
         phoneNumber
       }
     });
-    console.log(result.data.address);
-    setFirstName(result.data.firstName);
-    setLastName(result.data.lastName);
-    setAddress(result.data.address);
-    setCityState(result.data.cityState);
-    setEmail(result.data.email);
-    setPhoneNumber(result.data.phoneNumber);
-    setAvatar(result.data.avatar);
+    if (!result) return;
+    dispatch({ type: "GET_USER" });
+    // setFirstName(result.data.firstName);
+    // setLastName(result.data.lastName);
+    // setAddress(result.data.address);
+    // setCityState(result.data.cityState);
+    // setEmail(result.data.email);
+    // setPhoneNumber(result.data.phoneNumber);
+    // setAvatar(result.data.avatar);
   };
   return (
     <div className="Setting_container">

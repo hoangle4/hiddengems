@@ -3,13 +3,22 @@ import { Link } from "react-router-dom";
 import { Consumer } from "../context";
 import Spinner from "../Components/Spinner";
 import Setting from "./Setting";
+import Stats from "./Stats";
+import Messages from "./Messages";
 import "./style.css";
 const MyAccount = () => {
-  const [setting, setSetting] = useState(false);
+  const [settings, setSettings] = useState("");
+  const [stats, setStats] = useState("");
+  const [messages, setMessages] = useState("");
+  const toggleMenu = STATE => {
+    setSettings(STATE);
+    setMessages(STATE);
+    setStats(STATE);
+  };
   return (
     <Consumer>
       {value => {
-        const { user, isAuthenticated, loading } = value;
+        const { user, isAuthenticated, loading, dispatch } = value;
         return (
           <div className="MyAccount">
             <div className="MyAccount_Row">
@@ -30,41 +39,33 @@ const MyAccount = () => {
                       className="fa fa-comments MyAccount-i"
                       aria-hidden="true"
                     />
-                    <a className="MyAccount_a" href="#">
+                    <a
+                      className="MyAccount_a"
+                      href="#"
+                      onClick={() => toggleMenu("MESSAGES")}
+                    >
                       Messages
                     </a>
-                  </li>
-                  <li>
-                    <b className="MyAccount-i" aria-hidden="true">
-                      0{" "}
-                    </b>
-                    <Link className="MyAccount_a" to="/follower">
-                      Followers
-                    </Link>
-                  </li>
-                  <li>
-                    <b className="MyAccount-i" aria-hidden="true">
-                      0{" "}
-                    </b>
-                    <Link className="MyAccount_a" to="/following">
-                      Following
-                    </Link>
                   </li>
                   <li>
                     <i
                       className="fa fa-chart-bar MyAccount-i"
                       aria-hidden="true"
                     />
-                    <Link className="MyAccount_a" href="#">
-                      Statistics
-                    </Link>
+                    <a
+                      className="MyAccount_a"
+                      href="#"
+                      onClick={() => toggleMenu("STATS")}
+                    >
+                      Stats
+                    </a>
                   </li>
                   <li>
                     <i className="fa fa-cogs MyAccount-i" aria-hidden="true" />
                     <a
                       className="MyAccount_a"
                       href="#"
-                      onClick={() => setSetting(!setting)}
+                      onClick={() => toggleMenu("SETTINGS")}
                     >
                       Settings
                     </a>
@@ -78,7 +79,15 @@ const MyAccount = () => {
                   <Spinner />
                 ) : (
                   <Fragment>
-                    {setting ? <Setting user={user} /> : null}
+                    {settings === "SETTINGS" ? (
+                      <Setting user={user} dispatch={dispatch} />
+                    ) : stats === "STATS" ? (
+                      <Stats user={user} dispatch={dispatch} />
+                    ) : messages === "MESSAGES" ? (
+                      <Messages />
+                    ) : (
+                      <Stats user={user} dispatch={dispatch} />
+                    )}
                   </Fragment>
                 )}
               </div>

@@ -1,0 +1,58 @@
+.Stats {
+  justify-content: space-evenly;
+}
+.Stats_Main {
+  display: flex;
+  justify-content: space-evenly;
+}
+.Stats_Left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  height: 100%;
+}
+.Stats_Right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  height: 100%;
+}
+
+.Stats_Count_Title {
+  font-size: 50px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.Stats_Text {
+  font-size: 15px;
+  font-weight: normal;
+  margin-top: 15px;
+  margin-bottom: 0;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.Stats_Line_Black {
+  margin: 12px auto 0;
+  width: 55px;
+  height: 2px;
+  background-color: #fff;
+}
+.Stats_Icon {
+  font-size: 35px;
+  margin: 0 auto;
+  float: none;
+  display: table;
+  color: #fff;
+}
