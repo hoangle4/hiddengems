@@ -95,3 +95,29 @@
 	box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.308);
 	cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+	.MainMap_Sidenav {
+		width: 80vw;
+	}
+	#tm:checked ~ section {
+		-webkit-transform: translateX(80vw);
+		-moz-transform: translateX(80vw);
+		-ms-transform: translateX(80vw);
+		-o-transform: translateX(80vw);
+		transform: translateX(80vw);
+	}
+	.MapGem_Crop_Img {
+		width: 80vw;
+	}
+	.MapGem_Img {
+		width: 80vw;
+	}
+	.MapGem_Read_More_Container {
+		height: 10vh;
+		width: 80vw;
+	}
+	.MapGem_Close_Button_Container {
+		right: 3vw;
+	}
+}

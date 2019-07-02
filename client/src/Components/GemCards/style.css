@@ -27,11 +27,12 @@
     text-overflow: ellipsis;
 }
 .GemCards-Image {
-    max-width: 100%;
-    height: auto;
+    height: 200px;
+    max-width: 200px;
     display: block;
     margin: auto;
     border-radius: 5px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.479)
 }
 .GemCards-text-container {
     display: flex;
@@ -100,4 +101,18 @@
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(25,25,25,0.8);
+}
+
+@media screen and (max-width: 500px) {
+    .GemCards-gemLink {
+        width: 80vw;
+        margin: 2vh 5vw;
+    }
+    .GemCards-gemBox {
+        width: 80vw;
+    }
+    .GemCards-Image {
+        width: 200px;
+        height: 200px;
+    }
 }

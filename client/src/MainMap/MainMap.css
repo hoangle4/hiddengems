@@ -23,40 +23,40 @@
 
 /*Animation controls using checkbox hack*/
 /*Animate content area to the right*/
-#tm:checked ~ section {
+/* #tm:checked ~ section {
   -webkit-transform: translateX(30vw);
   -moz-transform: translateX(30vw);
   -ms-transform: translateX(30vw);
   -o-transform: translateX(30vw);
   transform: translateX(30vw);
-}
+} */
 /*Animate links from right to left + fade in effect*/
-#tm:checked ~ .MainMap_Sidenav b {
+/* #tm:checked ~ .MainMap_Sidenav b {
   opacity: 1;
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
   -ms-transform: translateX(0);
   -o-transform: translateX(0);
   transform: translateX(0);
-}
+} */
 /*Adding delay to link animation - in multiples of .08s*/
 /*One can use jQuery also for creating the delayed effect. But I will stick to manual CSS for this walkthrough.*/
-#tm:checked ~ .MainMap_Sidenav li:nth-child(1) b {
+/* #tm:checked ~ .MainMap_Sidenav li:nth-child(1) b {
   -webkit-transition-delay: 0.08s;
   -moz-transition-delay: 0.08s;
   -ms-transition-delay: 0.08s;
   -o-transition-delay: 0.08s;
   transition-delay: 0.08s;
-}
+} */
 
-#tm:checked ~ .MainMap_Sidenav li:nth-child(2) b {
+/* #tm:checked ~ .MainMap_Sidenav li:nth-child(2) b {
   -webkit-transition-delay: 0.16s;
   -moz-transition-delay: 0.16s;
   -ms-transition-delay: 0.16s;
   -o-transition-delay: 0.16s;
   transition-delay: 0.16s;
-}
-
+} */
+/* 
 #tm:checked ~ .MainMap_Sidenav li:nth-child(3) b {
   -webkit-transition-delay: 0.24s;
   -moz-transition-delay: 0.24s;
@@ -87,4 +87,4 @@
   -ms-transition-delay: 0.48s;
   -o-transition-delay: 0.48s;
   transition-delay: 0.48s;
-}
+} */
