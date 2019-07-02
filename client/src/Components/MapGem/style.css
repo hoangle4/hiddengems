@@ -8,7 +8,8 @@
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 0;
+	bottom: 0;
+	box-shadow: 0px 0px 5px rgb(0, 0, 0);
 }
 /* Animation for Gem Preview Panel */
 #tm:checked ~ section {
@@ -63,16 +64,17 @@
 }
 .MapGem_Description {
 	color: white;
-	padding: 3vh 3vw;
+	padding: 0vh 3vw;
+	margin: 1vh 0;
 	text-indent: 1rem;
 	text-align: justify;
-	margin-top: 10px;
 	margin-bottom: 10px;
 }
 .MapGem_Button_Li {
 	list-style: none;
 }
 .MapGem_Read_More_Container {
+	margin-top: 5vh;
 	width: 30vw;
 	text-align: center;
 }
