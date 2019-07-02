@@ -36,6 +36,7 @@ class Profile extends Component {
                     {dataReady ? (
                       <div>
                         <UserBanner
+                          getUser={this.getUser}
                           loggedInUserId={user._id}
                           user={this.state.data}
                         />

@@ -60,7 +60,8 @@
 }
 .UserBanner_upload-button:hover .fa-arrow-circle-up,
 .UserBanner_upload-button:hover .fa-user-plus,
-.UserBanner_upload-button:hover .fa-user-check {
+.UserBanner_upload-button:hover .fa-user-check,
+.UserBanner_upload-button:hover .UserBanner_Spinner {
   opacity: 1;
 }
 .fa-arrow-circle-up {
@@ -85,6 +86,17 @@
   opacity: 0;
   transition: all 0.3s ease;
   color: #6f70f5;
+}
+
+.UserBanner_Spinner {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 .UserBanner_progress_ring_circle {

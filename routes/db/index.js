@@ -14,6 +14,7 @@ router.post(
 );
 
 router.put("/followUser", auth, dbController.followUser);
+router.put("/unFollowUser", auth, dbController.unFollowUser);
 router.put("/updateUserInfo", auth, dbController.updateUserInfo);
 router.put("/updateUserAvatar", auth, dbController.updateUserAvatar);
 router.put("/updatePlace", auth, dbController.updatePlace);

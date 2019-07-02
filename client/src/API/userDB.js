@@ -12,11 +12,9 @@ export default {
   },
   // get user
   userSearch: firstName => {
-    console.log(firstName);
     return axios.get(`/api/userSearch?firstName=${firstName}`);
   },
   userSearch2: _id => {
-    console.log(_id);
     return axios.get(`/api/userSearch2?_id=${_id}`);
   },
 
@@ -43,6 +41,12 @@ export default {
   },
   followUser: (loggedInUser, followUser) => {
     return axios.put("/db/followUser", {
+      loggedInUser,
+      followUser
+    });
+  },
+  unFollowUser: (loggedInUser, followUser) => {
+    return axios.put("/db/unFollowUser", {
       loggedInUser,
       followUser
     });

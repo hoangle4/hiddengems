@@ -2,17 +2,18 @@ import React, { useState, useEffect, Fragment } from "react";
 import { FaUserPlus, FaUserCheck, FaRss, FaCheckCircle } from "react-icons/fa";
 import userDB from "../../API/userDB";
 import firebaseStorage from "../Firebase";
-import spinner from "../Spinner/spinner.gif";
+import spinner from "../Spinner/big_spinner.gif";
 import "./style.css";
 import moment from "moment";
 
-const UserBanner = ({ user, loggedInUserId }) => {
+const UserBanner = ({ user, loggedInUserId, getUser }) => {
   const [avatar, setAvatar] = useState("");
   const [progress, setProgress] = useState(0);
   const [isUploaded, setIsUploaded] = useState(false);
   const [dateCreated, setDataCreated] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setAvatar(user.avatar);
     setDataCreated(user.dateCreated);
@@ -109,13 +110,40 @@ const UserBanner = ({ user, loggedInUserId }) => {
                 cy="0"
               />
             </svg>
-            {user.follower.includes(loggedInUserId) ? (
-              <i class="fas fa-user-check" />
+            {isLoading ? (
+              <img src={spinner} className="UserBanner_Spinner" />
             ) : (
-              <i
-                className="fas fa-user-plus"
-                onClick={() => userDB.followUser(loggedInUserId, user._id)}
-              />
+              <Fragment>
+                {user.follower.includes(loggedInUserId) ? (
+                  <i
+                    className="fas fa-user-check"
+                    onClick={async () => {
+                      setIsLoading(true);
+                      const result = await userDB.unFollowUser(
+                        loggedInUserId,
+                        user._id
+                      );
+                      if (!result) return;
+                      const res = await getUser();
+                      setIsLoading(false);
+                    }}
+                  />
+                ) : (
+                  <i
+                    className="fas fa-user-plus"
+                    onClick={async () => {
+                      setIsLoading(true);
+                      const result = await userDB.followUser(
+                        loggedInUserId,
+                        user._id
+                      );
+                      if (!result) return;
+                      const res = await getUser();
+                      setIsLoading(false);
+                    }}
+                  />
+                )}
+              </Fragment>
             )}
           </div>
         ) : (
