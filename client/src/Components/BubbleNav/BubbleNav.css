@@ -56,3 +56,11 @@
   font-size: 1.3rem;
   color: white;
 }
+
+
+@media screen and (max-width: 500px) {
+  .BubbleNav  {
+    right: 12vw;
+    top: 72vh;
+  }
+}

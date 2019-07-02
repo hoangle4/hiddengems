@@ -8,14 +8,10 @@
 }
 .GemCards-gemLink {
     margin: 2%;
-    background: url('./Venice.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: rgba(184, 184, 184, 0.13);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.479);
     border-radius: 5px;
     padding: 1rem;
-    color: white;
     text-decoration: none;
     height: 375px;
     transition: 0.2s;
@@ -31,11 +27,12 @@
     text-overflow: ellipsis;
 }
 .GemCards-Image {
-    max-width: 100%;
-    height: auto;
+    height: 200px;
+    max-width: 200px;
     display: block;
     margin: auto;
     border-radius: 5px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.479)
 }
 .GemCards-text-container {
     display: flex;
@@ -44,15 +41,17 @@
     align-items: flex-start;
     margin-top: 4%;
     height: 20%;
-    color:white;
+    color: black;
     text-decoration: none;
 }
 .GemCards-Name {
+    font-family: 'Fugaz One', cursive;
+    font-size: 1.5rem;
     width: 100%;
     text-align: center;
     margin: 0;
     text-decoration: none;
-    color: white;
+    color: #767ef0;
 }
 .GemCards-truncGem {
     font-size: 0.8rem;
@@ -102,4 +101,18 @@
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(25,25,25,0.8);
+}
+
+@media screen and (max-width: 500px) {
+    .GemCards-gemLink {
+        width: 80vw;
+        margin: 2vh 5vw;
+    }
+    .GemCards-gemBox {
+        width: 80vw;
+    }
+    .GemCards-Image {
+        width: 200px;
+        height: 200px;
+    }
 }

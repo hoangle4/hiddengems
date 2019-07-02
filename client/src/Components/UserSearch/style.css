@@ -57,3 +57,10 @@
     cursor: pointer;
     box-shadow: 1px 3px 0px #f65d82;
 }
+
+
+@media screen and (max-width: 500px) {
+    .Search {
+        display: none;
+    }
+}

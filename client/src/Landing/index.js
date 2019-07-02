@@ -48,7 +48,7 @@ const LandingPage = () => {
             <i className="fas fa-search" />
             Discover new places.
           </li>
-          <li className="Landing-bottom-bullets">
+          <li className="Landing-bottom-bullets Landing-bottom-bullets-middle">
             <i className="fas fa-book-open" />
             Create new stories.
           </li>

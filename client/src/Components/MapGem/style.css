@@ -1,12 +1,54 @@
-.MainMap_Sidenav > li > b {
-	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
-		sans-serif;
+.MainMap_Sidenav {
+	font-family: "Open Sans", sans-serif;
+  background: url(./gradient.jpg);
+  background-size: 100% 300%;
+  transition: all 2s linear;
+	width: 30vw;
+	padding-top: 14vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+	bottom: 0;
+	box-shadow: 0px 0px 5px rgb(0, 0, 0);
 }
-
+/* Animation for Gem Preview Panel */
+#tm:checked ~ section {
+  -webkit-transform: translateX(30vw);
+  -moz-transform: translateX(30vw);
+  -ms-transform: translateX(30vw);
+  -o-transform: translateX(30vw);
+  transform: translateX(30vw);
+}
+.MapGem_Close_Button_Container {
+	position: absolute;
+	top: 9vh;
+	right: 0.5vw;
+}
+.MapGem_Close_Button {
+	font-size: 2rem;
+	color: white;
+	transition: 0.2s all;
+}
+.MapGem_Close_Button:hover {
+	color: black;
+}
+.MapGem_Title {
+	font-family: 'Fugaz One', cursive;
+	font-size: 2rem;
+	text-transform: uppercase;
+	color: white;
+	text-shadow: 2px 0px 5px rgba(0, 0, 0, 0.596);
+	text-decoration: none;
+}
 .MapGem_Title_Li {
 	text-align: center;
+	margin-bottom: 1vh;
 }
-
+.MapGem_Crop_Img {
+	height: 250px;
+	width: auto;
+	text-align: center;
+}
 .MapGem_Img {
 	width: auto;
 	height: 250px;
@@ -16,39 +58,66 @@
 	filter: grayscale(100%);
 	overflow: hidden;
 }
-
 .MapGem_Img:hover {
 	filter: grayscale(0%);
-	clip-path: circle(100% at 50% 50%);
-	/* animation: loading 300ms infinite alternate ease-in-out; */
-}
-
-.MapGem_Crop_Img {
-	height: 250px;
-	width: auto;
-	text-align: center;
-}
-a.MapGem_Title {
-	font-size: 1.7rem;
-	text-transform: uppercase;
+	clip-path: circle(100% at 50% 50%)
 }
 .MapGem_Description {
-	color: rgb(50, 16, 63);
-	text-shadow: 1px 1px rgb(207, 181, 218);
-	padding: 0.5rem;
+	color: white;
+	padding: 0vh 3vw;
+	margin: 1vh 0;
 	text-indent: 1rem;
 	text-align: justify;
-	margin-top: 10px;
 	margin-bottom: 10px;
 }
-
-.MapGem_Description > b {
-	font-size: 1rem !important;
-	word-spacing: 2px;
-	line-height: 1.5rem !important;
+.MapGem_Button_Li {
+	list-style: none;
+}
+.MapGem_Read_More_Container {
+	margin-top: 5vh;
+	width: 30vw;
+	text-align: center;
+}
+.MapGem_Read_More_Button {
+	font-family: "Open Sans", sans-serif;
+	border-radius: 5px;
+	padding: 2vh 3vw;
+	border-style: none;
+	border-width: 0px;
+	font-size: 1.2rem;
+	background: #767ef0;
+	color: white;
+	transition: 0.4s all cubic-bezier(.7, 1.34, .77, .74);
+	text-decoration: none;
+}
+.MapGem_Read_More_Button:hover {
+	background-color: #f55d83;
+	box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.308);
+	cursor: pointer;
 }
 
-.MapGem_Button_Li > a > b,
-.MapGem_Button_Li > a > i {
-	font-size: 1.4rem !important;
+@media screen and (max-width: 500px) {
+	.MainMap_Sidenav {
+		width: 80vw;
+	}
+	#tm:checked ~ section {
+		-webkit-transform: translateX(80vw);
+		-moz-transform: translateX(80vw);
+		-ms-transform: translateX(80vw);
+		-o-transform: translateX(80vw);
+		transform: translateX(80vw);
+	}
+	.MapGem_Crop_Img {
+		width: 80vw;
+	}
+	.MapGem_Img {
+		width: 80vw;
+	}
+	.MapGem_Read_More_Container {
+		height: 10vh;
+		width: 80vw;
+	}
+	.MapGem_Close_Button_Container {
+		right: 3vw;
+	}
 }
