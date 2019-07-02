@@ -13,6 +13,7 @@ router.post(
   dbController.updateUserCreatedPlace
 );
 
+router.put("/followUser", auth, dbController.followUser);
 router.put("/updateUserInfo", auth, dbController.updateUserInfo);
 router.put("/updateUserAvatar", auth, dbController.updateUserAvatar);
 router.put("/updatePlace", auth, dbController.updatePlace);

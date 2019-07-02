@@ -89,8 +89,6 @@ const UserBanner = ({ user, loggedInUserId }) => {
     );
   };
 
-  console.log(loggedInUserId, user._id);
-
   return (
     <div className="userBanner">
       <div className="UserBanner_avatar-wrapper">
@@ -111,7 +109,14 @@ const UserBanner = ({ user, loggedInUserId }) => {
                 cy="0"
               />
             </svg>
-            <i class="fas fa-user-plus" />
+            {user.follower.includes(loggedInUserId) ? (
+              <i class="fas fa-user-check" />
+            ) : (
+              <i
+                className="fas fa-user-plus"
+                onClick={() => userDB.followUser(loggedInUserId, user._id)}
+              />
+            )}
           </div>
         ) : (
           <Fragment>

@@ -40,5 +40,11 @@ export default {
     return axios.put("/db/updateUserInfo", {
       user
     });
+  },
+  followUser: (loggedInUser, followUser) => {
+    return axios.put("/db/followUser", {
+      loggedInUser,
+      followUser
+    });
   }
 };

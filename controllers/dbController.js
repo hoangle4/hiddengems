@@ -124,6 +124,28 @@ module.exports = {
       console.error(err);
     }
   },
+  followUser: async (req, resp) => {
+    try {
+      const { followUser, loggedInUser } = req.body;
+
+      console.log(req.body);
+      const findFollowUser = await models.User.findById(followUser).select(
+        "-password"
+      );
+      findFollowUser.follower.unshift(loggedInUser);
+      const savedFollower = await findFollowUser.save();
+
+      const findLoggedInUser = await models.User.findById(loggedInUser).select(
+        "-password"
+      );
+      findLoggedInUser.following.unshift(followUser);
+      const savedFollowing = await findLoggedInUser.save();
+
+      resp.json({ savedFollower, savedFollowing });
+    } catch (err) {
+      console.error(err);
+    }
+  },
   addComment: async (req, resp) => {
     try {
       const { title, message, placeID } = req.body;

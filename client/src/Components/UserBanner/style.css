@@ -59,7 +59,8 @@
   width: 100%;
 }
 .UserBanner_upload-button:hover .fa-arrow-circle-up,
-.UserBanner_upload-button:hover .fa-user-plus {
+.UserBanner_upload-button:hover .fa-user-plus,
+.UserBanner_upload-button:hover .fa-user-check {
   opacity: 1;
 }
 .fa-arrow-circle-up {
@@ -74,11 +75,12 @@
   background: #f55d83;
 }
 
-.fa-user-plus {
+.fa-user-plus,
+.fa-user-check {
   position: absolute;
   font-size: 5rem;
   top: 15%;
-  left: 16%;
+  left: 15%;
   text-align: center;
   opacity: 0;
   transition: all 0.3s ease;
