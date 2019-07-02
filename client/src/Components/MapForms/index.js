@@ -1,117 +1,117 @@
-import React, { Component, Fragment } from "react";
-import FromGroup from "./FormGroup";
-import placeDB from "../../API/placeDB";
-import userDB from "../../API/userDB";
-import { Consumer } from "../../context";
-import firebaseStorage from "../Firebase";
-import "./mapforms.css";
+import React, { Component, Fragment } from 'react';
+import FromGroup from './FormGroup';
+import placeDB from '../../API/placeDB';
+import userDB from '../../API/userDB';
+import { Consumer } from '../../context';
+import firebaseStorage from '../Firebase';
+import './mapforms.css';
 class MapFrom extends Component {
-  state = {
-    placeName: "",
-    photos: "",
-    category: "",
-    description: "",
-    progress: "",
-    coordinates: "",
-    isUploaded: false
-  };
+	state = {
+		placeName: '',
+		photos: '',
+		category: '',
+		description: '',
+		progress: '',
+		coordinates: '',
+		isUploaded: false
+	};
 
-  handleOnChange = e => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
-  };
+	handleOnChange = (e) => {
+		const { name, value } = e.target;
+		this.setState({
+			[name]: value
+		});
+	};
 
-  handleFileChange = e => {
-    if (!e.target.files[0]) {
-      console.error({ uploadErr: " file not found, please upload file again" });
-      return;
-    }
-    const { files } = e.target;
-    const { name, type, size } = files[0];
+	handleFileChange = (e) => {
+		if (!e.target.files[0]) {
+			console.error({ uploadErr: ' file not found, please upload file again' });
+			return;
+		}
+		const { files } = e.target;
+		const { name, type, size } = files[0];
 
-    if (!files || size > 5000000) {
-      console.error({ uploadErr: " file too big, maximum size : 5mb" });
-      return;
-    }
+		if (!files || size > 5000000) {
+			console.error({ uploadErr: ' file too big, maximum size : 5mb' });
+			return;
+		}
 
-    const storageRef = firebaseStorage.ref("placePhotos/" + name);
-    const upLoadFile = storageRef.put(files[0], { type });
+		const storageRef = firebaseStorage.ref('placePhotos/' + name);
+		const upLoadFile = storageRef.put(files[0], { type });
 
-    upLoadFile.on(
-      "state_changed",
-      async results => {
-        let progress =
-          (await (results.bytesTransferred / results.totalBytes)) * 100;
-        console.log("Upload is " + progress + "% done");
-        this.setState({ progress: progress });
-      },
-      err => console.log(err),
-      () => {
-        // Upload completed successfully, now we can get the download URL
-        upLoadFile.snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.setState({
-            photos: downloadURL,
-            isUploaded: true
-          });
-        });
-      }
-    );
-  };
+		upLoadFile.on(
+			'state_changed',
+			async (results) => {
+				let progress = (await (results.bytesTransferred / results.totalBytes)) * 100;
+				console.log('Upload is ' + progress + '% done');
+				this.setState({ progress: progress });
+			},
+			(err) => console.log(err),
+			() => {
+				// Upload completed successfully, now we can get the download URL
+				upLoadFile.snapshot.ref.getDownloadURL().then((downloadURL) => {
+					this.setState({
+						photos: downloadURL,
+						isUploaded: true
+					});
+				});
+			}
+		);
+	};
 
-  handleOnClick = async () => {
-    await this.setState({ coordinates: this.props.coordinates });
+	handleOnClick = async () => {
+		await this.setState({ coordinates: this.props.coordinates });
 
-    const results = await placeDB.createPlace(this.state);
-    if (!results) return;
+		const results = await placeDB.createPlace(this.state);
+		if (!results) return;
 
-    const response = await userDB.updateUserCreatedPlace(results.data._id);
-    console.log(response);
-    if (!response) return;
-    this.handleOnFormClose();
-  };
+		const response = await userDB.updateUserCreatedPlace(results.data._id);
+		console.log(response);
+		if (!response) return;
+		this.handleOnFormClose();
+	};
 
-  handleOnFormClose = e => {
-    this.props.updateMarker();
-    if (e) e.preventDefault();
-    this.setState({
-      placeName: "",
-      photos: "",
-      category: "",
-      description: "",
-      progress: "",
-      coordinates: ""
-    });
-  };
+	handleOnFormClose = (e) => {
+		this.props.updateMarker();
+		if (e) e.preventDefault();
+		this.setState({
+			placeName: '',
+			photos: '',
+			category: '',
+			description: '',
+			progress: '',
+			coordinates: ''
+		});
+	};
 
-  render() {
-    const { isMarkerClicked } = this.props;
-    return (
-      <Consumer>
-        {value => {
-          return (
-            <Fragment>
-              <div
-                className={`form-group ${isMarkerClicked ? "form-active" : ""}`}
-              >
-                <FromGroup
-                  value={this.state}
-                  progress={this.state.progress}
-                  isUploaded={this.state.isUploaded}
-                  photos={this.state.photos}
-                  handleOnChange={this.handleOnChange}
-                  handleOnClick={this.handleOnClick}
-                  handleFileChange={this.handleFileChange}
-                  handleOnFormClose={this.handleOnFormClose}
-                />
-              </div>
-            </Fragment>
-          );
-        }}
-      </Consumer>
-    );
-  }
+	render() {
+		const { isMarkerClicked } = this.props;
+		return (
+			<Consumer>
+				{(value) => {
+					return (
+						<Fragment>
+							<div
+								className={`form-group ${isMarkerClicked ? 'form-active' : ''}`}
+								style={{ display: `${isMarkerClicked ? 'grid' : 'none'}` }}
+							>
+								<FromGroup
+									value={this.state}
+									progress={this.state.progress}
+									isUploaded={this.state.isUploaded}
+									photos={this.state.photos}
+									handleOnChange={this.handleOnChange}
+									handleOnClick={this.handleOnClick}
+									handleFileChange={this.handleFileChange}
+									handleOnFormClose={this.handleOnFormClose}
+								/>
+							</div>
+						</Fragment>
+					);
+				}}
+			</Consumer>
+		);
+	}
 }
 
 export default MapFrom;
