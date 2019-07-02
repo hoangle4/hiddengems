@@ -19,6 +19,7 @@ const MyAccount = () => {
     <Consumer>
       {value => {
         const { user, isAuthenticated, loading, dispatch } = value;
+
         return (
           <div className="MyAccount">
             <div className="MyAccount_Row">
@@ -86,7 +87,8 @@ const MyAccount = () => {
                     ) : messages === "MESSAGES" ? (
                       <Messages />
                     ) : (
-                      <Stats user={user} dispatch={dispatch} />
+                      // <Stats user={user} dispatch={dispatch} />
+                      <Messages />
                     )}
                   </Fragment>
                 )}

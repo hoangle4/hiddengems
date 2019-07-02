@@ -17,6 +17,9 @@ const Statistics = ({ user: { follower, following, placeCreated }, user }) => {
   console.log(placeCreated);
   return (
     <div className="Stats">
+      <div className="Stats_header">
+        <div className="Stats_title">Account Stats</div>
+      </div>
       <div className="Stats_Main">
         <div className="Stats_Left">
           <div className="Stats_Comments">

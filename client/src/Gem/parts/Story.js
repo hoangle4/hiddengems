@@ -54,7 +54,11 @@ const Story = ({
                         </i>
                         <p className="Story_p">{description}</p>
                         <i className="Story_Signed">
-                          {author.firstName} {author.lastName}:{" "}
+                          {author ? (
+                            <Fragment>
+                              {author.firstName} {author.lastName}:{" "}
+                            </Fragment>
+                          ) : null}
                           {moment(new Date(dateCreated)).format("MM/DD/YYYY")}
                         </i>
                         <i className="fas fa-quote-right fa1" />

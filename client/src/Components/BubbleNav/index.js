@@ -29,7 +29,10 @@ const BubbleNav = () => {
                 </Link>
               </div>
               <div className="BubbleNav-lower-bubble">
-                <Link to="/myaccount">
+                <Link
+                  to="/myaccount"
+                  onClick={() => dispatch({ type: "GET_USER", payload: null })}
+                >
                   <i className="fas fa-user" />
                 </Link>
               </div>
