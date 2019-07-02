@@ -1,0 +1,65 @@
+
+ .DBlabel,
+ .DBinput {
+  display: block;
+  height: 5rem;
+  width: 100%;
+  line-height: 5rem;
+  box-sizing: border-box;
+}
+ .DBlabel {
+  font-size: 2rem;
+  font-weight: 900;
+}
+ .DBinput {
+  font-size: 1.5rem;
+}
+ .DBwrapper {
+  position: relative;
+}
+ .DBwrapper .DBinput {
+  padding: 1rem 2.5rem;
+  border: 0;
+  text-transform: capitalize;
+  border: 1px solid #eee;
+}
+ .DBwrapper .DBinput:focus {
+  outline: none;
+  border: 2px solid #ccc;
+}
+ .DBwrapper .DBlist {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  height: 20rem;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid #eee;
+}
+ .DBwrapper .DBlist .DBul {
+  list-style: none;
+  height: 50%;
+  margin: 0;
+  padding: 0;
+}
+ .DBwrapper .DBlist .DBul .DBli {
+  height: 5rem;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+ .DBwrapper .DBlist .DBul .DBli:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+ .DBwrapper .DBlist .DBul .DBli .DBimg {
+  width: 2.4rem;
+  height: 1.4rem;
+  margin: 0 2rem;
+}
+ .DBwrapper .DBlist .DBul .DBli .DBp {
+  font-size: 1.4rem;
+  text-transform: capitalize;
+}

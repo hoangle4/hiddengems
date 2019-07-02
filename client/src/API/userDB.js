@@ -17,7 +17,9 @@ export default {
   userSearch2: _id => {
     return axios.get(`/api/userSearch2?_id=${_id}`);
   },
-
+  getAllUser: () => {
+    return axios.get("/api/getAllUser");
+  },
   login: user => {
     return axios.post("/api/login", {
       email: user.email,

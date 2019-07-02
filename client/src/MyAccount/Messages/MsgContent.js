@@ -1,14 +1,18 @@
 import React from "react";
+import DropBox from "./DropBox";
 
 export default function MsgContent() {
   return (
     <div className="Messages_msg_content">
       <div className="Msg_message-content__item">
         <div className="Msg_message-content-header">
+          <DropBox />
+        </div>
+        {/* <div className="Msg_message-content-header">
           <div className="Msg_name">Muhammed ERDEM</div>
           <div className="Msg_phone">+90 507 047 3099</div>
           <i className="fas fa-angle-double-right" />
-        </div>
+        </div> */}
       </div>
       <div className="Msg_message-box ">
         <div className="Msg_message-box_item incoming">
