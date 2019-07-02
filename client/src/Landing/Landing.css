@@ -148,3 +148,49 @@
 .Landing-bottom-bullets {
   display: block;
 }
+
+@media screen and (max-width: 500px) {
+  .Landing-header  {
+    margin: 0;
+    padding: 0 2vw;
+    width: 100vw;
+    justify-content: space-between;
+  }
+  .Landing-title {
+    width: 50vw;
+  }
+  .Landing-nav {
+    width: 50vw;
+    justify-content: space-around;
+  }
+  .Landing-nav-links {
+    margin: 0;
+    padding: 0 2vw;
+  }
+  .Landing-nav-links a {
+    margin: 0;
+    padding: 0;
+  }
+  .Landing-mockup {
+    display: none;
+  }
+  .Landing-form-container {
+    margin: 0 5vw;
+    width: 90vw;
+  }
+  .Landing-searchbox {
+    width: 70vw;
+    height: 6vh;
+  }
+  .Landing-search-button {
+    width: 70vw;
+  }
+  .Landing-bottom-list {
+    flex-wrap: wrap;
+  }
+  .Landing-bottom-bullets {
+    text-align: center;
+    padding: 2vh 0;
+    width: 100vw;
+  }
+}

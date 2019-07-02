@@ -17,7 +17,7 @@ function GemCards({ placeCreated, user, deleteClick, editClick }) {
           <div className="GemCards-gemBox">
             <Link to={`/gem/${place._id}`}>
               <img
-                style={{ width: "200px", height: "200px" }}
+                // style={{ width: "200px", height: "200px" }}
                 className="GemCards-Image"
                 src={place.photos}
                 alt={place.placeName}
