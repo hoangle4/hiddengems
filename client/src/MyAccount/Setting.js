@@ -31,7 +31,14 @@ const Setting = ({ user }) => {
         phoneNumber
       }
     });
-    console.log(result);
+    console.log(result.data.address);
+    setFirstName(result.data.firstName);
+    setLastName(result.data.lastName);
+    setAddress(result.data.address);
+    setCityState(result.data.cityState);
+    setEmail(result.data.email);
+    setPhoneNumber(result.data.phoneNumber);
+    setAvatar(result.data.avatar);
   };
   return (
     <div className="Setting_container">

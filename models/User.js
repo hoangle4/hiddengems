@@ -32,6 +32,18 @@ var UserSchema = new mongoose.Schema({
       ref: "gems"
     }
   ],
+  follower: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
   dateCreated: {
     type: Date,
     default: Date.now
