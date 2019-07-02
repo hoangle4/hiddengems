@@ -198,20 +198,17 @@ height:80%;
 
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-box_item .incoming {
+.Messages_msg_content .Msg_message-box .Msg_message-box_item.incoming {
   text-align: left;
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-box_item .incoming .Msg_time {
-  right:0
+.Messages_msg_content .Msg_message-box .Msg_message-box_item .Msg_time {
+  right:0;
+  margin-right: 4px;
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-box_item .outgoing {
+.Messages_msg_content .Msg_message-box .Msg_message-box_item.outgoing {
   text-align: right;
-}
-
-.Messages_msg_content .Msg_message-box .Msg_message-box_item .outgoing .Msg_time {
-  left: 0;
 }
 
 .Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_name{
@@ -227,10 +224,10 @@ height:80%;
   font-size: 1rem;
   color: #535357;
   border-radius: 5px;
-  max-width: 90%;
+  max-width: 50%;
   margin-top: .4rem;
   text-align: left;
-
+position: relative;
 }
 
 .Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_box-text .Msg_time {
