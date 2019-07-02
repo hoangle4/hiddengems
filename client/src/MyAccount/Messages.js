@@ -55,42 +55,6 @@ export default function Messages() {
                 websites and mobile application...
               </div>
             </a>
-            <a className="Msg_a" href="#" className="Msg_messages_item">
-              <div className="Msg_name">Muhammed ERDEM</div>
-              <div className="Msg_date">1h ago</div>
-
-              <div className="Msg_content">
-                Currently We are looking for a UI designer to work on our
-                websites and mobile application...
-              </div>
-            </a>
-            <a className="Msg_a" href="#" className="Msg_messages_item unread">
-              <div className="Msg_name">Muhammed ERDEM</div>
-              <div className="Msg_date">1h ago</div>
-
-              <div className="Msg_content">
-                Currently We are looking for a UI designer to work on our
-                websites and mobile application...
-              </div>
-            </a>
-            <a className="Msg_a" href="#" className="Msg_messages_item">
-              <div className="Msg_name">Muhammed ERDEM</div>
-              <div className="Msg_date">1h ago</div>
-
-              <div className="Msg_content">
-                Currently We are looking for a UI designer to work on our
-                websites and mobile application...
-              </div>
-            </a>
-            <a className="Msg_a" href="#" className="Msg_messages_item active">
-              <div className="Msg_name">Muhammed ERDEM</div>
-              <div className="Msg_date">1h ago</div>
-
-              <div className="Msg_content">
-                Currently We are looking for a UI designer to work on our
-                websites and mobile application...
-              </div>
-            </a>{" "}
           </div>
         </div>
         <div className="Messages_msg_content">
@@ -98,16 +62,16 @@ export default function Messages() {
             <div className="Msg_message-content-header">
               <div className="Msg_name">Muhammed ERDEM</div>
               <div className="Msg_phone">+90 507 047 3099</div>
-              <img src="img/message-more.png" className="Messages_img" />
+              <i className="fas fa-angle-double-right" />
             </div>
           </div>
-          <div className="Msg_message-box">
+          <div className="Msg_message-box ">
             <div className="Msg_message-box_item incoming">
               <div className="Msg_name">Muhammed ERDEM</div>
 
               <div className="Msg_box-text">
                 Hey man!
-                <div className="Msg_time">18:36</div>
+                <p className="Msg_time">18:36</p>
               </div>
             </div>
 
@@ -137,9 +101,11 @@ export default function Messages() {
             </div>
           </div>
           <div className="Msg_message-form">
-            <input type="text" placeholder="Type your message here" />
-            <img src="img/submit.png" className="Messages_img" />
-          </div>{" "}
+            <div className="Msg_send_form_wrap">
+              <input type="text" placeholder="Type your message here" />
+              <i className="fas fa-paper-plane" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

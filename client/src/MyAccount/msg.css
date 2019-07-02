@@ -51,11 +51,13 @@ height:80%;
   text-align: center;
   padding-top: 1rem;
   margin-bottom: 0.8rem;
+  color:#e0e2e4;
 }
 
 .Messages_SideBar .Msg_ul .Msg_a:hover {
-  background-color: #43a4f3;
+  background-color: rgba(255, 255, 255, 0.5);
   border-left: 4px solid #fff;
+  color: #108ef2
 }
 
 .Messages_SideBar .Msg_btn-menu {
@@ -86,12 +88,22 @@ height:80%;
   padding-top: 12rem;
 }
 
-.Messages_msg::-webkit-scrollbar, .Msg_wrap_message::-webkit-scrollbar{ width: 0 !important }
+.Messages_msg::-webkit-scrollbar, 
+.Msg_wrap_message::-webkit-scrollbar,
+.Msg_message-box::-webkit-scrollbar
+{ width: 0 !important }
 
 .Msg_wrap_message .Msg_search-bar {
   width: 100%;
 }
+.Msg_wrap_message .Msg_search-bar i {
+  color:#3f3f3f;
+}
 
+.Msg_wrap_message .Msg_search-bar i:hover {
+  cursor: pointer;
+  color:#108ef2
+}
 
 .Msg_wrap_message .Msg_search-bar input {
   background: none;
@@ -113,7 +125,7 @@ height:80%;
 
 .Messages_msg .Msg_messages_item:hover{
   text-decoration: none;
-  box-shadow: 9px 9px 30px 10px rgba(1, 50, 101, 0.21);
+  box-shadow: 5px 5px 15px 6px rgba(1, 50, 101, 0.21);
   background: #f0f2f4;
 }
 
@@ -133,120 +145,137 @@ height:80%;
   float: left;
   padding: 10px 0;
   color: #565656;
-  font-size: 15px;
+  font-size: 1rem;
 }
 
-.Messages_msg .Msg_messages_item.unread:after {
-  content: "";
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: -12px;
-  top: 50px;
-  border-radius: 50%;
-  background:linear-gradient(90deg, #117ee7 0%, #108ef2 100%);
-  box-shadow: 5px 5px 30px 0px rgba(1, 50, 101, 0.21);
-}
 
-/* .Messages_message-content {
+.Messages_msg_content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width:50%;
-  overflow: scroll;
+
+  background:linear-gradient(to bottom,rgba(255, 255, 255, 0.7) 0%,rgba(255,255,255,0) 100%);
+}
+.Messages_msg_content .Msg_message-content__item {
+  width: 100%;
 }
 
-.Messages_msg_content .Msg_message-content__item .Msg_message-content-header {
-  border-bottom: 1px solid #e0e2e4;
-  padding: 20px 15px;
+.Messages_msg_content .Msg_message-content__item  .Msg_message-content-header {
+  border: 1px solid #e0e2e4;
+  padding:1rem;
   position: relative;
-  height: 95px;
+  height:4rem;
 }
 
-.Messages_msg_content .Msg_message-content__item .Msg_message-content-header .Msg_name{
-  font-size: 21px;
-  color: #535357;
+.Messages_msg_content .Msg_message-content__item  .Msg_message-content-header .Msg_name{
+  font-size: 1.5rem;
+  color: rgba(83, 83, 83, 0.7);
   font-weight: 500;
 }
 
-.Messages_msg_content .Msg_message-content__item .Msg_message-content-header .phone {
-  font-size: 16px;
-  color: #a3a3a7;
+.Messages_msg_content .Msg_message-content__item .Msg_message-content-header .Msg_phone {
+  font-size: 1rem;
+  color:#108ef2;
 }
 
-.Messages_msg_content .Msg_message-content__item .Msg_message-content-header img {
+.Messages_msg_content .Msg_message-content__item .Msg_message-content-header i {
   position: absolute;
-  top: 30px;
-  right: 15px;
+  top: 10%;
+  right: 10%;
+  color: #108ef2
+}
+.Msg_message-box {
+  overflow: scroll;
 }
 
 .Messages_msg_content .Msg_message-box {
-  padding: 25px;
-  height: calc(100% - 175px);
+  padding: 1.4rem;
 }
-.Messages_msg_content .Msg_message-box .Msg_message-content__item {
-  margin-bottom: 15px;
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  {
+  margin-bottom: 1rem;
+
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-content__item.incoming {
+.Messages_msg_content .Msg_message-box .Msg_message-box_item .incoming {
   text-align: left;
 }
 
-.Messages_msg_content.Msg_message-box .Msg_message-content__item.incoming .time {
-  right: 0;
+.Messages_msg_content .Msg_message-box .Msg_message-box_item .incoming .Msg_time {
+  right:0
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-content__item.outgoing {
+.Messages_msg_content .Msg_message-box .Msg_message-box_item .outgoing {
   text-align: right;
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-content__item.outgoing .time {
+.Messages_msg_content .Msg_message-box .Msg_message-box_item .outgoing .Msg_time {
   left: 0;
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-content__item .Msg_name{
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_name{
   color: #535357;
-  font-size: 16px;
+  font-size: 1.1rem;
   font-weight: 400;
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-content__item .Msg_box-text {
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_box-text {
   background: #f0f2f4;
   display: inline-block;
-  padding: 20px 15px;
-  padding-right: 50px;
-  font-size: 16px;
+  padding:1rem;
+  font-size: 1rem;
   color: #535357;
-  border-radius: 7px;
+  border-radius: 5px;
   max-width: 90%;
-  margin-top: 10px;
+  margin-top: .4rem;
   text-align: left;
-  position: relative;
-  margin-bottom: 20px;
+
 }
 
-.Messages_msg_content .Msg_message-box .Msg_message-content__item .box-text .time {
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_box-text .Msg_time {
   position: absolute;
-  bottom: -25px;
-  font-size: 13px;
+  font-size:0.6rem;
   color: #939397;
 }
 
 .Messages_msg_content .Msg_message-form {
-  height: 75px;
+  height:75px;
   border-top: 1px solid #e0e2e4;
-  padding: 20px 15px;
+  padding: 1rem;
+  width: 80%
 }
 
-.Messages_msg_content .Msg_message-form input {
-  width: calc(100% - 50px);
+.Messages_msg_content .Msg_send_form_wrap  {
+  border: #e0e2e4 1px solid;
+  padding-left:5px;
+}
+
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap input {
+  background: none;
   border: none;
-  font-size: 16px;
-  margin-top: 5px;
+  width: calc(100% - 50px);
+  font-size: 1rem;
+  color: white;
+  outline: none;
+  height: 50px;
+  transition: all 150ms ease-in;
+}
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap  input::placeholder {
+  color: rgba(255, 255, 255, 0.7)
 }
 
-.Messages_msg_content .Msg_message-form img {
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap  i {
   float: right;
-  margin-top: 10px;
-} */
+  transition: all 150ms ease-in;
+  color:#e0e2e4;
+  border-left: 1px solid #e0e2e4;
+  padding: 16.5px;
+}
+
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap  i:hover {
+  cursor: pointer;
+  color: #108ef2;
+  background:rgba(255, 255, 255, 0.7)
+}
+
