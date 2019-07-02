@@ -170,6 +170,20 @@ module.exports = {
       console.error(err);
     }
   },
+  addLike: async (req, resp) => {
+    try {
+      const { userID, placeID } = req.body;
+
+      const place = await models.Gem.findById(placeID);
+      if (place.likes.includes(userID))
+        return resp.json({ msg: "Already Liked" });
+      place.likes.unshift(userID);
+      const likes = await place.save();
+      resp.json(likes);
+    } catch (err) {
+      console.error(err);
+    }
+  },
   addComment: async (req, resp) => {
     try {
       const { title, message, placeID } = req.body;

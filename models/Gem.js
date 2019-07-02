@@ -23,6 +23,12 @@ const newGem = new Schema({
     type: String,
     required: true
   },
+  likes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: "users",

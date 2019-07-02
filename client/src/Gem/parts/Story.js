@@ -4,13 +4,14 @@ import moment from "moment";
 import Chip from "./Chip";
 import Spinner from "../../Components/Spinner";
 import { Consumer } from "../../context";
+import placeDB from "../../API/placeDB";
 
 const Story = ({
-  story: { description, placeName, _id, coordinates, dateCreated },
+  story: { description, placeName, _id, coordinates, dateCreated, likes },
   author,
-  photos
+  photos,
+  getGem
 }) => {
-  const [notLogIn, setNotLogIn] = useState(false);
   console.log(author);
   return (
     <Consumer>
@@ -19,18 +20,7 @@ const Story = ({
         return (
           <Fragment>
             {!isAuthenticated ? (
-              <Fragment>
-                {notLogIn ? (
-                  <Spinner
-                    onLoad={() => setTimeout(() => setNotLogIn(true), 5000)}
-                  />
-                ) : (
-                  <h5>
-                    You're not login, plese <Link>log in</Link> to see the
-                    story.
-                  </h5>
-                )}
-              </Fragment>
+              <Spinner onLoad={() => setTimeout(() => window.reload(), 3000)} />
             ) : (
               <Fragment>
                 {!user ? (
@@ -51,9 +41,16 @@ const Story = ({
                         <i className="fas fa-quote-left fa2" />
                         <i
                           className="far fa-thumbs-up Story_Like_Btn"
-                          // onClick={}
+                          onClick={async () => {
+                            const liked = await placeDB.addLike(_id, user._id);
+                            if (!liked) return;
+                            console.log(liked);
+                            getGem();
+                          }}
                         >
-                          <span className="Story_Like_Btn_Span">1</span>
+                          <span className="Story_Like_Btn_Span">
+                            {likes.length}
+                          </span>
                         </i>
                         <p className="Story_p">{description}</p>
                         <i className="Story_Signed">

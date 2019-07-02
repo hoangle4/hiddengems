@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Story from "./parts/Story";
 import Comment from "./parts/Comment";
 import GemNearby from "./parts/GemNearby";
@@ -16,7 +16,6 @@ import "./style.css";
 class Gem extends Component {
   state = {
     dataReady: false,
-    isLoggedIn: false,
     data: {},
     comments: []
   };
@@ -56,7 +55,12 @@ class Gem extends Component {
               {!loading && isAuthenticated && dataReady ? (
                 <Fragment>
                   <div className="Gem_container">
-                    <Story story={data} author={createdBy} photos={photos} />
+                    <Story
+                      story={data}
+                      author={createdBy}
+                      photos={photos}
+                      getGem={this.getGem}
+                    />
                     {/* <GemNearby /> */}
                     <Comment
                       placeID={placeID}
@@ -82,24 +86,7 @@ class Gem extends Component {
                 </Fragment>
               ) : (
                 <Fragment>
-                  {this.state.isLoggedIn ? (
-                    <Fragment>
-                      <Spinner
-                        onLoad={() =>
-                          setTimeout(
-                            () => this.setState({ isLoggedIn: true }),
-                            5000
-                          )
-                        }
-                      />
-                      <Spinner onLoad={this.getGem} />
-                    </Fragment>
-                  ) : (
-                    <h5>
-                      You're not login, plese <Link to="/login">log in</Link> to
-                      see the story.
-                    </h5>
-                  )}
+                  <Spinner onLoad={this.getGem} />
                 </Fragment>
               )}
             </Fragment>

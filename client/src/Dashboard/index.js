@@ -69,11 +69,7 @@ class Dashboard extends Component {
           return (
             <div className="dashContainer">
               {loading && !isAuthenticated ? (
-                <Fragment>
-                  <h5>
-                    You're not logged in, please <a href="/login">log in</a>!
-                  </h5>
-                </Fragment>
+                <Spinner />
               ) : (
                 <Fragment>
                   {!user ? (
