@@ -33,16 +33,15 @@ function SideGem({
         <li className="MapGem_Description">
           <b>{truncatedDescription}</b>
         </li>
-        <li className="MapGem_Button_Li">
-          <Link to={`/gem/${_id}`}>
+        <li className="MapGem_Button_Li MapGem_Read_More_Container">
+          <Link className="MapGem_Read_More_Button" to={`/gem/${_id}`}>
             <i className="fa fa-book-reader" />
-            <b>Read More</b>
+            <b> Read More</b>
           </Link>
         </li>
-        <li className="MapGem_Button_Li">
-          <a href="#" onClick={handleCloseSideBar}>
-            <i className="fa fa-times" />
-            <b>Close</b>
+        <li className="MapGem_Button_Li MapGem_Close_Button_Container">
+          <a className="MapGem_Close_Button" href="#" onClick={handleCloseSideBar}>
+            <i className="far fa-times-circle" />
           </a>
         </li>
       </ul>

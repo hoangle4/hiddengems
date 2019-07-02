@@ -3,6 +3,7 @@ import FromGroup from "./EditFormGroup";
 import placeDB from "../../API/placeDB";
 import { Consumer } from "../../context";
 import firebaseStorage from "../Firebase";
+import '../MapForms/mapforms.css';
 
 class EditGemForm extends Component {
   state = {

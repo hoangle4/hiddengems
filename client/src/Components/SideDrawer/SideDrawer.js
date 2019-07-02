@@ -16,24 +16,24 @@ function SideDrawer() {
             ) : isAuthenticated ? (
               <ul className="SideDrawer_Sidenav">
                 <li className="MapGem_Button_Li">
-                  <Link to="/">
-                    <i className="fa fa-home" />
-                    <b>Home</b>
+                  <Link className="MapGem_Button_Container" to="/">
+                    <i className="fa fa-home MapGem_Button_Icon" />
+                    <b className="MapGem_Button_Text">Home</b>
                   </Link>
                 </li>
                 <li className="MapGem_Button_Li">
-                  <Link to="/dashboard">
-                    <i className="fa fa-user" />
-                    <b>Dashboard</b>
+                  <Link className="MapGem_Button_Container" to="/dashboard">
+                    <i className="fa fa-user MapGem_Button_Icon" />
+                    <b className="MapGem_Button_Text">Dashboard</b>
                   </Link>
                 </li>
                 <li className="MapGem_Button_Li">
-                  <Link
+                  <Link className="MapGem_Button_Container"
                     to="/"
                     onClick={() => dispatch({ type: "LOG_OUT", payload: null })}
                   >
-                    <i className="fa fa-power-off" />
-                    <b>Log Out</b>
+                    <i className="fa fa-power-off MapGem_Button_Icon" />
+                    <b className="MapGem_Button_Text">Log Out</b>
                   </Link>
                 </li>
               </ul>
