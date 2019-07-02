@@ -20,7 +20,7 @@ function FormGroup({
               <Spinner />
             ) : isAuthenticated ? (
               <Fragment>
-                <h5>Edit Gem</h5>
+                <h5 className="FormGroup-header">Edit Gem</h5>
                 <span
                   className="x_btn FormGroup-top-x"
                   style={{ cursor: "pointer" }}
@@ -30,7 +30,7 @@ function FormGroup({
                 </span>
                 <div className="FormGroup-input-container">
                   <input
-                    className="input"
+                    className="FormGroup-input"
                     name="placeName"
                     placeholder="Place name"
                     value={placeName}
@@ -38,36 +38,30 @@ function FormGroup({
                   />
                 </div>
                 <div className="FormGroup-input-container upload-btn-wrapper">
-                  {/* <label className="label" htmlFor="photos">
-                    Photos
-                  </label> */}
-                  <button id="upload-file-btn">
-                    <i className="far fa-edit" /> Image
-                  </button>
-                  <input
-                    type="file"
-                    className="file_input"
-                    name="photos"
-                    onChange={handleFileChange}
-                  />
-                </div>
+									<input
+										type="file"
+										className="FormGroup-file_input"
+										name="photos"
+										onChange={handleFileChange}
+									/>
+								</div>
                 {progress ? (
-                  <div className="progress-bar-container">
+                  <div className="FormGroup-progress-bar-container">
                     <p
-                      className="progress-bar"
+                      className="FormGroup-progress-bar"
                       style={{ width: `${parseInt(progress)}%` }}
                     />
                     <small> {parseInt(progress) + "%"}</small>
                   </div>
                 ) : null}
                 {isUploaded ? (
-                  <div className="img-input-container">
+                  <div className="FormGroup-img-container">
                     <img src={photos} alt="..." />
                   </div>
                 ) : null}
                 <div className="FormGroup-input-container">
                   <select
-                    className="input"
+                    className="Formgroup-input Formgroup-dropdown"
                     name="category"
                     value={category}
                     onChange={handleOnChange}
@@ -84,7 +78,7 @@ function FormGroup({
                 </div>
                 <div className="FormGroup-input-container">
                   <textarea
-                    className="input"
+                    className="FormGroup-input FormGroup-textarea"
                     name="description"
                     placeholder=" Story, Description ..."
                     value={description}
@@ -103,10 +97,13 @@ function FormGroup({
               </Fragment>
             ) : (
               <Fragment>
-                <h5>
+                <h5 className="FormGroup-header">
                   Place Details
-                  <span className="x_btn" style={{ cursor: "pointer" }}>
-                    <small>X</small>
+                  <span 
+                    className="x_btn FormGroup-top-x" 
+                    style={{ cursor: "pointer" }}
+                  >
+                    <i className="far fa-times-circle" />
                   </span>
                 </h5>
                 <div>
