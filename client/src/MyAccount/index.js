@@ -19,7 +19,7 @@ const MyAccount = () => {
     <Consumer>
       {value => {
         const { user, isAuthenticated, loading, dispatch } = value;
-
+        console.log(user);
         return (
           <div className="MyAccount">
             <div className="MyAccount_Row">

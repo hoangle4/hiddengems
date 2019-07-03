@@ -13,6 +13,7 @@ router.post(
   dbController.updateUserCreatedPlace
 );
 
+router.put("/sendMsg", auth, dbController.sendMsg);
 router.put("/addLike", auth, dbController.addLike);
 router.put("/followUser", auth, dbController.followUser);
 router.put("/unFollowUser", auth, dbController.unFollowUser);

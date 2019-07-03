@@ -46,23 +46,18 @@ var UserSchema = new mongoose.Schema({
   ],
   mails: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "users",
-      msgs: [
-        {
-          msgBody: {
-            type: String,
-            date: {
-              type: Date,
-              default: Date.now
-            }
-          },
-          unread: {
-            type: Boolean,
-            default: true
-          }
+      sender: { type: Schema.Types.ObjectId, ref: "users" },
+      msgBody: {
+        type: String,
+        date: {
+          type: Date,
+          default: Date.now
         }
-      ]
+      },
+      unread: {
+        type: Boolean,
+        default: true
+      }
     }
   ],
   dateCreated: {

@@ -52,5 +52,8 @@ export default {
       loggedInUser,
       followUser
     });
+  },
+  sendMsg: (receiverID, msg) => {
+    return axios.put("/db/sendMsg", { receiverID, msg });
   }
 };

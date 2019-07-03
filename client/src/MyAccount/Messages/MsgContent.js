@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import userDB from "../../API/userDB";
 import DropBox from "./DropBox";
 
 export default function MsgContent() {
   const [receiverID, setReceiverID] = useState("");
   const [msg, setMsg] = useState("");
-
+  const handleSendMsg = async () => {
+    const result = await userDB.sendMsg(receiverID, msg);
+    console.log(result);
+  };
   return (
     <div className="Messages_msg_content">
       <div className="Msg_message-content__item">
@@ -49,8 +53,13 @@ export default function MsgContent() {
       </div>
       <div className="Msg_message-form">
         <div className="Msg_send_form_wrap">
-          <input type="text" placeholder="Type your message here" />
-          <i className="fas fa-paper-plane" />
+          <input
+            type="text"
+            placeholder="Type your message here"
+            value={msg}
+            onChange={e => setMsg(e.target.value)}
+          />
+          <i className="fas fa-paper-plane" onClick={handleSendMsg} />
         </div>
       </div>
     </div>

@@ -200,6 +200,21 @@ module.exports = {
       console.error(err);
     }
   },
+  sendMsg: async (req, resp) => {
+    try {
+      const { receiverID, msg } = req.body;
+      const newMail = {
+        sender: req.user.id,
+        msgBody: msg
+      };
+      const user = await models.User.findById(receiverID);
+      user.mails.unshift(newMail);
+      const res = await user.save();
+      resp.json(res.mails);
+    } catch (err) {
+      console.error(err);
+    }
+  },
   updatePlace: async (req, resp) => {
     try {
       const { category, description, photos, placeName, _id } = req.body.place;
