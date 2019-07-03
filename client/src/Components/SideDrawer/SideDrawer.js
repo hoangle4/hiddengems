@@ -40,15 +40,15 @@ function SideDrawer() {
             ) : (
               <ul className="SideDrawer_Sidenav">
                 <li className="MapGem_Button_Li">
-                  <Link to="/login">
-                    <i className="fa fa-arrow-right" />
-                    <b>Login</b>
+                  <Link className="MapGem_Button_Container" to="/login">
+                    <i className="fa fa-arrow-right MapGem_Button_Icon" />
+                    <b className="MapGem_Button_Text">Login</b>
                   </Link>
                 </li>
                 <li className="MapGem_Button_Li">
-                  <Link to="/signup">
-                    <i className="fa fa-home" />
-                    <b>Home</b>
+                  <Link className="MapGem_Button_Container" to="/signup">
+                    <i className="fa fa-home MapGem_Button_Icon" />
+                    <b className="MapGem_Button_Text">Home</b>
                   </Link>
                 </li>
               </ul>
