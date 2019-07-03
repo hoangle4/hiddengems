@@ -107,7 +107,7 @@
 	font-size: 2rem;
 	margin-right: 80%;
 	margin-top: -5vh;
-	margin-bottom: 3vh;;
+	margin-bottom: 3vh;
   height: 50px;
 	width: 50px;
 	line-height: 50px !important;
@@ -115,6 +115,34 @@
 	background: rgb(255, 255, 255);
   color: #6f70f5;
 }
+
+.Story_Like_Btn {
+	font-size: 2rem;
+  height: 60px;
+	width: 60px;
+	line-height: 50px !important;
+	border-radius: 100%;
+	background: rgba(255, 255, 255, .8);
+  color: #6f70f5;
+}
+.Story_Signed {
+	display: flex;
+	align-self: flex-start;
+	font-size: 0.7rem
+}
+.Story_Like_Btn_Span {
+	font-size: 1rem;
+	border-radius: 50%;
+	height: 20px;
+	width: 20px;
+	color: grey
+}
+
+.Story_Like_Btn:hover {
+	background: rgba(255, 255, 255, 1);
+	cursor: pointer;
+}
+
 .fa1 {
   font-size: 2rem;
   height: 50px;
