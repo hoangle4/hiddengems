@@ -90,7 +90,8 @@ height:80%;
 
 .Messages_msg::-webkit-scrollbar, 
 .Msg_wrap_message::-webkit-scrollbar,
-.Msg_message-box::-webkit-scrollbar
+.Msg_message-box::-webkit-scrollbar,
+.DBwrapper .DBlist::-webkit-scrollbar
 { width: 0 !important }
 
 .Msg_wrap_message .Msg_search-bar {
