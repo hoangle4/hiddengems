@@ -59,6 +59,7 @@ function SideDrawer() {
 			}}
 		</Consumer>
 	);
+
 }
 
 export default SideDrawer;
