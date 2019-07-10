@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+.MyAccount {
+  background: url(./gradient.jpg) no-repeat center center fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  background-size: cover;
+}
+
+.MyAccount_Row,
+.MyAccount-Article-Left,
+.MyAccount-Article-Right {
+  padding: 0;
+  margin: 0;
+}
+.MyAccount_Row {
+  display: flex;
+}
+.MyAccount-Article-Left {
+  width: 20vw;
+}
+
+.MyAccount-Article-Right {
+  width: 80vw;
+  height: 100vh;
+  border-left: 1px solid white;
+}
+.MyAccount_ul {
+  margin: 0;
+}
+.MyAccount_ul li {
+  text-transform: Uppercase;
+  font-size: 1.3rem;
+  padding: 1.3rem;
+  border: 1px solid white;
+}
+
+.MyAccount_ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem;
+}
+.MyAccount_a:hover {
+  color: #f2f2f2;
+}
+
+.MyAccount-H1 {
+  font-size: 3em;
+  color: white;
+  padding: 0.5rem;
+}
+
+.MyAccount_title {
+  padding: 3rem;
+}
+
+.MyAccount_ul li,
+.MyAccount-i,
+.MyAccount-H2 {
+  color: #fff;
+}
+
+.MyAccount-i {
+  padding-right: 0.2rem;
+}
+
+.Setting_container,
+.Stats,
+.Messages_container {
+  box-shadow: 0px 5px 32px 0px rgba(0, 0, 0, 0.75);
+  background: linear-gradient(
+    0deg,
+    rgba(19, 84, 122, 0.3) 0%,
+    rgba(128, 208, 199, 0.3) 100%
+  );
+  width: 90%;
+  height: 80%;
+  margin: 5% auto;
+  border-radius: 11px 11px 11px 11px;
+  display: flex;
+  flex-direction: column;
+}
+.Setting_header, .Stats_header, .Messages_header {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  height: 75px;
+  border-radius: 11px 11px 0px 0px;
+}
+.Setting_title, .Stats_title, .Messages_title {
+  font-size: 2rem;
+  color: rgb(94, 107, 121);
+  text-align: center;
+  font-weight: 600;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+.Setting_main {
+  display: flex;
+  justify-content: space-evenly;
+}
+.Setting_left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+.Setting_line {
+  border-style: Solid;
+  border-color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+  border-width: 1px;
+  height: 100%;
+  margin: 25px 0 0;
+}
+.Setting_text {
+  font-size: 1.4rem;
+  color: rgb(242, 242, 242);
+}
+.Setting_item {
+  padding: 1.3rem 0 0;
+}
+.Setting_item > input {
+  background: rgba(68, 68, 68, 0.3);
+  width: 100%;
+  height: 2rem;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.65);
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  margin: 5px 0 0 5px;
+  padding: 0 0 0 15px;
+  border-radius: 15px;
+  border-style: none;
+}
+.Setting_input:focus {
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Setting_right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+.Setting_circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 25px 0 0;
+}
+.Setting_circle,
+.Setting_img {
+  background: url(https://image.ibb.co/j6EPV8/if_add_user_925890.png) center
+    no-repeat;
+  background-size: 45px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.Setting_link .Setting_title {
+  font-size: 1.2rem;
+  color: #f2f2f2;
+}
+.Setting_icons {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.Setting_fb > .Setting_img {
+  background: url(https://image.ibb.co/c2qCiT/if_facebook_605511.png) no-repeat
+    center;
+  background-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.Setting_twiter > .Setting_img {
+  background: url(https://image.ibb.co/jtfCiT/if_twitter_605517.png) no-repeat
+    center;
+  background-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+.Setting_insta > .Setting_img {
+  background: url(https://image.ibb.co/cW7gco/if_instagram_605513.png) no-repeat
+    center;
+  background-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+.Setting_btn {
+  align-self: flex-end;
+  margin: 2rem 2rem 0 0;
+}
+.Setting_btn > button {
+  background: none;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  border: 0.5px solid rgb(190, 190, 190);
+  font-size: 1.2rem;
+  color: white;
+}
+.Setting_btn > button:hover,
+.Setting_btn > buttton:focus {
+  color: #f2f2f2;
+  cursor: pointer;
+  border: 1px solid white;
+  outline: none;
+  transition: all ease-in 100ms;
+}
+.Setting_a {
+  color: #f9f9f9;
+  text-decoration: none;
+}
+.Setting_a:focus,
+.Setting_a:hover {
+  opacity: 0.6;
+}

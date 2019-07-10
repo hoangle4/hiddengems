@@ -1,74 +1,106 @@
 .userBanner {
-	font-family: 'Fugaz One', cursive;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	background: url(./gradient.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	height: 25vh;
+  font-family: "Fugaz One", cursive;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: url(./gradient.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 25vh;
 }
 
 .userBanner-display-info {
-	color: white;
+  color: white;
 }
 
 .UserBanner_avatar-wrapper {
-	position: relative;
-	height: 150px;
-	width: 150px;
-	/* margin: 50px ; */
-	border-radius: 50%;
-	overflow: hidden;
-	box-shadow: 1px 1px 15px -5px black;
-	transition: all .3s ease;
+  position: relative;
+  height: 150px;
+  width: 150px;
+  /* margin: 50px ; */
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px -5px black;
+  transition: all 0.3s ease;
 }
 
 .UserBanner_avatar-wrapper:hover {
-	transform: scale(1.1);
-	cursor: pointer;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 .UserBanner_avatar-wrapper:hover .UserBanner_profile-pic {
-	opacity: 0;
+  opacity: 0;
 }
 .UserBanner_profile-pic {
-	height: 100%;
-	width: 100%;
-	transition: all .3s ease;
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 .UserBanner_profile-pic:after {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	content: "\f007";
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	font-size: 190px;
-	background: #ecf0f1;
-	color: #34495e;
-	text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  content: "\f007";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-size: 190px;
+  background: #ecf0f1;
+  color: #34495e;
+  text-align: center;
 }
 .UserBanner_upload-button {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
-.UserBanner_upload-button:hover .fa-arrow-circle-up {
-	opacity: 1;
+.UserBanner_upload-button:hover .fa-arrow-circle-up,
+.UserBanner_upload-button:hover .fa-user-plus,
+.UserBanner_upload-button:hover .fa-user-check,
+.UserBanner_upload-button:hover .UserBanner_Spinner {
+  opacity: 1;
 }
 .fa-arrow-circle-up {
-	position: absolute;
-	font-size: 10rem;
-	top: -5px;
-	left: -5px;
-	text-align: center;
-	opacity: 0;
-	transition: all .3s ease;
-	color: #6f70f5;
-	background: #f55d83;
+  position: absolute;
+  font-size: 10rem;
+  top: -5px;
+  left: -5px;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #6f70f5;
+  background: #f55d83;
+}
+
+.fa-user-plus,
+.fa-user-check {
+  position: absolute;
+  font-size: 5rem;
+  top: 15%;
+  left: 15%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #6f70f5;
+}
+
+.UserBanner_Spinner {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.UserBanner_progress_ring_circle {
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(90deg);
+  transform: translate(50%, 50%);
 }

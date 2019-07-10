@@ -12,6 +12,13 @@ router.post(
   auth,
   dbController.updateUserCreatedPlace
 );
+
+router.put("/sendMsg", auth, dbController.sendMsg);
+router.put("/addLike", auth, dbController.addLike);
+router.put("/followUser", auth, dbController.followUser);
+router.put("/unFollowUser", auth, dbController.unFollowUser);
+router.put("/updateUserInfo", auth, dbController.updateUserInfo);
+router.put("/updateUserAvatar", auth, dbController.updateUserAvatar);
 router.put("/updatePlace", auth, dbController.updatePlace);
 router.delete("/deletePlace", auth, dbController.deletePlace);
 

@@ -7,11 +7,15 @@ var UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  // username: {
-  //   type: String,
-  //   unique: true,
-  //   required: true
-  // },
+  address: {
+    type: String
+  },
+  cityState: {
+    type: String
+  },
+  phoneNumber: {
+    type: Number
+  },
   password: {
     type: String,
     required: true
@@ -26,6 +30,34 @@ var UserSchema = new mongoose.Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "gems"
+    }
+  ],
+  follower: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
+  mails: [
+    {
+      sender: { type: Schema.Types.ObjectId, ref: "users" },
+      msgBody: {
+        type: String,
+        date: {
+          type: Date,
+          default: Date.now
+        }
+      },
+      unread: {
+        type: Boolean,
+        default: true
+      }
     }
   ],
   dateCreated: {

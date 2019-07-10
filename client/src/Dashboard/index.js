@@ -18,8 +18,10 @@ class Dashboard extends Component {
     editPlace: {}
   };
 
-  getAuthenticate = async (dispatch, token) =>
+  getAuthenticate = async (dispatch, token) => {
+    console.log("here");
     dispatch({ type: "GET_USER", payload: token });
+  };
 
   setPlaceCreate = async placeCreated => {
     this.setState({ placeCreated, dataReady: true });
@@ -66,35 +68,44 @@ class Dashboard extends Component {
           const { user, isAuthenticated, loading, token, dispatch } = value;
           return (
             <div className="dashContainer">
-              {loading && !isAuthenticated && user === null ? (
-                <Fragment>
-                  <Spinner
-                    onLoad={() => {
-                      this.getAuthenticate(dispatch, token);
-                    }}
-                  />
-                </Fragment>
-              ) : !dataReady ? (
-                <Spinner
-                  onLoad={() => this.setPlaceCreate(user.placeCreated)}
-                />
+              {loading && !isAuthenticated ? (
+                <Spinner />
               ) : (
                 <Fragment>
-                  <UserBanner user={user} />
-                  <GemCards
-                    placeCreated={placeCreated}
-                    user={user}
-                    deleteClick={this.deleteClick}
-                    editClick={this.editClick}
-                  />
-                  {isActiveEdit ? (
-                    <EditGemForms
-                      editPlace={editPlace}
-                      handleFormClick={this.handleFormClick}
-                      updateEditedPlace={this.updateEditedPlace}
-                    />
-                  ) : null}
-                  <UserSearch />
+                  {!user ? (
+                    <div>
+                      <Spinner
+                        onLoad={dispatch({ type: "GET_USER", payload: token })}
+                      />
+                      here
+                    </div>
+                  ) : (
+                    <Fragment>
+                      {!dataReady ? (
+                        <Spinner
+                          onLoad={() => this.setPlaceCreate(user.placeCreated)}
+                        />
+                      ) : (
+                        <Fragment>
+                          <UserBanner user={user} loggedInUserId={user._id} />
+                          <GemCards
+                            placeCreated={placeCreated}
+                            user={user}
+                            deleteClick={this.deleteClick}
+                            editClick={this.editClick}
+                          />
+                          {isActiveEdit ? (
+                            <EditGemForms
+                              editPlace={editPlace}
+                              handleFormClick={this.handleFormClick}
+                              updateEditedPlace={this.updateEditedPlace}
+                            />
+                          ) : null}
+                          <UserSearch />
+                        </Fragment>
+                      )}
+                    </Fragment>
+                  )}
                 </Fragment>
               )}
               <BubbleNav />

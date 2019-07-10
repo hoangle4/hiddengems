@@ -1,0 +1,279 @@
+.Messages_img {
+  max-width: 100%;
+}
+
+.Msg_ul {
+  padding-left: 0;
+}
+
+.Msg_li {
+  list-style-type: none;
+}
+
+.Msg_a {
+  transition: all 0.3s ease;
+}
+
+.Msg_a:hover {
+  transition: all 0.3s ease;
+}
+
+.Messages_main {
+display: flex;
+justify-content: space-evenly;
+height:80%;
+}
+
+.Messages_SideBar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:15%;
+  background:linear-gradient(to bottom,rgba(255, 255, 255, 0.7) 0%,rgba(255,255,255,0) 100%);
+}
+
+.Messages_SideBar .Msg_profile-img {
+  padding: 0 12px;
+  margin-bottom: 40px;
+}
+
+.Messages_SideBar .Msg_profile-img img {
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+
+.Messages_SideBar .Msg_ul .Msg_a {
+  display: block;
+  height: 3rem;
+  border-left: 0px solid #fff;
+  text-align: center;
+  padding-top: 1rem;
+  margin-bottom: 0.8rem;
+  color:#e0e2e4;
+}
+
+.Messages_SideBar .Msg_ul .Msg_a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left: 4px solid #fff;
+  color: #108ef2
+}
+
+.Messages_SideBar .Msg_btn-menu {
+  position: absolute;
+  bottom: 25px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  opacity: 1;
+}
+.Msg_wrap_message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:35%;
+  overflow: scroll;
+  background:linear-gradient(to bottom,rgba(255, 255, 255, 0.7) 0%,rgba(255,255,255,0) 100%);
+}
+
+.Messages_msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  padding-top: 12rem;
+}
+
+.Messages_msg::-webkit-scrollbar, 
+.Msg_wrap_message::-webkit-scrollbar,
+.Msg_message-box::-webkit-scrollbar,
+.DBwrapper .DBlist::-webkit-scrollbar
+{ width: 0 !important }
+
+.Msg_wrap_message .Msg_search-bar {
+  width: 100%;
+}
+.Msg_wrap_message .Msg_search-bar i {
+  color:#3f3f3f;
+}
+
+.Msg_wrap_message .Msg_search-bar i:hover {
+  cursor: pointer;
+  color:#108ef2
+}
+
+.Msg_wrap_message .Msg_search-bar input {
+  background: none;
+  border: none;
+  width: calc(100% - 50px);
+}
+
+.Msg_wrap_message .Msg_search-bar input:focus {
+  outline: none;
+  border-bottom: 1px rgba(156, 156, 156, 0.7) solid;
+}
+
+.Messages_msg .Msg_messages_item {
+  background: #fff;
+  border-radius: 5px;
+  margin:0 0.5rem 1rem 0.5rem;
+  padding: 1rem;
+}
+
+.Messages_msg .Msg_messages_item:hover{
+  text-decoration: none;
+  box-shadow: 5px 5px 15px 6px rgba(1, 50, 101, 0.21);
+  background: #f0f2f4;
+}
+
+.Messages_msg .Msg_messages_item .Msg_name{
+  color: #4a4a4a;
+  font-size: 1rem;
+  font-weight: 500;
+  float: left;
+}
+
+.Messages_msg .Msg_messages_item .Msg_date {
+  float: right;
+  color: #c0c0c0;
+}
+
+.Messages_msg .Msg_messages_item .Msg_content {
+  float: left;
+  padding: 10px 0;
+  color: #565656;
+  font-size: 1rem;
+}
+
+
+.Messages_msg_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+
+  background:linear-gradient(to bottom,rgba(255, 255, 255, 0.7) 0%,rgba(255,255,255,0) 100%);
+}
+.Messages_msg_content .Msg_message-content__item {
+  width: 100%;
+}
+
+.Messages_msg_content .Msg_message-content__item  .Msg_message-content-header {
+  border: 1px solid #e0e2e4;
+  padding:1rem;
+  position: relative;
+  height:4rem;
+}
+
+.Messages_msg_content .Msg_message-content__item  .Msg_message-content-header .Msg_name{
+  font-size: 1.5rem;
+  color: rgba(83, 83, 83, 0.7);
+  font-weight: 500;
+}
+
+.Messages_msg_content .Msg_message-content__item .Msg_message-content-header .Msg_phone {
+  font-size: 1rem;
+  color:#108ef2;
+}
+
+.Messages_msg_content .Msg_message-content__item .Msg_message-content-header i {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  color: #108ef2
+}
+.Msg_message-box {
+  overflow: scroll;
+}
+
+.Messages_msg_content .Msg_message-box {
+  padding: 1.4rem;
+}
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  {
+  margin-bottom: 1rem;
+
+}
+
+.Messages_msg_content .Msg_message-box .Msg_message-box_item.incoming {
+  text-align: left;
+}
+
+.Messages_msg_content .Msg_message-box .Msg_message-box_item .Msg_time {
+  right:0;
+  margin-right: 4px;
+}
+
+.Messages_msg_content .Msg_message-box .Msg_message-box_item.outgoing {
+  text-align: right;
+}
+
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_name{
+  color: #535357;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_box-text {
+  background: #f0f2f4;
+  display: inline-block;
+  padding:1rem;
+  font-size: 1rem;
+  color: #535357;
+  border-radius: 5px;
+  max-width: 50%;
+  margin-top: .4rem;
+  text-align: left;
+position: relative;
+}
+
+.Messages_msg_content .Msg_message-box .Msg_message-box_item  .Msg_box-text .Msg_time {
+  position: absolute;
+  font-size:0.6rem;
+  color: #939397;
+}
+
+.Messages_msg_content .Msg_message-form {
+  height:75px;
+  border-top: 1px solid #e0e2e4;
+  padding: 1rem;
+  width: 80%
+}
+
+.Messages_msg_content .Msg_send_form_wrap  {
+  border: #e0e2e4 1px solid;
+  padding-left:5px;
+}
+
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap input {
+  background: none;
+  border: none;
+  width: calc(100% - 50px);
+  font-size: 1rem;
+  color: white;
+  outline: none;
+  height: 50px;
+  transition: all 150ms ease-in;
+}
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap  input::placeholder {
+  color: rgba(255, 255, 255, 0.7)
+}
+
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap  i {
+  float: right;
+  transition: all 150ms ease-in;
+  color:#e0e2e4;
+  border-left: 1px solid #e0e2e4;
+  padding: 16.5px;
+}
+
+.Messages_msg_content .Msg_message-form .Msg_send_form_wrap  i:hover {
+  cursor: pointer;
+  color: #108ef2;
+  background:rgba(255, 255, 255, 0.7)
+}
+

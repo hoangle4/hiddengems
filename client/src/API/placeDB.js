@@ -11,6 +11,9 @@ const db = {
       place
     });
   },
+  addLike: (placeID, userID) => {
+    return axios.put("/db/addLike", { placeID, userID });
+  },
   deletePlace: id => {
     return axios.delete(`/db/deletePlace?id=${id}`);
   },
